@@ -1,0 +1,204 @@
+---
+import Guide from '../../layouts/Guide.astro';
+import { SITE } from '../../data/site';
+const href = '/guides/best-study-planner-apps/';
+
+// The ranked list. Used for the quick-picks table and the ItemList schema,
+// so the order on the page and in structured data always match.
+const picks = [
+  { id: 'classtrack', name: 'ClassTrack', best: 'Best overall for school and college students (Android)', url: SITE.playUrl },
+  { id: 'mystudylife', name: 'MyStudyLife', best: 'Best free cross-platform student planner', url: 'https://mystudylife.com/' },
+  { id: 'power-planner', name: 'Power Planner', best: 'Best for grades and GPA, one-time purchase', url: 'https://powerplanner.net/' },
+  { id: 'notion', name: 'Notion', best: 'Best for building your own study system', url: 'https://www.notion.com/product/notion-for-education' },
+  { id: 'ticktick', name: 'TickTick', best: 'Best for tasks, habits and Pomodoro in one app', url: 'https://ticktick.com/' },
+  { id: 'google-calendar', name: 'Google Calendar', best: 'Best free calendar, especially with Google Classroom', url: 'https://calendar.google.com/' },
+  { id: 'structured', name: 'Structured', best: 'Best visual time-blocking planner', url: 'https://structured.app/' },
+  { id: 'todoist', name: 'Todoist', best: 'Best simple to-do list for homework', url: 'https://www.todoist.com/' },
+  { id: 'paper', name: 'A paper planner', best: 'Best if screens distract you', url: '' },
+];
+
+const itemList = {
+  '@type': 'ItemList',
+  name: 'Best study planner apps in 2026',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: picks.length,
+  itemListElement: picks.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: `${p.name}: ${p.best}`,
+    url: `${SITE.url}${href}#${p.id}`,
+  })),
+};
+---
+<Guide
+  href={href}
+  extraSchema={[itemList]}
+  tldr={[
+    '<strong>Best overall: ClassTrack</strong> (Android) for students who want their class timetable, homework, exam countdowns and an AI study plan in one free app. Disclosure: we make it.',
+    '<strong>Best on iPhone and across devices: MyStudyLife.</strong> Free, mature, and works on iOS, Android and the web.',
+    '<strong>Best one-time purchase: Power Planner.</strong> Free to use; Premium is a lifetime unlock for under $5.',
+    '<strong>Best for custom systems: Notion</strong>, free Plus plan for university students with a school email.',
+    'No app studies for you. Pick the one you will <strong>open every day</strong>, then use it for spaced revision and self-testing, the two techniques with the strongest research behind them.',
+  ]}
+  toc={[
+    { id: 'quick', label: 'Quick picks: the 9 best study planners' },
+    { id: 'how', label: 'How we chose' },
+    { id: 'classtrack', label: '1. ClassTrack' },
+    { id: 'mystudylife', label: '2. MyStudyLife' },
+    { id: 'power-planner', label: '3. Power Planner' },
+    { id: 'notion', label: '4. Notion' },
+    { id: 'ticktick', label: '5. TickTick' },
+    { id: 'google-calendar', label: '6. Google Calendar' },
+    { id: 'structured', label: '7. Structured' },
+    { id: 'todoist', label: '8. Todoist' },
+    { id: 'paper', label: '9. A paper planner' },
+    { id: 'compare', label: 'Feature comparison table' },
+    { id: 'choose', label: 'Which study planner should you choose?' },
+    { id: 'use', label: 'How to get results from any planner' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/timetable-maker/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'What is the best study planner app in 2026?', a: 'For most school and college students on Android, ClassTrack is the best all-in-one study planner because it combines a class timetable (with AI import from a photo or PDF), homework, exam countdowns, AI study plans and grades for free. On iPhone, or if you need web access, MyStudyLife is the strongest free choice. Disclosure: ClassTrack is made by the team behind this site.' },
+    { q: 'What is the best free study planner app?', a: 'MyStudyLife, Power Planner and ClassTrack all have free plans that cover a timetable, homework and exams. Google Calendar is free too, but it is a calendar, not a student planner, so it has no homework list, grades or exam countdowns.' },
+    { q: 'Is there a study planner app with AI?', a: `Yes. ClassTrack builds AI learning plans and can read your timetable from a photo or PDF (${SITE.free.learningPlans} free plans and ${SITE.free.timetableScans} free scans; unlimited with Pro). MyStudyLife has an AI assistant called Scout, and Structured Pro can draft your day from a sentence. You can also try our free <a href="/tools/study-plan-generator/">study plan generator</a> without an app.` },
+    { q: 'Is Notion good as a study planner?', a: 'Notion is excellent if you enjoy building your own system with databases and templates, and students with a school email can get the Plus plan free. It is weaker as a ready-made planner: there is no built-in class timetable, exam countdown or grade calculator, so you set those up yourself.' },
+    { q: 'Is a digital or paper study planner better?', a: 'Neither is better for everyone. Digital planners send reminders, handle repeating classes and sync across devices. Paper planners have no notifications to distract you and help some people remember plans. Many students use an app for the timetable and deadlines and paper for the daily to-do list.' },
+    { q: 'What should a good study planner have?', a: 'At minimum: a weekly class timetable, a homework and assignment list with due dates, exam dates with a countdown, and reminders. Useful extras are a revision plan that spaces topics over days, grade tracking, and a focus timer.' },
+    { q: 'Which study planner is best for Indian students?', a: 'Look for support for rotating or irregular college timetables, CGPA and SGPA on a 10-point scale, and attendance tracking for the 75% rule. ClassTrack was built in India with these in mind; Power Planner and MyStudyLife are good alternatives but are designed mainly around 4.0 GPA systems.' },
+  ]}
+  sources={[
+    { text: 'Dunlosky, J. et al. (2013). Improving students’ learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. & Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095–1102.', url: 'https://doi.org/10.1111/j.1467-9280.2008.02209.x' },
+    { text: 'Gollwitzer, P. M. & Sheeran, P. (2006). Implementation intentions and goal achievement: A meta-analysis of effects and processes. Advances in Experimental Social Psychology, 38, 69–119.', url: 'https://doi.org/10.1016/S0065-2601(06)38002-1' },
+    { text: 'MyStudyLife: Study Planner, Google Play listing (checked October 2026).', url: 'https://play.google.com/store/apps/details?id=com.virblue.mystudylife' },
+    { text: 'Power Planner: Premium version FAQ (checked October 2026).', url: 'https://support.powerplanner.net/faq/premium-version/' },
+    { text: 'Notion Help Center: Notion for education (checked October 2026).', url: 'https://www.notion.com/help/notion-for-education' },
+    { text: 'Todoist Help: plans, pricing and billing FAQ (checked October 2026).', url: 'https://www.todoist.com/help/account-and-billing/plans/todoist-plans-pricing-and-billing-faq-Vq2z0HWL6' },
+    { text: 'Structured Help: What is Structured Pro? (checked October 2026).', url: 'https://help.structured.app/en/articles/324674' },
+    { text: 'Google Classroom Help: View due dates and events in a calendar.', url: 'https://support.google.com/edu/classroom/answer/6272985' },
+  ]}
+>
+  <p><strong>Short answer:</strong> the best study planner in 2026 is the one that holds your <strong>class timetable, homework deadlines and exam dates in one place</strong> and turns them into a daily plan. For Android users that is <a href="#classtrack">ClassTrack</a>; on iPhone or the web, <a href="#mystudylife">MyStudyLife</a>. If you mainly track grades, choose <a href="#power-planner">Power Planner</a>; if you like to build your own system, <a href="#notion">Notion</a>.</p>
+  <p>Below are nine planners compared on the features students actually use, with who each one suits and where it falls short. Prices and features were checked against each app’s official store listing or help pages in October 2026.</p>
+  <p class="small muted"><strong>Disclosure:</strong> studyplanner.tech is run by the makers of ClassTrack, which appears in this list. We have tried to be fair: every app’s limits are listed, including ours, and we tell you when another app is the better choice. Read our <a href="/about/">editorial policy</a>.</p>
+
+  <h2 id="quick">Quick picks: the 9 best study planners in 2026</h2>
+  <table>
+    <thead><tr><th scope="col">#</th><th scope="col">App</th><th scope="col">Best for</th></tr></thead>
+    <tbody>
+      {picks.map((p, i) => <tr><td>{i + 1}</td><td><a href={`#${p.id}`}><strong>{p.name}</strong></a></td><td>{p.best}</td></tr>)}
+    </tbody>
+  </table>
+
+  <h2 id="how">How we chose</h2>
+  <p>A study planner is different from a general to-do app. It has to understand that classes repeat every week, that homework belongs to a subject, and that an exam is a deadline you prepare for over many days. We scored each app on six things:</p>
+  <ol>
+    <li><strong>Class timetable:</strong> weekly and rotating schedules, rooms and teachers.</li>
+    <li><strong>Homework and assignments:</strong> due dates, linked to subjects, with reminders.</li>
+    <li><strong>Exam planning:</strong> exam dates, countdowns, and help spreading revision over days.</li>
+    <li><strong>Smart help:</strong> AI or automation that saves set-up time or builds a study plan.</li>
+    <li><strong>Platforms and sync:</strong> phone, tablet, web, and calendar sync.</li>
+    <li><strong>Price for a student:</strong> how much is free, and what the paid plan costs.</li>
+  </ol>
+  <p>We also asked one question the research cares about: <strong>does the app make it easy to spread study over days?</strong> Spaced practice and practice testing are the only two study techniques rated “high utility” in a major review of learning research (Dunlosky et al., 2013). A planner that schedules revision sessions across the weeks before an exam helps you do the first one without thinking about it.</p>
+
+  <h2 id="classtrack">1. ClassTrack: best overall for school and college students</h2>
+  <p><strong>Platforms:</strong> Android (iPhone coming soon) · <strong>Price:</strong> free; optional Pro subscription through Google Play</p>
+  <p>ClassTrack is an all-in-one student planner: your <a href="/timetable-app/">class timetable</a>, homework and assignments, exam countdowns, grades and an <a href="/ai-study-planner/">AI study planner</a> live in one app. Its standout feature is <strong>AI timetable import</strong>: take a photo of your timetable, or upload the PDF your college shares, and it becomes a weekly schedule in seconds instead of typing every class by hand.</p>
+  <ul>
+    <li><strong>Timetable:</strong> day, week and month views, rooms, teachers and class links, plus one-off extra or cancelled classes.</li>
+    <li><strong>Homework and exams:</strong> tasks grouped into Overdue, Today and Next 7 days, and a countdown for every exam on the home screen.</li>
+    <li><strong>AI:</strong> topic-by-topic learning plans with time estimates, and an AI study assistant for revision schedules and syllabus breakdowns.</li>
+    <li><strong>Built for Indian students:</strong> SGPA and CGPA on a 10-point scale, and attendance tracking by subject so you can stay above 75%.</li>
+  </ul>
+  <p><strong>Free plan:</strong> timetable, tasks, exams, grades, habits and reminders, plus {SITE.free.aiMessages} AI messages a month, {SITE.free.timetableScans} AI timetable scans and {SITE.free.learningPlans} AI learning plans. Pro removes the AI limits and adds notes and flashcards, two-way Google Calendar sync and a daily agenda (<a href="/pricing/">see pricing</a>).</p>
+  <p><strong>Limits:</strong> Android only for now, and no web app. It is a newer app, so it has fewer store reviews than MyStudyLife. If you are on iPhone, start with MyStudyLife.</p>
+  <p><strong>Choose it if</strong> you are on Android and want the fastest set-up and a study plan built around your exam dates.</p>
+
+  <h2 id="mystudylife">2. MyStudyLife: best free cross-platform student planner</h2>
+  <p><strong>Platforms:</strong> iPhone, iPad, Mac, Android, web · <strong>Price:</strong> free; optional MSL+ subscription</p>
+  <p>MyStudyLife is one of the longest-running student planners and says it is used by over 10 million students. It handles <strong>weekly and rotating timetables</strong> well, which matters if your school runs a Day 1 / Day 2 schedule. It covers homework, exams, reminders, grade tracking, a Pomodoro timer and widgets, and has an AI planning assistant called Scout.</p>
+  <p><strong>Limits:</strong> some features, such as unlimited Scout use and calendar sync, need MSL+. There is no timetable import from a photo, so set-up is manual.</p>
+  <p><strong>Choose it if</strong> you use an iPhone, switch between phone and laptop, or need a rotating timetable.</p>
+
+  <h2 id="power-planner">3. Power Planner: best for grades and GPA</h2>
+  <p><strong>Platforms:</strong> iPhone, Android, Windows, web · <strong>Price:</strong> free; Premium is a one-time purchase under $5</p>
+  <p>Power Planner is a homework planner with unusually strong <strong>grade tracking</strong>: enter weighted marks per class and it calculates your GPA and what you need on the next test. The free version is ad-free and fully usable, and Premium is a single lifetime purchase that unlocks unlimited grades per class and multiple semesters on all your devices.</p>
+  <p><strong>Limits:</strong> no AI study plans, and the design is functional rather than modern. It is built around the 4.0 GPA scale.</p>
+  <p><strong>Choose it if</strong> you hate subscriptions and care most about knowing where your grades stand.</p>
+
+  <h2 id="notion">4. Notion: best for building your own study system</h2>
+  <p><strong>Platforms:</strong> web, Windows, Mac, iPhone, Android · <strong>Price:</strong> free; Plus plan free for students and teachers with a school email</p>
+  <p>Notion is a blank canvas of pages and databases. Students use it to build a <strong>study dashboard</strong>: a subject database, an assignments board, lecture notes linked to each class, and a revision tracker. There are thousands of free student templates.</p>
+  <p><strong>Limits:</strong> it is not a planner until you build one, and set-up can eat a weekend. There is no native class timetable, exam countdown or grade calculator, and reminders are weaker than in dedicated apps. Ongoing Notion AI is not part of the free student plan.</p>
+  <p><strong>Choose it if</strong> you enjoy organising and want notes and planning in the same place.</p>
+
+  <h2 id="ticktick">5. TickTick: best for tasks, habits and focus</h2>
+  <p><strong>Platforms:</strong> iPhone, Android, web, Windows, Mac · <strong>Price:</strong> free; optional Premium subscription</p>
+  <p>TickTick is a to-do app with extras students love: a <strong>built-in Pomodoro timer</strong>, a habit tracker, calendar views and natural-language entry (“physics worksheet Friday 5pm”). It is a strong pick for managing homework and building a daily study streak.</p>
+  <p><strong>Limits:</strong> it does not understand subjects, class periods or exams; you fake them with lists and tags. The full calendar views need Premium.</p>
+  <p><strong>Choose it if</strong> your main problem is focus and follow-through rather than a complex timetable.</p>
+
+  <h2 id="google-calendar">6. Google Calendar: best free calendar for students</h2>
+  <p><strong>Platforms:</strong> web, iPhone, Android · <strong>Price:</strong> free</p>
+  <p>If your school uses Google Classroom, each class gets a shared calendar and <strong>classwork due dates appear in Google Calendar automatically</strong>. Add your classes as repeating events and block study time, and you have a free, reliable planner that every device already supports.</p>
+  <p><strong>Limits:</strong> it is a calendar, not a student planner: no homework checklist, grades, exam countdowns or revision plans. It works best alongside a dedicated app (ClassTrack Pro and MyStudyLife both sync with it).</p>
+  <p><strong>Choose it if</strong> you want something free and simple, or your teachers already use Classroom.</p>
+
+  <h2 id="structured">7. Structured: best visual time-blocking planner</h2>
+  <p><strong>Platforms:</strong> iPhone, iPad, Mac, Apple Watch, Android, web · <strong>Price:</strong> free; Pro monthly, yearly or lifetime</p>
+  <p>Structured shows your day as a <strong>single timeline</strong>, so you can see exactly when each study block, class and break happens. It includes a focus timer and widgets, and is popular with students who have ADHD or get overwhelmed by long lists. Structured Pro adds calendar import, recurring routines, AI that drafts your day from a sentence, and automatic rescheduling of missed tasks.</p>
+  <p><strong>Limits:</strong> it plans days, not semesters. There is no homework-by-subject view, exam tracking or grades.</p>
+  <p><strong>Choose it if</strong> you study best when every hour has a clear block.</p>
+
+  <h2 id="todoist">8. Todoist: best simple to-do list for homework</h2>
+  <p><strong>Platforms:</strong> every major platform and browser · <strong>Price:</strong> free (up to 5 projects); Pro about $5 a month billed yearly</p>
+  <p>Todoist is fast, clean and dependable. Make one project per subject, type tasks in plain English, and it sorts them by due date. It is the best choice if you only need a reliable homework list.</p>
+  <p><strong>Limits:</strong> no timetable, exams or grades. The free plan has no task reminders, which most students need.</p>
+  <p><strong>Choose it if</strong> you want the simplest possible homework tracker and already use a calendar for classes.</p>
+
+  <h2 id="paper">9. A paper planner: best if screens distract you</h2>
+  <p><strong>Price:</strong> the cost of a notebook</p>
+  <p>A paper planner has no notifications, no social media one swipe away, and nothing to set up. Writing the week’s plan by hand also forces you to decide when and where you will study, and research on “if–then” plans shows that deciding exactly when you will do a task makes you more likely to do it (Gollwitzer &amp; Sheeran, 2006).</p>
+  <p><strong>Limits:</strong> no reminders, no repeating classes, and it is gone if you lose it. Print a clean weekly grid from our free <a href="/tools/timetable-maker/">timetable maker</a> to get the best of both.</p>
+
+  <h2 id="compare">Study planner feature comparison (2026)</h2>
+  <table>
+    <thead><tr><th scope="col">App</th><th scope="col">Class timetable</th><th scope="col">Homework</th><th scope="col">Exams</th><th scope="col">Grades</th><th scope="col">AI help</th><th scope="col">Platforms</th><th scope="col">Pricing model</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ClassTrack</strong></td><td>Yes, AI import</td><td>Yes</td><td>Countdowns</td><td>GPA, SGPA, CGPA</td><td>Study plans, assistant</td><td>Android</td><td>Free + Pro</td></tr>
+      <tr><td><strong>MyStudyLife</strong></td><td>Yes, rotating</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Scout</td><td>iOS, Android, web</td><td>Free + MSL+</td></tr>
+      <tr><td><strong>Power Planner</strong></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Strong GPA</td><td>No</td><td>iOS, Android, Windows, web</td><td>Free + one-time</td></tr>
+      <tr><td><strong>Notion</strong></td><td>Build it</td><td>Build it</td><td>Build it</td><td>Build it</td><td>Paid plans</td><td>All</td><td>Free (Plus free for students)</td></tr>
+      <tr><td><strong>TickTick</strong></td><td>No</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>All</td><td>Free + Premium</td></tr>
+      <tr><td><strong>Google Calendar</strong></td><td>As events</td><td>Classroom due dates</td><td>As events</td><td>No</td><td>No</td><td>All</td><td>Free</td></tr>
+      <tr><td><strong>Structured</strong></td><td>As events</td><td>Tasks</td><td>No</td><td>No</td><td>Pro</td><td>Apple, Android, web</td><td>Free + Pro</td></tr>
+      <tr><td><strong>Todoist</strong></td><td>No</td><td>Yes</td><td>No</td><td>No</td><td>Limited</td><td>All</td><td>Free + Pro</td></tr>
+      <tr><td><strong>Paper</strong></td><td>By hand</td><td>By hand</td><td>By hand</td><td>No</td><td>No</td><td>—</td><td>One-off</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="choose">Which study planner should you choose?</h2>
+  <ul>
+    <li><strong>School student (Class 9–12) on Android:</strong> ClassTrack, for exam countdowns and board-exam revision plans. Pair it with our <a href="/guides/board-exam-study-timetable/">board exam timetable</a>.</li>
+    <li><strong>School student on iPhone:</strong> MyStudyLife.</li>
+    <li><strong>College student in India:</strong> ClassTrack, for photo/PDF timetable import, SGPA/CGPA and attendance.</li>
+    <li><strong>College student in the US or UK who tracks GPA closely:</strong> Power Planner or MyStudyLife.</li>
+    <li><strong>Entrance-exam aspirant (JEE, NEET, CUET, CAT):</strong> an AI study plan plus a daily timeline: ClassTrack for the plan, or Structured for hour-by-hour blocks.</li>
+    <li><strong>Note-heavy university student:</strong> Notion for notes, with Google Calendar for classes.</li>
+    <li><strong>Struggles with focus and procrastination:</strong> TickTick or Structured, for timers and streaks.</li>
+  </ul>
+  <p>Not sure yet? Try one app for two full weeks before switching. Most students who “need a better planner” actually need to open the one they have every morning.</p>
+
+  <h2 id="use">How to get results from any study planner</h2>
+  <p>The app is only the container. These five habits are what make it work:</p>
+  <ol>
+    <li><strong>Enter everything once, at the start of term.</strong> Timetable, every known exam date and every assignment deadline. A planner with gaps is a planner you stop trusting.</li>
+    <li><strong>Plan the week every Sunday.</strong> Ten minutes: check deadlines for the next 7–14 days and put study blocks in your calendar. Our guide to a <a href="/guides/weekly-schedule-for-students/">weekly student schedule</a> has examples.</li>
+    <li><strong>Work backwards from exams.</strong> Split the syllabus into topics and give each one a slot, leaving the last week for past papers. See the <a href="/guides/study-plan-for-exams/">backward planning method</a>.</li>
+    <li><strong>Space your revision.</strong> Revisit each topic several times over days or weeks instead of once. In a study of over 1,300 people, the best gap between sessions for a test a week away was about 20–40% of the time left (Cepeda et al., 2008).</li>
+    <li><strong>Make every block a test.</strong> End each study block with questions, flashcards or explaining from memory. Read more in <a href="/guides/evidence-based-study-techniques/">what the research says about study techniques</a>.</li>
+  </ol>
+  <blockquote>Want a plan right now, without an app? Enter your subjects and exam date in our free <a href="/tools/study-plan-generator/">study plan generator</a> and get a day-by-day timetable with revision built in.</blockquote>
+</Guide>

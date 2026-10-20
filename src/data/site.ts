@@ -64,6 +64,7 @@ export const TOOLS: Tool[] = [
 export type Guide = NavLink & { title: string; minutes: number; date: string; tint: string; tag: string };
 
 export const GUIDES: Guide[] = [
+  { href: '/guides/best-study-planner-apps/', label: 'Best study planner apps', title: 'Best Study Planner Apps in 2026: 9 Picks Compared (Free & Paid)', desc: 'The best study planner apps of 2026 compared on timetable, exams, AI, platforms and price, with the best pick for school, college and exam prep.', minutes: 13, date: '2026-10-20', tint: 'lavender', tag: 'Reviews' },
   { href: '/guides/how-to-make-a-study-timetable/', label: 'How to make a study timetable', title: 'How to Make a Study Timetable That You Actually Follow', desc: 'A 7-step method for building a realistic weekly study timetable, with a free template.', minutes: 9, date: '2026-10-20', tint: 'lavender', tag: 'Planning' },
   { href: '/guides/study-plan-for-exams/', label: 'Study plan for exams', title: 'How to Make a Study Plan for Exams (Backward Planning Method)', desc: 'Work back from your exam date, split the syllabus, and leave room for revision and mocks.', minutes: 10, date: '2026-10-20', tint: 'pink', tag: 'Exams' },
   { href: '/guides/evidence-based-study-techniques/', label: 'Evidence-based study techniques', title: 'Active Recall and Spaced Repetition: What the Research Says', desc: 'Which study techniques work, which waste time, and how to build them into your planner.', minutes: 11, date: '2026-10-20', tint: 'mint', tag: 'Research' },

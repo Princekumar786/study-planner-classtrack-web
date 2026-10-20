@@ -12,11 +12,14 @@ interface Props {
   sources: { text: string; url: string }[];
   faqs?: QA[];
   tools?: string[];
+  // Extra JSON-LD nodes for this guide (e.g. an ItemList for "best of" articles).
+  extraSchema?: Record<string, unknown>[];
 }
-const { href, tldr, toc, sources, faqs = [], tools = [] } = Astro.props;
+const { href, tldr, toc, sources, faqs = [], tools = [], extraSchema = [] } = Astro.props;
 const g = GUIDES.find((x) => x.href === href)!;
 const schema: Record<string, unknown>[] = [articleSchema({ title: g.title, path: href, description: g.desc, date: g.date })];
 if (faqs.length) schema.push(faqSchema(faqs));
+schema.push(...extraSchema);
 const related = GUIDES.filter((x) => x.href !== href).slice(0, 3);
 const relTools = TOOLS.filter((t) => tools.includes(t.href));
 const nice = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
