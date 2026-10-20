@@ -1,8 +1,8 @@
 ---
 // iPhone waitlist: any element with [data-ios] opens this dialog.
-// Submits to Pageclip (form "iphone-waitlist"). Included once in Base.astro.
+// Submits to Pageclip (shared form, field form=iphone-waitlist). Included once in Base.astro.
 import { SITE } from '../data/site';
-const action = `https://send.pageclip.co/${SITE.pageclipKey}/iphone-waitlist`;
+const action = `https://send.pageclip.co/${SITE.pageclipKey}/${SITE.pageclipForm}`;
 ---
 <dialog id="ios-dialog" class="ios-dialog" aria-labelledby="ios-title">
   <button type="button" class="ios-x" data-ios-close aria-label="Close">✕</button>
@@ -21,6 +21,7 @@ const action = `https://send.pageclip.co/${SITE.pageclipKey}/iphone-waitlist`;
         <select id="ios-who" name="student_type"><option>School student</option><option>College / university student</option><option>Preparing for an entrance exam</option><option>Teacher / parent</option><option>Other</option></select>
       </div>
     </div>
+    <input type="hidden" name="form" value="iphone-waitlist" />
     <input type="hidden" name="subject" value="iPhone waitlist signup" />
     <input type="hidden" name="page" value="" data-page />
     <button class="btn pageclip-form__submit" type="submit" style="width:100%"><span>Notify me</span></button>

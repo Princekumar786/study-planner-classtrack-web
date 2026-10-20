@@ -30,10 +30,11 @@ export const SITE = {
     timetableScans: 2,
     learningPlans: 2,
   },
-  // Third-party IDs. Pageclip site key goes in form action URLs (public by design).
-  pageclipKey: 'api_KHCBeXCam61p5337uWsu9xaNNT5IojfP',
+  // Third-party IDs. The Pageclip site key is public by design (it goes in form action URLs).
+  // Both forms post to the same Pageclip form; a hidden "form" field tells them apart.
+  pageclipKey: 'Uti2TXp32Y6bK7amhsPkZsb8SkZ6rS5r',
+  pageclipForm: 'iphone',
   ga4: 'G-8GQEVJBGDY',
-  gtm: 'GTM-5KJ8KJ8C',
 } as const;
 
 export type NavLink = { href: string; label: string; desc?: string };

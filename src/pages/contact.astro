@@ -17,8 +17,9 @@ const schema = [{ '@type': 'ContactPage', name: 'Contact ClassTrack', url: `${SI
       <div class="card t-mint"><span class="ico"><Icon name="users" /></span><h2 style="font-size:1.2rem">Schools &amp; partners</h2><p class="small">Colleges, student clubs and educators who want to work with us.</p><a href={`mailto:${SITE.email}?subject=Partnership`}>Get in touch</a></div>
     </div>
     <div class="narrow" style="margin-top:48px;text-align:left">
-      <form action={`https://send.pageclip.co/${SITE.pageclipKey}/contact`} class="pageclip-form tool-panel" method="post" style="box-shadow:0 0 0 1px var(--line)">
+      <form action={`https://send.pageclip.co/${SITE.pageclipKey}/${SITE.pageclipForm}`} class="pageclip-form tool-panel" method="post" style="box-shadow:0 0 0 1px var(--line)">
         <h2 style="font-size:1.4rem">Send us a message</h2>
+        <input type="hidden" name="form" value="contact" />
         <div class="row">
           <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" required maxlength="60" autocomplete="name" /></div>
           <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" name="email" required autocomplete="email" /></div>

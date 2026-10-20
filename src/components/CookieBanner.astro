@@ -1,0 +1,43 @@
+---
+// Cookie consent banner for Google Analytics (Consent Mode v2).
+// Choice is stored in localStorage "sp-consent" ('granted' | 'denied').
+// Any element with [data-cookie-settings] reopens it.
+---
+<div id="cookie-banner" class="cookie" role="dialog" aria-live="polite" aria-labelledby="cookie-title" hidden>
+  <div>
+    <strong id="cookie-title">Cookies</strong>
+    <p>We use Google Analytics cookies to see which tools and guides help students most. No ads. You can change this any time. <a href="/privacy/">Privacy policy</a></p>
+  </div>
+  <div class="cookie-btns">
+    <button type="button" class="btn ghost sm" data-consent="denied">Reject</button>
+    <button type="button" class="btn sm" data-consent="granted">Accept</button>
+  </div>
+</div>
+
+<style>
+  .cookie { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 60; max-width: 560px; margin-left: auto; background: #fff; color: var(--ink); border-radius: var(--r-md); padding: 18px 20px; box-shadow: 0 0 0 1px var(--line), 0 20px 40px -20px rgba(27,28,52,.35); display: flex; gap: 16px; align-items: center; }
+  .cookie[hidden] { display: none; }
+  .cookie strong { display: block; margin-bottom: 2px; }
+  .cookie p { margin: 0; font-size: .86rem; color: var(--ink-2); line-height: 1.5; }
+  .cookie-btns { display: flex; gap: 8px; flex: none; }
+  @media (max-width: 560px) { .cookie { flex-direction: column; align-items: stretch; } .cookie-btns > * { flex: 1; } }
+  @media print { .cookie { display: none !important; } }
+</style>
+
+<script>
+  const KEY = 'sp-consent';
+  const banner = document.getElementById('cookie-banner')!;
+  let saved: string | null = null;
+  try { saved = localStorage.getItem(KEY); } catch { /* storage blocked */ }
+  if (!saved) banner.hidden = false;
+  banner.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach((b) => b.addEventListener('click', () => {
+    const v = b.dataset.consent as 'granted' | 'denied';
+    try { localStorage.setItem(KEY, v); } catch { /* ignore */ }
+    // @ts-ignore gtag defined inline in <head>
+    window.gtag?.('consent', 'update', { analytics_storage: v });
+    banner.hidden = true;
+  }));
+  document.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('[data-cookie-settings]')) { e.preventDefault(); banner.hidden = false; }
+  });
+</script>
