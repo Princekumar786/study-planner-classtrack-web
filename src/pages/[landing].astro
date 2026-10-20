@@ -5,6 +5,9 @@ import Faq from '../components/Faq.astro';
 import Phones from '../components/Phones.astro';
 import AppBand from '../components/AppBand.astro';
 import Scribble from '../components/Scribble.astro';
+import StoreBadges from '../components/StoreBadges.astro';
+import AiImport from '../components/AiImport.astro';
+import ChatDemo from '../components/ChatDemo.astro';
 import { LANDINGS, type Landing } from '../data/landings';
 import { SITE, TOOLS, GUIDES, PLANNERS } from '../data/site';
 import { faqSchema, appSchema } from '../lib/schema';
@@ -31,11 +34,35 @@ const tints = ['lavender', 'mint', 'cream', 'pink', 'blue', 'lavender'];
           <a class="btn" href={SITE.playUrl} rel="noopener">Get {SITE.app} free</a>
           <a class="btn ghost" href={tools[0].href}>Try the free {tools[0].label.toLowerCase()}</a>
         </div>
+        <div style="margin-top:20px"><StoreBadges /></div>
         <span class="cta-note">{`Free on Android · iPhone coming soon · Updated ${new Date(SITE.updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`}</span>
       </div>
       <Phones {...l.screens} tint={l.screens.tint} eager />
     </div>
   </section>
+
+  {(l.slug === 'timetable-app' || l.slug === 'student-planner') && (
+    <section class="section band-lavender">
+      <div class="wrap center">
+        <h2>AI timetable import, step by step</h2>
+        <p class="lead">From a photo of your timetable to a full week with reminders, in under a minute.</p>
+        <AiImport />
+      </div>
+    </section>
+  )}
+
+  {(l.slug === 'ai-study-planner' || l.slug === 'schedule-planner' || l.slug === 'exam-planner' || l.slug === 'homework-planner') && (
+    <section class="section band-lavender">
+      <div class="wrap split">
+        <div>
+          <h2>Ask your planner, <em style="color:var(--cta)">get answers</em></h2>
+          <p class="lead">“Am I free today?” “What is due this week?” “When is my next exam?” The ClassTrack assistant answers from your own timetable, tasks and exams.</p>
+          <p class="small muted">Interactive demo with a sample student’s week.</p>
+        </div>
+        <ChatDemo compact />
+      </div>
+    </section>
+  )}
 
   <section class="section tight band-blue">
     <div class="narrow">

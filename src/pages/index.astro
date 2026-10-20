@@ -5,6 +5,9 @@ import Doodle from '../components/Doodle.astro';
 import Faq from '../components/Faq.astro';
 import Scribble from '../components/Scribble.astro';
 import Phones from '../components/Phones.astro';
+import StoreBadges from '../components/StoreBadges.astro';
+import AiImport from '../components/AiImport.astro';
+import ChatDemo from '../components/ChatDemo.astro';
 import { SITE, TOOLS, GUIDES } from '../data/site';
 import { faqSchema, appSchema, type QA } from '../lib/schema';
 
@@ -13,7 +16,7 @@ const faqs: QA[] = [
   { q: 'How do I make a study timetable?', a: 'List your subjects and exam dates, block out fixed commitments (classes, travel, sleep), pick 2–4 realistic study blocks per day, give harder subjects more blocks, and leave the last 20% of the time for revision and practice tests. Our <a href="/guides/how-to-make-a-study-timetable/">7-step guide</a> walks through it, and the <a href="/tools/study-plan-generator/">generator</a> does the maths for you.' },
   { q: 'Is ClassTrack free?', a: `Yes. The study planner, timetable, exam countdowns, homework list, grades and reminders are free. The free plan also includes ${SITE.free.aiMessages} AI messages a month, ${SITE.free.timetableScans} AI timetable scans and ${SITE.free.learningPlans} AI learning plans. ClassTrack Pro removes those limits and adds extras like Google Calendar sync. See <a href="/pricing/">pricing</a>.` },
   { q: 'Can AI make my timetable from a photo?', a: `Yes. In ${SITE.app} you can take a photo of your printed timetable, upload a PDF or paste the text. The AI reads subjects, days, times and rooms and builds a weekly class schedule you can review and edit before saving.` },
-  { q: 'Does it work on iPhone?', a: `${SITE.app} is available now on Android through Google Play. The iPhone version is coming soon. All the free tools on studyplanner.tech work in any browser, including Safari on iPhone.` },
+  { q: 'Does it work on iPhone?', a: `${SITE.app} is available now on Android through Google Play. The iPhone version is coming soon: <button type="button" class="text-btn" data-ios style="padding:0">join the iPhone waitlist</button> and we will email you on launch day. All the free tools on studyplanner.tech already work in Safari on iPhone.` },
   { q: 'Do the free tools save my data?', a: 'The tools run entirely in your browser. Nothing you type is sent to our servers. Some tools remember your last inputs on your own device (local storage) so you can come back to them; you can clear this any time from your browser.' },
 ];
 
@@ -75,9 +78,10 @@ const schema = [appSchema(), faqSchema(faqs)];
         <p class="lead">Put your <span class="pill-hl mint">timetable</span>, <span class="pill-hl lav">homework</span> and <span class="pill-hl cream">exams</span> in one calm plan. Build it free in your browser, or let the {SITE.app} app read your timetable from a photo and remind you what to study next.</p>
         <div class="btn-row">
           <a class="btn" href="/tools/study-plan-generator/">Make my study plan free</a>
-          <a class="btn ghost" href={SITE.playUrl} rel="noopener">Get the Android app</a>
+          <a class="btn ghost" href="#ai-import">See AI import</a>
         </div>
-        <span class="cta-note">No sign-up for the web tools. App is free on Google Play.</span>
+        <div style="margin-top:20px"><StoreBadges /></div>
+        <span class="cta-note">No sign-up for the web tools. Android app is free on Google Play; iPhone is coming soon.</span>
       </div>
       <Phones back="/img/screen-schedule.webp" backAlt="ClassTrack class timetable for the day" front="/img/screen-home.webp" frontAlt="ClassTrack home screen with today's classes, next exam and quick tools" eager />
     </div>
@@ -107,6 +111,35 @@ const schema = [appSchema(), faqSchema(faqs)];
     <div class="cta-under"><a class="btn" href="/features/">Explore every feature</a></div>
   </section>
 
+  <!-- AI timetable import -->
+  <section class="section band-lavender" id="ai-import">
+    <div class="wrap center">
+      <span class="eyebrow">AI timetable import</span>
+      <h2>Snap your timetable. <em style="color:var(--cta)">AI</em> builds your week.</h2>
+      <p class="lead">No more typing every lecture. Take a photo, upload the PDF or paste the text, and ClassTrack’s AI finds every class, day, time and room. {SITE.free.timetableScans} scans are free.</p>
+      <AiImport />
+      <div class="cta-under"><a class="btn" href={SITE.playUrl} rel="noopener">Try AI import free</a><span class="cta-note">Android now · iPhone <button type="button" class="text-btn" data-ios style="padding:0;font-size:inherit">join the waitlist</button></span></div>
+    </div>
+  </section>
+
+  <!-- AI chat demo -->
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">AI study assistant</span>
+        <h2>“Am I free today?” <em style="color:var(--cta)">Just ask.</em></h2>
+        <p class="lead">The assistant knows your real classes, tasks and exams. Ask what is due, when your next exam is, whether you can skip a class, or for a study plan that fits your evening.</p>
+        <ul class="ticks-plain">
+          <li>Answers from <strong>your</strong> timetable, tasks and exams</li>
+          <li>Builds revision plans and adds them to your planner</li>
+          <li>{SITE.free.aiMessages} free messages a month; unlimited with Pro</li>
+        </ul>
+        <p class="small muted">Try the demo: it uses a sample student’s week.</p>
+      </div>
+      <ChatDemo />
+    </div>
+  </section>
+
   <!-- 4. Solo quote -->
   <section class="section tight band-cream">
     <div class="narrow center">
@@ -115,6 +148,7 @@ const schema = [appSchema(), faqSchema(faqs)];
         <p><em>“I built ClassTrack because my week lived in five different apps and I still missed deadlines. A plan you can see in one glance is the difference between studying and worrying about studying.”</em></p>
       </blockquote>
       <p class="muted small">— <a href="/about/">{SITE.author.name}</a>, founder of {SITE.app}</p>
+      <p class="small founder-links">Find me at <a href={SITE.author.site} rel="noopener">princelabs.me</a> · <a href={`mailto:${SITE.author.email}`}>{SITE.author.email}</a></p>
     </div>
   </section>
 
@@ -194,7 +228,7 @@ const schema = [appSchema(), faqSchema(faqs)];
             <div class="feat-art">
               <Doodle kind="star" size={26} style="top:10%;left:8%" />
               <Doodle kind="dot" size={16} color="#fff" style="bottom:14%;right:10%" />
-              <div class="phone"><img src={f.img} alt={f.alt} width="480" height="1040" loading="lazy" /></div>
+              <div class="phone"><img src={f.img} alt={f.alt} width="480" height="1040" loading="eager" decoding="async" /></div>
             </div>
           </article>
         ))}
@@ -315,6 +349,10 @@ const schema = [appSchema(), faqSchema(faqs)];
 </Base>
 
 <style>
+  .ticks-plain { list-style: none; padding: 0; margin: 20px 0; display: grid; gap: 10px; }
+  .ticks-plain li { padding-left: 30px; position: relative; }
+  .ticks-plain li::before { content: '✓'; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; font-size: .75rem; font-weight: 700; }
+  .founder-links { margin-top: 6px; }
   .hero { padding-top: clamp(40px, 6vw, 72px); }
   .hero h1 em { color: var(--cta); }
   .explainer { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 48px; align-items: stretch; }

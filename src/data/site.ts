@@ -20,7 +20,8 @@ export const SITE = {
     name: 'Prince Kumar',
     role: 'Founder of ClassTrack',
     url: 'https://studyplanner.tech/about/',
-    site: 'https://princekumar.me',
+    site: 'https://princelabs.me',
+    email: 'hello@princelabs.me',
     bio: 'Prince Kumar is the founder of ClassTrack and an MBA student at Dr. B.R. Ambedkar University Delhi. He builds study tools from his own experience of juggling classes, deadlines and exams, and checks every guide on this site against peer-reviewed learning research.',
   },
   // Facts from the app code (lib/features/subscription). Keep in sync.
@@ -29,6 +30,10 @@ export const SITE = {
     timetableScans: 2,
     learningPlans: 2,
   },
+  // Third-party IDs. Pageclip site key goes in form action URLs (public by design).
+  pageclipKey: 'api_KHCBeXCam61p5337uWsu9xaNNT5IojfP',
+  ga4: 'G-8GQEVJBGDY',
+  gtm: 'GTM-5KJ8KJ8C',
 } as const;
 
 export type NavLink = { href: string; label: string; desc?: string };

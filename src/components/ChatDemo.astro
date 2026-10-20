@@ -1,0 +1,92 @@
+---
+// Interactive demo of the ClassTrack AI assistant. Scripted answers over a
+// sample student's week (clearly labelled), no network calls.
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+const prompts = [
+  'Am I free today?',
+  'What is due this week?',
+  'When is my next exam?',
+  'Make a study plan for Maths',
+  'Can I skip tomorrow’s lab?',
+  'Plan my evening',
+];
+---
+<div class:list={['chat', { compact }]} data-chat>
+  <div class="chat-top">
+    <img src="/img/mascot-wave.webp" alt="" width="40" height="40" />
+    <div><strong>Kiro · AI study assistant</strong><small><span class="dot"></span> Demo with a sample student’s week</small></div>
+  </div>
+  <div class="chat-log" role="log" aria-live="polite" aria-label="Chat demo conversation">
+    <div class="msg ai">Hi Aarav 👋 I can see your timetable, tasks and exams. Ask me anything about your week.</div>
+  </div>
+  <div class="chat-chips" role="group" aria-label="Try a question">
+    {prompts.map((p) => <button type="button" class="chip sm" data-q={p}>{p}</button>)}
+  </div>
+  <form class="chat-input" data-chat-form>
+    <label class="sr-only" for="chat-q">Ask a question</label>
+    <input id="chat-q" maxlength="120" placeholder="Ask about your day…" autocomplete="off" />
+    <button class="btn sm" type="submit" aria-label="Send">Send</button>
+  </form>
+</div>
+
+<style>
+  .chat { background: #fff; border-radius: var(--r-xl); padding: 18px; max-width: 520px; width: 100%; margin: 0 auto; box-shadow: 0 0 0 1px var(--line); display: flex; flex-direction: column; }
+  .chat-top { display: flex; gap: 12px; align-items: center; padding: 4px 6px 14px; border-bottom: 1px solid var(--line); }
+  .chat-top img { width: 40px; height: 40px; }
+  .chat-top strong { display: block; font-size: .95rem; }
+  .chat-top small { color: var(--muted); font-size: .78rem; display: flex; align-items: center; gap: 6px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; display: inline-block; }
+  .chat-log { height: 340px; overflow-y: auto; padding: 16px 4px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; }
+  .compact .chat-log { height: 280px; }
+  .msg { max-width: 85%; padding: 10px 14px; border-radius: 18px; font-size: .93rem; line-height: 1.5; animation: pop .25s ease; }
+  .msg.ai { background: var(--lavender); border-bottom-left-radius: 6px; align-self: flex-start; }
+  .msg.me { background: var(--cta); color: #fff; border-bottom-right-radius: 6px; align-self: flex-end; }
+  .msg :global(ul) { margin: 6px 0 0; padding-left: 18px; }
+  .msg :global(li) { margin: 2px 0; }
+  .msg :global(.card-mini) { background: #fff; border-radius: 12px; padding: 8px 10px; margin-top: 8px; font-size: .85rem; }
+  .typing { display: inline-flex; gap: 4px; }
+  .typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: blink 1s infinite; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+  @keyframes pop { from { opacity: 0; transform: translateY(6px); } }
+  .chat-chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 12px; scrollbar-width: none; }
+  .chat-chips::-webkit-scrollbar { display: none; }
+  .chip.sm { padding: 8px 14px; font-size: .85rem; flex: none; white-space: nowrap; }
+  .chat-input { display: flex; gap: 8px; }
+  .chat-input input { border-radius: 999px; padding-left: 18px; }
+  .chat-input .btn { border-radius: 999px; }
+</style>
+
+<script>
+  // Sample student data the answers are built from.
+  const A: [RegExp, string][] = [
+    [/free|busy|today/i, `Today (Tue) you have <strong>3 classes</strong> and <strong>2 tasks</strong> due:<ul><li>9:00–10:00 Data Structures · LH-204</li><li>11:00–12:00 Linear Algebra · C-301</li><li>2:00–3:30 Computer Networks lab</li></ul>You are <strong>free from 3:30 pm</strong>. Want me to put a 45-min block for your DBMS assignment at 4:00?`],
+    [/due|deadline|week|homework|assignment/i, `This week you have <strong>4 tasks</strong> (1 overdue):<ul><li>🔴 OS worksheet: was due yesterday</li><li>DBMS assignment: Wed 11:59 pm</li><li>Networks lab report: Thu</li><li>English essay draft: Sat</li></ul>Start with the OS worksheet, it takes about 30 min.`],
+    [/exam|test|mid/i, `Your next exam is <strong>Linear Algebra mid-term in 6 days</strong> (Mon, 10:00). After that: Data Structures in 13 days.<div class="card-mini">At 1.5 h a day you will cover all 5 chapters with 2 days left for practice papers.</div>`],
+    [/plan|maths|math|study/i, `Here is a 6-day Linear Algebra plan:<ul><li>Wed: Matrices & determinants + 10-min quiz</li><li>Thu: Vector spaces</li><li>Fri: Eigenvalues</li><li>Sat: Review all + flashcards</li><li>Sun: Past paper (timed)</li><li>Mon: Fix mistakes, light review</li></ul>Add it to your planner?`],
+    [/skip|bunk|miss|lab|attend/i, `Your Networks lab attendance is <strong>78%</strong> (18 of 23). If you skip tomorrow it drops to <strong>75%</strong>, right at your target. I would go, and save the skip for later in the term.`],
+    [/evening|tonight|night/i, `Tonight you are free from 6:30. Suggested plan:<ul><li>6:30–7:15 DBMS assignment (due tomorrow)</li><li>7:15–7:30 Break</li><li>7:30–8:15 Linear Algebra ch. 1 + quiz</li><li>8:30 Flashcards (10 min)</li></ul>Then you are done for the day 🎉`],
+  ];
+  const fallback = `In the app I can answer that using your real timetable, tasks and exams. In this demo, try “Am I free today?” or “When is my next exam?”.`;
+
+  document.querySelectorAll<HTMLElement>('[data-chat]').forEach((root) => {
+    const log = root.querySelector<HTMLElement>('.chat-log')!;
+    const input = root.querySelector<HTMLInputElement>('input')!;
+    let busy = false;
+    const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+    const add = (cls: string, html: string) => { const d = document.createElement('div'); d.className = `msg ${cls}`; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; };
+    const ask = (q: string) => {
+      q = q.trim(); if (!q || busy) return;
+      busy = true;
+      add('me', esc(q));
+      const t = add('ai', '<span class="typing" aria-label="Typing"><i></i><i></i><i></i></span>');
+      const ans = A.find(([re]) => re.test(q))?.[1] ?? fallback;
+      setTimeout(() => { t.innerHTML = ans; log.scrollTop = log.scrollHeight; busy = false; }, 900);
+      // @ts-ignore
+      window.gtag?.('event', 'chat_demo_question', { question: q.slice(0, 60) });
+    };
+    root.querySelectorAll<HTMLButtonElement>('[data-q]').forEach((b) => b.addEventListener('click', () => ask(b.dataset.q!)));
+    root.querySelector('[data-chat-form]')!.addEventListener('submit', (e) => { e.preventDefault(); ask(input.value); input.value = ''; });
+  });
+</script>

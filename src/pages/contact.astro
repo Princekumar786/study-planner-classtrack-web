@@ -16,6 +16,21 @@ const schema = [{ '@type': 'ContactPage', name: 'Contact ClassTrack', url: `${SI
       <div class="card t-cream"><span class="ico"><Icon name="pen" /></span><h2 style="font-size:1.2rem">Corrections</h2><p class="small">Spotted an error in a guide or tool? Send the page link and what is wrong.</p><a href={`mailto:${SITE.email}?subject=Correction`}>Report a correction</a></div>
       <div class="card t-mint"><span class="ico"><Icon name="users" /></span><h2 style="font-size:1.2rem">Schools &amp; partners</h2><p class="small">Colleges, student clubs and educators who want to work with us.</p><a href={`mailto:${SITE.email}?subject=Partnership`}>Get in touch</a></div>
     </div>
-    <p class="small muted" style="margin-top:32px">In the app: Settings → Send feedback. Founder: <a href="/about/">{SITE.author.name}</a>, Delhi NCR, India.</p>
+    <div class="narrow" style="margin-top:48px;text-align:left">
+      <form action={`https://send.pageclip.co/${SITE.pageclipKey}/contact`} class="pageclip-form tool-panel" method="post" style="box-shadow:0 0 0 1px var(--line)">
+        <h2 style="font-size:1.4rem">Send us a message</h2>
+        <div class="row">
+          <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" required maxlength="60" autocomplete="name" /></div>
+          <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" name="email" required autocomplete="email" /></div>
+        </div>
+        <div class="field"><label for="c-topic">Topic</label>
+          <select id="c-topic" name="subject"><option>App support</option><option>Feedback or feature idea</option><option>Correction to a guide or tool</option><option>School or partnership</option><option>Other</option></select>
+        </div>
+        <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="message" rows="5" required maxlength="3000"></textarea></div>
+        <button class="btn pageclip-form__submit" type="submit"><span>Send message</span></button>
+        <p class="small muted" style="margin:10px 0 0">We use your details only to reply. <a href="/privacy/">Privacy policy</a>.</p>
+      </form>
+    </div>
+    <p class="small muted" style="margin-top:32px">In the app: Settings → Send feedback. Founder: <a href="/about/">{SITE.author.name}</a> · <a href={SITE.author.site} rel="noopener">princelabs.me</a> · <a href={`mailto:${SITE.author.email}`}>{SITE.author.email}</a></p>
   </section>
 </Base>

@@ -8,6 +8,7 @@ import '@fontsource/poppins/700-italic.css';
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import IosWaitlist from '../components/IosWaitlist.astro';
 import { SITE } from '../data/site';
 
 export interface Crumb { name: string; href: string }
@@ -63,6 +64,13 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': [...grap
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Tag Manager -->
+  <script is:inline define:vars={{ gtmId: SITE.gtm }}>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',gtmId);</script>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.ga4}`}></script>
+  <script is:inline define:vars={{ gaId: SITE.ga4 }}>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config',gaId);</script>
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
@@ -95,6 +103,8 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': [...grap
   <slot name="head" />
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${SITE.gtm}`} height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
   <a class="skip" href="#main">Skip to content</a>
   <Nav />
   <main id="main">
@@ -109,6 +119,8 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': [...grap
     <slot />
   </main>
   <Footer />
+  <IosWaitlist />
+  <script is:inline src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
   <script>
     // Nav border on scroll
     const nav = document.querySelector('.nav');
