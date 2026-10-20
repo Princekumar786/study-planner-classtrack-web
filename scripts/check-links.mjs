@@ -1,8 +1,10 @@
 // Post-build check: every internal href/src in dist/ must resolve to a file.
 import { readdir, readFile, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-const DIST = path.resolve('dist');
+// Static build -> dist/. If an SSR adapter is ever added, pages move to dist/client/.
+const DIST = path.resolve(existsSync('dist/client/index.html') ? 'dist/client' : 'dist');
 const files = [];
 async function walk(d) {
   for (const e of await readdir(d, { withFileTypes: true })) {

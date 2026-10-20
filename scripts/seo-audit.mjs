@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+const ROOT = fs.existsSync('dist/client/index.html') ? 'dist/client' : 'dist';
 let pages = 0, ld = 0, problems = 0;
 const types = new Set();
 const titles = new Map();
@@ -11,7 +12,7 @@ const titles = new Map();
     if (e.isDirectory()) { walk(f); continue; }
     if (!f.endsWith('.html')) continue;
     pages++;
-    const rel = path.relative('dist', f);
+    const rel = path.relative(ROOT, f);
     const h = fs.readFileSync(f, 'utf8');
     const title = (h.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
     const desc = (h.match(/name="description" content="([^"]*)"/) || [])[1] || '';
@@ -26,6 +27,6 @@ const titles = new Map();
       try { JSON.parse(s[1])['@graph'].forEach((x) => types.add(x['@type'])); } catch { warn('invalid JSON-LD'); }
     }
   }
-})('dist');
+})(ROOT);
 console.log(`SEO audit: ${pages} pages, ${ld} JSON-LD blocks, ${problems} warnings.`);
 console.log(`Schema types: ${[...types].sort().join(', ')}`);
