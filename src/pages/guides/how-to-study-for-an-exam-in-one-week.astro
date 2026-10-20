@@ -1,0 +1,97 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-study-for-an-exam-in-one-week/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Day 1 is for <strong>triage</strong>: list every topic, rank by marks and weakness, and drop what you cannot cover.',
+    'Days 2–5: learn and <strong>test yourself on each topic the same day</strong>, then revisit it two days later.',
+    'Day 6: a <strong>full timed practice paper</strong>, then fix every mistake. Day 7: light review and an early night.',
+    'Plan <strong>4–6 focused hours a day</strong> in blocks and keep your normal sleep. All-nighters cost more than they give.',
+  ]}
+  toc={[
+    { id: 'possible', label: 'Can you really prepare in a week?' },
+    { id: 'plan', label: 'The 7-day plan' },
+    { id: 'day', label: 'What each study day looks like' },
+    { id: 'methods', label: 'Methods that work fast (and ones that do not)' },
+    { id: 'night', label: 'The night before and exam morning' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/pomodoro-timer/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'Is one week enough to study for an exam?', a: 'For a unit test or mid-term, usually yes. For a final covering a whole term, one week is enough to secure the most important topics and practise exam questions, but not to master everything. Triage on day 1 is what makes the week work.' },
+    { q: 'How many hours a day should I study in the last week?', a: 'Four to six focused hours, in 45–60 minute blocks with breaks, is realistic for most students. More than that usually turns into tired rereading.' },
+    { q: 'Should I pull an all-nighter before the exam?', a: 'No. Research on high-school students found that giving up sleep to study more than usual led to more academic problems the next day. Sleep also helps your brain keep what you studied.' },
+    { q: 'What if I have two exams in the same week?', a: 'Split each day between both, giving more blocks to the earlier or harder one, and spend the day before each paper mainly on that paper. The <a href="/tools/study-plan-generator/">study plan generator</a> handles several subjects at once.' },
+    { q: 'What is the fastest way to memorise for an exam?', a: 'Active recall with spacing: learn a topic, close the book and write what you remember, check, then test yourself again a day or two later. Flashcards and practice questions are the quickest ways to do this.' },
+  ]}
+  sources={[
+    { text: 'Roediger, H. L. & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255.', url: 'https://doi.org/10.1111/j.1467-9280.2006.01693.x' },
+    { text: 'Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. & Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095–1102.', url: 'https://doi.org/10.1111/j.1467-9280.2008.02209.x' },
+    { text: 'Dunlosky, J. et al. (2013). Improving students’ learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Gillen-O’Neel, C., Huynh, V. W. & Fuligni, A. J. (2013). To study or to sleep? The academic costs of extra studying at the expense of sleep. Child Development, 84(1), 133–142.', url: 'https://doi.org/10.1111/j.1467-8624.2012.01834.x' },
+    { text: 'Buehler, R., Griffin, D. & Ross, M. (1994). Exploring the “planning fallacy”. Journal of Personality and Social Psychology, 67(3), 366–381.', url: 'https://doi.org/10.1037/0022-3514.67.3.366' },
+  ]}
+>
+  <p>Seven days is not ideal, but it is enough for a strong result if you spend it on the right things. The secret is not studying more hours; it is <strong>choosing what to study</strong> on day 1, and <strong>testing yourself</strong> instead of rereading for the rest of the week.</p>
+
+  <h2 id="possible">Can you really prepare in a week?</h2>
+  <p>Yes, for most tests, if you accept one trade-off: you will secure the high-mark and familiar topics well, rather than everything badly. A week also gives you time for a few rounds of spaced review, which research shows beats cramming the same hours together. For a test one week away, the best gap between reviews of a topic was roughly 20–40% of that week, so about <strong>1.5 to 3 days</strong> (Cepeda et al., 2008).</p>
+
+  <h2 id="plan">The 7-day plan</h2>
+  <table>
+    <thead><tr><th scope="col">Day</th><th scope="col">Focus</th><th scope="col">Output by the evening</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Day 1</strong></td><td>Triage + first topics</td><td>Topic list ranked by marks × weakness; top 2 topics studied and self-tested</td></tr>
+      <tr><td><strong>Day 2</strong></td><td>Learn topics 3–5</td><td>Notes from memory for each; 10-minute quiz on day-1 topics</td></tr>
+      <tr><td><strong>Day 3</strong></td><td>Learn topics 6–8 + review day 1</td><td>Practice questions on day-1 topics (spaced review)</td></tr>
+      <tr><td><strong>Day 4</strong></td><td>Learn remaining priority topics + review day 2</td><td>All priority topics covered once</td></tr>
+      <tr><td><strong>Day 5</strong></td><td>Mixed practice</td><td>Previous-year questions across all topics, mixed together</td></tr>
+      <tr><td><strong>Day 6</strong></td><td>Full timed paper</td><td>One paper in exam conditions, marked, every mistake fixed</td></tr>
+      <tr><td><strong>Day 7</strong></td><td>Light review</td><td>One-page summary sheet; mistakes list reviewed; early night</td></tr>
+    </tbody>
+  </table>
+  <h3>How to do the day-1 triage</h3>
+  <ol>
+    <li>Write down every topic from the syllabus or chapter list.</li>
+    <li>Give each topic a <strong>marks score</strong> (1–3, from past papers or weightage) and a <strong>weakness score</strong> (1–3).</li>
+    <li>Multiply. Study the highest scores first. Topics scoring 1–2 get only a quick read on day 7, or are dropped.</li>
+    <li>Cut 20% from your plan now. People reliably underestimate how long work takes (Buehler et al., 1994), and a plan with slack is one you will finish.</li>
+  </ol>
+
+  <h2 id="day">What each study day looks like</h2>
+  <table>
+    <thead><tr><th scope="col">Block</th><th scope="col">Time</th><th scope="col">Task</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>50 min</td><td>New topic: read once, actively, making short notes</td></tr>
+      <tr><td>2</td><td>50 min</td><td>Close notes, write everything you remember, check, then do 5–10 questions</td></tr>
+      <tr><td>3</td><td>50 min</td><td>Next topic, same pattern</td></tr>
+      <tr><td>4</td><td>40 min</td><td>Spaced review of a topic from 2 days ago, using questions not notes</td></tr>
+      <tr><td>5</td><td>30 min</td><td>Flashcards + update the mistakes list; plan tomorrow</td></tr>
+    </tbody>
+  </table>
+  <p>Take 10-minute breaks between blocks, away from your phone. If starting is hard, use 25-minute <a href="/tools/pomodoro-timer/">Pomodoro</a> rounds instead.</p>
+
+  <h2 id="methods">Methods that work fast (and ones that do not)</h2>
+  <table>
+    <thead><tr><th scope="col">Use</th><th scope="col">Avoid</th></tr></thead>
+    <tbody>
+      <tr><td>Writing what you remember with the book closed</td><td>Rereading the chapter again</td></tr>
+      <tr><td>Past papers and previous-year questions</td><td>Highlighting whole pages</td></tr>
+      <tr><td>Flashcards you test yourself on</td><td>Copying notes neatly</td></tr>
+      <tr><td>Mixing topics in a practice set</td><td>Twenty of the same question type in a row</td></tr>
+      <tr><td>Explaining a topic aloud to a friend</td><td>Watching long videos at normal speed</td></tr>
+    </tbody>
+  </table>
+  <p>Why the left column wins: in Roediger and Karpicke’s 2006 experiment, students who practised recalling a passage remembered <strong>61%</strong> of it a week later, against <strong>40%</strong> for students who reread it, even though rereading felt more effective at the time. A large review rated practice testing and spaced practice as the two most useful techniques, and highlighting and rereading as low-utility (Dunlosky et al., 2013).</p>
+
+  <h2 id="night">The night before and exam morning</h2>
+  <ul>
+    <li><strong>Stop new learning by early evening.</strong> Review your summary sheet and mistakes list only.</li>
+    <li><strong>Sleep your normal hours.</strong> High-school students who traded sleep for extra study had more trouble in class and on tests the next day (Gillen-O’Neel et al., 2013).</li>
+    <li><strong>Pack the night before:</strong> admit card or ID, pens, calculator if allowed, water.</li>
+    <li><strong>Exam morning:</strong> 15–20 minutes with your summary sheet, then stop. Arrive early.</li>
+  </ul>
+  <p>Next time, start the plan earlier: the <a href="/guides/study-plan-for-exams/">backward planning method</a> gives you three full rounds instead of one. Add your exam to the ClassTrack app and it counts down on your home screen, so the next one never arrives as a surprise.</p>
+</Guide>

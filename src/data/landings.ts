@@ -102,7 +102,7 @@ export const LANDINGS: Landing[] = [
       { q: 'How many hours should a student study per day?', a: 'It depends on your course and exams. Many students do well with 2–4 focused hours outside class on weekdays, more in exam season. Consistency across the week matters more than one long day.' },
     ],
     tools: ['/tools/timetable-maker/', '/tools/study-plan-generator/', '/tools/pomodoro-timer/'],
-    guides: ['/guides/weekly-schedule-for-students/', '/guides/how-to-make-a-study-timetable/'],
+    guides: ['/guides/weekly-schedule-for-students/', '/guides/how-to-make-a-study-timetable/', '/guides/how-many-hours-to-study-a-day/'],
   },
   {
     slug: 'timetable-app',
@@ -222,7 +222,7 @@ export const LANDINGS: Landing[] = [
       { q: 'Does ClassTrack work for board exams and entrance exams?', a: 'Yes. Add each paper as an exam, then use a study plan to cover the syllabus. It works for school boards, university finals and entrance exams.' },
     ],
     tools: ['/tools/exam-countdown/', '/tools/study-plan-generator/', '/tools/pomodoro-timer/'],
-    guides: ['/guides/study-plan-for-exams/', '/guides/evidence-based-study-techniques/'],
+    guides: ['/guides/study-plan-for-exams/', '/guides/how-to-study-for-an-exam-in-one-week/', '/guides/board-exam-study-timetable/'],
   },
   {
     slug: 'homework-planner',

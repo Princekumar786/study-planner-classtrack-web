@@ -1,0 +1,125 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/board-exam-study-timetable/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Plan boards in <strong>three phases</strong>: finish the syllabus, revise everything twice, then sit timed sample papers.',
+    'Use the <strong>official syllabus, sample papers and marking scheme</strong> from your board as the backbone of the plan.',
+    'On school days aim for <strong>2.5–3.5 focused hours</strong>; on holidays and in study leave, <strong>5–7 hours</strong> in blocks.',
+    'Mix <strong>2–3 subjects a day</strong>, end every block with a self-test, and keep a fixed bedtime.',
+  ]}
+  toc={[
+    { id: 'phases', label: 'The 3-phase board exam plan' },
+    { id: 'months', label: 'Month-by-month plan (4 months out)' },
+    { id: 'daily', label: 'Daily timetables you can copy' },
+    { id: 'subjects', label: 'How to split time between subjects' },
+    { id: 'final', label: 'The last 15 days and exam gaps' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/exam-countdown/', '/tools/timetable-maker/']}
+  faqs={[
+    { q: 'When should I start studying for board exams?', a: 'Ideally from the start of the school year, with steady weekly revision. If you are starting a structured plan now, 4 months before the first paper gives enough time for one learning pass, two revision rounds and plenty of sample papers.' },
+    { q: 'How many hours should a Class 10 student study for boards?', a: 'Around 2.5–3 focused hours on school days and 5–6 hours on holidays in the final two months. Consistency matters more than marathon days. See <a href="/guides/how-many-hours-to-study-a-day/">how many hours to study a day</a>.' },
+    { q: 'How many hours should a Class 12 student study for boards?', a: 'Around 3–4 focused hours on school days and 6–7 on holidays and study leave. If you are also preparing for an entrance exam, merge the two plans so common topics are studied once.' },
+    { q: 'How many sample papers should I solve?', a: 'Aim for at least 5 full, timed papers per major subject in the final 6 weeks, plus the official sample paper from your board. Check every paper against the marking scheme and keep a mistakes list.' },
+    { q: 'Is it better to study one subject a day?', a: 'During the main revision phase, no: mixing 2–3 subjects a day spaces your review and helps memory. In the gaps between papers, focus on the next paper.' },
+  ]}
+  sources={[
+    { text: 'Dunlosky, J. et al. (2013). Improving students’ learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. & Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095–1102.', url: 'https://doi.org/10.1111/j.1467-9280.2008.02209.x' },
+    { text: 'Rohrer, D. & Taylor, K. (2007). The shuffling of mathematics problems improves learning. Instructional Science, 35, 481–498.', url: 'https://doi.org/10.1007/s11251-007-9015-8' },
+    { text: 'Okano, K. et al. (2019). Sleep quality, duration, and consistency are associated with better academic performance in college students. npj Science of Learning, 4, 16.', url: 'https://doi.org/10.1038/s41539-019-0055-z' },
+    { text: 'CBSE Academic: official curriculum, sample question papers and marking schemes.', url: 'https://cbseacademic.nic.in/' },
+  ]}
+>
+  <p>A board exam study timetable turns “I have to finish everything” into a plan for each day between now and your first paper. This guide works for CBSE, ICSE/ISC and state boards in Class 10 and Class 12. Check your own board’s date sheet and syllabus; the method stays the same.</p>
+
+  <h2 id="phases">The 3-phase board exam plan</h2>
+  <table>
+    <thead><tr><th scope="col">Phase</th><th scope="col">Share of time</th><th scope="col">Goal</th><th scope="col">What you do</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Complete</strong></td><td>~50%</td><td>Every chapter studied once</td><td>Textbook first, then textbook exercises. Short self-quiz after each topic.</td></tr>
+      <tr><td><strong>2. Revise</strong></td><td>~30%</td><td>Every chapter revised twice</td><td>Notes, formula sheets, flashcards, previous-year questions by chapter.</td></tr>
+      <tr><td><strong>3. Test</strong></td><td>~20%</td><td>Exam speed and accuracy</td><td>Full timed sample papers, checking against the marking scheme, fixing mistakes.</td></tr>
+    </tbody>
+  </table>
+  <p>Why this order works: spreading revision across weeks gives much better long-term memory than revising once near the end (Cepeda et al., 2008), and practice testing is one of the two most effective study techniques identified in a major research review (Dunlosky et al., 2013). Sample papers are not just a final check; they are a learning tool.</p>
+
+  <h2 id="months">Month-by-month plan (4 months out)</h2>
+  <h3>Month 1: finish the syllabus, part 1</h3>
+  <ul>
+    <li>List every chapter for every subject from the official syllabus. Mark each red (weak), amber (okay) or green (strong).</li>
+    <li>Finish pending chapters, starting with high-weightage reds.</li>
+    <li>Sunday: 1-hour review of the week’s chapters without notes.</li>
+  </ul>
+  <h3>Month 2: finish the syllabus, part 2 + revision round 1 begins</h3>
+  <ul>
+    <li>Complete all remaining chapters.</li>
+    <li>Start revision round 1 for the chapters finished in month 1 (spaced review).</li>
+    <li>Make one-page summary sheets per chapter: formulas, definitions, diagrams, dates.</li>
+  </ul>
+  <h3>Month 3: revision rounds 1 and 2</h3>
+  <ul>
+    <li>Finish round 1 for all chapters, then begin round 2, faster, focused on reds and ambers.</li>
+    <li>Solve previous-year questions chapter by chapter.</li>
+    <li>One full sample paper per subject by the end of the month.</li>
+  </ul>
+  <h3>Month 4: sample papers and weak spots</h3>
+  <ul>
+    <li>Two to three timed papers a week per major subject, written in exam conditions.</li>
+    <li>Mark with the official marking scheme; add every mistake to a mistakes list.</li>
+    <li>Short daily reviews of summary sheets and the mistakes list.</li>
+  </ul>
+  <p>Shorter time? With 2 months, compress phases 1–2 into the first 5 weeks, prioritising high-weightage chapters, and keep the last 3 weeks for papers. The <a href="/tools/study-plan-generator/">study plan generator</a> builds a dated plan for any number of days.</p>
+
+  <h2 id="daily">Daily timetables you can copy</h2>
+  <h3>School day (about 3 focused hours)</h3>
+  <table>
+    <thead><tr><th scope="col">Time</th><th scope="col">Block</th></tr></thead>
+    <tbody>
+      <tr><td>6:00–6:45</td><td>Formula/flashcard review (25 min) + quick self-quiz</td></tr>
+      <tr><td>4:30–5:30</td><td>School homework and today’s topics</td></tr>
+      <tr><td>6:30–7:30</td><td>Subject A: new chapter or revision, end with 10-min recall</td></tr>
+      <tr><td>8:15–9:15</td><td>Subject B: practice questions</td></tr>
+      <tr><td>10:30</td><td>Sleep</td></tr>
+    </tbody>
+  </table>
+  <h3>Holiday / study leave (about 6.5 focused hours)</h3>
+  <table>
+    <thead><tr><th scope="col">Time</th><th scope="col">Block</th></tr></thead>
+    <tbody>
+      <tr><td>7:30–9:00</td><td>Hardest subject: new topics or weakest chapter</td></tr>
+      <tr><td>9:15–10:30</td><td>Same subject: practice questions</td></tr>
+      <tr><td>11:00–12:30</td><td>Second subject</td></tr>
+      <tr><td>2:30–4:30</td><td>Timed sample paper (or two sections), then check</td></tr>
+      <tr><td>5:30–6:30</td><td>Third subject: revision from summary sheets</td></tr>
+      <tr><td>8:00–8:45</td><td>Mistakes list + flashcards; plan tomorrow</td></tr>
+      <tr><td>10:30</td><td>Sleep</td></tr>
+    </tbody>
+  </table>
+  <p>Keep the same bedtime every night. In a study of college students, consistent, good-quality sleep over weeks was linked to noticeably better test results; a single good night before the test was not enough (Okano et al., 2019).</p>
+
+  <h2 id="subjects">How to split time between subjects</h2>
+  <p>Give each subject a weight from <strong>how weak you are</strong> and <strong>how many marks are at stake</strong>:</p>
+  <table>
+    <thead><tr><th scope="col">Subject type</th><th scope="col">Blocks per week (example)</th><th scope="col">Best activity</th></tr></thead>
+    <tbody>
+      <tr><td>Maths / problem-heavy (weak)</td><td>6–7</td><td>Mixed practice sets, not one type at a time</td></tr>
+      <tr><td>Science (Physics, Chemistry, Biology)</td><td>5–6</td><td>Concepts + numericals + diagram practice</td></tr>
+      <tr><td>Social science / theory-heavy</td><td>4–5</td><td>Flashcards, timelines, answer writing from memory</td></tr>
+      <tr><td>Languages</td><td>2–3</td><td>Writing practice, grammar sets, literature summaries</td></tr>
+    </tbody>
+  </table>
+  <p>For maths, shuffle question types in a session rather than doing twenty of the same kind. In one study, students who practised mixed problems scored much higher on a later test than those who practised one type at a time (Rohrer &amp; Taylor, 2007).</p>
+
+  <h2 id="final">The last 15 days and exam gaps</h2>
+  <ul>
+    <li><strong>No new chapters</strong> unless they carry high marks and you can finish them in a day.</li>
+    <li><strong>One full paper a day</strong> for the subjects coming first, then fix every mistake.</li>
+    <li><strong>Gaps between papers:</strong> spend them almost entirely on the next paper. Day 1: summary sheets and weak chapters. Day 2: one timed paper. Day before: mistakes list, formulas, early night.</li>
+    <li><strong>Exam morning:</strong> a 20-minute look at your summary sheet only. No new material.</li>
+  </ul>
+  <p>Put every paper into the <a href="/tools/exam-countdown/">exam countdown</a> to see your real study days and hours per day. In the ClassTrack app you can add each paper as an exam, get a countdown on your home screen, and ask the AI assistant for a plan for each gap.</p>
+</Guide>
