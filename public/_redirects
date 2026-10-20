@@ -1,0 +1,22 @@
+# www -> apex is handled in Cloudflare (Rules > Redirect Rules), see README.
+# Friendly short URLs and common keyword variants -> canonical pages.
+/timetable-maker        /tools/timetable-maker/        301
+/timetable-maker/       /tools/timetable-maker/        301
+/study-plan-generator   /tools/study-plan-generator/   301
+/study-plan-generator/  /tools/study-plan-generator/   301
+/study-timetable        /tools/study-plan-generator/   301
+/study-timetable/       /tools/study-plan-generator/   301
+/pomodoro               /tools/pomodoro-timer/         301
+/pomodoro/              /tools/pomodoro-timer/         301
+/gpa                    /tools/gpa-calculator/         301
+/gpa/                   /tools/gpa-calculator/         301
+/cgpa                   /tools/cgpa-to-percentage/     301
+/cgpa/                  /tools/cgpa-to-percentage/     301
+/revision-planner       /exam-planner/                 301
+/revision-planner/      /exam-planner/                 301
+/assignment-planner     /tools/assignment-planner/     301
+/assignment-planner/    /tools/assignment-planner/     301
+/blog                   /guides/                       301
+/blog/                  /guides/                       301
+/download               https://play.google.com/store/apps/details?id=com.classtracks.app  302
+/app                    https://play.google.com/store/apps/details?id=com.classtracks.app  302

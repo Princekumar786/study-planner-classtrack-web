@@ -1,0 +1,137 @@
+---
+import Tool from '../../layouts/Tool.astro';
+import Icon from '../../components/Icon.astro';
+import type { QA } from '../../lib/schema';
+
+const faqs: QA[] = [
+  { q: 'How many days until my exam?', a: 'Add your exam and its date above. The countdown shows the days, hours and minutes left, plus how many study days you have once you take one rest day a week.' },
+  { q: 'How many hours a day should I study for my exam?', a: 'Estimate the total hours you need for the subject (for example 30 hours for a big final), and the tool divides it by your study days. If the number is above 5–6 hours a day, start earlier or cut lower-priority topics.' },
+  { q: 'Does the countdown save my exams?', a: 'Yes, on this device only, in your browser’s local storage. Nothing is uploaded.' },
+  { q: 'Can I get exam countdowns on my phone?', a: 'Yes. The ClassTrack app shows a countdown for every exam on the Home screen, next to your classes and homework. It is free on Android.' },
+];
+---
+<Tool
+  href="/tools/exam-countdown/"
+  metaTitle="Exam Countdown: Days Left Until Your Exam + Study Hours per Day"
+  description="Free exam countdown timer. Add your exams to see the days, hours and study days left, and how many hours a day you need to study to be ready."
+  h1="Exam <em style='color:var(--cta)'>countdown</em>"
+  lead="See exactly how long you have until each exam, how many real study days that is, and how many hours a day it takes to be ready."
+  faqs={faqs}
+  appTitle="Keep every countdown on your home screen"
+  appText="ClassTrack shows days left for every exam next to your classes and homework, with reminders. Free on Android."
+>
+  <div slot="tool">
+    <form class="tool-panel no-print" id="ex-form">
+      <div class="lbl" id="ex-lbl">Your exams</div>
+      <div class="list-rows" id="ex-rows" aria-labelledby="ex-lbl"></div>
+      <button type="button" class="text-btn" id="ex-add"><Icon name="plus" class="i16" /> Add exam</button>
+      <div class="row" style="margin-top:12px;max-width:420px">
+        <div class="field"><label for="ex-rest">Rest days per week</label><select id="ex-rest"><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option></select></div>
+      </div>
+      <button class="btn" type="submit">Update countdown</button>
+    </form>
+    <div id="ex-out" class="ex-out" aria-live="polite"></div>
+  </div>
+
+  <h2>How to use your countdown</h2>
+  <p>A countdown is only useful if it changes what you do today. Use the numbers like this:</p>
+  <ul>
+    <li><strong>More than 6 weeks:</strong> plan three rounds (learn, review, test). The <a href="/tools/study-plan-generator/">study plan generator</a> does this for you.</li>
+    <li><strong>2–6 weeks:</strong> one learning pass on weak topics, then switch to past papers and self-testing.</li>
+    <li><strong>Under 2 weeks:</strong> prioritise high-mark topics and test yourself daily. Read <a href="/guides/study-plan-for-exams/">how to make a study plan for exams</a> for a last-fortnight plan.</li>
+  </ul>
+  <p>Study days are counted from tomorrow, minus your rest days. Hours per day assume you spread the hours evenly.</p>
+</Tool>
+
+<style>
+  .ex-out { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 20px; }
+  :global(.ex-card) { background: #fff; border-radius: var(--r-lg); padding: 22px 24px; }
+  :global(.ex-card .big) { font-size: 3rem; font-weight: 700; line-height: 1; letter-spacing: -0.03em; margin: 8px 0; }
+  :global(.ex-card.soon) { background: var(--pink); }
+  :global(.ex-tick) { font-variant-numeric: tabular-nums; font-weight: 600; }
+</style>
+
+<script>
+  type E = { name: string; date: string; hours: number };
+  const KEY = 'sp-exams-v1';
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const rows = $('ex-rows');
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+  const iso = (d: Date) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+
+  function addRow(e: E) {
+    const n = rows.children.length + 1;
+    const r = document.createElement('div');
+    r.className = 'list-row';
+    r.style.gridTemplateColumns = '1.4fr 1.2fr 110px 46px';
+    r.innerHTML = `
+      <div class="field" style="margin:0"><label class="small" for="en${n}">Exam ${n}</label><input id="en${n}" class="en" maxlength="40" value="${esc(e.name)}" placeholder="e.g. Physics final"></div>
+      <div class="field" style="margin:0"><label class="small" for="ed${n}">Date &amp; time</label><input id="ed${n}" class="ed" type="datetime-local" value="${e.date}"></div>
+      <div class="field" style="margin:0"><label class="small" for="eh${n}">Hours needed</label><input id="eh${n}" class="eh" type="number" min="1" max="500" value="${e.hours}"></div>
+      <button type="button" class="icon-btn" aria-label="Remove exam ${n}">✕</button>`;
+    r.querySelector('button')!.addEventListener('click', () => { if (rows.children.length > 1) { r.remove(); read(); } });
+    rows.appendChild(r);
+  }
+  const d1 = new Date(); d1.setDate(d1.getDate() + 18); d1.setHours(10, 0, 0, 0);
+  const d2 = new Date(); d2.setDate(d2.getDate() + 32); d2.setHours(14, 0, 0, 0);
+  const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+  (saved?.exams ?? [{ name: 'Maths final', date: iso(d1), hours: 30 }, { name: 'Physics final', date: iso(d2), hours: 25 }]).forEach(addRow);
+  if (saved) $<HTMLSelectElement>('ex-rest').value = String(saved.rest);
+
+  let exams: E[] = [];
+  function read() {
+    exams = Array.from(rows.children).map((r) => ({
+      name: (r.querySelector('.en') as HTMLInputElement).value.trim() || 'Exam',
+      date: (r.querySelector('.ed') as HTMLInputElement).value,
+      hours: Math.max(0, Number((r.querySelector('.eh') as HTMLInputElement).value) || 0),
+    })).filter((e) => e.date);
+    localStorage.setItem(KEY, JSON.stringify({ exams, rest: Number($<HTMLSelectElement>('ex-rest').value) }));
+    draw();
+  }
+  function studyDays(until: Date, restPerWeek: number) {
+    const start = new Date(); start.setHours(0, 0, 0, 0); start.setDate(start.getDate() + 1);
+    let n = 0;
+    for (const d = new Date(start); d < until; d.setDate(d.getDate() + 1)) {
+      const wd = d.getDay();
+      if (restPerWeek >= 1 && wd === 0) continue;
+      if (restPerWeek >= 2 && wd === 6) continue;
+      n++;
+    }
+    return n;
+  }
+  function draw() {
+    const rest = Number($<HTMLSelectElement>('ex-rest').value);
+    const now = Date.now();
+    const sorted = exams.slice().sort((a, b) => +new Date(a.date) - +new Date(b.date));
+    $('ex-out').innerHTML = sorted.map((e) => {
+      const t = new Date(e.date);
+      const ms = +t - now;
+      if (ms <= 0) return `<div class="ex-card"><strong>${esc(e.name)}</strong><div class="big">Done</div><p class="small muted" style="margin:0">This exam date has passed.</p></div>`;
+      const days = Math.floor(ms / 864e5);
+      const sd = studyDays(t, rest);
+      const per = sd ? e.hours / sd : e.hours;
+      const perTxt = e.hours ? (sd ? `${per < 1 ? Math.round(per * 60) + ' min' : per.toFixed(1) + ' h'} a day over ${sd} study day${sd === 1 ? '' : 's'}` : `${e.hours} h today`) : `${sd} study days`;
+      return `<div class="ex-card ${days < 7 ? 'soon' : 't-lavender'}" style="${days < 7 ? '' : 'background:#fff'}">
+        <strong>${esc(e.name)}</strong> <span class="small muted">${t.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })}</span>
+        <div class="big">${days} <span style="font-size:1.1rem;font-weight:600">day${days === 1 ? '' : 's'}</span></div>
+        <div class="ex-tick small" data-t="${+t}"></div>
+        <p class="small" style="margin:8px 0 0">${perTxt}${per > 6 ? ' <strong>— that is a lot. Start now or cut low-priority topics.</strong>' : ''}</p>
+      </div>`;
+    }).join('');
+    tick();
+  }
+  function tick() {
+    const now = Date.now();
+    document.querySelectorAll<HTMLElement>('.ex-tick').forEach((el) => {
+      const ms = Number(el.dataset.t) - now;
+      if (ms <= 0) { el.textContent = 'Starting now'; return; }
+      const h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60, s = Math.floor(ms / 1e3) % 60;
+      el.textContent = `${h}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`;
+    });
+  }
+  $('ex-add').addEventListener('click', () => { if (rows.children.length < 15) { const d = new Date(); d.setDate(d.getDate() + 14); d.setHours(10, 0, 0, 0); addRow({ name: '', date: iso(d), hours: 20 }); } });
+  $('ex-form').addEventListener('submit', (e) => { e.preventDefault(); read(); });
+  $('ex-form').addEventListener('change', read);
+  read();
+  setInterval(tick, 1000);
+</script>

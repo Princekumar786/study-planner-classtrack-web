@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { TOOLS } from '../data/site';
+---
+<Base title="Page not found | studyplanner.tech" description="This page does not exist. Try our free study planner tools." noindex>
+  <section class="section center">
+    <div class="wrap">
+      <img src="/img/mascot-think.webp" alt="" width="160" height="160" style="margin:0 auto 24px" />
+      <h1>This page went <em style="color:var(--cta)">missing</em></h1>
+      <p class="lead">It may have moved. Try one of these instead:</p>
+      <div class="btn-row" style="margin:24px 0 40px"><a class="btn" href="/">Go home</a><a class="btn ghost" href="/tools/">All free tools</a></div>
+      <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+        {TOOLS.slice(0, 5).map((t) => <li><a class="chip" href={t.href} style="text-decoration:none">{t.label}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>

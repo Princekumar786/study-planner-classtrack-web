@@ -1,0 +1,21 @@
+{
+  "name": "studyplanner-tech",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "studyplanner.tech — free study planner, timetable maker and student planning tools by ClassTrack.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/check-links.mjs && node scripts/seo-audit.mjs",
+    "preview": "astro preview",
+    "images": "node scripts/build-images.mjs",
+    "check:links": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "@fontsource/poppins": "5.3.0",
+    "astro": "7.4.1"
+  },
+  "devDependencies": {
+    "sharp": "0.35.5"
+  }
+}

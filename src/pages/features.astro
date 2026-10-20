@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import AppBand from '../components/AppBand.astro';
+import Faq from '../components/Faq.astro';
+import { SITE, PLANNERS } from '../data/site';
+import { appSchema, faqSchema, type QA } from '../lib/schema';
+
+const groups = [
+  { tint: 'lavender', img: '/img/screen-schedule.webp', alt: 'ClassTrack schedule with classes for the day', title: 'Timetable & schedule', href: '/timetable-app/', items: [
+    ['Weekly class timetable', 'Day, week and month views. Rooms, teachers and class links on each class.'],
+    ['AI timetable import', `Photo, PDF or pasted text becomes a weekly schedule. ${SITE.free.timetableScans} free scans; unlimited with Pro.`],
+    ['Extra & cancelled classes', 'Handle one-off changes without touching the weekly pattern.'],
+    ['Google Calendar sync', 'Two-way sync of classes, exams and deadlines (Pro).'],
+  ] },
+  { tint: 'cream', img: '/img/screen-tasks.webp', alt: 'ClassTrack tasks grouped by Overdue, Today and Next 7 days', title: 'Homework, assignments & exams', href: '/homework-planner/', items: [
+    ['Tasks & assignments', 'Tabs for All, Assignments, To-dos, Events and Videos, with a quick-add bar.'],
+    ['Due-date groups', 'Overdue, Today and Next 7 days counts. Completed tasks fold away.'],
+    ['Exam countdowns', 'Days left for every exam, shown on Home.'],
+    ['Smart reminders', 'Reminders before classes and deadlines; quiet hours with Pro.'],
+  ] },
+  { tint: 'mint', img: '/img/screen-planner.webp', alt: 'ClassTrack AI planner', title: 'AI study planner & assistant', href: '/ai-study-planner/', items: [
+    ['AI learning plans', `A topic-by-topic roadmap with time estimates. ${SITE.free.learningPlans} free plans; unlimited with Pro.`],
+    ['Build your own plan', 'Add your own topics and times and track progress.'],
+    ['AI study assistant', `Revision schedules, syllabus breakdowns and study tips. ${SITE.free.aiMessages} free messages a month.`],
+    ['Daily agenda', 'A morning summary of today’s classes, deadlines and exams (Pro).'],
+  ] },
+  { tint: 'pink', img: '/img/screen-grades.webp', alt: 'ClassTrack grades and GPA', title: 'Grades, notes & habits', href: '/student-planner/', items: [
+    ['Grades & GPA', 'Log marks, follow GPA on a 4.0 or 10-point scale and see the score you need.'],
+    ['Notes & flashcards', 'Formatted notes with images and PDFs; turn them into flashcards (Pro).'],
+    ['Habit tracker', 'Build a daily study streak.'],
+    ['Semester wrap-up', 'Save a finished semester, track SGPA and CGPA, start fresh (Pro).'],
+  ] },
+];
+
+const faqs: QA[] = [
+  { q: 'What features does ClassTrack have?', a: 'ClassTrack combines a class timetable (with AI import from a photo or PDF), homework and assignment planner, exam countdowns, AI study plans, an AI study assistant, grades and GPA, notes and flashcards, a habit tracker, student opportunities and attendance tracking.' },
+  { q: 'Which features are free?', a: `The timetable, tasks, exams, grades, reminders and habits are free, plus ${SITE.free.aiMessages} AI messages a month, ${SITE.free.timetableScans} timetable scans and ${SITE.free.learningPlans} AI learning plans. See <a href="/pricing/">pricing</a> for the full comparison.` },
+  { q: 'Does ClassTrack track attendance too?', a: 'Yes. You can mark classes present, absent or cancelled and see your attendance percentage by subject. Try the free <a href="/tools/attendance-calculator/">attendance calculator</a> for a quick check.' },
+];
+---
+<Base title="ClassTrack Features: Study Planner, Timetable, Exams & AI" description="Every ClassTrack feature in one page: class timetable with AI import, homework planner, exam countdowns, AI study plans, grades, notes, flashcards and more." crumbs={[{ name: 'Features', href: '/features/' }]} schema={[appSchema(), faqSchema(faqs)]}>
+  <section class="section center" style="padding-top:48px;padding-bottom:40px">
+    <div class="wrap">
+      <span class="eyebrow">Features</span>
+      <h1>Everything a student <em style="color:var(--cta)">planner</em> needs</h1>
+      <p class="lead">One app for your timetable, homework, exams, study plans and grades. Here is what each part does, and what is free.</p>
+      <div class="btn-row" style="margin-top:24px"><a class="btn" href={SITE.playUrl} rel="noopener">Get {SITE.app} free</a></div>
+    </div>
+  </section>
+
+  {groups.map((g, i) => (
+    <section class="section tight">
+      <div class={`wrap split ${i % 2 ? 'rev' : ''}`}>
+        <div>
+          <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">{g.title}</h2>
+          <div class="flist">
+            {g.items.map(([t, d]) => <div><h3><Icon name="check" class="fi" />{t}</h3><p>{d}</p></div>)}
+          </div>
+          <a class="more" href={g.href} style="font-weight:600">Learn more about the {g.title.split(' ')[0].toLowerCase()} features →</a>
+        </div>
+        <div class={`stage t-${g.tint}`} style="min-height:440px">
+          <div class="phone"><img src={g.img} alt={g.alt} width="480" height="1040" loading={i === 0 ? 'eager' : 'lazy'} /></div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section band-lavender">
+    <div class="wrap center"><h2>Find your planner</h2></div>
+    <div class="wrap grid g3" style="margin-top:40px">
+      {PLANNERS.map((p) => <a class="card lift" href={p.href} style="background:#fff"><h3>{p.label}</h3><p class="small muted">{p.desc}</p><span class="more">Open →</span></a>)}
+    </div>
+  </section>
+
+  <section class="section"><div class="wrap center"><h2>Feature questions</h2></div><Faq items={faqs} supportLink /></section>
+  <AppBand />
+</Base>
+
+<style>
+  .flist { display: grid; gap: 18px; margin: 24px 0; }
+  .flist h3 { display: flex; gap: 10px; align-items: center; margin: 0 0 2px; }
+  .flist p { margin: 0 0 0 32px; color: var(--ink-2); font-size: .97rem; }
+  :global(.fi) { width: 22px; color: var(--cta); flex: none; }
+</style>

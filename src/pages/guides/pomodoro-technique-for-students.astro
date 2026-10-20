@@ -1,0 +1,66 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/pomodoro-technique-for-students/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'The Pomodoro technique is <strong>25 minutes of focus, 5 minutes of break</strong>, with a longer break after four rounds.',
+    'It was developed by <strong>Francesco Cirillo</strong> in the late 1980s, named after a tomato-shaped kitchen timer.',
+    'Its main benefit for students is <strong>making it easier to start</strong> and to keep a steady pace through long days.',
+    'Decide what each pomodoro is for <strong>before</strong> you start the timer.',
+  ]}
+  toc={[
+    { id: 'what', label: 'What the Pomodoro technique is' },
+    { id: 'how', label: 'How to do it' },
+    { id: 'students', label: 'Adapting it for study' },
+    { id: 'mistakes', label: 'Common mistakes' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/pomodoro-timer/', '/tools/study-plan-generator/', '/tools/assignment-planner/']}
+  faqs={[
+    { q: 'Is the Pomodoro technique good for studying?', a: 'For many students, yes, especially for starting tasks you are avoiding and for long revision days. If 25 minutes breaks your concentration on deep work, try 45–50 minute rounds with 10-minute breaks.' },
+    { q: 'How many pomodoros should I do per day?', a: 'Eight to twelve is a full study day for most people (about 3.5–5 hours of real focus). On school or college days, four to six is realistic.' },
+    { q: 'What if I get interrupted?', a: 'If it can wait, write it down and return to it in the break. If it cannot, stop the pomodoro and start a fresh one later. A pomodoro is either focused or it does not count.' },
+  ]}
+  sources={[
+    { text: 'Cirillo, F. (2018). The Pomodoro Technique. Currency (Penguin Random House).', url: 'https://www.penguinrandomhouse.com/books/555557/the-pomodoro-technique-by-francesco-cirillo/' },
+    { text: 'The Pomodoro® Technique, official site of Francesco Cirillo.', url: 'https://www.pomodorotechnique.com/' },
+    { text: 'Dunlosky, J. et al. (2013). Improving students’ learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+  ]}
+>
+  <p>The hardest part of studying is often the first five minutes. The Pomodoro technique makes those minutes smaller: instead of “study all evening”, you commit to one short, timed round.</p>
+
+  <h2 id="what">What the Pomodoro technique is</h2>
+  <p>The Pomodoro technique is a time-management method developed by Francesco Cirillo when he was a university student in the late 1980s. He used a kitchen timer shaped like a tomato (<em>pomodoro</em> in Italian), and each focus round took its name.</p>
+
+  <h2 id="how">How to do it</h2>
+  <ol>
+    <li>Choose one task.</li>
+    <li>Set a timer for 25 minutes and work only on that task.</li>
+    <li>When it rings, take a 5-minute break.</li>
+    <li>After four pomodoros, take a longer 15–30 minute break.</li>
+  </ol>
+  <p>Use our free <a href="/tools/pomodoro-timer/">Pomodoro timer</a>. It keeps accurate time in a background tab and can notify you when a round ends.</p>
+
+  <h2 id="students">Adapting it for study</h2>
+  <table>
+    <thead><tr><th scope="col">Study task</th><th scope="col">Suggested rounds</th><th scope="col">What each round is for</th></tr></thead>
+    <tbody>
+      <tr><td>Homework</td><td>25 / 5</td><td>One question set or one section of the assignment</td></tr>
+      <tr><td>New topic</td><td>25 / 5 × 2</td><td>Round 1: read and make notes. Round 2: close notes and recall.</td></tr>
+      <tr><td>Problem sets, coding</td><td>45–50 / 10</td><td>Longer rounds for deep work that needs warm-up</td></tr>
+      <tr><td>Exam revision day</td><td>25 / 5, long break every 4</td><td>Rotate subjects between sets of four</td></tr>
+      <tr><td>Flashcards</td><td>15 / 3</td><td>Short, intense recall sessions</td></tr>
+    </tbody>
+  </table>
+  <p>Combine it with active recall: spend the last few minutes of every second pomodoro testing yourself on what you just covered. Practice testing is one of the two most effective study techniques identified by Dunlosky and colleagues (2013).</p>
+
+  <h2 id="mistakes">Common mistakes</h2>
+  <ul>
+    <li><strong>Phones in breaks.</strong> Five minutes of scrolling rarely stays five minutes. Stand up, drink water, look out of a window.</li>
+    <li><strong>No plan.</strong> If you spend a round deciding what to do, the round is gone. Use the <a href="/tools/study-plan-generator/">study plan generator</a> to decide in advance.</li>
+    <li><strong>Skipping long breaks.</strong> They are what make a long day possible.</li>
+    <li><strong>Counting time, not output.</strong> Write what each pomodoro produced. It keeps rounds honest.</li>
+  </ul>
+</Guide>

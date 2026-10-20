@@ -1,0 +1,162 @@
+---
+import Tool from '../../layouts/Tool.astro';
+import Icon from '../../components/Icon.astro';
+import type { QA } from '../../lib/schema';
+
+const faqs: QA[] = [
+  { q: 'How do I make a class timetable online for free?', a: 'Add each class with its day, start and end time, and optional room. The timetable grid updates as you go. When it is ready, print it, save it as PDF, or download a calendar file to add every class to Google Calendar or Apple Calendar as a weekly event.' },
+  { q: 'Can I add my timetable to Google Calendar?', a: 'Yes. Press “Download calendar (.ics)”. In Google Calendar on a computer, open Settings → Import & export → Import, and choose the file. Each class repeats weekly.' },
+  { q: 'Is my timetable saved?', a: 'It is saved in your browser on this device only. Clear the timetable with the Reset button. Nothing is uploaded.' },
+  { q: 'Can AI make my timetable from a photo?', a: 'Not on this web page, but yes in the ClassTrack app: snap a photo, upload a PDF or paste text and the AI builds your weekly schedule. Two scans are free.' },
+];
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+---
+<Tool
+  href="/tools/timetable-maker/"
+  metaTitle="Free Online Timetable Maker for Students (Print, PDF & Calendar)"
+  description="Make a colour-coded weekly class timetable online. Free timetable maker for school and college: print it, save as PDF, or add every class to Google Calendar."
+  h1="Free online <em style='color:var(--cta)'>timetable</em> maker"
+  lead="Build a colour-coded weekly class timetable in minutes. Print it, save it as a PDF, or add every class to Google Calendar."
+  faqs={faqs}
+  howTo={{ name: 'How to make a timetable', steps: [
+    'Type the subject name, choose the day, and set the start and end time.',
+    'Add a room or teacher if you like, then press Add class.',
+    'Repeat for every class. Click a class in the grid to remove it.',
+    'Press Print / PDF for a paper copy, or Download calendar (.ics) for Google Calendar.',
+  ] }}
+  appTitle="Let AI make your timetable"
+  appText="In the ClassTrack app, snap a photo of your timetable or upload the PDF. AI builds the week, then reminds you before each class."
+>
+  <div slot="tool">
+    <form class="tool-panel no-print" id="tt-form">
+      <div class="row">
+        <div class="field"><label for="tt-name">Subject</label><input id="tt-name" required maxlength="40" placeholder="e.g. Data Structures" /></div>
+        <div class="field"><label for="tt-day">Day</label><select id="tt-day">{days.map((d, i) => <option value={i}>{d}</option>)}</select></div>
+        <div class="field"><label for="tt-start">Start</label><input type="time" id="tt-start" value="09:00" required step="300" /></div>
+        <div class="field"><label for="tt-end">End</label><input type="time" id="tt-end" value="10:00" required step="300" /></div>
+        <div class="field"><label for="tt-room">Room (optional)</label><input id="tt-room" maxlength="30" placeholder="e.g. LH-204" /></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn" type="submit"><Icon name="plus" class="i16" /> Add class</button>
+        <button class="btn ghost" type="button" id="tt-print"><Icon name="print" class="i16" /> Print / PDF</button>
+        <button class="btn ghost" type="button" id="tt-ics"><Icon name="download" class="i16" /> Download calendar (.ics)</button>
+        <button class="text-btn" type="button" id="tt-reset">Reset</button>
+      </div>
+      <label class="small" style="display:flex;gap:8px;align-items:center;margin-top:12px"><input type="checkbox" id="tt-weekend" style="width:auto;min-height:0" /> Show Sunday</label>
+      <p class="small" id="tt-error" role="alert" style="color:#B42318;margin:8px 0 0"></p>
+    </form>
+    <div class="tool-panel" style="margin-top:20px">
+      <h2 class="sr-only">Your timetable</h2>
+      <div class="tt-scroll"><div class="tt-grid" id="tt-grid" aria-live="polite"></div></div>
+      <div id="tt-list" class="sr-only"></div>
+    </div>
+  </div>
+
+  <h2>Tips for a timetable that works</h2>
+  <ul>
+    <li><strong>Add study blocks too.</strong> Your class timetable shows where your free time is. Add “Study: Maths” blocks into the gaps, so revision has a fixed home.</li>
+    <li><strong>Colour by subject.</strong> Colours are assigned per subject automatically, so the same subject is always the same colour.</li>
+    <li><strong>Keep labs and tutorials separate.</strong> Name them “Physics lab” or “Maths tutorial” so you know what to bring.</li>
+  </ul>
+  <p>Need to plan study around your classes? Use the <a href="/tools/study-plan-generator/">study plan generator</a> or read <a href="/guides/how-to-make-a-study-timetable/">how to make a study timetable</a>.</p>
+</Tool>
+
+<style>
+  .tt-scroll { overflow-x: auto; }
+  .tt-grid { display: grid; min-width: 640px; position: relative; font-size: .82rem; }
+  :global(.tt-h) { font-weight: 600; text-align: center; padding: 8px 4px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: #fff; }
+  :global(.tt-t) { color: var(--muted); font-size: .75rem; padding-right: 8px; text-align: right; transform: translateY(-.6em); }
+  :global(.tt-c) { border-top: 1px dashed var(--line); }
+  :global(.tt-ev) { margin: 1px 3px; border-radius: 10px; padding: 6px 8px; overflow: hidden; cursor: pointer; border: 0; text-align: left; font: inherit; color: var(--ink); line-height: 1.3; }
+  :global(.tt-ev:hover) { outline: 2px solid var(--ink); }
+  :global(.tt-ev strong) { display: block; font-weight: 600; }
+  @media print { .tt-grid { min-width: 0; } }
+</style>
+
+<script>
+  type C = { name: string; day: number; start: string; end: string; room: string };
+  const KEY = 'sp-timetable-v1';
+  const COLORS = ['#EAE5FA', '#FBF1CE', '#DFF3E7', '#E1EAF6', '#F9E1E4', '#FDE6CF', '#DDF1F4', '#EFE3F7'];
+  const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+  const mins = (t: string) => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+  let data: C[] = JSON.parse(localStorage.getItem(KEY) || 'null') ?? [
+    { name: 'Data Structures', day: 0, start: '09:00', end: '10:00', room: 'LH-204' },
+    { name: 'Linear Algebra', day: 0, start: '11:00', end: '12:00', room: 'C-301' },
+    { name: 'Computer Networks', day: 1, start: '14:00', end: '15:30', room: 'Lab 2' },
+    { name: 'Data Structures', day: 2, start: '09:00', end: '10:00', room: 'LH-204' },
+    { name: 'Operating Systems', day: 3, start: '16:00', end: '17:00', room: '' },
+    { name: 'Linear Algebra', day: 4, start: '11:00', end: '12:00', room: 'C-301' },
+  ];
+  const colorOf = (name: string) => { const names = [...new Set(data.map((d) => d.name.toLowerCase()))]; return COLORS[names.indexOf(name.toLowerCase()) % COLORS.length]; };
+  const save = () => localStorage.setItem(KEY, JSON.stringify(data));
+
+  function render() {
+    const showSun = $<HTMLInputElement>('tt-weekend').checked || data.some((d) => d.day === 6);
+    const nDays = showSun ? 7 : 6;
+    const minStart = Math.min(8 * 60, ...data.map((d) => mins(d.start)));
+    const maxEnd = Math.max(17 * 60, ...data.map((d) => mins(d.end)));
+    const startH = Math.floor(minStart / 60), endH = Math.ceil(maxEnd / 60);
+    const slots = (endH - startH) * 2; // 30-min rows
+    const g = $('tt-grid');
+    g.style.gridTemplateColumns = `56px repeat(${nDays}, 1fr)`;
+    g.style.gridTemplateRows = `auto repeat(${slots}, 34px)`;
+    let html = '<div></div>' + DAYS.slice(0, nDays).map((d) => `<div class="tt-h">${d}</div>`).join('');
+    for (let s = 0; s < slots; s++) {
+      html += `<div class="tt-t" style="grid-row:${s + 2};grid-column:1">${s % 2 === 0 ? String(startH + s / 2).padStart(2, '0') + ':00' : ''}</div>`;
+      for (let d = 0; d < nDays; d++) if (s % 2 === 0) html += `<div class="tt-c" style="grid-row:${s + 2} / span 2;grid-column:${d + 2}"></div>`;
+    }
+    data.forEach((c, i) => {
+      if (c.day >= nDays) return;
+      const r1 = Math.floor((mins(c.start) - startH * 60) / 30) + 2;
+      const r2 = Math.max(r1 + 1, Math.ceil((mins(c.end) - startH * 60) / 30) + 2);
+      html += `<button type="button" class="tt-ev" data-i="${i}" style="grid-column:${c.day + 2};grid-row:${r1} / ${r2};background:${colorOf(c.name)}" aria-label="Remove ${esc(c.name)} on ${DAYS[c.day]} ${c.start}"><strong>${esc(c.name)}</strong>${c.start}–${c.end}${c.room ? '<br>' + esc(c.room) : ''}</button>`;
+    });
+    g.innerHTML = html;
+    g.querySelectorAll<HTMLButtonElement>('.tt-ev').forEach((b) => b.addEventListener('click', () => {
+      if (confirm('Remove this class?')) { data.splice(Number(b.dataset.i), 1); save(); render(); }
+    }));
+    $('tt-list').textContent = data.map((c) => `${DAYS[c.day]} ${c.start}-${c.end} ${c.name} ${c.room}`).join('; ');
+  }
+
+  $('tt-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const err = $('tt-error'); err.textContent = '';
+    const c: C = { name: $<HTMLInputElement>('tt-name').value.trim(), day: Number($<HTMLSelectElement>('tt-day').value), start: $<HTMLInputElement>('tt-start').value, end: $<HTMLInputElement>('tt-end').value, room: $<HTMLInputElement>('tt-room').value.trim() };
+    if (!c.name) { err.textContent = 'Add a subject name.'; return; }
+    if (mins(c.end) <= mins(c.start)) { err.textContent = 'End time must be after start time.'; return; }
+    if (data.length >= 80) { err.textContent = 'That is a lot of classes! Remove some first.'; return; }
+    data.push(c); save(); render();
+    $<HTMLInputElement>('tt-name').value = ''; $<HTMLInputElement>('tt-room').value = '';
+    $<HTMLInputElement>('tt-name').focus();
+  });
+  $('tt-weekend').addEventListener('change', render);
+  $('tt-print').addEventListener('click', () => window.print());
+  $('tt-reset').addEventListener('click', () => { if (confirm('Clear the whole timetable?')) { data = []; save(); render(); } });
+  $('tt-ics').addEventListener('click', () => {
+    if (!data.length) return;
+    const now = new Date();
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const stamp = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}${pad(now.getUTCDate())}T${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}00Z`;
+    const icsEsc = (s: string) => s.replace(/[\\;,]/g, (m) => '\\' + m).replace(/\n/g, '\\n');
+    const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//studyplanner.tech//Timetable maker//EN', 'CALSCALE:GREGORIAN'];
+    data.forEach((c, i) => {
+      // next occurrence of that weekday (Mon=0)
+      const d = new Date(); d.setHours(0, 0, 0, 0);
+      const target = (c.day + 1) % 7; // JS: Sun=0
+      d.setDate(d.getDate() + ((target - d.getDay() + 7) % 7));
+      const ymd = `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+      const t = (s: string) => s.replace(':', '') + '00';
+      lines.push('BEGIN:VEVENT', `UID:${ymd}-${i}-${Math.random().toString(36).slice(2)}@studyplanner.tech`, `DTSTAMP:${stamp}`, `DTSTART:${ymd}T${t(c.start)}`, `DTEND:${ymd}T${t(c.end)}`, 'RRULE:FREQ=WEEKLY', `SUMMARY:${icsEsc(c.name)}`);
+      if (c.room) lines.push(`LOCATION:${icsEsc(c.room)}`);
+      lines.push('END:VEVENT');
+    });
+    lines.push('END:VCALENDAR');
+    const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'my-timetable.ics'; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  render();
+</script>

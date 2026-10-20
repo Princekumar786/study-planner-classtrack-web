@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+---
+<Base title="Terms of Use | studyplanner.tech" description="Terms of use for the studyplanner.tech website and its free study planner, timetable, GPA and exam tools." crumbs={[{ name: 'Terms', href: '/terms/' }]}>
+  <section class="section" style="padding-top:32px">
+    <div class="narrow prose">
+      <h1 style="font-size:clamp(2rem,4vw,2.8rem)">Terms of use</h1>
+      <p class="muted">Last updated: {SITE.updated}</p>
+      <p>These terms apply to the website <strong>studyplanner.tech</strong>. Use of the ClassTrack app is covered by the <a href="https://classtracks.app/terms/" rel="noopener">ClassTrack terms</a>.</p>
+      <h2>Using the tools</h2>
+      <p>The tools on this site are free for personal and educational use. You may print and share the plans and timetables you create.</p>
+      <h2>No guarantees</h2>
+      <p>Tools and guides are provided “as is” for general information. Results such as GPA, CGPA-to-percentage and attendance figures are estimates based on the formulas shown. Your school, board or university’s official rules and records always take priority. Study guides are educational content, not professional, medical or academic-counselling advice.</p>
+      <h2>Content</h2>
+      <p>The text, design, illustrations and code of this site belong to ClassTrack. You may quote short passages with a link to the source page. Do not copy whole pages or tools.</p>
+      <h2>Acceptable use</h2>
+      <p>Do not attempt to disrupt the site, scrape it at a rate that harms performance, or use it for anything unlawful.</p>
+      <h2>Liability</h2>
+      <p>To the extent allowed by law, ClassTrack is not liable for losses arising from use of this website or its tools.</p>
+      <h2>Law</h2>
+      <p>These terms are governed by the laws of India.</p>
+      <h2>Contact</h2>
+      <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,80 @@
+---
+import Tool from '../../layouts/Tool.astro';
+import type { QA } from '../../lib/schema';
+
+const faqs: QA[] = [
+  { q: 'How do I convert CGPA to percentage?', a: 'It depends on who issued your CGPA. CBSE uses Percentage = CGPA × 9.5. Many engineering universities use Percentage = (CGPA − 0.75) × 10. Some universities simply multiply by 10. Always use the formula printed on your marksheet or in your university’s rules.' },
+  { q: 'Why does CBSE multiply by 9.5?', a: 'When CBSE introduced grading in 2010, it worked out that students in the top grade band (91–100 marks) averaged about 95 marks, and divided 95 by the top grade point of 10. The result, 9.5, became the indicative conversion factor (CBSE Circular No. 24, 2010).' },
+  { q: 'What is 8 CGPA in percentage?', a: 'With the CBSE formula, 8 × 9.5 = 76%. With (CGPA − 0.75) × 10 it is 72.5%. With CGPA × 10 it is 80%.' },
+  { q: 'How do I convert percentage to CGPA?', a: 'Reverse the formula. For CBSE, CGPA = Percentage ÷ 9.5. For (CGPA − 0.75) × 10, CGPA = Percentage ÷ 10 + 0.75. Use the “Percentage → CGPA” mode above.' },
+  { q: 'Which formula should I use for job or university applications?', a: 'Use the formula your university states officially, and mention it next to the percentage (for example “76% (CGPA × 9.5)”). If your university gives a conversion certificate, quote that number.' },
+];
+const table = [5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10];
+---
+<Tool
+  href="/tools/cgpa-to-percentage/"
+  metaTitle="CGPA to Percentage Calculator (CBSE ×9.5, ×10 & −0.75 Formulas)"
+  description="Convert CGPA to percentage and back with the CBSE × 9.5 formula, the (CGPA − 0.75) × 10 university formula and the × 10 method, plus a full table."
+  h1="CGPA to <em style='color:var(--cta)'>percentage</em> converter"
+  lead="Convert CGPA to percentage, or back, with the three formulas Indian boards and universities use."
+  faqs={faqs}
+  appTitle="Keep your grades in one place"
+  appText="ClassTrack tracks marks and GPA through the semester, next to your timetable and exams. Free on Android."
+>
+  <div slot="tool">
+    <div class="tool-panel">
+      <div class="row">
+        <div class="field"><label for="cp-mode">Convert</label><select id="cp-mode"><option value="c2p">CGPA → Percentage</option><option value="p2c">Percentage → CGPA</option></select></div>
+        <div class="field"><label for="cp-val" id="cp-lbl">Your CGPA (out of 10)</label><input id="cp-val" type="number" step="0.01" min="0" max="100" value="8.2" inputmode="decimal" /></div>
+        <div class="field"><label for="cp-f">Formula</label><select id="cp-f"><option value="cbse">CBSE: × 9.5</option><option value="minus">(CGPA − 0.75) × 10</option><option value="ten">CGPA × 10</option></select></div>
+      </div>
+      <div class="result" aria-live="polite"><div class="big" id="cp-out">77.90%</div><p class="small" id="cp-sub" style="margin:4px 0 0"></p></div>
+      <p class="small" id="cp-all" style="margin:14px 0 0"></p>
+    </div>
+  </div>
+
+  <h2>CGPA to percentage conversion table</h2>
+  <table>
+    <thead><tr><th scope="col">CGPA</th><th scope="col">CBSE (× 9.5)</th><th scope="col">(CGPA − 0.75) × 10</th><th scope="col">CGPA × 10</th></tr></thead>
+    <tbody>{table.map((c) => <tr><td><strong>{c.toFixed(1)}</strong></td><td>{(c * 9.5).toFixed(2)}%</td><td>{((c - 0.75) * 10).toFixed(1)}%</td><td>{(c * 10).toFixed(0)}%</td></tr>)}</tbody>
+  </table>
+  <h2>Which formula applies to me?</h2>
+  <ul>
+    <li><strong>CBSE Class 10 and 12:</strong> CGPA × 9.5. CBSE describes this as an indicative equivalent.</li>
+    <li><strong>Many engineering and technical universities:</strong> (CGPA − 0.75) × 10. Several colleges print this on the marksheet.</li>
+    <li><strong>Some universities and autonomous colleges:</strong> CGPA × 10, or their own table.</li>
+  </ul>
+  <p>If in doubt, check the back of your marksheet or your university’s ordinance. Need to work out the CGPA first? Use the <a href="/tools/gpa-calculator/">GPA, SGPA and CGPA calculator</a>.</p>
+</Tool>
+
+<script>
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const F = {
+    cbse: { name: 'CBSE (× 9.5)', to: (c: number) => c * 9.5, from: (p: number) => p / 9.5 },
+    minus: { name: '(CGPA − 0.75) × 10', to: (c: number) => (c - 0.75) * 10, from: (p: number) => p / 10 + 0.75 },
+    ten: { name: 'CGPA × 10', to: (c: number) => c * 10, from: (p: number) => p / 10 },
+  } as const;
+  function run() {
+    const mode = $<HTMLSelectElement>('cp-mode').value;
+    const f = $<HTMLSelectElement>('cp-f').value as keyof typeof F;
+    const v = Number($<HTMLInputElement>('cp-val').value);
+    $('cp-lbl').textContent = mode === 'c2p' ? 'Your CGPA (out of 10)' : 'Your percentage';
+    const bad = isNaN(v) || v < 0 || (mode === 'c2p' ? v > 10 : v > 100);
+    if (bad) { $('cp-out').textContent = '—'; $('cp-sub').textContent = mode === 'c2p' ? 'Enter a CGPA between 0 and 10.' : 'Enter a percentage between 0 and 100.'; $('cp-all').textContent = ''; return; }
+    if (mode === 'c2p') {
+      const r = Math.max(0, F[f].to(v));
+      $('cp-out').textContent = r.toFixed(2) + '%';
+      $('cp-sub').textContent = `${v} CGPA using ${F[f].name}`;
+      $('cp-all').textContent = 'All formulas: ' + (Object.keys(F) as (keyof typeof F)[]).map((k) => `${F[k].name} = ${Math.max(0, F[k].to(v)).toFixed(2)}%`).join(' · ');
+    } else {
+      const r = Math.min(10, F[f].from(v));
+      $('cp-out').textContent = r.toFixed(2) + ' CGPA';
+      $('cp-sub').textContent = `${v}% using ${F[f].name}`;
+      $('cp-all').textContent = 'All formulas: ' + (Object.keys(F) as (keyof typeof F)[]).map((k) => `${F[k].name} → ${Math.min(10, F[k].from(v)).toFixed(2)}`).join(' · ');
+    }
+  }
+  $('cp-mode').addEventListener('change', () => { const i = $<HTMLInputElement>('cp-val'); i.value = $<HTMLSelectElement>('cp-mode').value === 'c2p' ? '8.2' : '78'; run(); });
+  ['cp-val', 'cp-f'].forEach((id) => $(id).addEventListener('input', run));
+  $('cp-f').addEventListener('change', run);
+  run();
+</script>

@@ -1,0 +1,80 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-make-a-study-timetable/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Start with fixed time (classes, travel, sleep), then turn the gaps into <strong>45–60 minute study blocks</strong>.',
+    'Give harder and sooner-exam subjects more blocks, and <strong>mix two or more subjects a day</strong>.',
+    'Plan only about <strong>80% of your free time</strong>; slack is what makes a timetable survive a busy week.',
+    'Reserve the last part of every plan for <strong>self-testing</strong>, the best-supported study technique.',
+  ]}
+  toc={[
+    { id: 'why', label: 'Why most study timetables fail' },
+    { id: 'steps', label: 'The 7-step method' },
+    { id: 'example', label: 'Example timetable' },
+    { id: 'keep', label: 'How to keep to it' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/timetable-maker/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'How many hours should a study timetable have per day?', a: 'Pick a number you can keep on your worst normal day. For most school and college students that is 2–4 hours outside class, rising to 5–6 in the final weeks before major exams.' },
+    { q: 'Should I study one subject per day or several?', a: 'Several. Mixing subjects (interleaving) helps you tell topics apart and is linked to better test results in maths research (Rohrer & Taylor, 2007). Two or three subjects a day is a good balance.' },
+    { q: 'What is the best time of day to study?', a: 'The time you are most alert and least interrupted. Put your hardest subject there. Early birds often prefer mornings; night owls do better in the evening. Consistency matters more than the clock.' },
+  ]}
+  sources={[
+    { text: 'Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J. & Willingham, D. T. (2013). Improving students’ learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+    { text: 'Rohrer, D. & Taylor, K. (2007). The shuffling of mathematics problems improves learning. Instructional Science, 35, 481–498.', url: 'https://doi.org/10.1007/s11251-007-9015-8' },
+    { text: 'Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. American Psychologist, 54(7), 493–503.', url: 'https://doi.org/10.1037/0003-066X.54.7.493' },
+  ]}
+>
+  <p>A study timetable is a weekly plan that says <em>what</em> you will study, <em>when</em>, and for <em>how long</em>. Done well, it removes the daily “what should I do now?” decision, which is where most study time is lost.</p>
+
+  <h2 id="why">Why most study timetables fail</h2>
+  <p>The typical failed timetable is perfect on paper: six hours a day, every subject every day, no breaks. It survives until the first surprise assignment, and then it is abandoned. Three patterns cause most failures:</p>
+  <ul>
+    <li><strong>Too full.</strong> Every free minute is planned, so any delay breaks the whole day.</li>
+    <li><strong>Too vague.</strong> “Study Physics” is not a task. “Physics: chapter 3 questions 1–10” is.</li>
+    <li><strong>No review.</strong> Each topic is studied once and never revisited, so it fades before the exam.</li>
+  </ul>
+
+  <h2 id="steps">The 7-step method</h2>
+  <h3>1. List subjects, exams and deadlines</h3>
+  <p>Write every subject, its exam date and any big assignments. This is the list your timetable serves.</p>
+  <h3>2. Block out fixed time</h3>
+  <p>Put in classes, labs, travel, meals, work shifts and at least 7–8 hours of sleep. Use the <a href="/tools/timetable-maker/">timetable maker</a> to see your week as a grid.</p>
+  <h3>3. Find your study blocks</h3>
+  <p>Look for gaps of 45 minutes or more. Each gap is one block. Short gaps (15–30 minutes) are good for flashcards and quick review, not new topics.</p>
+  <h3>4. Weight the subjects</h3>
+  <p>Rate each subject easy, medium or hard <em>for you</em>, and how soon its exam is. Hard or sooner subjects get more blocks; a simple rule is 3 : 2 : 1 for hard : medium : easy.</p>
+  <h3>5. Mix subjects and space them out</h3>
+  <p>Put two or three different subjects in each day and come back to each one every few days. Spreading study over time (distributed practice) is one of only two techniques rated “high utility” in a review of ten popular methods (Dunlosky et al., 2013), and a large analysis of spacing studies found spaced study beats massed study for later recall (Cepeda et al., 2006).</p>
+  <h3>6. Make every block specific</h3>
+  <p>Write a clear task for each block: a chapter, a problem set, a past paper. Psychologists call plans in the form “when X, I will do Y” <em>implementation intentions</em>, and they make people noticeably more likely to follow through (Gollwitzer, 1999).</p>
+  <h3>7. End with self-testing</h3>
+  <p>Close every block with five to ten minutes of recalling what you just learned without notes. In the final weeks, swap most new learning for past papers. Practice testing is the other “high utility” technique.</p>
+  <p>The <a href="/tools/study-plan-generator/">study plan generator</a> does steps 3–7 automatically if you enter your subjects and exam date.</p>
+
+  <h2 id="example">Example timetable (college student, weekday)</h2>
+  <table>
+    <thead><tr><th scope="col">Time</th><th scope="col">Monday</th><th scope="col">Tuesday</th><th scope="col">Wednesday</th></tr></thead>
+    <tbody>
+      <tr><td>07:00–08:00</td><td>Maths: ch. 4 problems</td><td>Flashcards (20 min)</td><td>Maths: ch. 4 review + quiz</td></tr>
+      <tr><td>09:00–15:00</td><td>Classes</td><td>Classes</td><td>Classes</td></tr>
+      <tr><td>16:30–17:30</td><td>Physics: notes on waves</td><td>Chemistry: lab write-up</td><td>Physics: past paper Q1–5</td></tr>
+      <tr><td>18:00–19:00</td><td>Rest</td><td>English: essay outline</td><td>Rest</td></tr>
+      <tr><td>20:00–21:00</td><td>Chemistry: bonding</td><td>Maths: ch. 5 new</td><td>English: essay draft</td></tr>
+    </tbody>
+  </table>
+  <p>Notice that Maths chapter 4 appears on Monday and again on Wednesday (spacing), every day mixes subjects (interleaving), and two evenings are left free (slack).</p>
+
+  <h2 id="keep">How to keep to it</h2>
+  <ul>
+    <li><strong>Review weekly, not daily.</strong> Ten minutes on Sunday to move what slipped beats daily re-planning.</li>
+    <li><strong>Missed a block? Move it, do not double up.</strong> Put it on your rest slot or drop the lowest-priority topic.</li>
+    <li><strong>Use a timer.</strong> Twenty-five-minute <a href="/tools/pomodoro-timer/">Pomodoro</a> rounds make starting easier.</li>
+    <li><strong>Get reminders.</strong> A planner app such as ClassTrack puts the timetable, homework and exams on your phone, so the plan comes to you.</li>
+  </ul>
+</Guide>

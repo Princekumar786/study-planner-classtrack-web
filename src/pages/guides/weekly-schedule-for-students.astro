@@ -1,0 +1,74 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/weekly-schedule-for-students/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Build a weekly schedule in layers: <strong>sleep → classes → commitments → study → rest</strong>.',
+    'Two copyable examples below: a <strong>school student</strong> week and a <strong>college student</strong> week.',
+    'Aim for consistent daily study rather than one huge weekend session.',
+    'Leave one free evening and one lighter day; a schedule with slack survives.',
+  ]}
+  toc={[
+    { id: 'layers', label: 'Build the week in layers' },
+    { id: 'school', label: 'Example: school student' },
+    { id: 'college', label: 'Example: college student' },
+    { id: 'rules', label: 'Five rules for a schedule that lasts' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/study-plan-generator/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'How many hours should a college student study per week?', a: 'A common guideline in many universities is around two hours of independent study per hour of class, but it varies a lot by course and term. Start with what fits your schedule and adjust using your results.' },
+    { q: 'Should I study on weekends?', a: 'A few focused hours on one weekend day work well, especially for longer tasks like essays. Keep at least one day, or a full evening, free.' },
+    { q: 'How do I fit a part-time job into my schedule?', a: 'Put shifts in as fixed blocks before study. Use shorter gaps for review and flashcards, and protect two or three longer blocks a week for new material.' },
+  ]}
+  sources={[
+    { text: 'Cepeda, N. J. et al. (2006). Distributed practice in verbal recall tasks. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+    { text: 'Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. American Psychologist, 54(7), 493–503.', url: 'https://doi.org/10.1037/0003-066X.54.7.493' },
+  ]}
+>
+  <p>A weekly schedule shows your whole week at once: when you are in class, when you study, and when you rest. It is easier to keep than a daily to-do list, because you decide once a week instead of every morning.</p>
+
+  <h2 id="layers">Build the week in layers</h2>
+  <ol>
+    <li><strong>Sleep.</strong> Fix a bedtime and wake time. Everything else fits around it.</li>
+    <li><strong>Classes and labs.</strong> Use the <a href="/tools/timetable-maker/">timetable maker</a>, or in the ClassTrack app import your timetable from a photo.</li>
+    <li><strong>Other commitments.</strong> Travel, meals, work, sport, family.</li>
+    <li><strong>Study blocks.</strong> Turn gaps of 45+ minutes into named blocks (“Chemistry: organic reactions”).</li>
+    <li><strong>Rest.</strong> One free evening and some daily downtime.</li>
+  </ol>
+
+  <h2 id="school">Example: school student (weekdays)</h2>
+  <table>
+    <thead><tr><th scope="col">Time</th><th scope="col">Mon</th><th scope="col">Tue</th><th scope="col">Wed</th><th scope="col">Thu</th><th scope="col">Fri</th></tr></thead>
+    <tbody>
+      <tr><td>08:00–14:30</td><td colspan="5">School</td></tr>
+      <tr><td>15:30–16:15</td><td>Homework</td><td>Homework</td><td>Homework</td><td>Homework</td><td>Homework</td></tr>
+      <tr><td>16:30–17:15</td><td>Maths practice</td><td>Science</td><td>Maths practice</td><td>Language</td><td>Free</td></tr>
+      <tr><td>17:15–18:30</td><td colspan="5">Sport, hobbies, rest</td></tr>
+      <tr><td>19:30–20:00</td><td>Flashcards</td><td>Flashcards</td><td>Social science</td><td>Flashcards</td><td>Free</td></tr>
+    </tbody>
+  </table>
+  <p>Weekend: one 2-hour block on Saturday morning for the week’s weakest subject and a quick self-test of everything covered. Sunday evening: 10 minutes planning next week.</p>
+
+  <h2 id="college">Example: college student</h2>
+  <table>
+    <thead><tr><th scope="col">Time</th><th scope="col">Mon</th><th scope="col">Tue</th><th scope="col">Wed</th><th scope="col">Thu</th><th scope="col">Fri</th><th scope="col">Sat</th></tr></thead>
+    <tbody>
+      <tr><td>Morning</td><td>Lectures</td><td>Study: DSA problems</td><td>Lectures</td><td>Study: DBMS</td><td>Lectures</td><td>Assignment block (2 h)</td></tr>
+      <tr><td>Afternoon</td><td>Lab</td><td>Lectures</td><td>Study: OS notes</td><td>Lectures</td><td>Study: weekly review</td><td>Free</td></tr>
+      <tr><td>Evening</td><td>Study: lecture recall (45 min)</td><td>Part-time work</td><td>Study: DSA again</td><td>Part-time work</td><td>Free</td><td>Free</td></tr>
+    </tbody>
+  </table>
+  <p>Notice the spacing: DSA appears on Tuesday and again on Wednesday, and Friday has a review block that revisits the whole week.</p>
+
+  <h2 id="rules">Five rules for a schedule that lasts</h2>
+  <ol>
+    <li><strong>Same blocks, same times.</strong> Habits form faster when the time is fixed. Plans in “when X, then Y” form are more likely to be followed (Gollwitzer, 1999).</li>
+    <li><strong>Little and often.</strong> Spread study across the week. Spaced study beats one long session for later recall (Cepeda et al., 2006).</li>
+    <li><strong>Hard things early.</strong> Put the toughest subject in your most alert block.</li>
+    <li><strong>Plan 80%.</strong> Leave room for the unexpected.</li>
+    <li><strong>Review on Sunday.</strong> Move what slipped; do not rebuild from scratch.</li>
+  </ol>
+</Guide>

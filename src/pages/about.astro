@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import AppBand from '../components/AppBand.astro';
+import { SITE } from '../data/site';
+
+const person = {
+  '@type': 'Person',
+  '@id': `${SITE.url}/about/#prince-kumar`,
+  name: SITE.author.name,
+  jobTitle: SITE.author.role,
+  url: SITE.author.url,
+  sameAs: [SITE.author.site],
+  worksFor: { '@id': `${SITE.url}/#org` },
+  alumniOf: [{ '@type': 'CollegeOrUniversity', name: 'University of Delhi' }],
+  affiliation: { '@type': 'CollegeOrUniversity', name: 'Dr. B.R. Ambedkar University Delhi' },
+  knowsAbout: ['Study planning', 'Student productivity', 'Product analytics', 'Educational apps'],
+  knowsLanguage: ['English', 'Hindi'],
+};
+const page = { '@type': 'AboutPage', name: 'About studyplanner.tech and ClassTrack', url: `${SITE.url}/about/`, mainEntity: { '@id': `${SITE.url}/about/#prince-kumar` } };
+---
+<Base title="About ClassTrack & studyplanner.tech: Who We Are and How We Write" description="Who builds ClassTrack and studyplanner.tech, why, and how we write and fact-check our study guides and tools. Editorial policy, sources and corrections." crumbs={[{ name: 'About', href: '/about/' }]} schema={[person, page]}>
+  <section class="section" style="padding-top:40px">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">About us</span>
+        <h1 style="font-size:clamp(2.2rem,4.8vw,3.6rem)">Built by a student, <em style="color:var(--cta)">for</em> students.</h1>
+        <p class="lead">studyplanner.tech is the free tools and guides site of {SITE.app}, a study planner app for Android. We make planning a week of study take minutes, not an evening.</p>
+      </div>
+      <div class="stage t-lavender" style="min-height:360px">
+        <img src="/img/mascot-wave.webp" alt="Kiro, the ClassTrack AI study assistant mascot, waving" width="240" height="240" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight band-cream">
+    <div class="narrow prose">
+      <h2 id="founder" style="margin-top:0">The founder</h2>
+      <p><strong>{SITE.author.name}</strong> is the founder of {SITE.app}. He studied at the University of Delhi and is now doing an MBA at Dr. B.R. Ambedkar University Delhi. Before ClassTrack he worked in digital marketing and analytics, building dashboards and reporting for client websites.</p>
+      <p>He started ClassTrack after a semester in which his timetable lived in a photo, assignments in a group chat, exam dates in a notes app, and study plans nowhere at all. ClassTrack began as an attendance tracker and grew into a full student planner: timetable, homework, exams, grades and an AI study assistant.</p>
+      <p>Find him at <a href={SITE.author.site} rel="me noopener">princekumar.me</a> or write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap center"><h2>What we believe</h2></div>
+    <div class="wrap grid g3" style="margin-top:40px">
+      <div class="card t-mint"><span class="ico"><Icon name="flask" /></span><h3>Evidence over hype</h3><p class="small">Our tools are built on study methods with strong research behind them, mainly spaced practice and self-testing. We cite the studies.</p></div>
+      <div class="card t-lavender"><span class="ico"><Icon name="shield" /></span><h3>Private by default</h3><p class="small">The free tools run in your browser and send nothing to us. The app keeps your data in your own account, which you can delete.</p></div>
+      <div class="card t-pink"><span class="ico"><Icon name="target" /></span><h3>Honest numbers</h3><p class="small">We do not publish made-up download counts, ratings or reviews. Every number on this site is a product fact or comes from a cited source.</p></div>
+    </div>
+  </section>
+
+  <section class="section tight band-blue" id="editorial">
+    <div class="narrow prose">
+      <h2 style="margin-top:0">Editorial policy</h2>
+      <h3>How we write guides</h3>
+      <ul>
+        <li>Every guide is written or reviewed by {SITE.author.name} and names its author and publish date.</li>
+        <li>Claims about learning are linked to peer-reviewed papers, listed at the end of each guide with a DOI where available. We prefer reviews and meta-analyses over single studies, and we say when a finding comes from a lab study.</li>
+        <li>Numbers are copied from the original paper, not from other websites.</li>
+        <li>Product facts (what is free, what is in Pro) are checked against the app’s own code before publishing. Last full check: {SITE.updated}.</li>
+      </ul>
+      <h3>How we build tools</h3>
+      <ul>
+        <li>Formulas are shown on each tool page so you can check the maths.</li>
+        <li>Where boards or universities use different rules (for example CGPA conversion), we show every common formula and tell you to use your institution’s official one.</li>
+      </ul>
+      <h3>AI use</h3>
+      <p>We use AI tools to help with drafting and code. A person checks every claim, number and source before anything is published.</p>
+      <h3>Independence</h3>
+      <p>studyplanner.tech is owned by ClassTrack and promotes the ClassTrack app. We say so on every page. We do not accept paid placements in our guides.</p>
+      <h3>Corrections</h3>
+      <p>Found a mistake? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with the page link. We fix confirmed errors and update the page date.</p>
+    </div>
+  </section>
+
+  <AppBand />
+</Base>

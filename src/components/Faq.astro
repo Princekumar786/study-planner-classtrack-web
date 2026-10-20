@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+import type { QA } from '../lib/schema';
+interface Props { items: QA[]; supportLink?: boolean }
+const { items, supportLink = false } = Astro.props;
+---
+<div class="faq">
+  {items.map((i, n) => (
+    <details open={n === 0}>
+      <summary>{i.q}<Icon name="chevron" /></summary>
+      <div class="ans"><p set:html={i.a} /></div>
+    </details>
+  ))}
+  {supportLink && (
+    <details>
+      <summary>Still have a question?<Icon name="chevron" /></summary>
+      <div class="ans"><p>Read the <a href="/faq/">full FAQ</a> or <a href="/contact/">contact the team</a>. A real person replies, usually within two working days.</p></div>
+    </details>
+  )}
+</div>

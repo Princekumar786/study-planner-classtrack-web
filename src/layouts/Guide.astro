@@ -1,0 +1,76 @@
+---
+import Base from './Base.astro';
+import AppBand from '../components/AppBand.astro';
+import Icon from '../components/Icon.astro';
+import { GUIDES, SITE, TOOLS } from '../data/site';
+import { articleSchema, faqSchema, type QA } from '../lib/schema';
+
+interface Props {
+  href: string;
+  tldr: string[];
+  toc: { id: string; label: string }[];
+  sources: { text: string; url: string }[];
+  faqs?: QA[];
+  tools?: string[];
+}
+const { href, tldr, toc, sources, faqs = [], tools = [] } = Astro.props;
+const g = GUIDES.find((x) => x.href === href)!;
+const schema: Record<string, unknown>[] = [articleSchema({ title: g.title, path: href, description: g.desc, date: g.date })];
+if (faqs.length) schema.push(faqSchema(faqs));
+const related = GUIDES.filter((x) => x.href !== href).slice(0, 3);
+const relTools = TOOLS.filter((t) => tools.includes(t.href));
+const nice = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title={g.title} description={g.desc} type="article" published={g.date} modified={g.date} crumbs={[{ name: 'Guides', href: '/guides/' }, { name: g.label, href }]} schema={schema}>
+  <article class="section" style="padding-top:32px">
+    <div class="narrow">
+      <span class="eyebrow">{g.tag} · {g.minutes} min read</span>
+      <h1 style="font-size:clamp(2rem,4.4vw,3.1rem)">{g.title}</h1>
+      <p class="lead">{g.desc}</p>
+      <div class="byline">
+        <span class="av" aria-hidden="true">PK</span>
+        <span>By <a href="/about/" rel="author">{SITE.author.name}</a>, {SITE.author.role}<br />Published {nice(g.date)} · Fact-checked against the sources below</span>
+      </div>
+      <div class="tldr">
+        <h2>Key takeaways</h2>
+        <ul>{tldr.map((t) => <li set:html={t} />)}</ul>
+      </div>
+      <nav class="toc" aria-label="Contents">
+        <strong>In this guide</strong>
+        <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{t.label}</a></li>)}</ol>
+      </nav>
+      <div class="prose">
+        <slot />
+        {faqs.length > 0 && (
+          <>
+            <h2 id="faq">Frequently asked questions</h2>
+            {faqs.map((f) => <><h3>{f.q}</h3><p set:html={f.a} /></>)}
+          </>
+        )}
+        <h2 id="sources">Sources</h2>
+        <ol class="sources">{sources.map((s) => <li>{s.text} <a href={s.url} rel="noopener">{s.url.replace(/^https?:\/\//, '')}</a></li>)}</ol>
+      </div>
+      <div class="card t-lavender" style="margin-top:40px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center">
+        <span class="av" style="width:56px;height:56px;border-radius:50%;background:#fff;display:grid;place-items:center;font-weight:700;color:var(--cta-hover)" aria-hidden="true">PK</span>
+        <div><strong>About the author</strong><p class="small" style="margin:4px 0 0">{SITE.author.bio} <a href="/about/">More about our editorial process</a>.</p></div>
+      </div>
+    </div>
+  </article>
+
+  {relTools.length > 0 && (
+    <section class="section tight band-mint">
+      <div class="wrap center"><h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Put this guide into practice</h2></div>
+      <div class="wrap grid g3" style="margin-top:32px">
+        {relTools.map((t) => <a class="card lift" href={t.href} style="background:#fff"><span class={`ico t-${t.tint}`}><Icon name={t.icon} /></span><h3>{t.title}</h3><p class="small muted">{t.desc}</p></a>)}
+      </div>
+    </section>
+  )}
+
+  <section class="section tight">
+    <div class="wrap"><h2 class="center" style="font-size:clamp(1.6rem,3vw,2.2rem)">Keep reading</h2></div>
+    <div class="wrap grid g3" style="margin-top:32px">
+      {related.map((r) => <a class={`card lift t-${r.tint}`} href={r.href}><span class="tag" style="background:#fff">{r.tag}</span><h3 style="margin-top:12px">{r.title}</h3><p class="small">{r.desc}</p></a>)}
+    </div>
+  </section>
+  <AppBand />
+</Base>

@@ -1,0 +1,68 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/evidence-based-study-techniques/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'A major 2013 review rated ten study techniques. Only two got the top rating: <strong>practice testing</strong> and <strong>distributed practice</strong> (spacing).',
+    '<strong>Highlighting, rereading and summarising</strong> were rated low utility, even though students use them most.',
+    'Active recall feels harder and less productive in the moment, but <strong>wins a week later</strong>.',
+    'Both top techniques depend on a <strong>plan made in advance</strong>, which is what a study planner is for.',
+  ]}
+  toc={[
+    { id: 'ratings', label: 'How ten techniques were rated' },
+    { id: 'recall', label: 'Active recall (practice testing)' },
+    { id: 'spacing', label: 'Spaced repetition (distributed practice)' },
+    { id: 'interleave', label: 'Interleaving' },
+    { id: 'planner', label: 'Building them into your planner' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/exam-countdown/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'What is the most effective study technique?', a: 'Based on the evidence reviewed by Dunlosky and colleagues (2013), practice testing (actively recalling information) and distributed practice (spreading study over time) are the most effective and widely applicable techniques.' },
+    { q: 'Is highlighting a waste of time?', a: 'Not entirely, but on its own it does little for learning. Use it to mark what to test yourself on later, then close the book and recall.' },
+    { q: 'How often should I review with spaced repetition?', a: 'A practical schedule is to review a topic 1 day, about 1 week, and about 3–4 weeks after first learning it. Longer gaps tend to work better the longer you need to remember (Cepeda et al., 2006).' },
+  ]}
+  sources={[
+    { text: 'Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J. & Willingham, D. T. (2013). Improving students’ learning with effective learning techniques: Promising directions from cognitive and educational psychology. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Roediger, H. L. & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255.', url: 'https://doi.org/10.1111/j.1467-9280.2006.01693.x' },
+    { text: 'Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+    { text: 'Rohrer, D. & Taylor, K. (2007). The shuffling of mathematics problems improves learning. Instructional Science, 35, 481–498.', url: 'https://doi.org/10.1007/s11251-007-9015-8' },
+  ]}
+>
+  <p>Most students study the way they were never taught not to: rereading, highlighting, copying notes neatly. Learning research has a clear message about these habits, and a clear alternative.</p>
+
+  <h2 id="ratings">How ten techniques were rated</h2>
+  <p>In 2013, five cognitive and educational psychologists led by John Dunlosky reviewed the evidence on ten common techniques and rated each one’s overall usefulness for students.</p>
+  <table>
+    <thead><tr><th scope="col">Rating</th><th scope="col">Techniques</th></tr></thead>
+    <tbody>
+      <tr><td><strong>High</strong></td><td>Practice testing; distributed practice</td></tr>
+      <tr><td>Moderate</td><td>Interleaved practice; elaborative interrogation (asking “why?”); self-explanation</td></tr>
+      <tr><td>Low</td><td>Summarisation; highlighting/underlining; keyword mnemonic; imagery for text; rereading</td></tr>
+    </tbody>
+  </table>
+  <p>“Low” does not mean useless in every case; it means the evidence for broad benefit is weak, or the benefit is limited to narrow situations.</p>
+
+  <h2 id="recall">Active recall (practice testing)</h2>
+  <p>Active recall means pulling information out of your memory instead of putting it in again. Flashcards, past papers, writing everything you remember on a blank page, and explaining a topic out loud are all forms of it.</p>
+  <p>In a classic experiment, Roediger and Karpicke (2006) had students either reread a short passage four times, or read it once and then try to recall it three times. Five minutes later the rereaders did better. One week later the result flipped: <strong>the recall group remembered 61% of the passage, the rereaders 40%</strong>. The rereaders were also more confident they would remember it, which is why rereading feels better than it works.</p>
+  <p><strong>How to use it:</strong> end every study block with 5–10 minutes of recall without notes, then check and fix gaps.</p>
+
+  <h2 id="spacing">Spaced repetition (distributed practice)</h2>
+  <p>Spacing means splitting the same total study time into several sessions over days or weeks, rather than one long session. A review of hundreds of experiments by Cepeda and colleagues (2006) found spaced study consistently produced better later recall than massed study (cramming), and that the best gap grows with how long you need to remember.</p>
+  <p><strong>How to use it:</strong> revisit each topic about 1 day, 1 week and 3–4 weeks after you first learn it. Put those reviews in your planner when you first study the topic, or they will not happen.</p>
+
+  <h2 id="interleave">Interleaving</h2>
+  <p>Interleaving means mixing different types of problems or topics in one session. In a maths study by Rohrer and Taylor (2007), students who practised shuffled problem types scored much higher on a later test than students who practised one type at a time, even though practice felt harder.</p>
+  <p><strong>How to use it:</strong> mix two or three subjects per study day, and mix problem types within a practice set.</p>
+
+  <h2 id="planner">Building them into your planner</h2>
+  <p>Notice what spacing and testing have in common: both need decisions made <em>before</em> the exam is close. You cannot space study you start the night before. That is the real job of a study planner.</p>
+  <ul>
+    <li>Use the <a href="/tools/study-plan-generator/">study plan generator</a>: it mixes subjects each day, schedules a review round, and ends with a testing phase.</li>
+    <li>Use the <a href="/tools/exam-countdown/">exam countdown</a> to see whether you have time for three rounds.</li>
+    <li>In the ClassTrack app, turn notes into flashcards and study a whole deck (Pro), and let the AI planner split a syllabus into topics.</li>
+  </ul>
+</Guide>

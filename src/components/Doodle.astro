@@ -1,0 +1,15 @@
+---
+// Original flat doodles used as small spot illustrations.
+interface Props { kind?: 'star' | 'spark' | 'squiggle' | 'dot' | 'pencil' | 'clock' | 'book' | 'smile'; size?: number; color?: string; style?: string; class?: string }
+const { kind = 'star', size = 28, color = '#FFC94D', style, class: cls } = Astro.props;
+---
+<svg class:list={['doodle', cls]} style={style} width={size} height={size} viewBox="0 0 40 40" aria-hidden="true">
+  {kind === 'star' && <path d="M20 3c1.6 9 5 12.4 14 14-9 1.6-12.4 5-14 14-1.6-9-5-12.4-14-14 9-1.6 12.4-5 14-14z" fill={color} />}
+  {kind === 'spark' && <g stroke={color} stroke-width="3.5" stroke-linecap="round"><path d="M20 4v9M20 27v9M4 20h9M27 20h9" /></g>}
+  {kind === 'squiggle' && <path d="M3 24c5-10 9 10 14 0s9 10 14 0 6-6 6-6" fill="none" stroke={color} stroke-width="3.5" stroke-linecap="round" />}
+  {kind === 'dot' && <circle cx="20" cy="20" r="9" fill={color} />}
+  {kind === 'pencil' && <g><rect x="8" y="16" width="24" height="8" rx="2" transform="rotate(-35 20 20)" fill={color} /><path d="m6.5 31.5 2-6 4 3z" fill="#1B1C34" /></g>}
+  {kind === 'clock' && <g><circle cx="20" cy="20" r="15" fill={color} /><path d="M20 11v10l6 4" stroke="#1B1C34" stroke-width="3" fill="none" stroke-linecap="round" /></g>}
+  {kind === 'book' && <g><path d="M6 9c5-2 10-2 14 1 4-3 9-3 14-1v22c-5-2-10-2-14 1-4-3-9-3-14-1z" fill={color} /><path d="M20 10v22" stroke="#1B1C34" stroke-width="2.5" /></g>}
+  {kind === 'smile' && <g><circle cx="20" cy="20" r="16" fill={color} /><circle cx="14.5" cy="17" r="2.2" fill="#1B1C34" /><circle cx="25.5" cy="17" r="2.2" fill="#1B1C34" /><path d="M13 24c4 5 10 5 14 0" stroke="#1B1C34" stroke-width="2.6" fill="none" stroke-linecap="round" /></g>}
+</svg>

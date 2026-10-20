@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../data/site';
+const schema = [{ '@type': 'ContactPage', name: 'Contact ClassTrack', url: `${SITE.url}/contact/`, mainEntity: { '@id': `${SITE.url}/#org` } }];
+---
+<Base title="Contact ClassTrack | studyplanner.tech" description="Contact the ClassTrack team for support, feedback, corrections or partnerships. We reply within two working days." crumbs={[{ name: 'Contact', href: '/contact/' }]} schema={schema}>
+  <section class="section center" style="padding-top:40px">
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h1>Talk to a <em style="color:var(--cta)">real</em> person</h1>
+      <p class="lead">We usually reply within two working days (India time).</p>
+    </div>
+    <div class="wrap grid g3" style="margin-top:48px;text-align:left">
+      <div class="card t-lavender"><span class="ico"><Icon name="mail" /></span><h2 style="font-size:1.2rem">Support &amp; feedback</h2><p class="small">Questions about the app, your account or Pro.</p><a href={`mailto:${SITE.email}?subject=Support`}>{SITE.email}</a></div>
+      <div class="card t-cream"><span class="ico"><Icon name="pen" /></span><h2 style="font-size:1.2rem">Corrections</h2><p class="small">Spotted an error in a guide or tool? Send the page link and what is wrong.</p><a href={`mailto:${SITE.email}?subject=Correction`}>Report a correction</a></div>
+      <div class="card t-mint"><span class="ico"><Icon name="users" /></span><h2 style="font-size:1.2rem">Schools &amp; partners</h2><p class="small">Colleges, student clubs and educators who want to work with us.</p><a href={`mailto:${SITE.email}?subject=Partnership`}>Get in touch</a></div>
+    </div>
+    <p class="small muted" style="margin-top:32px">In the app: Settings → Send feedback. Founder: <a href="/about/">{SITE.author.name}</a>, Delhi NCR, India.</p>
+  </section>
+</Base>

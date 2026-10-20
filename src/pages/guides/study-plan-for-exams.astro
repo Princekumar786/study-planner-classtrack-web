@@ -1,0 +1,80 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/study-plan-for-exams/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Plan <strong>backwards from the exam date</strong>: count real study days first, then divide the syllabus.',
+    'Use three rounds: <strong>learn (≈60%) → review (≈20%) → test (≈20%)</strong>.',
+    'Give weak, high-mark topics the most time and revisit every topic at least twice.',
+    'In the last fortnight, switch to <strong>timed past papers and self-testing</strong>, not rereading.',
+  ]}
+  toc={[
+    { id: 'count', label: 'Step 1: count your real study days' },
+    { id: 'syllabus', label: 'Step 2: map the syllabus' },
+    { id: 'rounds', label: 'Step 3: plan three rounds' },
+    { id: 'timelines', label: 'Plans for 8 weeks, 4 weeks and 10 days' },
+    { id: 'week', label: 'The final week' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/exam-countdown/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'How many weeks before an exam should I start studying?', a: 'For major exams such as boards or finals, 6–8 weeks allows three full rounds. For a mid-term, 1–2 weeks is often enough. The <a href="/tools/exam-countdown/">exam countdown</a> shows how many hours per day your timeline needs.' },
+    { q: 'Is it better to study one subject a day before exams?', a: 'Usually no. Rotating two or three subjects per day spaces your review and keeps you fresh. The exception is the day before each paper, when focusing on that subject makes sense.' },
+    { q: 'Does rereading notes help?', a: 'Rereading feels productive but is rated low-utility in research reviews. Recalling material without notes, then checking, gives much stronger long-term memory.' },
+  ]}
+  sources={[
+    { text: 'Roediger, H. L. & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255.', url: 'https://doi.org/10.1111/j.1467-9280.2006.01693.x' },
+    { text: 'Dunlosky, J. et al. (2013). Improving students’ learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Cepeda, N. J. et al. (2006). Distributed practice in verbal recall tasks. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+    { text: 'Buehler, R., Griffin, D. & Ross, M. (1994). Exploring the “planning fallacy”. Journal of Personality and Social Psychology, 67(3), 366–381.', url: 'https://doi.org/10.1037/0022-3514.67.3.366' },
+  ]}
+>
+  <p>A study plan for exams answers one question: <em>what should I study on each day between now and the exam?</em> The backward planning method answers it by starting from the exam date and working back, so the time you have shapes the plan, not wishful thinking.</p>
+
+  <h2 id="count">Step 1: count your real study days</h2>
+  <p>Count the days from tomorrow to the day before the exam. Then subtract:</p>
+  <ul>
+    <li>one rest day per week (you need it, and the plan needs slack);</li>
+    <li>days already taken by other tests, trips or events;</li>
+    <li>a buffer of 10–15% for illness and surprises. People reliably underestimate how long work takes, a bias known as the <em>planning fallacy</em> (Buehler et al., 1994).</li>
+  </ul>
+  <p>Multiply the days left by the hours you can really study per day. That total is your budget.</p>
+
+  <h2 id="syllabus">Step 2: map the syllabus</h2>
+  <p>List every chapter or topic for each subject. Mark each one:</p>
+  <table>
+    <thead><tr><th scope="col">Mark</th><th scope="col">Meaning</th><th scope="col">Time weight</th></tr></thead>
+    <tbody>
+      <tr><td>Red</td><td>Do not understand / never studied</td><td>3×</td></tr>
+      <tr><td>Amber</td><td>Partly understand</td><td>2×</td></tr>
+      <tr><td>Green</td><td>Confident</td><td>1× (quick review and testing)</td></tr>
+    </tbody>
+  </table>
+  <p>Weight by marks too: a red topic worth 20% of the paper deserves more time than a red topic worth 5%.</p>
+
+  <h2 id="rounds">Step 3: plan three rounds</h2>
+  <ol>
+    <li><strong>Learn (first ~60% of days).</strong> Cover every red and amber topic once. End each session with a short self-quiz.</li>
+    <li><strong>Review (next ~20%).</strong> Come back to every topic, greens included. Spaced review is what makes knowledge last; in a large review of spacing research, spreading study over time consistently beat cramming the same hours together (Cepeda et al., 2006).</li>
+    <li><strong>Test (final ~20%).</strong> Timed past papers and recall without notes. In Roediger and Karpicke’s 2006 study, students who practised recalling a passage remembered 61% of it a week later, against 40% for students who had reread it.</li>
+  </ol>
+  <p>The free <a href="/tools/study-plan-generator/">study plan generator</a> builds exactly this structure from your subjects and dates.</p>
+
+  <h2 id="timelines">Plans for 8 weeks, 4 weeks and 10 days</h2>
+  <h3>8 weeks out</h3>
+  <p>Weeks 1–5 learn, weeks 6–7 review, week 8 tests. Two to three subjects per day, one rest day a week.</p>
+  <h3>4 weeks out</h3>
+  <p>Weeks 1–2 learn reds and ambers only, week 3 review everything, week 4 past papers. Skip deep study of greens; just test them.</p>
+  <h3>10 days out</h3>
+  <p>Days 1–5: a fast pass of high-mark reds. Days 6–9: one past paper per subject per day, then fix every mistake. Day 10: light review and early sleep.</p>
+
+  <h2 id="week">The final week</h2>
+  <ul>
+    <li>Do at least one full paper under timed conditions for each subject.</li>
+    <li>Keep a “mistakes list” and review it daily.</li>
+    <li>Protect sleep. Late-night cramming trades tomorrow’s alertness for very little memory.</li>
+    <li>The night before: pack your bag, check the time and room, stop by a fixed hour.</li>
+  </ul>
+</Guide>

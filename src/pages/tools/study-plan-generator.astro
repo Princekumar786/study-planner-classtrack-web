@@ -1,0 +1,162 @@
+---
+import Tool from '../../layouts/Tool.astro';
+import Icon from '../../components/Icon.astro';
+import type { QA } from '../../lib/schema';
+
+const faqs: QA[] = [
+  { q: 'How does the study plan generator work?', a: 'It counts the study days between today and your exam (skipping your rest day), splits them into three phases (learn, review, test), and fills each day with study blocks. Harder subjects get more blocks, and subjects rotate so you mix two or more per day.' },
+  { q: 'Why does the plan end with practice tests?', a: 'Research on learning found practice testing and spreading study over time are the two most effective techniques for long-term memory (Dunlosky et al., 2013). The last phase of the plan is mainly self-testing and past papers for that reason.' },
+  { q: 'Can I print or save my study plan?', a: 'Yes. Use the Print button to print or save as PDF. Your inputs are remembered on this device, so the plan is still here when you come back.' },
+  { q: 'How many hours should I study per day?', a: 'Choose what you can keep up every day, not your best day. For most students that is 2–4 hours on school or college days and 5–6 in the final weeks before exams.' },
+  { q: 'Is there an app version?', a: 'Yes. In the ClassTrack app, the AI can build a topic-by-topic study plan from a goal and deadline, and remind you each day. Two AI plans are free.' },
+];
+---
+<Tool
+  href="/tools/study-plan-generator/"
+  metaTitle="Free Study Plan Generator: Make a Study Timetable in 1 Minute"
+  description="Free study plan generator. Enter subjects, exam date and daily hours to get a day-by-day study timetable with spaced revision and practice tests."
+  h1="Study plan <em style='color:var(--cta)'>generator</em>"
+  lead="Enter your subjects, exam date and how long you can study each day. Get a printable day-by-day study timetable with revision and practice tests built in."
+  faqs={faqs}
+  howTo={{ name: 'How to make a study plan with this generator', steps: [
+    'Add each subject and mark how hard it is for you (easy, medium or hard).',
+    'Pick the date you start studying and the date of your exam.',
+    'Choose how many hours you can study per day and one rest day a week.',
+    'Press Generate plan. Check the table and change any input to rebuild it.',
+    'Print it or save it as a PDF, and stick it where you study.',
+  ] }}
+  appTitle="Want reminders for this plan?"
+  appText="ClassTrack’s AI study planner builds a topic-by-topic plan from your goal and deadline and shows the next step every day. Free on Android."
+>
+  <div slot="tool" class="sp">
+    <form class="tool-panel no-print" id="sp-form">
+      <div class="lbl" id="subj-lbl">Subjects</div>
+      <div class="list-rows" id="subjects" aria-labelledby="subj-lbl"></div>
+      <button type="button" class="text-btn" id="add-subj"><Icon name="plus" class="i16" /> Add subject</button>
+      <div class="row" style="margin-top:16px">
+        <div class="field"><label for="sp-start">Start date</label><input type="date" id="sp-start" required /></div>
+        <div class="field"><label for="sp-exam">Exam date</label><input type="date" id="sp-exam" required /></div>
+        <div class="field"><label for="sp-hours">Hours per day</label><select id="sp-hours">{[1, 1.5, 2, 2.5, 3, 4, 5, 6].map((h) => <option value={h} selected={h === 3}>{h} h</option>)}</select></div>
+        <div class="field"><label for="sp-rest">Rest day</label><select id="sp-rest"><option value="-1">No rest day</option>{['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map((d, i) => <option value={i} selected={i === 0}>{d}</option>)}</select></div>
+      </div>
+      <div class="btn-row"><button class="btn" type="submit">Generate plan</button><button class="btn ghost" type="button" id="sp-print"><Icon name="print" class="i16" /> Print / PDF</button></div>
+      <p class="small" id="sp-error" role="alert" style="color:#B42318;margin:12px 0 0"></p>
+    </form>
+    <div id="sp-out" aria-live="polite"></div>
+  </div>
+
+  <h2>How the plan is built</h2>
+  <p>The generator follows the method in our guide <a href="/guides/study-plan-for-exams/">how to make a study plan for exams</a>. Your study days are split into three phases:</p>
+  <ul>
+    <li><strong>Learn (first ~60% of days):</strong> cover each subject’s syllabus for the first time. For every block an easy subject gets, a medium subject gets two and a hard subject gets three.</li>
+    <li><strong>Review (next ~20%):</strong> come back to every subject at least once. Spaced review is what moves material into long-term memory.</li>
+    <li><strong>Test (final ~20%):</strong> past papers and self-testing without notes. A study by Roediger and Karpicke (2006) found students who practised recalling a text remembered 61% of it a week later, against 40% for students who reread it.</li>
+  </ul>
+  <p>Subjects are rotated so most days mix two or more. Each block is about one hour; take a 5–10 minute break between blocks, or use the <a href="/tools/pomodoro-timer/">Pomodoro timer</a>.</p>
+  <h2>Tips for sticking to the plan</h2>
+  <ul>
+    <li>Start each block by writing what you remember from last time, then open your notes.</li>
+    <li>If you miss a day, do not double the next day. Move the missed block to your rest day or drop the least important topic.</li>
+    <li>Check the plan every Sunday and rebuild it if your exam date or hours change.</li>
+  </ul>
+</Tool>
+
+<script>
+  type Subj = { name: string; level: number };
+  const KEY = 'sp-generator-v1';
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const list = $('subjects');
+  const fmt = (d: Date) => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  const iso = (d: Date) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+
+  function addRow(s: Subj = { name: '', level: 2 }) {
+    const n = list.children.length + 1;
+    const row = document.createElement('div');
+    row.className = 'list-row';
+    row.style.gridTemplateColumns = '1fr 150px 46px';
+    row.innerHTML = `
+      <div class="field" style="margin:0"><label class="sr-only" for="sn${n}">Subject ${n}</label><input id="sn${n}" class="sn" placeholder="e.g. Physics" maxlength="40" value="${esc(s.name)}"></div>
+      <div class="field" style="margin:0"><label class="sr-only" for="sl${n}">Difficulty for subject ${n}</label><select id="sl${n}" class="sl"><option value="1">Easy</option><option value="2">Medium</option><option value="3">Hard</option></select></div>
+      <button type="button" class="icon-btn" aria-label="Remove subject ${n}">✕</button>`;
+    (row.querySelector('.sl') as HTMLSelectElement).value = String(s.level);
+    row.querySelector('button')!.addEventListener('click', () => { if (list.children.length > 1) row.remove(); });
+    list.appendChild(row);
+  }
+
+  const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const inFour = new Date(today); inFour.setDate(today.getDate() + 28);
+  (saved?.subjects ?? [{ name: 'Maths', level: 3 }, { name: 'Physics', level: 3 }, { name: 'Chemistry', level: 2 }, { name: 'English', level: 1 }]).forEach(addRow);
+  $<HTMLInputElement>('sp-start').value = saved?.start ?? iso(today);
+  $<HTMLInputElement>('sp-exam').value = saved?.exam ?? iso(inFour);
+  if (saved) { $<HTMLSelectElement>('sp-hours').value = saved.hours; $<HTMLSelectElement>('sp-rest').value = saved.rest; }
+
+  $('add-subj').addEventListener('click', () => { if (list.children.length < 12) addRow(); });
+  $('sp-print').addEventListener('click', () => window.print());
+
+  function build() {
+    const err = $('sp-error'); err.textContent = '';
+    const subjects: Subj[] = Array.from(list.children).map((r) => ({
+      name: (r.querySelector('.sn') as HTMLInputElement).value.trim(),
+      level: Number((r.querySelector('.sl') as HTMLSelectElement).value),
+    })).filter((s) => s.name);
+    const start = new Date($<HTMLInputElement>('sp-start').value + 'T00:00');
+    const exam = new Date($<HTMLInputElement>('sp-exam').value + 'T00:00');
+    const hours = Number($<HTMLSelectElement>('sp-hours').value);
+    const rest = Number($<HTMLSelectElement>('sp-rest').value);
+    localStorage.setItem(KEY, JSON.stringify({ subjects, start: $<HTMLInputElement>('sp-start').value, exam: $<HTMLInputElement>('sp-exam').value, hours, rest }));
+    if (!subjects.length) { err.textContent = 'Add at least one subject.'; return; }
+    if (isNaN(+start) || isNaN(+exam) || exam <= start) { err.textContent = 'The exam date must be after the start date.'; return; }
+
+    const days: Date[] = [];
+    for (let d = new Date(start); d < exam; d.setDate(d.getDate() + 1)) days.push(new Date(d));
+    if (days.length > 366) { err.textContent = 'Please choose a period of one year or less.'; return; }
+    const study = days.filter((d) => d.getDay() !== rest);
+    if (!study.length) { err.textContent = 'There are no study days in this range.'; return; }
+
+    const blocks = Math.max(1, Math.round(hours));
+    const learnEnd = Math.max(1, Math.round(study.length * 0.6));
+    const reviewEnd = Math.max(learnEnd, Math.round(study.length * 0.8));
+    // Weighted queue for interleaving: hard x3, medium x2, easy x1
+    const weighted: string[] = [];
+    const maxL = Math.max(...subjects.map((s) => s.level));
+    for (let r = 0; r < maxL; r++) subjects.forEach((s) => { if (s.level > r) weighted.push(s.name); });
+    const plainOrder = subjects.slice().sort((a, b) => b.level - a.level).map((s) => s.name);
+    let wi = 0, pi = 0;
+    const next = (q: string[], i: number, today: string[]) => {
+      // avoid same subject twice in a row on a day when possible
+      for (let k = 0; k < q.length; k++) { const c = q[(i + k) % q.length]; if (today[today.length - 1] !== c) return { c, i: i + k + 1 }; }
+      return { c: q[i % q.length], i: i + 1 };
+    };
+
+    const counts: Record<string, number> = {};
+    let rows = '';
+    let si = 0;
+    for (const d of days) {
+      if (d.getDay() === rest) { rows += `<tr><td>${fmt(d)}</td><td><span class="tag rest">Rest</span></td><td>Rest day. Light review only if you want.</td></tr>`; continue; }
+      const phase = si < learnEnd ? 'learn' : si < reviewEnd ? 'review' : 'test';
+      const today: string[] = [];
+      for (let b = 0; b < blocks; b++) {
+        if (phase === 'learn') { const r = next(weighted, wi, today); wi = r.i; today.push(r.c); }
+        else { const r = next(plainOrder, pi, today); pi = r.i; today.push(r.c); }
+      }
+      today.forEach((s) => (counts[s] = (counts[s] || 0) + 1));
+      const label = phase === 'learn' ? '<span class="tag">Learn</span>' : phase === 'review' ? '<span class="tag rev">Review</span>' : '<span class="tag mock">Test</span>';
+      const what = phase === 'learn' ? 'New topics, then 10 min self-quiz' : phase === 'review' ? 'Revisit notes, flashcards, weak topics' : 'Past paper or timed self-test, then fix mistakes';
+      rows += `<tr><td>${fmt(d)}</td><td>${label}</td><td><strong>${today.map(esc).join(' · ')}</strong><br><span class="muted small">${what}</span></td></tr>`;
+      si++;
+    }
+    const total = study.length * blocks;
+    const summary = subjects.map((s) => `<li><strong>${esc(s.name)}</strong>: ${counts[s.name] || 0} blocks (~${Math.round((counts[s.name] || 0) * hours / blocks)} h)</li>`).join('');
+    $('sp-out').innerHTML = `
+      <div class="result">
+        <div class="big">${study.length} study days</div>
+        <p style="margin:6px 0 0">${total} study blocks of about ${Math.round(hours / blocks * 60)} min, from ${fmt(start)} to ${fmt(days[days.length - 1])}. Exam on ${fmt(exam)}.</p>
+        <ul style="margin:12px 0 0">${summary}</ul>
+      </div>
+      <div class="out-table tool-panel" style="margin-top:20px"><table><caption class="sr-only">Day-by-day study plan</caption><thead><tr><th scope="col">Day</th><th scope="col">Phase</th><th scope="col">Study blocks</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
+  $('sp-form').addEventListener('submit', (e) => { e.preventDefault(); build(); });
+  build();
+</script>

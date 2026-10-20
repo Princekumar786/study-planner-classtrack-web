@@ -1,0 +1,14 @@
+---
+interface Props { back: string; front: string; backAlt: string; frontAlt: string; tint?: string; mascot?: string; eager?: boolean }
+const { back, front, backAlt, frontAlt, tint = 'var(--blue)', mascot = 'wave', eager = false } = Astro.props;
+import Doodle from './Doodle.astro';
+---
+<div class="stage" style={`background:${tint}`}>
+  <Doodle kind="star" size={34} style="top:9%;left:9%" />
+  <Doodle kind="spark" size={26} color="#6C5CE7" style="top:14%;right:16%" />
+  <Doodle kind="dot" size={18} color="#F9C9D0" style="bottom:16%;left:12%" />
+  <Doodle kind="squiggle" size={46} color="#9AD9B4" style="bottom:8%;left:36%" />
+  <div class="phone back"><img src={back} alt={backAlt} width="480" height="1040" loading={eager ? 'eager' : 'lazy'} decoding="async" /></div>
+  <div class="phone front"><img src={front} alt={frontAlt} width="480" height="1040" loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : undefined} decoding="async" /></div>
+  {mascot && <img class="mascot" src={`/img/mascot-${mascot}.webp`} alt="" width="104" height="104" loading="lazy" />}
+</div>

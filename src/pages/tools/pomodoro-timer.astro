@@ -1,0 +1,146 @@
+---
+import Tool from '../../layouts/Tool.astro';
+import Icon from '../../components/Icon.astro';
+import type { QA } from '../../lib/schema';
+
+const faqs: QA[] = [
+  { q: 'What is the Pomodoro technique?', a: 'The Pomodoro technique is a time-management method created by Francesco Cirillo in the late 1980s. You work for 25 minutes on one task, take a 5-minute break, and after four rounds take a longer 15–30 minute break. Each 25-minute block is called a “pomodoro”, after the tomato-shaped kitchen timer Cirillo used.' },
+  { q: 'Is 25 minutes the best length for studying?', a: 'Twenty-five minutes is a good starting point because it is short enough to start easily. Many students move to 40–50 minute blocks for deep work like problem sets. Use the settings above to change the length.' },
+  { q: 'Will the timer keep running if I switch tabs?', a: 'Yes. The timer is based on the clock, not on counting ticks, so it stays accurate in a background tab. Allow notifications to get an alert when a session ends.' },
+  { q: 'What should I do during a Pomodoro break?', a: 'Get up, drink water, look away from screens. Avoid social media: it is hard to stop after five minutes.' },
+];
+---
+<Tool
+  href="/tools/pomodoro-timer/"
+  metaTitle="Pomodoro Timer for Studying: Free 25/5 Online Focus Timer"
+  description="Free online Pomodoro timer for students. 25-minute focus sessions, 5-minute breaks and long breaks after four rounds, with sound, notifications and custom lengths."
+  h1="Pomodoro <em style='color:var(--cta)'>study</em> timer"
+  lead="Work for 25 minutes, rest for 5. After four rounds, take a long break. Change the lengths to suit you."
+  faqs={faqs}
+  howTo={{ name: 'How to use the Pomodoro technique for studying', steps: [
+    'Pick one task and write it in the box, for example “Chapter 4 practice questions”.',
+    'Press Start and work only on that task until the timer rings.',
+    'Take the 5-minute break. Stand up and look away from your screen.',
+    'Repeat. After four focus sessions, take a 15–30 minute long break.',
+  ] }}
+  appTitle="Turn focus sessions into a habit"
+  appText="ClassTrack’s habit tracker builds a daily study streak, next to your timetable and homework. Free on Android."
+>
+  <div slot="tool">
+    <div class="tool-panel pomo">
+      <div class="modes" role="tablist" aria-label="Timer mode">
+        <button type="button" role="tab" data-mode="focus" aria-selected="true">Focus</button>
+        <button type="button" role="tab" data-mode="short" aria-selected="false">Short break</button>
+        <button type="button" role="tab" data-mode="long" aria-selected="false">Long break</button>
+      </div>
+      <div class="ring">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54" fill="none" stroke="#EAE5FA" stroke-width="8"/><circle id="pm-arc" cx="60" cy="60" r="54" fill="none" stroke="#6C5CE7" stroke-width="8" stroke-linecap="round" stroke-dasharray="339.3" stroke-dashoffset="0" transform="rotate(-90 60 60)"/></svg>
+        <div class="ring-in">
+          <div class="time" id="pm-time" role="timer" aria-live="off">25:00</div>
+          <p class="small muted" id="pm-status" aria-live="polite">Session 1 of 4</p>
+        </div>
+      </div>
+      <div class="field" style="max-width:420px;margin:0 auto 18px"><label for="pm-task" class="sr-only">What are you working on?</label><input id="pm-task" maxlength="60" placeholder="What are you working on?" style="text-align:center" /></div>
+      <div class="btn-row" style="justify-content:center">
+        <button class="btn" type="button" id="pm-start"><Icon name="play" class="i16" /> <span>Start</span></button>
+        <button class="btn ghost" type="button" id="pm-reset"><Icon name="reset" class="i16" /> Reset</button>
+        <button class="btn ghost" type="button" id="pm-skip">Skip</button>
+      </div>
+      <details class="pm-set">
+        <summary>Settings</summary>
+        <div class="row" style="margin-top:12px">
+          <div class="field"><label for="pm-f">Focus (min)</label><input id="pm-f" type="number" min="1" max="120" value="25" /></div>
+          <div class="field"><label for="pm-s">Short break (min)</label><input id="pm-s" type="number" min="1" max="60" value="5" /></div>
+          <div class="field"><label for="pm-l">Long break (min)</label><input id="pm-l" type="number" min="1" max="90" value="15" /></div>
+          <div class="field"><label for="pm-r">Rounds before long break</label><input id="pm-r" type="number" min="2" max="8" value="4" /></div>
+        </div>
+        <label class="small" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="pm-sound" checked style="width:auto;min-height:0" /> Play a sound when a session ends</label>
+      </details>
+      <p class="small" style="margin:16px 0 0">Focus sessions completed today: <strong id="pm-count">0</strong></p>
+    </div>
+  </div>
+
+  <h2>Why the Pomodoro technique works for students</h2>
+  <p>Starting is the hardest part of studying. A 25-minute block feels small enough to begin, and the timer turns “study all evening” into a few concrete rounds. The regular breaks also make it easier to keep going through a long revision day.</p>
+  <p>Pair it with a plan: decide what each pomodoro is for before you start. Our <a href="/tools/study-plan-generator/">study plan generator</a> gives you one-hour blocks, which fit two pomodoros each. For a full method, read <a href="/guides/pomodoro-technique-for-students/">the Pomodoro technique for students</a>.</p>
+</Tool>
+
+<style>
+  .pomo { text-align: center; max-width: 640px; margin: 0 auto; }
+  .modes { display: inline-flex; background: var(--lavender); border-radius: 999px; padding: 4px; gap: 4px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .modes button { border: 0; background: none; padding: 10px 18px; border-radius: 999px; font: 500 .92rem var(--font); cursor: pointer; color: var(--ink); }
+  .modes button[aria-selected="true"] { background: var(--ink); color: #fff; }
+  .ring { width: min(280px, 80vw); aspect-ratio: 1; margin: 0 auto 20px; position: relative; }
+  .ring svg { width: 100%; height: 100%; }
+  .ring circle { transition: stroke-dashoffset .5s linear; }
+  .ring-in { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .time { font-size: clamp(3rem, 12vw, 4.2rem); font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 1; }
+  .ring-in p { margin: 8px 0 0; max-width: 70%; }
+  .pm-set { margin-top: 20px; text-align: left; }
+  .pm-set summary { cursor: pointer; font-weight: 600; text-align: center; }
+</style>
+
+<script>
+  type Mode = 'focus' | 'short' | 'long';
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const KEY = 'sp-pomo-v1';
+  const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+  const today = new Date().toDateString();
+  let count = saved.day === today ? saved.count || 0 : 0;
+  if (saved.f) { $<HTMLInputElement>('pm-f').value = saved.f; $<HTMLInputElement>('pm-s').value = saved.s; $<HTMLInputElement>('pm-l').value = saved.l; $<HTMLInputElement>('pm-r').value = saved.r; }
+  let mode: Mode = 'focus';
+  let round = 1;
+  let endAt = 0; // timestamp while running
+  let remaining = 0; // ms when paused
+  let timer: number | undefined;
+  const len = (m: Mode) => 60000 * Math.max(1, Number($<HTMLInputElement>(m === 'focus' ? 'pm-f' : m === 'short' ? 'pm-s' : 'pm-l').value) || 1);
+  const rounds = () => Math.max(2, Number($<HTMLInputElement>('pm-r').value) || 4);
+  const persist = () => localStorage.setItem(KEY, JSON.stringify({ day: today, count, f: $<HTMLInputElement>('pm-f').value, s: $<HTMLInputElement>('pm-s').value, l: $<HTMLInputElement>('pm-l').value, r: $<HTMLInputElement>('pm-r').value }));
+  const label = $('pm-start').querySelector('span')!;
+
+  function show(ms: number) {
+    const s = Math.max(0, Math.ceil(ms / 1000));
+    const txt = `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+    $('pm-time').textContent = txt;
+    document.title = endAt ? `${txt} · ${mode === 'focus' ? 'Focus' : 'Break'}` : 'Pomodoro Timer for Studying: Free 25/5 Online Focus Timer';
+    $('pm-arc').setAttribute('stroke-dashoffset', String(339.3 * (1 - ms / len(mode))));
+    $('pm-arc').setAttribute('stroke', mode === 'focus' ? '#6C5CE7' : '#22C55E');
+  }
+  function setMode(m: Mode) {
+    stop(); mode = m; remaining = len(m); show(remaining);
+    document.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.mode === m)));
+    $('pm-status').textContent = m === 'focus' ? `Session ${round} of ${rounds()}` : m === 'short' ? 'Short break. Stand up and stretch.' : 'Long break. You earned it.';
+  }
+  function stop() { if (timer) clearInterval(timer); timer = undefined; if (endAt) remaining = endAt - Date.now(); endAt = 0; label.textContent = 'Start'; }
+  function beep() {
+    if (!$<HTMLInputElement>('pm-sound').checked) return;
+    try {
+      const ctx = new AudioContext();
+      [0, .25, .5].forEach((t) => { const o = ctx.createOscillator(); const g = ctx.createGain(); o.frequency.value = 880; g.gain.setValueAtTime(.2, ctx.currentTime + t); g.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + t + .2); o.connect(g).connect(ctx.destination); o.start(ctx.currentTime + t); o.stop(ctx.currentTime + t + .2); });
+    } catch { /* audio not available */ }
+  }
+  function done() {
+    stop(); beep();
+    if (mode === 'focus') {
+      count++; persist(); $('pm-count').textContent = String(count);
+      if ('Notification' in window && Notification.permission === 'granted') new Notification('Focus session done', { body: 'Time for a break.' });
+      if (round >= rounds()) { round = 1; setMode('long'); } else { round++; setMode('short'); }
+    } else {
+      if ('Notification' in window && Notification.permission === 'granted') new Notification('Break over', { body: 'Ready for the next focus session?' });
+      setMode('focus');
+    }
+  }
+  $('pm-start').addEventListener('click', () => {
+    if (endAt) { stop(); return; }
+    if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission();
+    endAt = Date.now() + (remaining || len(mode));
+    label.textContent = 'Pause';
+    timer = window.setInterval(() => { const left = endAt - Date.now(); if (left <= 0) done(); else show(left); }, 250);
+  });
+  $('pm-reset').addEventListener('click', () => { round = 1; setMode('focus'); });
+  $('pm-skip').addEventListener('click', () => { remaining = 0; endAt = Date.now(); done(); });
+  document.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode as Mode)));
+  ['pm-f', 'pm-s', 'pm-l', 'pm-r'].forEach((id) => $(id).addEventListener('change', () => { persist(); if (!endAt) setMode(mode); }));
+  $('pm-count').textContent = String(count);
+  setMode('focus');
+</script>

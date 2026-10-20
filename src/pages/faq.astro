@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import AppBand from '../components/AppBand.astro';
+import { SITE } from '../data/site';
+import { faqSchema, type QA } from '../lib/schema';
+
+const groups: { title: string; items: QA[] }[] = [
+  { title: 'Study planning', items: [
+    { q: 'What is a study planner?', a: 'A study planner is a schedule that says what you will study, when and for how long, built around your classes, deadlines and exams. It can be paper, a spreadsheet or an app like ClassTrack.' },
+    { q: 'How do I make a study plan?', a: 'List subjects and exam dates, count your real study days, split topics across them (more time for hard subjects), mix subjects each day and leave the final 20% for self-testing. The <a href="/tools/study-plan-generator/">study plan generator</a> does this for you.' },
+    { q: 'What is the difference between a study planner and a timetable?', a: 'A class timetable shows fixed lessons. A study planner adds what you do in the free time: study blocks, homework and revision. ClassTrack combines both.' },
+    { q: 'What study technique works best?', a: 'Research reviews rate practice testing (active recall) and distributed practice (spacing) highest. See our <a href="/guides/evidence-based-study-techniques/">research guide</a>.' },
+  ] },
+  { title: 'The ClassTrack app', items: [
+    { q: 'Which devices does ClassTrack support?', a: 'Android phones via Google Play. An iPhone version is coming soon. The web tools on this site work in any browser.' },
+    { q: 'How does AI timetable import work?', a: 'Take a photo of your timetable, upload a PDF or paste the text. AI reads the subjects, days, times and rooms and shows a draft schedule. You review and edit it before saving.' },
+    { q: 'Which AI model does ClassTrack use?', a: 'Google Gemini, called from ClassTrack’s own server, so the app never holds the AI key.' },
+    { q: 'Can I sync with Google Calendar?', a: 'Yes, with Pro. ClassTrack imports your calendar and tasks daily and pushes classes, exams and deadlines back to Google Calendar.' },
+    { q: 'Does it track attendance?', a: 'Yes. Mark each class present, absent or cancelled and see your percentage by subject. A quick <a href="/tools/attendance-calculator/">attendance calculator</a> is also on this site.' },
+  ] },
+  { title: 'Account, privacy & billing', items: [
+    { q: 'Is my data private?', a: 'Your planner data is stored in your own account and is not visible to other users. You can delete your account and its data from Settings at any time. Read the <a href="/privacy/">privacy policy</a>.' },
+    { q: 'Do the web tools store my data?', a: 'Only in your own browser (local storage), so your inputs are still there next time. Nothing is sent to our servers.' },
+    { q: 'How do I cancel Pro?', a: 'In Google Play: Profile → Payments & subscriptions → Subscriptions → ClassTrack → Cancel.' },
+    { q: 'How do I contact support?', a: `Email <a href="mailto:${SITE.email}">${SITE.email}</a> or use Send feedback in the app’s Settings.` },
+  ] },
+];
+const all = groups.flatMap((g) => g.items);
+---
+<Base title="FAQ: Study Planner, Timetable App & ClassTrack Questions" description="Answers to common questions about study planners, making a study timetable, the ClassTrack app, AI timetable import, privacy and Pro billing." crumbs={[{ name: 'FAQ', href: '/faq/' }]} schema={[faqSchema(all)]}>
+  <section class="section center" style="padding-top:40px;padding-bottom:24px">
+    <div class="wrap"><span class="eyebrow">FAQ</span><h1>Questions, <em style="color:var(--cta)">answered</em></h1><p class="lead">About study planning, the ClassTrack app and your account.</p></div>
+  </section>
+  {groups.map((g) => (
+    <section class="section tight" style="padding-top:24px">
+      <div class="wrap center"><h2 style="font-size:clamp(1.5rem,3vw,2rem)">{g.title}</h2></div>
+      <Faq items={g.items} />
+    </section>
+  ))}
+  <section class="section tight center"><div class="wrap"><p>Did not find your answer? <a href="/contact/">Contact us</a>.</p></div></section>
+  <AppBand />
+</Base>

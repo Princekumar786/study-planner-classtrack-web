@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import Phones from '../components/Phones.astro';
+import AppBand from '../components/AppBand.astro';
+import Scribble from '../components/Scribble.astro';
+import { LANDINGS, type Landing } from '../data/landings';
+import { SITE, TOOLS, GUIDES, PLANNERS } from '../data/site';
+import { faqSchema, appSchema } from '../lib/schema';
+
+export function getStaticPaths() {
+  return LANDINGS.map((l) => ({ params: { landing: l.slug }, props: { l } }));
+}
+const { l } = Astro.props as { l: Landing };
+const faqs = [l.whatIs, ...l.faqs];
+const crumbs = [{ name: PLANNERS.find((p) => p.href === `/${l.slug}/`)?.label ?? l.keyword, href: `/${l.slug}/` }];
+const tools = TOOLS.filter((t) => l.tools.includes(t.href));
+const guides = GUIDES.filter((g) => l.guides.includes(g.href));
+const others = PLANNERS.filter((p) => p.href !== `/${l.slug}/`);
+const tints = ['lavender', 'mint', 'cream', 'pink', 'blue', 'lavender'];
+---
+<Base title={l.title} description={l.description} crumbs={crumbs} schema={[appSchema(), faqSchema(faqs)]}>
+  <section class="section" style="padding-top:40px">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">{l.keyword}</span>
+        <h1>{l.h1[0]} <em style="color:var(--cta)">{l.h1[1]}</em> {l.h1[2]}</h1>
+        <p class="lead">{l.lead}</p>
+        <div class="btn-row">
+          <a class="btn" href={SITE.playUrl} rel="noopener">Get {SITE.app} free</a>
+          <a class="btn ghost" href={tools[0].href}>Try the free {tools[0].label.toLowerCase()}</a>
+        </div>
+        <span class="cta-note">{`Free on Android · iPhone coming soon · Updated ${new Date(SITE.updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`}</span>
+      </div>
+      <Phones {...l.screens} tint={l.screens.tint} eager />
+    </div>
+  </section>
+
+  <section class="section tight band-blue">
+    <div class="narrow">
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">{l.whatIs.q}</h2>
+      <p class="lead" style="max-width:none">{l.whatIs.a}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap center">
+      <h2>What you get in the <Scribble>{l.keyword}</Scribble></h2>
+    </div>
+    <div class="wrap grid g3" style="margin-top:48px">
+      {l.features.map((f, i) => (
+        <div class={`card t-${tints[i]}`}>
+          <span class="ico"><Icon name={f.icon} /></span>
+          <h3>{f.title}</h3>
+          <p class="small">{f.text}</p>
+        </div>
+      ))}
+    </div>
+    <div class="cta-under"><a class="btn" href={SITE.playUrl} rel="noopener">Download free on Google Play</a></div>
+  </section>
+
+  <section class="section band-lavender">
+    <div class="wrap split">
+      <div>
+        <h2>How to use it in 4 steps</h2>
+        <ol class="steps">
+          {l.steps.map((s, i) => (
+            <li><span class="n">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
+          ))}
+        </ol>
+      </div>
+      <div class="card" style="background:#fff">
+        <span class="ico t-cream"><Icon name="sparkle" /></span>
+        <h3>{l.tips.title}</h3>
+        <p>{l.tips.text}</p>
+        <p class="small muted" style="margin-top:16px">Tip from {SITE.author.name}, founder of {SITE.app}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow">
+      <h2 class="center">Paper planner vs calendar app vs {SITE.app}</h2>
+      <div class="out-table prose" style="margin-top:32px">
+        <table>
+          <thead><tr><th scope="col">Feature</th><th scope="col">Paper planner</th><th scope="col">Generic calendar app</th><th scope="col">{SITE.app}</th></tr></thead>
+          <tbody>{l.compare.map((c) => <tr><th scope="row" style="background:none">{c.row}</th><td>{c.paper}</td><td>{c.generic}</td><td><strong>{c.ct}</strong></td></tr>)}</tbody>
+        </table>
+      </div>
+      <p class="small muted">Comparison of typical features. Paper planners are still great for people who like writing by hand; many students use both.</p>
+    </div>
+  </section>
+
+  <section class="section band-mint">
+    <div class="wrap center"><h2>Free tools for this</h2><p class="lead">No sign-up. Works in any browser.</p></div>
+    <div class="wrap grid g3" style="margin-top:40px">
+      {tools.map((t) => (
+        <a class="card lift" href={t.href} style="background:#fff">
+          <span class={`ico t-${t.tint}`}><Icon name={t.icon} /></span>
+          <h3>{t.title}</h3>
+          <p class="small muted">{t.desc}</p>
+          <span class="more">Open tool →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap center"><h2>Frequently asked questions</h2></div>
+    <Faq items={faqs} supportLink />
+  </section>
+
+  <section class="section tight" style="padding-top:0">
+    <div class="wrap grid g2">
+      <div class="card t-cream">
+        <h3>Related guides</h3>
+        <ul>{guides.map((g) => <li><a href={g.href}>{g.title}</a></li>)}</ul>
+      </div>
+      <div class="card t-blue">
+        <h3>Other planners</h3>
+        <ul>{others.map((p) => <li><a href={p.href}>{p.label}</a>: {p.desc}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <AppBand />
+</Base>
+
+<style>
+  .steps { list-style: none; padding: 0; margin: 32px 0 0; display: flex; flex-direction: column; gap: 22px; }
+  .steps li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; }
+  .steps .n { width: 48px; height: 48px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-weight: 700; font-size: 1.1rem; }
+  .steps h3 { margin: 4px 0 2px; }
+  .steps p { margin: 0; color: var(--ink-2); }
+</style>

@@ -1,0 +1,81 @@
+---
+import Base from './Base.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import AppBand from '../components/AppBand.astro';
+import { SITE, TOOLS } from '../data/site';
+import { faqSchema, toolSchema, type QA } from '../lib/schema';
+
+interface Props {
+  href: string;
+  metaTitle: string;
+  description: string;
+  h1: string;
+  lead: string;
+  faqs: QA[];
+  howTo?: { name: string; steps: string[] };
+  appTitle?: string;
+  appText?: string;
+}
+const { href, metaTitle, description, h1, lead, faqs, howTo, appTitle, appText } = Astro.props;
+const tool = TOOLS.find((t) => t.href === href)!;
+const related = TOOLS.filter((t) => t.href !== href).slice(0, 4);
+const schema: Record<string, unknown>[] = [toolSchema(tool.title, href, description), faqSchema(faqs)];
+if (howTo) {
+  schema.push({
+    '@type': 'HowTo',
+    name: howTo.name,
+    step: howTo.steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s })),
+  });
+}
+---
+<Base title={metaTitle} description={description} crumbs={[{ name: 'Free tools', href: '/tools/' }, { name: tool.label, href }]} schema={schema}>
+  <section class="section" style="padding-top:32px;padding-bottom:40px">
+    <div class="narrow center">
+      <span class="eyebrow">Free tool · no sign-up</span>
+      <h1 style="font-size:clamp(2.1rem,4.6vw,3.4rem)" set:html={h1} />
+      <p class="lead">{lead}</p>
+    </div>
+  </section>
+
+  <section class="tool-wrap">
+    <div class="wrap">
+      <div class="tool"><slot name="tool" /></div>
+      <p class="small muted center no-print" style="margin-top:14px">Runs in your browser. Nothing you type leaves your device.</p>
+    </div>
+  </section>
+
+  {howTo && (
+    <section class="section tight">
+      <div class="narrow">
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">{howTo.name}</h2>
+        <ol class="prose">{howTo.steps.map((s) => <li>{s}</li>)}</ol>
+      </div>
+    </section>
+  )}
+
+  <section class="section tight" style="padding-top:0">
+    <div class="narrow prose"><slot /></div>
+  </section>
+
+  <section class="section tight band-lavender no-print">
+    <div class="wrap center"><h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">FAQ</h2></div>
+    <Faq items={faqs} />
+  </section>
+
+  <section class="section tight no-print">
+    <div class="wrap"><h2 class="center" style="font-size:clamp(1.6rem,3vw,2.2rem)">More free tools</h2></div>
+    <div class="wrap grid g4" style="margin-top:32px">
+      {related.map((t) => (
+        <a class={`card lift t-${t.tint}`} href={t.href}>
+          <span class="ico"><Icon name={t.icon} /></span>
+          <h3>{t.label}</h3>
+          <p class="small">{t.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <AppBand title={appTitle} text={appText} />
+  <p class="small muted center no-print" style="margin-top:-20px">Built and checked by <a href="/about/">{SITE.author.name}</a>. Last reviewed {SITE.updated}.</p>
+</Base>

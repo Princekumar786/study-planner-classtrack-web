@@ -1,0 +1,65 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-manage-homework/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Use one simple loop: <strong>capture → plan → do → close</strong>.',
+    'Write homework down <strong>the moment it is set</strong>, in one place, with a due date.',
+    'Split big assignments into dated steps and aim to finish <strong>two days early</strong>.',
+    'Start with the hardest task for 25 minutes, not the easiest one.',
+  ]}
+  toc={[
+    { id: 'capture', label: 'Capture everything' },
+    { id: 'plan', label: 'Plan backwards' },
+    { id: 'do', label: 'Do: beat procrastination' },
+    { id: 'close', label: 'Close and review' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/assignment-planner/', '/tools/pomodoro-timer/', '/tools/timetable-maker/']}
+  faqs={[
+    { q: 'How do I stop leaving homework until the last minute?', a: 'Make the first step tiny and scheduled: “Tuesday 4:30, read the essay question and write three ideas.” Starting is the hard part; once you have started, it is much easier to continue.' },
+    { q: 'Should I do easy or hard homework first?', a: 'Start with the hardest or most important task while your energy is highest, for one Pomodoro. Then switch to easier tasks if you are tired.' },
+    { q: 'What is the best homework planner?', a: 'One you check every day. A phone app such as ClassTrack groups tasks into Overdue, Today and Next 7 days and reminds you before they are due; a paper diary works too if you open it daily.' },
+  ]}
+  sources={[
+    { text: 'Buehler, R., Griffin, D. & Ross, M. (1994). Exploring the “planning fallacy”: Why people underestimate their task completion times. Journal of Personality and Social Psychology, 67(3), 366–381.', url: 'https://doi.org/10.1037/0022-3514.67.3.366' },
+    { text: 'Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. American Psychologist, 54(7), 493–503.', url: 'https://doi.org/10.1037/0003-066X.54.7.493' },
+  ]}
+>
+  <p>Homework rarely goes wrong because it is too hard. It goes wrong because it is forgotten, underestimated, or started the night before. A simple four-step loop fixes all three.</p>
+
+  <h2 id="capture">1. Capture everything</h2>
+  <p>Write every piece of homework down the moment it is set, with the subject and due date. One place only. If it lives in your memory, a WhatsApp group and a notebook, something will slip.</p>
+  <p>In the ClassTrack app, type it into the quick-add bar on the Tasks page and press enter; add the due date when you have a second.</p>
+
+  <h2 id="plan">2. Plan backwards</h2>
+  <p>For anything bigger than one sitting, work back from the deadline:</p>
+  <ul>
+    <li>Split it into steps (research, outline, draft, check).</li>
+    <li>Give each step a date.</li>
+    <li>Set your own deadline two days early. People consistently underestimate how long tasks take, even when they know past tasks ran late. Psychologists call this the planning fallacy (Buehler et al., 1994).</li>
+  </ul>
+  <p>The <a href="/tools/assignment-planner/">assignment planner</a> does this for essays, projects, lab reports and problem sets.</p>
+
+  <h2 id="do">3. Do: beat procrastination</h2>
+  <ul>
+    <li><strong>Schedule the first step.</strong> “On Tuesday at 4:30 I will read the question and list three ideas.” Specific when-then plans make follow-through much more likely (Gollwitzer, 1999).</li>
+    <li><strong>Use a 25-minute timer.</strong> Commit only to one <a href="/tools/pomodoro-timer/">Pomodoro</a>. Most of the time you will keep going.</li>
+    <li><strong>Phone in another room.</strong> Not face down. Another room.</li>
+    <li><strong>Hardest first.</strong> Do the most demanding task while you are fresh.</li>
+  </ul>
+
+  <h2 id="close">4. Close and review</h2>
+  <p>Tick it off when it is submitted, not when it is “nearly done”. On Sunday, look at the coming week: what is due, which days are busy, where the work fits. Ten minutes of weekly review prevents most last-minute panics.</p>
+  <table>
+    <thead><tr><th scope="col">Homework type</th><th scope="col">When to start</th></tr></thead>
+    <tbody>
+      <tr><td>Daily homework</td><td>Same day it is set</td></tr>
+      <tr><td>Worksheet / problem set due in a week</td><td>Within 2 days</td></tr>
+      <tr><td>Essay or report</td><td>Within 3 days; first draft by halfway</td></tr>
+      <tr><td>Group project</td><td>First meeting within a week; agree roles and dates</td></tr>
+    </tbody>
+  </table>
+</Guide>

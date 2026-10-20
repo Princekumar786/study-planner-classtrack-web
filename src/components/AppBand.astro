@@ -1,0 +1,20 @@
+---
+import { SITE } from '../data/site';
+interface Props { title?: string; text?: string }
+const { title = 'Take your plan with you.', text = `Free on Android. ${SITE.app} keeps your timetable, homework, exams and study plan in one place, with reminders.` } = Astro.props;
+---
+<section class="section tight no-print">
+  <div class="wrap">
+    <div class="app-band">
+      <div>
+        <h2>{title}</h2>
+        <p>{text}</p>
+        <div class="btn-row" style="margin-top:24px">
+          <a class="btn" href={SITE.playUrl} rel="noopener">Get {SITE.app} free</a>
+          <a class="btn light" href="/features/">See all features</a>
+        </div>
+      </div>
+      <img class="m" src="/img/mascot-celebrate.webp" alt="" width="140" height="140" loading="lazy" />
+    </div>
+  </div>
+</section>

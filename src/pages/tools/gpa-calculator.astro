@@ -1,0 +1,125 @@
+---
+import Tool from '../../layouts/Tool.astro';
+import Icon from '../../components/Icon.astro';
+import type { QA } from '../../lib/schema';
+
+const faqs: QA[] = [
+  { q: 'How do I calculate my GPA?', a: 'Multiply each course’s grade points by its credits, add those up, and divide by the total credits. For example, an A (4.0) in a 3-credit course and a B (3.0) in a 4-credit course gives (12 + 12) ÷ 7 = 3.43.' },
+  { q: 'What is the difference between SGPA and CGPA?', a: 'SGPA (semester grade point average) is your average for one semester. CGPA (cumulative grade point average) is the credit-weighted average across all semesters so far. Use the CGPA section of the calculator to combine semesters.' },
+  { q: 'What grade points does the 10-point scale use?', a: 'The calculator uses the UGC choice-based credit system scale common in Indian universities: O = 10, A+ = 9, A = 8, B+ = 7, B = 6, C = 5, P = 4, F = 0. Check your university’s rules, as some use different letters.' },
+  { q: 'What grade points does the 4.0 scale use?', a: 'A+ and A = 4.0, A− = 3.7, B+ = 3.3, B = 3.0, B− = 2.7, C+ = 2.3, C = 2.0, C− = 1.7, D+ = 1.3, D = 1.0, F = 0. This is the most common US scale.' },
+  { q: 'Can I track my GPA over a whole degree?', a: 'Yes, in the ClassTrack app you log marks as you get them and your GPA updates. With Pro, the semester wrap-up saves each semester and tracks SGPA and CGPA.' },
+];
+---
+<Tool
+  href="/tools/gpa-calculator/"
+  metaTitle="GPA Calculator: 4.0 Scale, SGPA & CGPA (10-Point) — Free"
+  description="Free GPA calculator for students. Calculate GPA on a 4.0 scale or SGPA on a 10-point scale with credits, then combine semesters into CGPA."
+  h1="GPA, SGPA &amp; <em style='color:var(--cta)'>CGPA</em> calculator"
+  lead="Add your courses, credits and grades. Get your GPA on a 4.0 scale or SGPA on a 10-point scale, then combine semesters into CGPA."
+  faqs={faqs}
+  howTo={{ name: 'How to calculate GPA with credits', steps: [
+    'Choose the 4.0 scale or the 10-point scale.',
+    'Add each course with its credits and your grade.',
+    'Read your GPA or SGPA, updated as you type.',
+    'To get CGPA, enter each semester’s SGPA and credits in the second section.',
+  ] }}
+  appTitle="Watch your GPA update as you go"
+  appText="Log marks in ClassTrack and see your GPA, plus the score you need on the next test to hit your target."
+>
+  <div slot="tool">
+    <div class="tool-panel">
+      <div class="row" style="max-width:420px">
+        <div class="field"><label for="g-scale">Grading scale</label><select id="g-scale"><option value="4">4.0 scale (A, B, C…)</option><option value="10">10-point scale (O, A+, A…)</option></select></div>
+      </div>
+      <div class="lbl" id="g-lbl">Courses</div>
+      <div class="list-rows" id="g-rows" aria-labelledby="g-lbl"></div>
+      <button type="button" class="text-btn" id="g-add"><Icon name="plus" class="i16" /> Add course</button>
+      <div class="result" aria-live="polite"><span class="small">Your <span id="g-name">GPA</span></span><div class="big" id="g-out">0.00</div><p class="small" id="g-sub" style="margin:4px 0 0"></p></div>
+    </div>
+
+    <div class="tool-panel" style="margin-top:20px">
+      <h2 style="font-size:1.3rem">CGPA from semesters</h2>
+      <div class="list-rows" id="c-rows"></div>
+      <button type="button" class="text-btn" id="c-add"><Icon name="plus" class="i16" /> Add semester</button>
+      <div class="result" aria-live="polite"><span class="small">Your CGPA</span><div class="big" id="c-out">0.00</div><p class="small" style="margin:4px 0 0">Convert it with the <a href="/tools/cgpa-to-percentage/">CGPA to percentage</a> tool.</p></div>
+    </div>
+  </div>
+
+  <h2>The GPA formula</h2>
+  <p><strong>GPA = Σ (grade points × credits) ÷ Σ credits.</strong> Courses with more credits count more. A course with zero credits does not change your GPA.</p>
+  <p><strong>CGPA = Σ (SGPA × semester credits) ÷ Σ semester credits.</strong> Averaging SGPAs without credits is only correct when every semester has the same credits.</p>
+  <h2>Using your GPA to plan study time</h2>
+  <p>Your lowest-grade, highest-credit course has the biggest effect on your GPA. Give it the longest study blocks in your week. The <a href="/tools/study-plan-generator/">study plan generator</a> lets you mark it as “hard” so it gets three times the time of an easy course.</p>
+</Tool>
+
+<script>
+  const SCALES: Record<string, [string, number][]> = {
+    '4': [['A+', 4], ['A', 4], ['A−', 3.7], ['B+', 3.3], ['B', 3], ['B−', 2.7], ['C+', 2.3], ['C', 2], ['C−', 1.7], ['D+', 1.3], ['D', 1], ['F', 0]],
+    '10': [['O', 10], ['A+', 9], ['A', 8], ['B+', 7], ['B', 6], ['C', 5], ['P', 4], ['F', 0]],
+  };
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const KEY = 'sp-gpa-v1';
+  const rows = $('g-rows'), crow = $('c-rows');
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+  const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+
+  function opts(scale: string, sel?: string) { return SCALES[scale].map(([g, p]) => `<option value="${p}"${g === sel ? ' selected' : ''}>${g} (${p})</option>`).join(''); }
+  function addCourse(c = { name: '', credits: 3, grade: '' }) {
+    const n = rows.children.length + 1;
+    const scale = $<HTMLSelectElement>('g-scale').value;
+    const r = document.createElement('div');
+    r.className = 'list-row'; r.style.gridTemplateColumns = '1.5fr 90px 1fr 46px';
+    r.innerHTML = `<div class="field" style="margin:0"><label class="small" for="gc${n}">Course ${n}</label><input id="gc${n}" class="gn" maxlength="40" value="${esc(c.name)}" placeholder="Course name"></div>
+      <div class="field" style="margin:0"><label class="small" for="gk${n}">Credits</label><input id="gk${n}" class="gk" type="number" min="0" max="30" step="0.5" value="${c.credits}"></div>
+      <div class="field" style="margin:0"><label class="small" for="gg${n}">Grade</label><select id="gg${n}" class="gg">${opts(scale, c.grade)}</select></div>
+      <button type="button" class="icon-btn" aria-label="Remove course ${n}">✕</button>`;
+    r.querySelector('button')!.addEventListener('click', () => { if (rows.children.length > 1) { r.remove(); calc(); } });
+    rows.appendChild(r);
+  }
+  function addSem(s = { sgpa: '', credits: 20 }) {
+    const n = crow.children.length + 1;
+    const r = document.createElement('div');
+    r.className = 'list-row'; r.style.gridTemplateColumns = '1fr 1fr 46px';
+    r.innerHTML = `<div class="field" style="margin:0"><label class="small" for="cs${n}">Semester ${n} SGPA/GPA</label><input id="cs${n}" class="cs" type="number" min="0" max="10" step="0.01" value="${s.sgpa}"></div>
+      <div class="field" style="margin:0"><label class="small" for="cc${n}">Credits</label><input id="cc${n}" class="cc" type="number" min="0" max="60" value="${s.credits}"></div>
+      <button type="button" class="icon-btn" aria-label="Remove semester ${n}">✕</button>`;
+    r.querySelector('button')!.addEventListener('click', () => { if (crow.children.length > 1) { r.remove(); calc(); } });
+    crow.appendChild(r);
+  }
+  function calc() {
+    let pts = 0, cr = 0;
+    const courses = Array.from(rows.children).map((r) => {
+      const credits = Math.max(0, Number((r.querySelector('.gk') as HTMLInputElement).value) || 0);
+      const sel = r.querySelector('.gg') as HTMLSelectElement;
+      const gp = Number(sel.value);
+      pts += gp * credits; cr += credits;
+      return { name: (r.querySelector('.gn') as HTMLInputElement).value, credits, grade: sel.options[sel.selectedIndex]?.text.split(' ')[0] };
+    });
+    const scale = $<HTMLSelectElement>('g-scale').value;
+    $('g-name').textContent = scale === '4' ? 'GPA' : 'SGPA';
+    $('g-out').textContent = cr ? (pts / cr).toFixed(2) : '0.00';
+    $('g-sub').textContent = `${cr} credits · out of ${scale === '4' ? '4.0' : '10'}`;
+    let sp = 0, sc = 0;
+    const sems = Array.from(crow.children).map((r) => {
+      const s = Number((r.querySelector('.cs') as HTMLInputElement).value), c = Number((r.querySelector('.cc') as HTMLInputElement).value) || 0;
+      if (!isNaN(s) && (r.querySelector('.cs') as HTMLInputElement).value !== '') { sp += s * c; sc += c; }
+      return { sgpa: (r.querySelector('.cs') as HTMLInputElement).value, credits: c };
+    });
+    $('c-out').textContent = sc ? (sp / sc).toFixed(2) : '0.00';
+    localStorage.setItem(KEY, JSON.stringify({ scale, courses, sems }));
+  }
+  if (saved) $<HTMLSelectElement>('g-scale').value = saved.scale;
+  (saved?.courses ?? [{ name: 'Mathematics', credits: 4, grade: 'A' }, { name: 'Physics', credits: 3, grade: 'B+' }, { name: 'English', credits: 2, grade: 'A−' }]).forEach(addCourse);
+  (saved?.sems ?? [{ sgpa: '8.2', credits: 22 }, { sgpa: '8.6', credits: 24 }]).forEach(addSem);
+  $('g-scale').addEventListener('change', () => {
+    const scale = $<HTMLSelectElement>('g-scale').value;
+    rows.querySelectorAll<HTMLSelectElement>('.gg').forEach((s) => { s.innerHTML = opts(scale); });
+    calc();
+  });
+  $('g-add').addEventListener('click', () => { if (rows.children.length < 20) { addCourse(); calc(); } });
+  $('c-add').addEventListener('click', () => { if (crow.children.length < 12) { addSem(); calc(); } });
+  document.addEventListener('input', calc);
+  document.addEventListener('change', calc);
+  calc();
+</script>

@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import AppBand from '../../components/AppBand.astro';
+import Scribble from '../../components/Scribble.astro';
+import { TOOLS, SITE } from '../../data/site';
+
+const schema = [{
+  '@type': 'ItemList',
+  name: 'Free study planning tools',
+  itemListElement: TOOLS.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.title, url: new URL(t.href, SITE.url).href })),
+}];
+---
+<Base title="Free Study Tools: Study Plan Generator, Timetable Maker & More" description="Eight free study tools that run in your browser: study plan generator, timetable maker, exam countdown, Pomodoro timer, assignment planner, GPA and CGPA calculators." crumbs={[{ name: 'Free tools', href: '/tools/' }]} schema={schema}>
+  <section class="section center" style="padding-top:40px">
+    <div class="wrap">
+      <span class="eyebrow">Free tools</span>
+      <h1>Free tools for <Scribble>planning study</Scribble></h1>
+      <p class="lead">No sign-up, no ads, nothing uploaded. Every tool runs in your browser and remembers your inputs on your device.</p>
+    </div>
+    <div class="wrap grid g2" style="margin-top:56px;text-align:left">
+      {TOOLS.map((t) => (
+        <a class={`card lift t-${t.tint}`} href={t.href} style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start">
+          <span class="ico" style="margin:0"><Icon name={t.icon} /></span>
+          <div><h2 style="font-size:1.25rem;margin:0 0 6px">{t.title}</h2><p class="small" style="margin:0">{t.desc}</p><span class="more">Open tool →</span></div>
+        </a>
+      ))}
+    </div>
+  </section>
+  <AppBand title="Want it all in one app?" text={`${SITE.app} combines a timetable, homework planner, exam countdowns and AI study plans, with reminders. Free on Android.`} />
+</Base>

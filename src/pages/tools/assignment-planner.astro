@@ -1,0 +1,92 @@
+---
+import Tool from '../../layouts/Tool.astro';
+import type { QA } from '../../lib/schema';
+
+const faqs: QA[] = [
+  { q: 'How do I plan an assignment?', a: 'Work backwards from the due date. Split the assignment into stages (understand the brief, research, outline, draft, revise, submit), give each a share of the time, and put a personal deadline two days before the real one. This tool does the dates for you.' },
+  { q: 'What is the safety buffer?', a: 'The buffer is a number of days before the real deadline when you aim to be finished. If you get ill or another test appears, you still submit on time.' },
+  { q: 'Which assignment types are supported?', a: 'Essays and reports, projects and presentations, lab reports, and problem sets. Each uses a different set of stages and time split.' },
+  { q: 'Can I add these steps to an app?', a: 'Yes. Add each step as a task with its date in ClassTrack, and you get a reminder before each one. Tasks and reminders are free.' },
+];
+---
+<Tool
+  href="/tools/assignment-planner/"
+  metaTitle="Assignment Planner: Work Backwards From Your Due Date (Free)"
+  description="Free assignment planner. Enter the due date and type (essay, project, lab report, problem set) and get a dated step-by-step plan with a safety buffer."
+  h1="Assignment <em style='color:var(--cta)'>planner</em>"
+  lead="Enter the due date and type of assignment. Get a dated plan for every step, finishing before the deadline."
+  faqs={faqs}
+  howTo={{ name: 'How to plan an assignment backwards', steps: [
+    'Choose the assignment type and enter the title.',
+    'Enter today’s date (or when you will start) and the due date.',
+    'Pick a safety buffer: how many days early you want to finish.',
+    'Press Plan it. Add each step to your planner with its date.',
+  ] }}
+  appTitle="Get a reminder for every step"
+  appText="Add the steps as tasks in ClassTrack and see them in Today and Next 7 days, with reminders before each one."
+>
+  <div slot="tool">
+    <form class="tool-panel no-print" id="ap-form">
+      <div class="row">
+        <div class="field"><label for="ap-title">Assignment</label><input id="ap-title" maxlength="60" value="History essay" /></div>
+        <div class="field"><label for="ap-type">Type</label><select id="ap-type"><option value="essay">Essay or report</option><option value="project">Project or presentation</option><option value="lab">Lab report</option><option value="problems">Problem set / homework</option></select></div>
+        <div class="field"><label for="ap-start">Start date</label><input type="date" id="ap-start" required /></div>
+        <div class="field"><label for="ap-due">Due date</label><input type="date" id="ap-due" required /></div>
+        <div class="field"><label for="ap-buf">Safety buffer</label><select id="ap-buf"><option value="0">None</option><option value="1">1 day</option><option value="2" selected>2 days</option><option value="3">3 days</option></select></div>
+      </div>
+      <div class="btn-row"><button class="btn" type="submit">Plan it</button><button class="btn ghost" type="button" onclick="window.print()">Print / PDF</button></div>
+      <p class="small" id="ap-error" role="alert" style="color:#B42318;margin:12px 0 0"></p>
+    </form>
+    <div id="ap-out" aria-live="polite"></div>
+  </div>
+
+  <h2>Why plan backwards?</h2>
+  <p>Most students plan forwards: “I’ll start soon.” Planning backwards from the deadline shows how little time each stage really has, which is why it is the most reliable way to avoid the all-nighter. People also tend to underestimate how long tasks take (psychologists call this the planning fallacy), so the buffer protects you from your own optimism.</p>
+  <p>More tips are in <a href="/guides/how-to-manage-homework/">how to manage homework and assignments</a>.</p>
+</Tool>
+
+<script>
+  const STAGES: Record<string, [string, number][]> = {
+    essay: [['Read the brief & marking criteria', .05], ['Research & take notes', .25], ['Outline your argument', .1], ['Write the first draft', .3], ['Revise structure & argument', .15], ['Proofread, references & format', .1], ['Submit', .05]],
+    project: [['Understand the brief, agree roles', .08], ['Research & gather materials', .22], ['Plan structure / storyboard', .12], ['Build the main content', .3], ['Make slides or final output', .13], ['Rehearse or test', .1], ['Submit / present', .05]],
+    lab: [['Re-read method & collect data', .1], ['Process data, make graphs', .25], ['Write method & results', .2], ['Write discussion & conclusion', .25], ['Abstract, references, check', .15], ['Submit', .05]],
+    problems: [['Skim all questions, mark hard ones', .1], ['Do the easier questions', .35], ['Tackle the hard ones, ask for help', .35], ['Check answers & write up neatly', .15], ['Submit', .05]],
+  };
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const iso = (d: Date) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  const fmt = (d: Date) => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+  const t = new Date(); t.setHours(0, 0, 0, 0);
+  const due = new Date(t); due.setDate(t.getDate() + 14);
+  $<HTMLInputElement>('ap-start').value = iso(t);
+  $<HTMLInputElement>('ap-due').value = iso(due);
+
+  function plan() {
+    const err = $('ap-error'); err.textContent = '';
+    const start = new Date($<HTMLInputElement>('ap-start').value + 'T00:00');
+    const dueD = new Date($<HTMLInputElement>('ap-due').value + 'T00:00');
+    const buf = Number($<HTMLSelectElement>('ap-buf').value);
+    const title = $<HTMLInputElement>('ap-title').value.trim() || 'Assignment';
+    if (isNaN(+start) || isNaN(+dueD) || dueD < start) { err.textContent = 'The due date must be on or after the start date.'; return; }
+    const totalDays = Math.round((+dueD - +start) / 864e5);
+    const work = Math.max(0, totalDays - buf);
+    const finish = new Date(start); finish.setDate(start.getDate() + work);
+    const stages = STAGES[$<HTMLSelectElement>('ap-type').value];
+    let acc = 0;
+    const rows = stages.map(([name, share], i) => {
+      const from = new Date(start); from.setDate(start.getDate() + Math.floor(acc * work));
+      acc += share;
+      const to = new Date(start); to.setDate(start.getDate() + (i === stages.length - 1 ? work : Math.max(Math.floor(acc * work) - 1, Math.floor((acc - share) * work))));
+      return `<tr><td>${i + 1}</td><td><strong>${esc(name)}</strong></td><td>${+from === +to ? fmt(from) : fmt(from) + ' – ' + fmt(to)}</td></tr>`;
+    }).join('');
+    const warn = totalDays < 3;
+    $('ap-out').innerHTML = `
+      <div class="result ${warn ? 'warn' : ''}">
+        <div class="big">${totalDays} day${totalDays === 1 ? '' : 's'}</div>
+        <p style="margin:6px 0 0">until <strong>${esc(title)}</strong> is due on ${fmt(dueD)}. Aim to finish by <strong>${fmt(finish)}</strong>${buf ? ` (${buf}-day buffer)` : ''}.${warn ? ' Short on time: do the stages in one or two long sessions and skip polish before content.' : ''}</p>
+      </div>
+      <div class="out-table tool-panel" style="margin-top:20px"><table><caption class="sr-only">Assignment plan</caption><thead><tr><th scope="col">#</th><th scope="col">Step</th><th scope="col">When</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
+  $('ap-form').addEventListener('submit', (e) => { e.preventDefault(); plan(); });
+  plan();
+</script>

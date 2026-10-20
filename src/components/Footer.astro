@@ -1,0 +1,81 @@
+---
+import { PLANNERS, TOOLS, GUIDES, SITE } from '../data/site';
+const year = 2026;
+---
+<footer class="footer">
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <h3>Planners</h3>
+        <ul>{PLANNERS.map((p) => <li><a href={p.href}>{p.label}</a></li>)}</ul>
+      </div>
+      <div>
+        <h3>Free tools</h3>
+        <ul>{TOOLS.map((t) => <li><a href={t.href}>{t.label}</a></li>)}</ul>
+      </div>
+      <div>
+        <h3>Study guides</h3>
+        <ul>{GUIDES.map((g) => <li><a href={g.href}>{g.label}</a></li>)}</ul>
+      </div>
+      <div>
+        <h3>Popular searches</h3>
+        <ul>
+          <li><a href="/">Free study planner</a></li>
+          <li><a href="/tools/study-plan-generator/">Study timetable generator</a></li>
+          <li><a href="/tools/timetable-maker/">Class timetable maker</a></li>
+          <li><a href="/schedule-planner/">Weekly schedule planner</a></li>
+          <li><a href="/exam-planner/">Revision planner</a></li>
+          <li><a href="/guides/weekly-schedule-for-students/">Student weekly schedule</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bot">
+      <div class="f-brand">
+        <a class="logo" href="/"><img src="/img/app-icon.webp" alt="" width="32" height="32" loading="lazy" /><b>studyplanner<span>.tech</span></b></a>
+        <p>Free planning tools and guides for students, from the team behind the {SITE.app} study planner app.</p>
+        <div class="btn-row">
+          <a class="badge-play" href={SITE.playUrl} rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 2.2 13.4 12l-9.8 9.8c-.4-.2-.6-.7-.6-1.2V3.4c0-.5.2-1 .6-1.2z"/><path fill="#FBBC04" d="m16.8 15.4-3.4-3.4 3.4-3.4 3.9 2.2c1.1.6 1.1 1.7 0 2.4z"/><path fill="#EA4335" d="M16.8 15.4 13.4 12l-9.8 9.8c.4.3 1 .2 1.6-.1z"/><path fill="#4285F4" d="M16.8 8.6 5.2 2.3c-.6-.3-1.2-.4-1.6-.1l9.8 9.8z"/></svg>
+            <span><small>GET IT ON</small><strong>Google Play</strong></span>
+          </a>
+          <span class="badge-soon">iPhone: coming soon</span>
+        </div>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <ul>
+          <li><a href="/features/">Features</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/tools/">All free tools</a></li>
+          <li><a href={SITE.playUrl} rel="noopener">Download for Android</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about/">About &amp; editorial policy</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href={SITE.appSite} rel="noopener">classtracks.app</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Follow &amp; share</h3>
+        <ul>
+          <li><a href={`mailto:${SITE.email}`}>Email us</a></li>
+          <li><a href={SITE.author.site} rel="noopener">Founder's site</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-legal">
+      <span>© {year} ClassTrack. Made in India for students everywhere.</span>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <span>Language: English</span>
+      </nav>
+    </div>
+  </div>
+</footer>

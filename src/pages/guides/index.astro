@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import AppBand from '../../components/AppBand.astro';
+import Scribble from '../../components/Scribble.astro';
+import { GUIDES, SITE } from '../../data/site';
+
+const schema = [{
+  '@type': 'CollectionPage',
+  name: 'Study guides',
+  url: `${SITE.url}/guides/`,
+  hasPart: GUIDES.map((g) => ({ '@type': 'Article', headline: g.title, url: new URL(g.href, SITE.url).href, datePublished: g.date })),
+}];
+---
+<Base title="Study Guides: Timetables, Exam Plans & Study Techniques" description="Practical, research-backed study guides: how to make a study timetable, plan for exams, use active recall and spaced repetition, the Pomodoro technique and more." crumbs={[{ name: 'Guides', href: '/guides/' }]} schema={schema}>
+  <section class="section center" style="padding-top:40px">
+    <div class="wrap">
+      <span class="eyebrow">Study guides</span>
+      <h1>Study smarter, <Scribble>plan better</Scribble></h1>
+      <p class="lead">Every guide cites peer-reviewed research and turns it into a plan you can use this week. Written by {SITE.author.name}, reviewed against the sources listed in each guide.</p>
+    </div>
+    <div class="wrap grid g3" style="margin-top:56px;text-align:left">
+      {GUIDES.map((g) => (
+        <a class={`card lift t-${g.tint}`} href={g.href}>
+          <span class="tag" style="background:#fff">{g.tag} · {g.minutes} min</span>
+          <h2 style="font-size:1.25rem;margin:14px 0 8px">{g.title}</h2>
+          <p class="small">{g.desc}</p>
+          <span class="more">Read guide →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+  <AppBand />
+</Base>

@@ -1,0 +1,379 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Doodle from '../components/Doodle.astro';
+import Faq from '../components/Faq.astro';
+import Scribble from '../components/Scribble.astro';
+import Phones from '../components/Phones.astro';
+import { SITE, TOOLS, GUIDES } from '../data/site';
+import { faqSchema, appSchema, type QA } from '../lib/schema';
+
+const faqs: QA[] = [
+  { q: 'What is the best free study planner for students?', a: `The best study planner is the one you open every day. ${SITE.app} is a free study planner app for Android that keeps your class timetable, homework, exam countdowns and study plan in one place, with reminders. If you only need a quick plan, the free <a href="/tools/study-plan-generator/">study plan generator</a> on this site works in your browser with no sign-up.` },
+  { q: 'How do I make a study timetable?', a: 'List your subjects and exam dates, block out fixed commitments (classes, travel, sleep), pick 2–4 realistic study blocks per day, give harder subjects more blocks, and leave the last 20% of the time for revision and practice tests. Our <a href="/guides/how-to-make-a-study-timetable/">7-step guide</a> walks through it, and the <a href="/tools/study-plan-generator/">generator</a> does the maths for you.' },
+  { q: 'Is ClassTrack free?', a: `Yes. The study planner, timetable, exam countdowns, homework list, grades and reminders are free. The free plan also includes ${SITE.free.aiMessages} AI messages a month, ${SITE.free.timetableScans} AI timetable scans and ${SITE.free.learningPlans} AI learning plans. ClassTrack Pro removes those limits and adds extras like Google Calendar sync. See <a href="/pricing/">pricing</a>.` },
+  { q: 'Can AI make my timetable from a photo?', a: `Yes. In ${SITE.app} you can take a photo of your printed timetable, upload a PDF or paste the text. The AI reads subjects, days, times and rooms and builds a weekly class schedule you can review and edit before saving.` },
+  { q: 'Does it work on iPhone?', a: `${SITE.app} is available now on Android through Google Play. The iPhone version is coming soon. All the free tools on studyplanner.tech work in any browser, including Safari on iPhone.` },
+  { q: 'Do the free tools save my data?', a: 'The tools run entirely in your browser. Nothing you type is sent to our servers. Some tools remember your last inputs on your own device (local storage) so you can come back to them; you can clear this any time from your browser.' },
+];
+
+const chips = [
+  { id: 'exams', icon: 'hourglass', label: 'Exam revision', text: 'Count down to every exam and get a day-by-day revision plan that leaves time for mock tests.', href: '/exam-planner/', cta: 'Open the exam planner' },
+  { id: 'timetable', icon: 'grid', label: 'Class timetable', text: 'Build a colour-coded weekly class timetable, print it, or snap a photo and let AI do it in the app.', href: '/tools/timetable-maker/', cta: 'Make a timetable' },
+  { id: 'homework', icon: 'check', label: 'Homework & assignments', text: 'Capture every assignment with a due date, then work backwards so nothing is left to the last night.', href: '/homework-planner/', cta: 'Plan homework' },
+  { id: 'week', icon: 'calendar', label: 'Weekly schedule', text: 'Fit study blocks around classes, travel, work and rest with a week you can actually keep.', href: '/schedule-planner/', cta: 'Plan my week' },
+  { id: 'focus', icon: 'timer', label: 'Focus & procrastination', text: 'Use 25-minute Pomodoro blocks to start, keep going, and stop feeling guilty about breaks.', href: '/tools/pomodoro-timer/', cta: 'Start a focus timer' },
+  { id: 'gpa', icon: 'cap', label: 'Grades & GPA', text: 'Work out your GPA, SGPA or CGPA and see which subjects need more study time.', href: '/tools/gpa-calculator/', cta: 'Calculate GPA' },
+  { id: 'learn', icon: 'brain', label: 'Learn a new skill', text: 'Tell the AI what you want to learn and by when. It splits the topic into steps and builds a plan.', href: '/ai-study-planner/', cta: 'See the AI planner' },
+  { id: 'board', icon: 'book', label: 'Board exams', text: 'A full-syllabus plan from today to exam day, with spaced revision rounds built in.', href: '/guides/study-plan-for-exams/', cta: 'Read the guide' },
+];
+
+const templates = [
+  { tint: 'lavender', title: '30-day board exam plan', meta: '5 subjects · 3 revision rounds', icon: 'book' },
+  { tint: 'cream', title: 'Semester week, college', meta: 'Classes + 10 study hours', icon: 'calendar' },
+  { tint: 'pink', title: 'Two-week finals sprint', meta: 'Mocks every 3rd day', icon: 'hourglass' },
+  { tint: 'mint', title: 'Learn Python in 6 weeks', meta: 'AI learning plan · 18 topics', icon: 'code' },
+  { tint: 'blue', title: 'After-school homework routine', meta: '90 min weekdays', icon: 'pen' },
+  { tint: 'lavender', title: 'Entrance exam, 90 days', meta: 'Weak-topic weighting', icon: 'target' },
+  { tint: 'cream', title: 'Night-owl study week', meta: 'Evening blocks · rest days', icon: 'moon' },
+];
+
+const features = [
+  { tint: 'lavender', title: 'Snap your timetable.<br/>AI builds your week.', text: 'Take a photo, upload a PDF or paste text. Review the classes the AI found, then save. No typing every lecture by hand.', img: '/img/screen-schedule.webp', alt: 'ClassTrack schedule screen showing colour-coded classes for the day' },
+  { tint: 'cream', title: 'Every deadline,<br/>one list.', text: 'Assignments, to-dos and events grouped by Overdue, Today and Next 7 days, with reminders before they are due.', img: '/img/screen-tasks.webp', alt: 'ClassTrack tasks screen with assignments grouped by due date' },
+  { tint: 'mint', title: 'A study plan that<br/>fits your deadline.', text: 'Tell the AI what you need to learn. It splits it into topics, estimates time and spreads the work up to your date.', img: '/img/screen-planner.webp', alt: 'ClassTrack AI planner screen with a Machine Learning plan' },
+  { tint: 'pink', title: 'Ask your study<br/>assistant anything.', text: 'Get a revision schedule, break down a syllabus or ask for study tips. It knows your real classes and exams.', img: '/img/screen-assistant.webp', alt: 'ClassTrack AI study assistant chat screen' },
+  { tint: 'blue', title: 'Grades and GPA,<br/>always current.', text: 'Log marks and see your GPA update, plus the score you need on the next test to hit your target.', img: '/img/screen-grades.webp', alt: 'ClassTrack grades screen with GPA' },
+];
+
+const research = [
+  { label: 'Self-testing', tint: 'mint', pre: 'Students who practised recalling a text, instead of rereading it, ', hl: 'remembered far more of it a week later.', post: ' Rereading only felt more effective.', src: 'Roediger & Karpicke, Psychological Science, 2006', href: 'https://doi.org/10.1111/j.1467-9280.2006.01693.x' },
+  { label: 'Spacing', tint: 'lavender', pre: 'A review of ten popular techniques gave its top rating to just two. ', hl: 'Spreading study over time was one of them;', post: ' highlighting and rereading were rated low.', src: 'Dunlosky et al., Psychological Science in the Public Interest, 2013', href: 'https://doi.org/10.1177/1529100612453266' },
+  { label: 'Planning', tint: 'cream', pre: 'Both top techniques need one thing: ', hl: 'a plan made days or weeks before the exam.', post: ' That is the job a study planner does.', src: 'Our summary of the two studies above', href: '/guides/evidence-based-study-techniques/' },
+];
+
+const uses = [
+  { label: 'School students', img: '/img/screen-tasks.webp', tint: 'cream', text: 'Homework, tests and after-school routines.', href: '/homework-planner/' },
+  { label: 'College & university', img: '/img/screen-schedule.webp', tint: 'lavender', text: 'Lectures, labs, assignments and semester exams.', href: '/student-planner/' },
+  { label: 'Exam preparation', img: '/img/screen-plan.webp', tint: 'pink', text: 'Boards, finals and entrance exams.', href: '/exam-planner/' },
+  { label: 'Self-learners', img: '/img/screen-planner.webp', tint: 'mint', text: 'Courses, certifications and new skills.', href: '/ai-study-planner/' },
+];
+
+const schema = [appSchema(), faqSchema(faqs)];
+---
+<Base
+  title="Study Planner for Students: Free Timetable Maker & Tools"
+  description="Plan your study week in minutes. Free study planner, timetable maker, exam countdown and homework planner, plus the ClassTrack app with AI timetable import."
+  schema={schema}
+>
+  <!-- 2. Hero -->
+  <section class="section hero">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Free study planner for students</span>
+        <h1>The study planner that <em>actually</em> fits your week.</h1>
+        <p class="lead">Put your <span class="pill-hl mint">timetable</span>, <span class="pill-hl lav">homework</span> and <span class="pill-hl cream">exams</span> in one calm plan. Build it free in your browser, or let the {SITE.app} app read your timetable from a photo and remind you what to study next.</p>
+        <div class="btn-row">
+          <a class="btn" href="/tools/study-plan-generator/">Make my study plan free</a>
+          <a class="btn ghost" href={SITE.playUrl} rel="noopener">Get the Android app</a>
+        </div>
+        <span class="cta-note">No sign-up for the web tools. App is free on Google Play.</span>
+      </div>
+      <Phones back="/img/screen-schedule.webp" backAlt="ClassTrack class timetable for the day" front="/img/screen-home.webp" frontAlt="ClassTrack home screen with today's classes, next exam and quick tools" eager />
+    </div>
+  </section>
+
+  <!-- 3. Feature explainer -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap center">
+      <h2>Plan the whole semester in <Scribble>one place</Scribble></h2>
+      <p class="lead">Most students juggle a timetable photo, a notes app, a calendar and sticky notes. A study planner replaces all four.</p>
+    </div>
+    <div class="wrap explainer">
+      <div class="mini">
+        <div><span class="ico t-lavender"><Icon name="camera" /></span><h3>Timetable in seconds</h3><p>Snap, upload or paste your class timetable and get a weekly schedule you can edit.</p></div>
+        <div><span class="ico t-pink"><Icon name="hourglass" /></span><h3>Exams never sneak up</h3><p>Every exam gets a live countdown, so revision starts on time, not the night before.</p></div>
+        <div><span class="ico t-mint"><Icon name="route" /></span><h3>Study plans that adapt</h3><p>Split a syllabus into topics and spread it across the days you have left.</p></div>
+      </div>
+      <div class="media t-blue">
+        <Doodle kind="star" size={30} style="top:8%;left:6%" />
+        <Doodle kind="clock" size={46} color="#FBF1CE" style="bottom:10%;left:8%" />
+        <div class="m-card c1"><Icon name="calendar" /><div><strong>Mon · 9:00</strong><small>Data Structures · LH-204</small></div></div>
+        <div class="m-card c2"><Icon name="hourglass" /><div><strong>6 days left</strong><small>Linear Algebra mid-term</small></div></div>
+        <div class="m-card c3"><Icon name="check" /><div><strong>Lab report due</strong><small>Tomorrow, 11:59 pm</small></div></div>
+        <div class="phone"><img src="/img/screen-plan.webp" alt="ClassTrack study plan overview with topics and progress" width="480" height="1040" loading="lazy" /></div>
+      </div>
+    </div>
+    <div class="cta-under"><a class="btn" href="/features/">Explore every feature</a></div>
+  </section>
+
+  <!-- 4. Solo quote -->
+  <section class="section tight band-cream">
+    <div class="narrow center">
+      <Doodle kind="smile" size={52} color="#FFC94D" style="margin:0 auto 18px" />
+      <blockquote class="solo">
+        <p><em>“I built ClassTrack because my week lived in five different apps and I still missed deadlines. A plan you can see in one glance is the difference between studying and worrying about studying.”</em></p>
+      </blockquote>
+      <p class="muted small">— <a href="/about/">{SITE.author.name}</a>, founder of {SITE.app}</p>
+    </div>
+  </section>
+
+  <!-- 5. Stat trio (real product facts only) -->
+  <section class="section">
+    <div class="wrap grid g3 center stats">
+      <div class="stat"><Icon name="grid" class="line-ico" /><div class="stat-num">8</div><p>free planning tools that run in your browser</p></div>
+      <div class="stat"><Icon name="camera" class="line-ico" /><div class="stat-num">{SITE.free.timetableScans}</div><p>free AI timetable scans in the app</p></div>
+      <div class="stat"><Icon name="sparkle" class="line-ico" /><div class="stat-num">₹0</div><p>to plan classes, homework and exams</p></div>
+    </div>
+  </section>
+
+  <!-- 6. Interest picker -->
+  <section class="section band-lavender" id="picker">
+    <div class="wrap center">
+      <h2>What do you need to plan?</h2>
+      <p class="lead">Pick one and we will point you to the right planner or free tool.</p>
+      <div class="chips" role="group" aria-label="Choose what you want to plan">
+        {chips.map((c, i) => (
+          <button type="button" class="chip" aria-pressed={i === 0 ? 'true' : 'false'} data-chip={c.id} data-text={c.text} data-href={c.href} data-cta={c.cta}><Icon name={c.icon} />{c.label}</button>
+        ))}
+      </div>
+      <div class="chip-out" aria-live="polite" style="background:#fff">
+        <img src="/img/mascot-think.webp" alt="" width="72" height="72" loading="lazy" />
+        <div>
+          <p id="chip-text">{chips[0].text}</p>
+          <a id="chip-link" class="more" href={chips[0].href} style="font-weight:600;display:inline-block;margin-top:8px">{chips[0].cta} →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Content carousel: plan templates -->
+  <section class="section">
+    <div class="wrap center">
+      <h2>Start from a plan, not a blank page</h2>
+      <p class="lead">Example plans students build with the generator. Pick one, change the dates, and it is yours.</p>
+    </div>
+    <div class="carousel templates" data-carousel data-start="3">
+      <div class="track" tabindex="0" aria-label="Study plan templates">
+        {templates.map((t, i) => (
+          <a class={`tpl t-${t.tint}`} href="/tools/study-plan-generator/" aria-label={`${t.title}: ${t.meta}`}>
+            <span class="tpl-ico"><Icon name={t.icon} /></span>
+            <strong>{t.title}</strong>
+            <small>{t.meta}</small>
+            <span class="tpl-bar" aria-hidden="true">
+              <span class="tpl-play"><Icon name="play" /></span>
+              <span class="tpl-track"><span style={`width:${18 + i * 9}%`}></span></span>
+              <span class="tpl-day">Day {3 + i * 2}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="car-ctl">
+        <button type="button" class="arrow" data-prev aria-label="Previous plan"><Icon name="left" /></button>
+        <div class="dashes"></div>
+        <button type="button" class="arrow" data-next aria-label="Next plan"><Icon name="right" /></button>
+      </div>
+    </div>
+    <div class="cta-under"><a class="btn" href="/tools/study-plan-generator/">Generate my plan</a></div>
+  </section>
+
+  <!-- 8. Feature carousel -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap center">
+      <h2>Inside the {SITE.app} app</h2>
+      <p class="lead">Everything a student planner needs, on your phone, with reminders that reach you.</p>
+    </div>
+    <div class="carousel features" data-carousel>
+      <div class="track" tabindex="0" aria-label="App features">
+        {features.map((f) => (
+          <article class={`feat t-${f.tint}`}>
+            <div class="feat-copy">
+              <h3 set:html={f.title} />
+              <p>{f.text}</p>
+            </div>
+            <div class="feat-art">
+              <Doodle kind="star" size={26} style="top:10%;left:8%" />
+              <Doodle kind="dot" size={16} color="#fff" style="bottom:14%;right:10%" />
+              <div class="phone"><img src={f.img} alt={f.alt} width="480" height="1040" loading="lazy" /></div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="car-ctl">
+        <button type="button" class="arrow" data-prev aria-label="Previous feature"><Icon name="left" /></button>
+        <div class="dashes"></div>
+        <button type="button" class="arrow" data-next aria-label="Next feature"><Icon name="right" /></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Proof: research -->
+  <section class="section band-blue">
+    <div class="wrap center">
+      <h2><span class="huge">100+</span> years of learning research,<br/>built into one planner</h2>
+      <p class="lead">Scientists have studied how students remember since the early 1900s. Here is what holds up, and how a planner helps you use it.</p>
+    </div>
+    <div class="wrap grid g3 proof">
+      {research.map((r) => (
+        <figure class="proof-tile">
+          <span class={`label t-${r.tint}`}>{r.label}</span>
+          <span class="qmark" aria-hidden="true">“</span>
+          <p>{r.pre}<span class="marker">{r.hl}</span>{r.post}</p>
+          <figcaption><a href={r.href} rel={r.href.startsWith('http') ? 'noopener' : undefined}>{r.src}</a></figcaption>
+        </figure>
+      ))}
+    </div>
+    <div class="cta-under"><a class="btn" href="/guides/evidence-based-study-techniques/">Read the research guide</a></div>
+  </section>
+
+  <!-- 10. Percent trio -->
+  <section class="section">
+    <div class="wrap grid g3 center">
+      <div><div class="stat-num">61%</div><p>of a text recalled after one week by students who practised recalling it*</p></div>
+      <div><div class="stat-num">40%</div><p>recalled by students who only reread it the same number of times*</p></div>
+      <div><div class="stat-num">2/10</div><p>study techniques rated “high utility”: practice testing and spacing**</p></div>
+    </div>
+    <p class="footnote">* Roediger, H. L. &amp; Karpicke, J. D. (2006). Test-enhanced learning. <i>Psychological Science</i>, 17(3), Experiment 2: four study periods vs one study period plus three recall tests, final test after one week. ** Dunlosky, J. et al. (2013). Improving students’ learning with effective learning techniques. <i>Psychological Science in the Public Interest</i>, 14(1). These are research results, not ClassTrack user data.</p>
+  </section>
+
+  <!-- 11. Works-with strip -->
+  <section class="band-blue logos">
+    <div class="wrap center">
+      <p class="small muted" style="margin:0 0 18px;font-weight:600">Works with the tools you already use</p>
+      <ul class="logo-row">
+        <li><Icon name="calendar" />Google Calendar</li>
+        <li><Icon name="phone" />Android</li>
+        <li><Icon name="sparkle" />Gemini AI</li>
+        <li><Icon name="camera" />Photos &amp; PDFs</li>
+        <li><Icon name="mail" />Google sign-in</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 12. Use-case quartet -->
+  <section class="section">
+    <div class="wrap center">
+      <h2>One planner, every kind of student</h2>
+    </div>
+    <div class="wrap grid g4 uses">
+      {uses.map((u, i) => (
+        <a class="use" href={u.href}>
+          <span class="use-label">{u.label}</span>
+          <div class={`use-img t-${u.tint}`}><img src={u.img} alt="" width="480" height="1040" loading="lazy" /></div>
+          <p>{u.text}</p>
+          {i === 1 && <span class="small muted">Android now · iPhone coming soon</span>}
+        </a>
+      ))}
+    </div>
+    <div class="cta-under"><a class="btn" href={SITE.playUrl} rel="noopener">Get {SITE.app} free</a></div>
+  </section>
+
+  <!-- Tools + guides internal links -->
+  <section class="section band-lavender">
+    <div class="wrap center"><h2>Free tools, no sign-up</h2><p class="lead">Use them in your browser today. Print or save the result.</p></div>
+    <div class="wrap grid g4" style="margin-top:40px">
+      {TOOLS.map((t) => (
+        <a class="card lift" href={t.href} style="background:#fff">
+          <span class={`ico t-${t.tint}`}><Icon name={t.icon} /></span>
+          <h3>{t.label}</h3>
+          <p class="small muted">{t.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap center"><h2>Study guides</h2><p class="lead">Practical, research-backed, and written for real student weeks.</p></div>
+    <div class="wrap grid g3" style="margin-top:40px">
+      {GUIDES.slice(0, 3).map((g) => (
+        <a class={`card lift t-${g.tint}`} href={g.href}>
+          <span class="tag" style="background:#fff">{g.tag} · {g.minutes} min</span>
+          <h3 style="margin-top:14px">{g.title}</h3>
+          <p class="small">{g.desc}</p>
+          <span class="more">Read guide <Icon name="arrow" class="i16" /></span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- 13. FAQ -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap center"><h2>Questions students ask</h2></div>
+    <Faq items={faqs} supportLink />
+  </section>
+
+  <script>
+    const chips = document.querySelectorAll<HTMLButtonElement>('[data-chip]');
+    const text = document.getElementById('chip-text');
+    const link = document.getElementById('chip-link') as HTMLAnchorElement | null;
+    chips.forEach((c) => c.addEventListener('click', () => {
+      chips.forEach((o) => o.setAttribute('aria-pressed', String(o === c)));
+      if (text) text.textContent = c.dataset.text ?? '';
+      if (link) { link.href = c.dataset.href ?? '/'; link.textContent = `${c.dataset.cta} →`; }
+    }));
+  </script>
+</Base>
+
+<style>
+  .hero { padding-top: clamp(40px, 6vw, 72px); }
+  .hero h1 em { color: var(--cta); }
+  .explainer { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 48px; align-items: stretch; }
+  .mini { display: flex; flex-direction: column; gap: 28px; justify-content: center; }
+  .mini h3 { margin-bottom: 4px; }
+  .mini p { color: var(--ink-2); margin: 0; font-size: .97rem; }
+  .mini .ico { margin-bottom: 12px; }
+  .media { position: relative; border-radius: var(--r-xl); min-height: 460px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .media .doodle { position: absolute; }
+  .media .phone { width: 210px; transform: rotate(3deg); }
+  .m-card { position: absolute; display: flex; gap: 12px; align-items: center; background: #fff; border-radius: 16px; padding: 12px 16px; font-size: .85rem; z-index: 2; }
+  .m-card :global(svg) { width: 22px; color: var(--cta); flex: none; }
+  .m-card strong { display: block; font-weight: 600; }
+  .m-card small { color: var(--muted); }
+  .c1 { top: 12%; left: 8%; } .c2 { top: 44%; right: 6%; background: var(--pink); } .c3 { bottom: 12%; left: 14%; background: var(--mint); }
+  @media (max-width: 900px) { .explainer { grid-template-columns: 1fr; } .m-card { font-size: .75rem; padding: 8px 10px; } .media .phone { width: 170px; } }
+  .solo { margin: 0; }
+  .solo p { font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.5; margin-bottom: 18px; }
+  .stats p { color: var(--ink-2); margin: 0; }
+  .templates .track { padding-block: 40px; }
+  .tpl { width: 240px; min-height: 300px; border-radius: var(--r-lg); padding: 24px; display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: var(--ink); transition: transform .3s; }
+  .tpl.is-active { transform: scale(1.1); }
+  .tpl:hover { color: var(--ink); }
+  .tpl-ico { width: 64px; height: 64px; border-radius: 18px; background: #fff; display: grid; place-items: center; margin-bottom: auto; color: var(--cta); }
+  .tpl-ico :global(svg) { width: 30px; }
+  .tpl strong { font-size: 1.15rem; line-height: 1.25; margin-top: 60px; }
+  .tpl small { color: var(--ink-2); }
+  .tpl-bar { display: none; align-items: center; gap: 10px; background: #fff; border-radius: 999px; padding: 6px 12px 6px 6px; margin-top: 12px; font-size: .75rem; font-weight: 600; }
+  .tpl.is-active .tpl-bar { display: flex; }
+  .tpl-play { width: 28px; height: 28px; border-radius: 50%; background: var(--cta); color: #fff; display: grid; place-items: center; }
+  .tpl-play :global(svg) { width: 12px; fill: #fff; }
+  .tpl-track { flex: 1; height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; }
+  .tpl-track span { display: block; height: 100%; background: var(--ink); }
+  .feat { width: min(86vw, 940px); min-height: 440px; border-radius: var(--r-xl); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+  .feat-copy { padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; justify-content: center; }
+  .feat-copy h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; }
+  .feat-copy p { color: var(--ink-2); max-width: 380px; }
+  .feat-art { position: relative; display: flex; align-items: flex-end; justify-content: center; padding-top: 40px; }
+  .feat-art .doodle { position: absolute; }
+  .feat-art .phone { width: 220px; margin-bottom: -120px; transform: rotate(-4deg); }
+  @media (max-width: 700px) { .feat { grid-template-columns: 1fr; } .feat-art .phone { width: 180px; margin-bottom: -160px; } .feat-art { min-height: 220px; } }
+  .huge { display: block; font-size: clamp(4rem, 10vw, 7rem); line-height: 1; letter-spacing: -0.05em; color: var(--cta); }
+  .proof { margin-top: 48px; }
+  .proof-tile { margin: 0; background: #fff; border-radius: var(--r-lg); padding: 28px; position: relative; }
+  .proof-tile .label { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: .8rem; font-weight: 600; }
+  .qmark { display: block; font-size: 5rem; line-height: .8; font-weight: 700; color: var(--lavender); margin-top: 14px; height: 44px; }
+  .proof-tile p { font-size: 1.05rem; }
+  .proof-tile figcaption { font-size: .85rem; }
+  .proof-tile figcaption a { color: var(--muted); }
+  .logos { padding: 44px 0; }
+  .logo-row { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 48px; color: #7A7990; font-weight: 600; font-size: 1.05rem; }
+  .logo-row li { display: flex; gap: 10px; align-items: center; }
+  .logo-row :global(svg) { width: 24px; }
+  .uses { margin-top: 48px; }
+  .use { position: relative; text-decoration: none; color: var(--ink); padding-top: 14px; }
+  .use-label { position: absolute; top: 0; left: 16px; z-index: 2; background: #fff; padding: 6px 14px; border-radius: 999px; font-weight: 600; font-size: .85rem; box-shadow: 0 0 0 1px var(--line); }
+  .use-img { border-radius: 12px; aspect-ratio: 4 / 5; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; padding: 30px 30px 0; transition: transform .2s; }
+  .use:hover .use-img { transform: translateY(-4px); }
+  .use-img img { width: 72%; border-radius: 20px 20px 0 0; border: 6px solid #1B1C34; border-bottom: 0; }
+  .use p { margin: 14px 0 4px; font-weight: 500; }
+  :global(.i16) { width: 16px; }
+</style>
