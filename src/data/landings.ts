@@ -77,7 +77,7 @@ export const LANDINGS: Landing[] = [
       { icon: 'grid', title: 'Day, week & month views', text: 'Switch views in one tap. Today is always one tap away on the Home screen.' },
       { icon: 'calendar', title: 'Recurring classes', text: 'Set a class once and it repeats every week of the term, with room and teacher.' },
       { icon: 'plus', title: 'One-off events', text: 'Add an extra class, a cancelled lecture or an event without changing the weekly pattern.' },
-      { icon: 'globe', title: 'Google Calendar sync', text: 'Two-way sync pulls in your calendar and pushes classes and exams back (Pro).' },
+      { icon: 'globe', title: 'Google Calendar import', text: 'Pro imports your Google Calendar events and Tasks automatically every day, with no duplicates.' },
       { icon: 'bell', title: 'Start-of-class nudges', text: 'Reminders before a class starts, plus quiet hours so nights stay quiet (Pro).' },
       { icon: 'moon', title: 'Your study rhythm', text: 'Tell the app if you are an early bird, daytime or night-owl student when you set it up.' },
     ],
@@ -98,7 +98,7 @@ export const LANDINGS: Landing[] = [
     faqs: [
       { q: 'How do I make a weekly schedule as a student?', a: 'Put fixed commitments in first, then mark free gaps of 45+ minutes as study blocks, assign subjects by difficulty and deadline, and keep one rest block a day. See our <a href="/guides/weekly-schedule-for-students/">sample weekly schedules</a>.' },
       { q: 'Is there a free schedule planner?', a: 'Yes. ClassTrack’s schedule and reminders are free on Android. For a printable week, use the free <a href="/tools/timetable-maker/">timetable maker</a> in your browser.' },
-      { q: 'Can I sync my schedule with Google Calendar?', a: 'Yes, with ClassTrack Pro. It auto-imports your calendar every day and pushes your classes, exams and deadlines back into Google Calendar.' },
+      { q: 'Can I sync my schedule with Google Calendar?', a: 'With ClassTrack Pro, your Google Calendar events and Tasks are imported into ClassTrack automatically every day, with no duplicates. Sending ClassTrack classes and exams back to Google Calendar is coming soon. Today you can export your schedule as a calendar file (Pro), or use our free <a href="/tools/timetable-maker/">timetable maker</a> to download a .ics file.' },
       { q: 'How many hours should a student study per day?', a: 'It depends on your course and exams. Many students do well with 2–4 focused hours outside class on weekdays, more in exam season. Consistency across the week matters more than one long day.' },
     ],
     tools: ['/tools/timetable-maker/', '/tools/study-plan-generator/', '/tools/pomodoro-timer/'],

@@ -1,0 +1,172 @@
+---
+import Guide from '../../layouts/Guide.astro';
+import { SITE } from '../../data/site';
+const href = '/guides/how-to-use-a-study-planner-app/';
+
+// The 6 set-up steps. Used for the on-page list and the HowTo schema,
+// so the page and structured data always match.
+const steps = [
+  { id: 'step-1', name: 'Import your class timetable', text: 'Add every class once, with day, time, room and teacher. In ClassTrack you can take a photo of your timetable, upload the PDF or paste the text and let AI build the week.' },
+  { id: 'step-2', name: 'Add every exam date', text: 'Enter each test, final or entrance exam with its date so the app can count down and you can see which exam is closest.' },
+  { id: 'step-3', name: 'Capture homework the moment it is set', text: 'Add each assignment with a subject and due date. Split big projects into smaller tasks with their own dates.' },
+  { id: 'step-4', name: 'Turn each exam into a study plan', text: 'Break the syllabus into topics, estimate time for each and spread them across the days before the exam, leaving the last 20% for revision and practice tests.' },
+  { id: 'step-5', name: 'Book study blocks around your classes', text: 'Pick 2–4 focused blocks per day in the gaps between classes, work and rest, and give each block one subject and one task.' },
+  { id: 'step-6', name: 'Review the plan every week', text: 'Once a week, move unfinished tasks, log your grades and adjust next week so the plan matches real life.' },
+];
+
+const howTo = {
+  '@type': 'HowTo',
+  name: 'How to set up a study planner app',
+  description: 'Six steps to turn your classes, homework and exam dates into a weekly study plan in a study planner app.',
+  totalTime: 'PT20M',
+  tool: [{ '@type': 'HowToTool', name: 'ClassTrack study planner app (Android) or any student planner' }],
+  step: steps.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.name,
+    text: s.text,
+    url: `${SITE.url}${href}#${s.id}`,
+  })),
+};
+---
+<Guide
+  href={href}
+  extraSchema={[howTo]}
+  tldr={[
+    'A <strong>study planner app</strong> keeps your class timetable, homework, exam dates and study sessions in one place and reminds you what to do next. It works the same whether you are in high school, college or university, in any country.',
+    'Set-up takes about <strong>20 minutes</strong>: timetable → exams → homework → study plan → study blocks → weekly review.',
+    'Planning pays off: in a study of college students, <strong>time-management habits predicted grades better than SAT scores</strong> (Britton &amp; Tesser, 1991).',
+    'Use the planner to <strong>spread revision over days and test yourself</strong>. These are the two techniques rated most effective in a major review of learning research.',
+    `<strong>ClassTrack</strong> is a free study planner app for students on Android, with AI timetable import from a photo or PDF, exam countdowns and AI study plans. Disclosure: we make it.`,
+  ]}
+  toc={[
+    { id: 'what', label: 'What is a study planner app?' },
+    { id: 'why', label: 'Why students who plan get better results' },
+    { id: 'who', label: 'Who a study planner is for' },
+    { id: 'setup', label: 'How to set up a study planner app in 6 steps' },
+    { id: 'week', label: 'What a planned week looks like' },
+    { id: 'classtrack', label: 'How ClassTrack works as a study planner' },
+    { id: 'mistakes', label: '5 mistakes that make students quit their planner' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/timetable-maker/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'What is the best study planner app for students?', a: `The best study planner app is one that holds your class timetable, homework and exam dates together and that you open every day. On Android, ${SITE.app} does this for free and adds AI timetable import and AI study plans. On iPhone or the web, MyStudyLife is a strong free option. See our <a href="/guides/best-study-planner-apps/">comparison of 9 study planner apps</a>. Disclosure: ${SITE.app} is made by the team behind this site.` },
+    { q: 'Is ClassTrack only for students in one country?', a: `No. ${SITE.app} is a study planner for students everywhere: high school, college, university and self-learners. Your timetable, homework and exams work the same in any school system, and grades can be shown on a 4.0 GPA scale or a 10-point scale. The app is in English.` },
+    { q: 'Is a study planner app free?', a: `Many are. ${SITE.app}'s timetable, homework, exam countdowns, grades, habits and reminders are free, plus ${SITE.free.aiMessages} AI messages a month, ${SITE.free.timetableScans} AI timetable scans and ${SITE.free.learningPlans} AI learning plans. ClassTrack Pro removes the AI limits. See <a href="/pricing/">pricing</a>.` },
+    { q: 'Can an AI study planner make a study plan for me?', a: `Yes. In ${SITE.app}, you tell the AI what you need to learn and by when. It splits the subject into topics, estimates the time each needs and spreads them across the days before your deadline. You can also try our free <a href="/tools/study-plan-generator/">study plan generator</a> in your browser, with no sign-up.` },
+    { q: 'Is a study planner app better than a paper planner?', a: 'An app is better for repeating classes, reminders and changing plans. Paper has no notifications to distract you. Many students use an app for the timetable and deadlines, and a sticky note or notebook for today’s three tasks.' },
+    { q: 'How many hours a day should I plan to study?', a: 'Most students do well with 2–4 focused hours a day outside class, rising on holidays before big exams. Focused hours matter more than total hours. Read <a href="/guides/how-many-hours-to-study-a-day/">how many hours to study a day</a>.' },
+    { q: 'Does ClassTrack work on iPhone?', a: `${SITE.app} is on Android now through Google Play. The iPhone version is coming soon; you can join the waitlist on our home page. All the free tools on studyplanner.tech work in any browser, including Safari on iPhone.` },
+  ]}
+  sources={[
+    { text: 'Britton, B. K. & Tesser, A. (1991). Effects of time-management practices on college grades. Journal of Educational Psychology, 83(3), 405–410.', url: 'https://doi.org/10.1037/0022-0663.83.3.405' },
+    { text: 'Steel, P. (2007). The nature of procrastination: A meta-analytic and theoretical review of quintessential self-regulatory failure. Psychological Bulletin, 133(1), 65–94.', url: 'https://doi.org/10.1037/0033-2909.133.1.65' },
+    { text: 'Gollwitzer, P. M. & Sheeran, P. (2006). Implementation intentions and goal achievement: A meta-analysis of effects and processes. Advances in Experimental Social Psychology, 38, 69–119.', url: 'https://doi.org/10.1016/S0065-2601(06)38002-1' },
+    { text: 'Dunlosky, J. et al. (2013). Improving students’ learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Roediger, H. L. & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255.', url: 'https://doi.org/10.1111/j.1467-9280.2006.01693.x' },
+    { text: 'Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. & Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095–1102.', url: 'https://doi.org/10.1111/j.1467-9280.2008.02209.x' },
+  ]}
+>
+  <p><strong>Short answer:</strong> to use a study planner app well, put in your <strong>class timetable, exam dates and homework first</strong>, then let the app turn them into <strong>study blocks spread across the days before each deadline</strong>, and review the plan once a week. It takes about 20 minutes to set up and a few minutes a day to keep up.</p>
+  <p>This guide is for any student: high school, college, university or self-taught, on semesters, terms or quarters, anywhere in the world. It explains what a study planner app does, why planning is linked to better grades, a 6-step set-up you can copy, and how our app, <a href={SITE.playUrl} rel="noopener">ClassTrack</a>, handles each step.</p>
+
+  <h2 id="what">What is a study planner app?</h2>
+  <p>A <strong>study planner app</strong> is a phone or web app that keeps a student’s <strong>class timetable, homework, exams and study sessions in one place</strong>, and sends reminders so nothing is missed. It differs from a normal to-do list in three ways:</p>
+  <ul>
+    <li><strong>It understands repeating classes.</strong> You add Monday’s 9:00 lecture once, not every week.</li>
+    <li><strong>It links work to subjects.</strong> Homework, grades and exams sit under the class they belong to.</li>
+    <li><strong>It plans backwards from deadlines.</strong> An exam is not one task on one day; it is a set of study sessions over many days.</li>
+  </ul>
+  <p>Newer study planners, sometimes called <a href="/ai-study-planner/">AI study planners</a>, add help on top: reading your timetable from a photo, building a topic-by-topic plan, or answering questions like “what should I revise tonight?”.</p>
+
+  <h2 id="why">Why students who plan get better results</h2>
+  <p>Planning is not just about feeling organised. Research links it to grades and to finishing work on time.</p>
+  <table>
+    <thead><tr><th scope="col">Finding</th><th scope="col">What it means for your planner</th></tr></thead>
+    <tbody>
+      <tr><td>Among 90 college students, short-range planning and time attitudes <strong>predicted cumulative GPA, and did so better than SAT scores</strong> (Britton &amp; Tesser, 1991).</td><td>Planning your week is a skill you can learn, and it matters as much as raw ability.</td></tr>
+      <tr><td>An estimated <strong>80–95% of college students procrastinate</strong>, and procrastination is linked to lower performance (Steel, 2007).</td><td>Small, dated tasks are easier to start than one big “study for finals”.</td></tr>
+      <tr><td>Across 94 studies, deciding <strong>when and where</strong> you will act had a medium-to-large effect on reaching goals (Gollwitzer &amp; Sheeran, 2006).</td><td>“Biology, Tuesday 4:30, library” works better than “study biology this week”.</td></tr>
+      <tr><td>Of ten popular study techniques, only <strong>practice testing and spaced practice</strong> were rated high utility (Dunlosky et al., 2013).</td><td>Use the planner to spread revision over days and to schedule self-tests.</td></tr>
+    </tbody>
+  </table>
+  <p>Put simply: a planner helps you do the things that work (start early, space your study, test yourself) without needing to remember to do them. More detail is in <a href="/guides/evidence-based-study-techniques/">what the research says about study techniques</a>.</p>
+
+  <h2 id="who">Who a study planner is for</h2>
+  <p>A study planner is useful for any student who has more than one deadline at a time. The set-up is the same everywhere; only the names of your exams change.</p>
+  <table>
+    <thead><tr><th scope="col">Student</th><th scope="col">What they plan</th><th scope="col">Most useful features</th></tr></thead>
+    <tbody>
+      <tr><td>High school / secondary school</td><td>Daily homework, unit tests, end-of-year or national exams (for example AP, GCSE, A-level, IB or board exams)</td><td>Homework list, exam countdowns, after-school routine</td></tr>
+      <tr><td>College and university</td><td>Lectures, labs, assignments, midterms and finals across a semester, term or quarter</td><td>Class timetable, assignment due dates, grades and GPA</td></tr>
+      <tr><td>Exam preparation</td><td>One big test months away (for example SAT, finals, a professional or entrance exam)</td><td>Topic-by-topic study plan, revision rounds, daily blocks</td></tr>
+      <tr><td>Self-learners and working students</td><td>Online courses, certifications, a new skill around a job</td><td>AI learning plan, habits, reminders</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="setup">How to set up a study planner app in 6 steps</h2>
+  <p>Do these steps in order. Each one gives the next step the information it needs.</p>
+  {steps.map((s, i) => (
+    <>
+      <h3 id={s.id}>Step {i + 1}: {s.name}</h3>
+      <p>{s.text}</p>
+    </>
+  ))}
+  <p><strong>Tips for each step:</strong></p>
+  <ul>
+    <li><strong>Timetable:</strong> add rooms and online class links now; you will thank yourself on a busy morning. No app yet? Use the free <a href="/tools/timetable-maker/">timetable maker</a> and export it to your calendar.</li>
+    <li><strong>Exams:</strong> add even the small tests. The <a href="/tools/exam-countdown/">exam countdown</a> shows study days left, not just calendar days.</li>
+    <li><strong>Homework:</strong> set the due date one day earlier than the real one. That day is your buffer. See <a href="/guides/how-to-manage-homework/">how to manage homework</a>.</li>
+    <li><strong>Study plan:</strong> the <a href="/tools/study-plan-generator/">study plan generator</a> or the <a href="/guides/study-plan-for-exams/">backward planning method</a> does the maths.</li>
+    <li><strong>Study blocks:</strong> 25–50 minutes each, with a real break. The <a href="/guides/pomodoro-technique-for-students/">Pomodoro technique</a> is a good default.</li>
+    <li><strong>Weekly review:</strong> pick a fixed time, like Sunday evening, and keep it to 15 minutes.</li>
+  </ul>
+
+  <h2 id="week">What a planned week looks like</h2>
+  <p>Here is a sample week for a student with about 15 hours of classes and two exams in three weeks. Swap in your own subjects.</p>
+  <table>
+    <thead><tr><th scope="col">Day</th><th scope="col">Classes</th><th scope="col">Planned study blocks</th></tr></thead>
+    <tbody>
+      <tr><td>Monday</td><td>9:00–13:00</td><td>16:00 Chemistry topic 3 (new) · 17:00 homework due Wednesday</td></tr>
+      <tr><td>Tuesday</td><td>10:00–12:00</td><td>14:00 Maths practice set · 15:00 Chemistry flashcards (15 min self-test)</td></tr>
+      <tr><td>Wednesday</td><td>9:00–14:00</td><td>17:00 History essay outline (due next Monday)</td></tr>
+      <tr><td>Thursday</td><td>11:00–13:00</td><td>15:00 Chemistry topic 4 · 16:00 Maths past-paper section</td></tr>
+      <tr><td>Friday</td><td>9:00–11:00</td><td>12:00 History essay draft · evening off</td></tr>
+      <tr><td>Saturday</td><td>—</td><td>10:00 Mock test (Maths) · 11:30 review mistakes</td></tr>
+      <tr><td>Sunday</td><td>—</td><td>18:00 Weekly review (15 min) · rest</td></tr>
+    </tbody>
+  </table>
+  <p>Notice the pattern: new topics early in the week, a self-test in most sessions, the same subject coming back every few days (spacing), and a full rest evening. More examples are in our <a href="/guides/weekly-schedule-for-students/">sample weekly schedules for students</a>.</p>
+
+  <h2 id="classtrack">How ClassTrack works as a study planner</h2>
+  <p><a href={SITE.playUrl} rel="noopener">ClassTrack</a> is a free <strong>study planner app for students</strong> on Android, built to do the six steps above with as little typing as possible. It is used for school, college and university, and is not tied to any one country’s school system.</p>
+  <figure style="margin:24px auto;max-width:260px;text-align:center">
+    <img src="/img/screen-schedule.webp" alt="ClassTrack study planner app showing a colour-coded class timetable for the day" width="480" height="1040" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:24px" />
+    <figcaption class="small muted">The ClassTrack schedule, built from a photo of a timetable.</figcaption>
+  </figure>
+  <table>
+    <thead><tr><th scope="col">Step</th><th scope="col">How ClassTrack does it</th></tr></thead>
+    <tbody>
+      <tr><td>1. Timetable</td><td><strong>AI timetable import</strong>: snap a photo, upload a PDF or paste text, check the classes it found, then save. Day, week and month views, with rooms, teachers, class links and one-off extra or cancelled classes.</td></tr>
+      <tr><td>2. Exams</td><td>A countdown for every exam on the home screen, so the nearest one is always visible.</td></tr>
+      <tr><td>3. Homework</td><td>Assignments, to-dos and events grouped into <strong>Overdue, Today and Next 7 days</strong>, with reminders before they are due.</td></tr>
+      <tr><td>4. Study plan</td><td><strong>AI learning plans</strong>: tell it what to learn and by when; it splits the topic into steps with time estimates and spreads them up to your date.</td></tr>
+      <tr><td>5. Study blocks</td><td>An <strong>AI study assistant</strong> that knows your real classes and exams, so it can suggest a revision schedule that fits around them.</td></tr>
+      <tr><td>6. Review</td><td>Log marks and see your GPA on a <strong>4.0 or 10-point scale</strong>, plus a habit tracker and attendance by subject.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>What is free:</strong> the timetable, homework, exam countdowns, grades, habits and reminders, plus {SITE.free.aiMessages} AI messages a month, {SITE.free.timetableScans} AI timetable scans and {SITE.free.learningPlans} AI learning plans. <strong>ClassTrack Pro</strong> makes the AI unlimited and adds notes and flashcards, daily Google Calendar import, PDF/CSV export and a daily AI agenda. Pro is billed through Google Play in your local currency (<a href="/pricing/">see pricing</a>).</p>
+  <p><strong>Honest limits:</strong> ClassTrack is Android-only for now (an iPhone version is coming soon) and has no web app, and the app is in English. If you need iPhone or web access today, read our <a href="/guides/best-study-planner-apps/">comparison of study planner apps</a> for alternatives.</p>
+  <p><a class="btn" href={SITE.playUrl} rel="noopener">Get ClassTrack free on Google Play</a></p>
+
+  <h2 id="mistakes">5 mistakes that make students quit their planner</h2>
+  <ol>
+    <li><strong>Planning every hour.</strong> A plan with no gaps breaks on the first late class. Leave about 20% of each day empty.</li>
+    <li><strong>Writing vague tasks.</strong> “Study physics” is hard to start. “Physics: 10 questions on circuits” is not.</li>
+    <li><strong>Only planning, never testing.</strong> Rereading feels productive but is rated low-utility. Put a short self-test at the end of each block (Roediger &amp; Karpicke, 2006).</li>
+    <li><strong>Cramming the last week.</strong> The same hours spread over several weeks are remembered much better (Cepeda et al., 2008).</li>
+    <li><strong>Skipping the weekly review.</strong> Without it, the plan drifts away from real life and you stop trusting it.</li>
+  </ol>
+  <p>The goal is not a perfect plan. It is a plan you open every day and fix every week.</p>
+</Guide>

@@ -11,6 +11,8 @@ import Footer from '../components/Footer.astro';
 import IosWaitlist from '../components/IosWaitlist.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { SITE } from '../data/site';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 
 export interface Crumb { name: string; href: string }
 interface Props {
@@ -24,9 +26,14 @@ interface Props {
   published?: string;
   modified?: string;
 }
-const { title, description, image = '/og-default.png', type = 'website', schema = [], crumbs, noindex = false, published, modified } = Astro.props;
+const { title, description, image, type = 'website', schema = [], crumbs, noindex = false, published, modified } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
-const ogImage = new URL(image, SITE.url).href;
+// Per-page share image from scripts/build-og.mjs (npm run og); falls back to the default.
+// keyFor() must match the one in that script.
+const keyFor = (href: string) => href.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'home';
+const ogKey = `/og/${keyFor(Astro.url.pathname)}.png`;
+const pageImage = image ?? (existsSync(path.join(process.cwd(), 'public', ogKey)) ? ogKey : '/og-default.png');
+const ogImage = new URL(pageImage, SITE.url).href;
 
 const ORG_ID = `${SITE.url}/#org`;
 const graph: Record<string, unknown>[] = [

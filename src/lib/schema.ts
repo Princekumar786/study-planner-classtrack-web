@@ -23,8 +23,9 @@ export const appSchema = () => ({
   installUrl: SITE.playUrl,
   image: `${SITE.url}/icon-512.png`,
   screenshot: [`${SITE.url}/img/screen-planner.webp`, `${SITE.url}/img/screen-schedule.webp`, `${SITE.url}/img/screen-tasks.webp`],
-  featureList: ['Study planner', 'Class timetable with day, week and month views', 'AI timetable import from photo, PDF or text', 'Exam countdowns', 'Homework and assignment planner', 'AI study plans', 'AI study assistant', 'Notes and flashcards', 'Grades and GPA', 'Habit tracker', 'Google Calendar sync'],
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR', category: 'Free with optional Pro subscription' },
+  featureList: ['Study planner', 'Class timetable with day, week and month views', 'AI timetable import from photo, PDF or text', 'Exam countdowns', 'Homework and assignment planner', 'AI study plans', 'AI study assistant', 'Notes and flashcards', 'Grades and GPA', 'Habit tracker', 'Google Calendar import'],
+  audience: { '@type': 'EducationalAudience', educationalRole: 'student', audienceType: 'High school, college and university students worldwide' },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', category: 'Free with optional Pro subscription' },
   publisher: { '@id': `${SITE.url}/#org` },
 });
 
@@ -37,11 +38,11 @@ export const toolSchema = (name: string, path: string, description: string) => (
   operatingSystem: 'Any (runs in the browser)',
   browserRequirements: 'Requires JavaScript',
   isAccessibleForFree: true,
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@id': `${SITE.url}/#org` },
 });
 
-export const articleSchema = (o: { title: string; path: string; description: string; date: string; modified?: string }) => ({
+export const articleSchema = (o: { title: string; path: string; description: string; date: string; modified?: string; image?: string }) => ({
   '@type': 'Article',
   headline: o.title,
   description: o.description,
@@ -49,7 +50,7 @@ export const articleSchema = (o: { title: string; path: string; description: str
   mainEntityOfPage: new URL(o.path, SITE.url).href,
   datePublished: o.date,
   dateModified: o.modified ?? o.date,
-  image: `${SITE.url}/og-default.png`,
+  image: new URL(o.image ?? '/og-default.png', SITE.url).href,
   inLanguage: 'en',
   author: { '@type': 'Person', '@id': `${SITE.url}/about/#prince-kumar`, name: SITE.author.name, url: SITE.author.url, jobTitle: SITE.author.role, sameAs: [SITE.author.site] },
   publisher: { '@id': `${SITE.url}/#org` },

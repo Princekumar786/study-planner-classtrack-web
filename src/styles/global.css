@@ -74,6 +74,7 @@ table { border-collapse: collapse; width: 100%; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 .center .btn-row { justify-content: center; }
 .cta-under { margin-top: 48px; text-align: center; }
+.cta-under.pair { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .cta-note { display: block; margin-top: 10px; font-size: .85rem; color: var(--muted); }
 
 /* Emphasis devices — one per zone */

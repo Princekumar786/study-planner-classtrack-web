@@ -17,14 +17,16 @@ interface Props {
 }
 const { href, tldr, toc, sources, faqs = [], tools = [], extraSchema = [] } = Astro.props;
 const g = GUIDES.find((x) => x.href === href)!;
-const schema: Record<string, unknown>[] = [articleSchema({ title: g.title, path: href, description: g.desc, date: g.date })];
+const modified = g.updated ?? g.date;
+const ogPath = `/og/${href.replace(/^\/|\/$/g, '').replace(/\//g, '-')}.png`;
+const schema: Record<string, unknown>[] = [articleSchema({ title: g.title, path: href, description: g.desc, date: g.date, modified, image: ogPath })];
 if (faqs.length) schema.push(faqSchema(faqs));
 schema.push(...extraSchema);
 const related = GUIDES.filter((x) => x.href !== href).slice(0, 3);
 const relTools = TOOLS.filter((t) => tools.includes(t.href));
 const nice = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<Base title={g.title} description={g.desc} type="article" published={g.date} modified={g.date} crumbs={[{ name: 'Guides', href: '/guides/' }, { name: g.label, href }]} schema={schema}>
+<Base title={g.title} description={g.desc} type="article" published={g.date} modified={modified} crumbs={[{ name: 'Guides', href: '/guides/' }, { name: g.label, href }]} schema={schema}>
   <article class="section" style="padding-top:32px">
     <div class="narrow">
       <span class="eyebrow">{g.tag} · {g.minutes} min read</span>
@@ -32,7 +34,7 @@ const nice = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'nume
       <p class="lead">{g.desc}</p>
       <div class="byline">
         <span class="av" aria-hidden="true">PK</span>
-        <span>By <a href="/about/" rel="author">{SITE.author.name}</a>, {SITE.author.role}<br />Published {nice(g.date)} · Fact-checked against the sources below</span>
+        <span>By <a href="/about/" rel="author">{SITE.author.name}</a>, {SITE.author.role}<br />Published {nice(g.date)}{modified !== g.date && <> · Updated <time datetime={modified}>{nice(modified)}</time></>} · Fact-checked against the sources below</span>
       </div>
       <div class="tldr">
         <h2>Key takeaways</h2>

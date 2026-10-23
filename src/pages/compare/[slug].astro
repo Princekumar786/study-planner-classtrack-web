@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import AppBand from '../../components/AppBand.astro';
+import { COMPARISONS, type Comparison } from '../../data/compare';
+import { SITE } from '../../data/site';
+import { articleSchema, faqSchema, appSchema } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return COMPARISONS.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props as { c: Comparison };
+const path = `/compare/${c.slug}/`;
+const schema = [
+  articleSchema({ title: c.title, path, description: c.description, date: c.date, modified: c.updated, image: `/og/compare-${c.slug}.png` }),
+  faqSchema(c.faqs),
+  appSchema(),
+];
+const nice = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const others = COMPARISONS.filter((x) => x.slug !== c.slug);
+---
+<Base title={c.title} description={c.description} type="article" published={c.date} modified={c.updated} crumbs={[{ name: 'Compare', href: '/compare/' }, { name: c.label, href: path }]} schema={schema}>
+  <article class="section" style="padding-top:32px">
+    <div class="narrow">
+      <span class="eyebrow">Comparison · updated {nice(c.updated)}</span>
+      <h1 style="font-size:clamp(2rem,4.4vw,3.1rem)">ClassTrack vs {c.other}</h1>
+      <p class="lead">{c.description}</p>
+      <div class="byline">
+        <span class="av" aria-hidden="true">PK</span>
+        <span>By <a href="/about/" rel="author">{SITE.author.name}</a>, {SITE.author.role}<br />Facts checked against official sources on {nice(c.updated)}</span>
+      </div>
+      <div class="tldr">
+        <h2>Short answer</h2>
+        <p set:html={c.verdict} style="margin:0" />
+      </div>
+      <p class="small muted"><strong>Disclosure:</strong> we make ClassTrack. To keep this fair, every {c.other} fact below comes from its official website, help centre or app store listing (linked in Sources), and we list ClassTrack’s gaps as plainly as its strengths. If something here is out of date, <a href="/contact/">tell us</a> and we will fix it.</p>
+
+      <div class="prose">
+        <h2 id="at-a-glance">At a glance: which one fits you?</h2>
+        <table>
+          <thead><tr><th scope="col">If you are…</th><th scope="col">ClassTrack</th><th scope="col">{c.other}</th></tr></thead>
+          <tbody>{c.summary.map((s) => <tr><td>{s.who}</td><td>{s.ct}</td><td>{s.other}</td></tr>)}</tbody>
+        </table>
+
+        <h2 id="features">Feature comparison</h2>
+        <table>
+          <thead><tr><th scope="col">Feature</th><th scope="col">ClassTrack</th><th scope="col">{c.other}</th></tr></thead>
+          <tbody>{c.rows.map((r) => <tr><th scope="row" style="text-align:left">{r.feature}</th><td>{r.ct}</td><td>{r.other}</td></tr>)}</tbody>
+        </table>
+        <p class="small muted">“Not in its feature list” or “not in its help docs” means we could not find the feature on {c.other}’s official pages. It may exist; check the app before deciding.</p>
+
+        <h2 id="about-other">About {c.other}</h2>
+        <p>{c.otherAbout}</p>
+
+        <h2 id="about-classtrack">About ClassTrack</h2>
+        <p><a href={SITE.playUrl} rel="noopener">ClassTrack</a> is a free study planner app for students on Android, for high school, college and university. It keeps your class timetable, homework, exam countdowns, grades and attendance in one place, and adds AI: it reads your timetable from a photo, PDF or text, builds topic-by-topic learning plans up to your deadline, and answers questions about your own classes and exams. Its gaps today: no iPhone or web app yet, no rotating timetables, and fewer store reviews than older apps.</p>
+
+        <h2 id="choose-classtrack">Choose ClassTrack if…</h2>
+        <ul>{c.chooseCt.map((x) => <li>{x}</li>)}</ul>
+        <h2 id="choose-other">Choose {c.other} if…</h2>
+        <ul>{c.chooseOther.map((x) => <li>{x}</li>)}</ul>
+        <p>Still unsure? Use one app for two full weeks before switching. The planner that works is the one you open every morning. Our guide on <a href="/guides/how-to-use-a-study-planner-app/">how to set up a study planner app</a> works for both.</p>
+        <p><a class="btn" href={SITE.playUrl} rel="noopener">Try ClassTrack free on Android</a> <a class="btn ghost" href={c.otherUrl} rel="noopener">Visit {c.other}</a></p>
+
+        <h2 id="faq">Frequently asked questions</h2>
+        {c.faqs.map((q) => <><h3>{q.q}</h3><p set:html={q.a} /></>)}
+
+        <h2 id="sources">Sources</h2>
+        <ol class="sources">{c.sources.map((s) => <li>{s.text} <a href={s.url} rel="noopener">{s.url.replace(/^https?:\/\//, '')}</a></li>)}</ol>
+      </div>
+    </div>
+  </article>
+
+  <section class="section tight">
+    <div class="wrap"><h2 class="center" style="font-size:clamp(1.6rem,3vw,2.2rem)">More comparisons</h2></div>
+    <div class="wrap grid g3" style="margin-top:32px">
+      {others.map((o) => <a class="card lift t-lavender" href={`/compare/${o.slug}/`}><h3>{o.label}</h3><p class="small">{o.description}</p></a>)}
+      <a class="card lift t-mint" href="/guides/best-study-planner-apps/"><h3>Best study planner apps (9 compared)</h3><p class="small">ClassTrack, MyStudyLife, Power Planner, Notion, TickTick and more, side by side.</p></a>
+    </div>
+  </section>
+  <AppBand />
+</Base>

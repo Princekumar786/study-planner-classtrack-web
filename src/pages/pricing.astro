@@ -16,7 +16,8 @@ const rows: [string, string, string][] = [
   ['AI timetable scans (photo, PDF, text)', String(SITE.free.timetableScans), 'Unlimited'],
   ['AI learning plans', String(SITE.free.learningPlans), 'Unlimited'],
   ['Smart notes & flashcards', '—', '✓'],
-  ['Two-way Google Calendar sync', '—', '✓'],
+  ['Google Calendar & Tasks daily auto-import', '—', '✓'],
+  ['PDF, CSV & calendar export', '—', '✓'],
   ['Daily AI agenda summary', '—', '✓'],
   ['Insights & predictions', '—', '✓'],
   ['Semester wrap-up, SGPA & CGPA', '—', '✓'],
@@ -32,7 +33,7 @@ const faqs: QA[] = [
   { q: 'Do I lose my data if I stop paying?', a: 'No. Your timetable, tasks, exams and grades stay in your account on the free plan. Pro-only features stop until you subscribe again.' },
 ];
 ---
-<Base title="ClassTrack Pricing: Free Study Planner, Optional Pro" description="ClassTrack is free: timetable, homework, exams, grades and reminders. Pro adds unlimited AI, timetable scans, flashcards and Google Calendar sync." crumbs={[{ name: 'Pricing', href: '/pricing/' }]} schema={[appSchema(), faqSchema(faqs)]}>
+<Base title="ClassTrack Pricing: Free Study Planner, Optional Pro" description="ClassTrack is free: timetable, homework, exams, grades and reminders. Pro adds unlimited AI, timetable scans, flashcards and Google Calendar import." crumbs={[{ name: 'Pricing', href: '/pricing/' }]} schema={[appSchema(), faqSchema(faqs)]}>
   <section class="section center" style="padding-top:40px">
     <div class="wrap">
       <span class="eyebrow">Pricing</span>
@@ -42,7 +43,7 @@ const faqs: QA[] = [
     <div class="wrap grid g2 plans" style="margin-top:48px;text-align:left;max-width:900px">
       <div class="card t-mint">
         <h2 style="font-size:1.6rem">Free</h2>
-        <p class="price">₹0 <span>forever</span></p>
+        <p class="price">Free <span>forever</span></p>
         <ul class="ticks">
           <li><Icon name="check" />Timetable, homework, exams, grades</li>
           <li><Icon name="check" />{SITE.free.aiMessages} AI messages a month</li>
@@ -59,7 +60,7 @@ const faqs: QA[] = [
           <li><Icon name="check" />Everything in Free</li>
           <li><Icon name="check" />Unlimited AI assistant, scans and plans</li>
           <li><Icon name="check" />Notes &amp; flashcards</li>
-          <li><Icon name="check" />Google Calendar two-way sync</li>
+          <li><Icon name="check" />Daily Google Calendar import</li>
           <li><Icon name="check" />Semester wrap-up, SGPA &amp; CGPA</li>
         </ul>
         <a class="btn" href={SITE.playUrl} rel="noopener" style="width:100%">Try Pro in the app</a>

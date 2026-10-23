@@ -12,7 +12,8 @@ export const SITE = {
   playId: 'com.classtracks.app',
   appSite: 'https://classtracks.app',
   email: 'support@classtracks.app',
-  locale: 'en_IN',
+  // Global English audience (not one country). og:locale needs a territory, en_US is the standard default.
+  locale: 'en_US',
   lang: 'en',
   // Last time the content facts were checked against the app code.
   updated: '2026-10-20',
@@ -61,10 +62,12 @@ export const TOOLS: Tool[] = [
   { href: '/tools/attendance-calculator/', label: 'Attendance calculator', title: 'Attendance Calculator', keyword: 'attendance calculator', desc: 'Check your attendance percentage and how many classes you need to reach a target.', tint: 'mint', icon: 'pie' },
 ];
 
-export type Guide = NavLink & { title: string; minutes: number; date: string; tint: string; tag: string };
+// `updated` = last real content change. Set it only when you change facts or advice, not for typo fixes.
+export type Guide = NavLink & { title: string; minutes: number; date: string; updated?: string; tint: string; tag: string };
 
 export const GUIDES: Guide[] = [
-  { href: '/guides/best-study-planner-apps/', label: 'Best study planner apps', title: 'Best Study Planner Apps in 2026: 9 Picks Compared (Free & Paid)', desc: 'The best study planner apps of 2026 compared on timetable, exams, AI, platforms and price, with the best pick for school, college and exam prep.', minutes: 13, date: '2026-10-20', tint: 'lavender', tag: 'Reviews' },
+  { href: '/guides/how-to-use-a-study-planner-app/', label: 'How to use a study planner app', title: 'How to Use a Study Planner App: A Setup Guide for Students', desc: 'Set up a study planner app in 20 minutes: timetable, exams, homework and a study plan. For high school, college and university students anywhere.', minutes: 10, date: '2026-10-22', tint: 'mint', tag: 'Planning' },
+  { href: '/guides/best-study-planner-apps/', label: 'Best study planner apps', title: 'Best Study Planner Apps in 2026: 9 Picks Compared (Free & Paid)', desc: 'The best study planner apps of 2026 compared on timetable, exams, AI, platforms and price, with the best pick for school, college and exam prep.', minutes: 13, date: '2026-10-20', updated: '2026-10-22', tint: 'lavender', tag: 'Reviews' },
   { href: '/guides/how-to-make-a-study-timetable/', label: 'How to make a study timetable', title: 'How to Make a Study Timetable That You Actually Follow', desc: 'A 7-step method for building a realistic weekly study timetable, with a free template.', minutes: 9, date: '2026-10-20', tint: 'lavender', tag: 'Planning' },
   { href: '/guides/study-plan-for-exams/', label: 'Study plan for exams', title: 'How to Make a Study Plan for Exams (Backward Planning Method)', desc: 'Work back from your exam date, split the syllabus, and leave room for revision and mocks.', minutes: 10, date: '2026-10-20', tint: 'pink', tag: 'Exams' },
   { href: '/guides/evidence-based-study-techniques/', label: 'Evidence-based study techniques', title: 'Active Recall and Spaced Repetition: What the Research Says', desc: 'Which study techniques work, which waste time, and how to build them into your planner.', minutes: 11, date: '2026-10-20', tint: 'mint', tag: 'Research' },
@@ -80,5 +83,7 @@ export const MAIN_NAV: NavLink[] = [
   { href: '/features/', label: 'Features' },
   { href: '/tools/', label: 'Free tools' },
   { href: '/guides/', label: 'Guides' },
+  { href: '/templates/', label: 'Templates' },
+  { href: '/compare/', label: 'Compare' },
   { href: '/pricing/', label: 'Pricing' },
 ];

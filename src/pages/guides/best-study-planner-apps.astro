@@ -65,7 +65,7 @@ const itemList = {
     { q: 'Is Notion good as a study planner?', a: 'Notion is excellent if you enjoy building your own system with databases and templates, and students with a school email can get the Plus plan free. It is weaker as a ready-made planner: there is no built-in class timetable, exam countdown or grade calculator, so you set those up yourself.' },
     { q: 'Is a digital or paper study planner better?', a: 'Neither is better for everyone. Digital planners send reminders, handle repeating classes and sync across devices. Paper planners have no notifications to distract you and help some people remember plans. Many students use an app for the timetable and deadlines and paper for the daily to-do list.' },
     { q: 'What should a good study planner have?', a: 'At minimum: a weekly class timetable, a homework and assignment list with due dates, exam dates with a countdown, and reminders. Useful extras are a revision plan that spaces topics over days, grade tracking, and a focus timer.' },
-    { q: 'Which study planner is best for Indian students?', a: 'Look for support for rotating or irregular college timetables, CGPA and SGPA on a 10-point scale, and attendance tracking for the 75% rule. ClassTrack was built in India with these in mind; Power Planner and MyStudyLife are good alternatives but are designed mainly around 4.0 GPA systems.' },
+    { q: 'Which study planner is best for Indian students?', a: 'Look for CGPA and SGPA on a 10-point scale, attendance tracking for the 75% rule, and a quick way to enter a timetable from a PDF or photo. ClassTrack was built in India with these in mind. Power Planner also lets you set a custom GPA scale (including 10.0), and MyStudyLife handles rotating timetables, but neither lists attendance tracking among its features.' },
   ]}
   sources={[
     { text: 'Dunlosky, J. et al. (2013). Improving students’ learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
@@ -73,6 +73,8 @@ const itemList = {
     { text: 'Gollwitzer, P. M. & Sheeran, P. (2006). Implementation intentions and goal achievement: A meta-analysis of effects and processes. Advances in Experimental Social Psychology, 38, 69–119.', url: 'https://doi.org/10.1016/S0065-2601(06)38002-1' },
     { text: 'MyStudyLife: Study Planner, Google Play listing (checked October 2026).', url: 'https://play.google.com/store/apps/details?id=com.virblue.mystudylife' },
     { text: 'Power Planner: Premium version FAQ (checked October 2026).', url: 'https://support.powerplanner.net/faq/premium-version/' },
+    { text: 'MyStudyLife: official website and FAQ (checked October 2026).', url: 'https://mystudylife.com/' },
+    { text: 'Power Planner Support: Platforms and Week A/B schedules (checked October 2026).', url: 'https://support.powerplanner.net/faq/platforms/' },
     { text: 'Notion Help Center: Notion for education (checked October 2026).', url: 'https://www.notion.com/help/notion-for-education' },
     { text: 'Todoist Help: plans, pricing and billing FAQ (checked October 2026).', url: 'https://www.todoist.com/help/account-and-billing/plans/todoist-plans-pricing-and-billing-faq-Vq2z0HWL6' },
     { text: 'Structured Help: What is Structured Pro? (checked October 2026).', url: 'https://help.structured.app/en/articles/324674' },
@@ -110,23 +112,23 @@ const itemList = {
     <li><strong>Timetable:</strong> day, week and month views, rooms, teachers and class links, plus one-off extra or cancelled classes.</li>
     <li><strong>Homework and exams:</strong> tasks grouped into Overdue, Today and Next 7 days, and a countdown for every exam on the home screen.</li>
     <li><strong>AI:</strong> topic-by-topic learning plans with time estimates, and an AI study assistant for revision schedules and syllabus breakdowns.</li>
-    <li><strong>Built for Indian students:</strong> SGPA and CGPA on a 10-point scale, and attendance tracking by subject so you can stay above 75%.</li>
+    <li><strong>Works with any school system:</strong> GPA on a 4.0 or 10-point scale (including SGPA/CGPA), and attendance tracking by subject for colleges with a minimum-attendance rule.</li>
   </ul>
-  <p><strong>Free plan:</strong> timetable, tasks, exams, grades, habits and reminders, plus {SITE.free.aiMessages} AI messages a month, {SITE.free.timetableScans} AI timetable scans and {SITE.free.learningPlans} AI learning plans. Pro removes the AI limits and adds notes and flashcards, two-way Google Calendar sync and a daily agenda (<a href="/pricing/">see pricing</a>).</p>
-  <p><strong>Limits:</strong> Android only for now, and no web app. It is a newer app, so it has fewer store reviews than MyStudyLife. If you are on iPhone, start with MyStudyLife.</p>
+  <p><strong>Free plan:</strong> timetable, tasks, exams, grades, habits and reminders, plus {SITE.free.aiMessages} AI messages a month, {SITE.free.timetableScans} AI timetable scans and {SITE.free.learningPlans} AI learning plans. Pro removes the AI limits and adds notes and flashcards, daily Google Calendar import and a daily AI agenda (<a href="/pricing/">see pricing</a>).</p>
+  <p><strong>Limits:</strong> Android only for now, and no web app. It does not support rotating timetables (Week A/B or Day 1–6 cycles) yet. It is a newer app, so it has fewer store reviews than MyStudyLife. If you are on iPhone or have a rotating timetable, start with MyStudyLife.</p>
   <p><strong>Choose it if</strong> you are on Android and want the fastest set-up and a study plan built around your exam dates.</p>
 
   <h2 id="mystudylife">2. MyStudyLife: best free cross-platform student planner</h2>
-  <p><strong>Platforms:</strong> iPhone, iPad, Mac, Android, web · <strong>Price:</strong> free; optional MSL+ subscription</p>
-  <p>MyStudyLife is one of the longest-running student planners and says it is used by over 10 million students. It handles <strong>weekly and rotating timetables</strong> well, which matters if your school runs a Day 1 / Day 2 schedule. It covers homework, exams, reminders, grade tracking, a Pomodoro timer and widgets, and has an AI planning assistant called Scout.</p>
-  <p><strong>Limits:</strong> some features, such as unlimited Scout use and calendar sync, need MSL+. There is no timetable import from a photo, so set-up is manual.</p>
+  <p><strong>Platforms:</strong> iPhone, iPad, Android, web · <strong>Price:</strong> free; optional in-app purchases</p>
+  <p>MyStudyLife is one of the longest-running student planners and says it is used by over 10 million students. It handles <strong>weekly, rotating and block timetables</strong> (Day A/B, Week 1/2), and you can type your classes or snap a photo of your timetable. It covers homework with subtasks, exams, reminders, grade tracking, a built-in focus timer and offline use, and has an AI study coach called Scout. Parents can follow along with its Family Connect companion app.</p>
+  <p><strong>Limits:</strong> some features need a paid in-app upgrade, and we found no attendance tracking in its feature list. If you are on Android and want AI study plans built around your exam dates, compare it with ClassTrack: <a href="/compare/classtrack-vs-mystudylife/">ClassTrack vs MyStudyLife</a>.</p>
   <p><strong>Choose it if</strong> you use an iPhone, switch between phone and laptop, or need a rotating timetable.</p>
 
   <h2 id="power-planner">3. Power Planner: best for grades and GPA</h2>
-  <p><strong>Platforms:</strong> iPhone, Android, Windows, web · <strong>Price:</strong> free; Premium is a one-time purchase under $5</p>
+  <p><strong>Platforms:</strong> iPhone, iPad, Android, Chromebook, Windows, Mac, web (beta) · <strong>Price:</strong> free; Premium is a one-time $4.99 purchase</p>
   <p>Power Planner is a homework planner with unusually strong <strong>grade tracking</strong>: enter weighted marks per class and it calculates your GPA and what you need on the next test. The free version is ad-free and fully usable, and Premium is a single lifetime purchase that unlocks unlimited grades per class and multiple semesters on all your devices.</p>
-  <p><strong>Limits:</strong> no AI study plans, and the design is functional rather than modern. It is built around the 4.0 GPA scale.</p>
-  <p><strong>Choose it if</strong> you hate subscriptions and care most about knowing where your grades stand.</p>
+  <p><strong>Limits:</strong> no AI study plans, and the design is functional rather than modern. The free version is limited to one semester and five grades per class.</p>
+  <p><strong>Choose it if</strong> you hate subscriptions and care most about knowing where your grades stand. Full breakdown: <a href="/compare/classtrack-vs-power-planner/">ClassTrack vs Power Planner</a>.</p>
 
   <h2 id="notion">4. Notion: best for building your own study system</h2>
   <p><strong>Platforms:</strong> web, Windows, Mac, iPhone, Android · <strong>Price:</strong> free; Plus plan free for students and teachers with a school email</p>
@@ -143,7 +145,7 @@ const itemList = {
   <h2 id="google-calendar">6. Google Calendar: best free calendar for students</h2>
   <p><strong>Platforms:</strong> web, iPhone, Android · <strong>Price:</strong> free</p>
   <p>If your school uses Google Classroom, each class gets a shared calendar and <strong>classwork due dates appear in Google Calendar automatically</strong>. Add your classes as repeating events and block study time, and you have a free, reliable planner that every device already supports.</p>
-  <p><strong>Limits:</strong> it is a calendar, not a student planner: no homework checklist, grades, exam countdowns or revision plans. It works best alongside a dedicated app (ClassTrack Pro and MyStudyLife both sync with it).</p>
+  <p><strong>Limits:</strong> it is a calendar, not a student planner: no homework checklist, grades, exam countdowns or revision plans. It works best alongside a dedicated app (ClassTrack Pro imports from it daily).</p>
   <p><strong>Choose it if</strong> you want something free and simple, or your teachers already use Classroom.</p>
 
   <h2 id="structured">7. Structured: best visual time-blocking planner</h2>
@@ -168,8 +170,8 @@ const itemList = {
     <thead><tr><th scope="col">App</th><th scope="col">Class timetable</th><th scope="col">Homework</th><th scope="col">Exams</th><th scope="col">Grades</th><th scope="col">AI help</th><th scope="col">Platforms</th><th scope="col">Pricing model</th></tr></thead>
     <tbody>
       <tr><td><strong>ClassTrack</strong></td><td>Yes, AI import</td><td>Yes</td><td>Countdowns</td><td>GPA, SGPA, CGPA</td><td>Study plans, assistant</td><td>Android</td><td>Free + Pro</td></tr>
-      <tr><td><strong>MyStudyLife</strong></td><td>Yes, rotating</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Scout</td><td>iOS, Android, web</td><td>Free + MSL+</td></tr>
-      <tr><td><strong>Power Planner</strong></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Strong GPA</td><td>No</td><td>iOS, Android, Windows, web</td><td>Free + one-time</td></tr>
+      <tr><td><strong>MyStudyLife</strong></td><td>Yes, rotating, photo</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Scout</td><td>iOS, Android, web</td><td>Free + in-app purchases</td></tr>
+      <tr><td><strong>Power Planner</strong></td><td>Yes, Week A/B</td><td>Yes</td><td>Yes</td><td>Strong GPA, custom scales</td><td>No</td><td>iOS, Android, Windows, Mac, web</td><td>Free + one-time $4.99</td></tr>
       <tr><td><strong>Notion</strong></td><td>Build it</td><td>Build it</td><td>Build it</td><td>Build it</td><td>Paid plans</td><td>All</td><td>Free (Plus free for students)</td></tr>
       <tr><td><strong>TickTick</strong></td><td>No</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>All</td><td>Free + Premium</td></tr>
       <tr><td><strong>Google Calendar</strong></td><td>As events</td><td>Classroom due dates</td><td>As events</td><td>No</td><td>No</td><td>All</td><td>Free</td></tr>

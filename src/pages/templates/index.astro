@@ -1,0 +1,228 @@
+---
+import Base from '../../layouts/Base.astro';
+import Faq from '../../components/Faq.astro';
+import AppBand from '../../components/AppBand.astro';
+import Icon from '../../components/Icon.astro';
+import { SITE } from '../../data/site';
+import { faqSchema, type QA } from '../../lib/schema';
+
+// Printable templates. Each one prints on its own page (A4 or US Letter).
+// Every template is plain HTML/CSS, so it prints cleanly in any browser.
+const TEMPLATES = [
+  { id: 'weekly', name: 'Weekly study planner', desc: 'Seven days with time slots for classes and study blocks, plus a weekly focus box.', orient: 'landscape', tint: 'lavender', guide: '/guides/weekly-schedule-for-students/' },
+  { id: 'daily', name: 'Daily study planner', desc: 'Top 3 tasks, an hour-by-hour plan, a study block log and an end-of-day review.', orient: 'portrait', tint: 'mint', guide: '/guides/how-many-hours-to-study-a-day/' },
+  { id: 'exam', name: 'Exam revision tracker', desc: 'List every topic, rate your confidence and tick off three spaced revision rounds.', orient: 'portrait', tint: 'pink', guide: '/guides/study-plan-for-exams/' },
+  { id: 'assignments', name: 'Assignment tracker', desc: 'Every assignment with subject, due date, your own earlier deadline and status.', orient: 'portrait', tint: 'cream', guide: '/guides/how-to-manage-homework/' },
+  { id: 'semester', name: 'Semester at a glance', desc: 'Sixteen weeks on one page for exams, big deadlines and breaks.', orient: 'landscape', tint: 'blue', guide: '/guides/how-to-use-a-study-planner-app/' },
+] as const;
+
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const hours = ['7', '8', '9', '10', '11', '12', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+const weeklySlots = ['Morning', '', '', 'Afternoon', '', '', 'Evening', '', ''];
+
+const faqs: QA[] = [
+  { q: 'Are these study planner templates free?', a: 'Yes. All five templates are free to print and copy for personal or classroom use, with no sign-up and no email required.' },
+  { q: 'How do I print or save a template as a PDF?', a: 'Press “Print this template”. Your browser’s print window opens with just that template. Choose your printer, or choose “Save as PDF” as the destination. Weekly and semester templates print in landscape; the others print in portrait.' },
+  { q: 'Will they fit A4 and US Letter paper?', a: 'Yes. The templates are sized to fit both A4 and US Letter. If your browser adds headers or footers, turn them off in the print window under “More settings”.' },
+  { q: 'What is the best way to use a weekly study planner?', a: 'Fill in fixed things first (classes, work, travel), then add 2–4 focused study blocks per day in the gaps, each with one subject and one task. Do it once a week, for example on Sunday evening. See <a href="/guides/weekly-schedule-for-students/">sample weekly schedules</a>.' },
+  { q: 'Why does the exam tracker have three revision rounds?', a: 'Revisiting a topic several times, spaced out over days or weeks, is remembered much better than studying it once for the same total time. Spaced practice and self-testing were the two techniques rated “high utility” in a major review of learning research (Dunlosky et al., 2013).' },
+  { q: 'Is there a digital version?', a: `Yes. The free <a href="/tools/timetable-maker/">timetable maker</a> and <a href="/tools/study-plan-generator/">study plan generator</a> work in your browser. The ${SITE.app} app keeps the same planner on your phone, with reminders, and can read your class timetable from a photo.` },
+];
+
+const schema = [
+  {
+    '@type': 'CollectionPage',
+    name: 'Free printable study planner templates',
+    url: `${SITE.url}/templates/`,
+    description: 'Free printable study planner templates for students: weekly and daily planners, exam revision tracker, assignment tracker and semester calendar.',
+    isAccessibleForFree: true,
+    hasPart: TEMPLATES.map((t) => ({
+      '@type': 'DigitalDocument',
+      name: `${t.name} (printable)`,
+      description: t.desc,
+      url: `${SITE.url}/templates/#${t.id}`,
+      isAccessibleForFree: true,
+      learningResourceType: 'Planner template',
+      audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
+    })),
+  },
+  faqSchema(faqs),
+];
+---
+<Base title="Free Printable Study Planner Templates (Weekly, Daily, Exam)" description="Free printable study planner templates: weekly and daily planners, exam revision tracker, assignment tracker and semester calendar. Print or save as PDF." crumbs={[{ name: 'Templates', href: '/templates/' }]} schema={schema}>
+  <section class="section center no-print" style="padding-top:40px;padding-bottom:40px">
+    <div class="wrap">
+      <span class="eyebrow">Free printables · no sign-up</span>
+      <h1>Free printable <em style="color:var(--cta)">study planner</em> templates</h1>
+      <p class="lead">Five clean templates for high school, college and university students. Press print to get a paper copy, or save as a PDF to fill in on a tablet.</p>
+    </div>
+    <nav class="wrap tpl-index" aria-label="Templates">
+      {TEMPLATES.map((t) => <a class={`card lift t-${t.tint}`} href={`#${t.id}`}><strong>{t.name}</strong><span class="small">{t.desc}</span></a>)}
+    </nav>
+  </section>
+
+  {TEMPLATES.map((t) => (
+    <section class="section tight tpl-section" id={t.id} data-tpl={t.id}>
+      <div class="wrap">
+        <div class="tpl-head no-print">
+          <div>
+            <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin:0">{t.name}</h2>
+            <p class="small muted" style="margin:4px 0 0">{t.desc} Prints {t.orient}. <a href={t.guide}>How to use it →</a></p>
+          </div>
+          <button class="btn" type="button" data-print={t.id} data-orient={t.orient}><Icon name="print" class="i16" /> Print this template</button>
+        </div>
+
+        <div class={`sheet ${t.orient}`}>
+          <div class="sheet-top"><span class="sheet-title">{t.name}</span><span class="sheet-field">Name ____________________</span><span class="sheet-field">{t.id === 'semester' ? 'Term ____________' : t.id === 'exam' ? 'Exam ____________ Date ________' : 'Week of ____________'}</span></div>
+
+          {t.id === 'weekly' && (
+            <>
+              <table class="grid-t weekly">
+                <thead><tr><th scope="col"></th>{days.map((d) => <th scope="col">{d}</th>)}</tr></thead>
+                <tbody>{weeklySlots.map((s) => <tr><th scope="row">{s}</th>{days.map(() => <td></td>)}</tr>)}</tbody>
+              </table>
+              <div class="boxes three">
+                <div class="box"><b>This week’s focus</b></div>
+                <div class="box"><b>Deadlines & exams</b></div>
+                <div class="box"><b>Sunday review: what to move?</b></div>
+              </div>
+            </>
+          )}
+
+          {t.id === 'daily' && (
+            <>
+              <div class="boxes two">
+                <div class="box"><b>Top 3 tasks today</b><ol class="lines"><li></li><li></li><li></li></ol></div>
+                <div class="box"><b>Classes & fixed times</b><div class="ruled" style="--n:4"></div></div>
+              </div>
+              <table class="grid-t daily">
+                <thead><tr><th scope="col">Time</th><th scope="col">Plan</th><th scope="col" style="width:14%">Done</th></tr></thead>
+                <tbody>{hours.map((h) => <tr><th scope="row">{h}:00</th><td></td><td></td></tr>)}</tbody>
+              </table>
+              <div class="boxes two">
+                <div class="box"><b>Study blocks (subject · task · minutes)</b><div class="ruled" style="--n:4"></div></div>
+                <div class="box"><b>End of day: what worked, what moves to tomorrow?</b><div class="ruled" style="--n:4"></div></div>
+              </div>
+            </>
+          )}
+
+          {t.id === 'exam' && (
+            <>
+              <table class="grid-t exam">
+                <thead><tr><th scope="col" style="width:38%">Topic</th><th scope="col">Confidence<br /><small>1 = weak · 3 = strong</small></th><th scope="col">Learn</th><th scope="col">Round 1</th><th scope="col">Round 2</th><th scope="col">Round 3</th><th scope="col">Past paper</th></tr></thead>
+                <tbody>{Array.from({ length: 16 }).map(() => <tr><td></td><td class="c">1 · 2 · 3</td><td></td><td></td><td></td><td></td><td></td></tr>)}</tbody>
+              </table>
+              <p class="tip">Tip: space the rounds out, for example 1 day, 1 week and 2–3 weeks after you first learn a topic. Start each round by testing yourself before rereading.</p>
+            </>
+          )}
+
+          {t.id === 'assignments' && (
+            <table class="grid-t assign">
+              <thead><tr><th scope="col" style="width:30%">Assignment</th><th scope="col">Subject</th><th scope="col">Real due date</th><th scope="col">My due date<br /><small>1–2 days earlier</small></th><th scope="col">Status<br /><small>☐ start · ☐ draft · ☐ done</small></th></tr></thead>
+              <tbody>{Array.from({ length: 18 }).map(() => <tr><td></td><td></td><td></td><td></td><td class="c">☐ ☐ ☐</td></tr>)}</tbody>
+            </table>
+          )}
+
+          {t.id === 'semester' && (
+            <>
+              <div class="sem">
+                {Array.from({ length: 16 }).map((_, i) => <div class="sem-w"><b>Week {i + 1}</b><span>__ / __</span></div>)}
+              </div>
+              <div class="boxes three">
+                <div class="box"><b>Exams</b></div>
+                <div class="box"><b>Big deadlines</b></div>
+                <div class="box"><b>Breaks & holidays</b></div>
+              </div>
+            </>
+          )}
+
+          <p class="sheet-foot">Free template from studyplanner.tech</p>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section tight no-print">
+    <div class="narrow prose">
+      <h2 id="how">How to use a printable study planner</h2>
+      <ol>
+        <li><strong>Start with the semester page.</strong> Write every exam and big deadline you know now. This is the only page you fill in once.</li>
+        <li><strong>Plan each week on Sunday.</strong> On the weekly planner, write classes first, then add 2–4 study blocks a day in the gaps.</li>
+        <li><strong>Use the daily page on busy days.</strong> Pick three tasks. If you finish them, the day was a success.</li>
+        <li><strong>Track revision by topic.</strong> For each exam, list topics on the revision tracker and tick off three spaced rounds plus a past paper.</li>
+        <li><strong>Give every assignment your own earlier deadline.</strong> One or two days of buffer turns emergencies into small delays.</li>
+      </ol>
+      <p>Paper or app? Paper has no notifications to distract you, which helps some students focus. An app is better for repeating classes, reminders and plans that change. Many students use both: an app for the timetable and deadlines, paper for today. Compare the options in our <a href="/guides/best-study-planner-apps/">study planner app guide</a>.</p>
+    </div>
+  </section>
+
+  <section class="section tight band-lavender no-print"><div class="wrap center"><h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Template questions</h2></div><Faq items={faqs} /></section>
+  <AppBand title="Prefer it on your phone?" text={`${SITE.app} keeps your timetable, homework and exams in one free app, with reminders. Snap a photo of your timetable and AI builds your week.`} />
+</Base>
+
+<style>
+  .tpl-index { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 40px; text-align: left; }
+  .tpl-index a { display: grid; gap: 6px; text-decoration: none; color: var(--ink); padding: 18px; }
+  .tpl-head { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .sheet { background: #fff; border-radius: var(--r-md); box-shadow: 0 0 0 1px var(--line), 0 18px 40px -28px rgba(27,28,52,.35); padding: 28px; color: var(--ink); overflow-x: auto; }
+  .sheet.portrait { max-width: 820px; margin-inline: auto; }
+  .sheet-top { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 16px; }
+  .sheet-title { font-weight: 700; font-size: 1.3rem; margin-right: auto; }
+  .sheet-field { font-size: .85rem; color: var(--ink-2); }
+  .grid-t { font-size: .8rem; table-layout: fixed; min-width: 600px; }
+  .grid-t th, .grid-t td { border: 1px solid #C9C7D6; padding: 6px; vertical-align: top; text-align: left; }
+  .grid-t thead th { background: var(--lavender); font-weight: 600; }
+  .grid-t tbody th { width: 72px; font-weight: 600; color: var(--ink-2); }
+  .grid-t small { font-weight: 400; color: var(--muted); }
+  .grid-t .c { text-align: center; color: var(--muted); }
+  .weekly td { height: 44px; }
+  .daily td, .daily th { height: 26px; padding: 3px 6px; }
+  .exam td, .assign td { height: 30px; }
+  .boxes { display: grid; gap: 12px; margin-top: 14px; }
+  .boxes.two { grid-template-columns: 1fr 1fr; }
+  .boxes.three { grid-template-columns: repeat(3, 1fr); }
+  .box { border: 1px solid #C9C7D6; border-radius: 10px; padding: 10px 12px; min-height: 96px; font-size: .82rem; }
+  .box b { display: block; margin-bottom: 6px; }
+  .lines { margin: 0; padding-left: 1.2em; }
+  .lines li { border-bottom: 1px solid #C9C7D6; height: 26px; }
+  .ruled { height: calc(var(--n) * 24px); background: repeating-linear-gradient(transparent 0 23px, #C9C7D6 23px 24px); }
+  .sem { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .sem-w { border: 1px solid #C9C7D6; border-radius: 10px; min-height: 92px; padding: 8px 10px; font-size: .8rem; display: flex; justify-content: space-between; align-items: flex-start; }
+  .sem-w span { color: var(--muted); }
+  .tip { font-size: .8rem; color: var(--ink-2); margin: 10px 0 0; }
+  .sheet-foot { font-size: .7rem; color: var(--muted); margin: 14px 0 0; text-align: right; }
+  @media (max-width: 640px) { .boxes.two, .boxes.three { grid-template-columns: 1fr; } .sem { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Print only the chosen template, sized to one page. */
+  @media print {
+    :global(html[data-printing]) .tpl-section { display: none; }
+    :global(html[data-printing="weekly"]) #weekly,
+    :global(html[data-printing="daily"]) #daily,
+    :global(html[data-printing="exam"]) #exam,
+    :global(html[data-printing="assignments"]) #assignments,
+    :global(html[data-printing="semester"]) #semester { display: block; }
+    .tpl-section { padding: 0 !important; break-after: page; }
+    .tpl-section :global(.wrap) { width: 100%; }
+    .sheet { box-shadow: none; padding: 0; border-radius: 0; max-width: none; overflow: visible; }
+    .grid-t { min-width: 0; }
+    .grid-t thead th { background: #EEEAF8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+
+<script>
+  // Print one template: tag <html> so the print CSS hides the others,
+  // and inject an @page rule for that template's orientation.
+  const style = document.createElement('style');
+  document.head.appendChild(style);
+  document.querySelectorAll<HTMLButtonElement>('[data-print]').forEach((b) => {
+    b.addEventListener('click', () => {
+      document.documentElement.dataset.printing = b.dataset.print;
+      style.textContent = `@page { size: ${b.dataset.orient}; margin: 12mm; }`;
+      window.print();
+    });
+  });
+  window.addEventListener('afterprint', () => {
+    delete document.documentElement.dataset.printing;
+    style.textContent = '';
+  });
+</script>

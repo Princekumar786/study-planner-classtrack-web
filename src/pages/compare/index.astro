@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import AppBand from '../../components/AppBand.astro';
+import { COMPARISONS } from '../../data/compare';
+import { SITE } from '../../data/site';
+
+const schema = [{
+  '@type': 'CollectionPage',
+  name: 'Study planner app comparisons',
+  url: `${SITE.url}/compare/`,
+  hasPart: COMPARISONS.map((c) => ({ '@type': 'Article', headline: c.title, url: `${SITE.url}/compare/${c.slug}/`, datePublished: c.date, dateModified: c.updated })),
+}];
+---
+<Base title="Study Planner App Comparisons: ClassTrack vs Alternatives" description="Honest, source-checked comparisons of ClassTrack with other study planner apps like MyStudyLife and Power Planner: features, platforms, AI and price." crumbs={[{ name: 'Compare', href: '/compare/' }]} schema={schema}>
+  <section class="section center" style="padding-top:40px">
+    <div class="wrap">
+      <span class="eyebrow">Compare</span>
+      <h1>Which study planner is right for you?</h1>
+      <p class="lead">Side-by-side comparisons of ClassTrack and other student planners. Every competitor fact links to its official source, and we say plainly when another app is the better choice.</p>
+    </div>
+    <div class="wrap grid g3" style="margin-top:56px;text-align:left">
+      {COMPARISONS.map((c) => (
+        <a class="card lift t-lavender" href={`/compare/${c.slug}/`}>
+          <span class="tag" style="background:#fff">Comparison</span>
+          <h2 style="font-size:1.25rem;margin:14px 0 8px">{c.label}</h2>
+          <p class="small">{c.description}</p>
+          <span class="more">Read comparison →</span>
+        </a>
+      ))}
+      <a class="card lift t-mint" href="/guides/best-study-planner-apps/">
+        <span class="tag" style="background:#fff">Roundup</span>
+        <h2 style="font-size:1.25rem;margin:14px 0 8px">Best study planner apps in 2026</h2>
+        <p class="small">Nine planners compared on timetable, exams, AI, platforms and price.</p>
+        <span class="more">Read roundup →</span>
+      </a>
+    </div>
+  </section>
+  <AppBand />
+</Base>

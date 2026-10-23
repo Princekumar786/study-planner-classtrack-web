@@ -14,7 +14,7 @@ import { faqSchema, appSchema, type QA } from '../lib/schema';
 const faqs: QA[] = [
   { q: 'What is the best free study planner for students?', a: `The best study planner is the one you open every day. ${SITE.app} is a free study planner app for Android that keeps your class timetable, homework, exam countdowns and study plan in one place, with reminders. If you only need a quick plan, the free <a href="/tools/study-plan-generator/">study plan generator</a> on this site works in your browser with no sign-up.` },
   { q: 'How do I make a study timetable?', a: 'List your subjects and exam dates, block out fixed commitments (classes, travel, sleep), pick 2–4 realistic study blocks per day, give harder subjects more blocks, and leave the last 20% of the time for revision and practice tests. Our <a href="/guides/how-to-make-a-study-timetable/">7-step guide</a> walks through it, and the <a href="/tools/study-plan-generator/">generator</a> does the maths for you.' },
-  { q: 'Is ClassTrack free?', a: `Yes. The study planner, timetable, exam countdowns, homework list, grades and reminders are free. The free plan also includes ${SITE.free.aiMessages} AI messages a month, ${SITE.free.timetableScans} AI timetable scans and ${SITE.free.learningPlans} AI learning plans. ClassTrack Pro removes those limits and adds extras like Google Calendar sync. See <a href="/pricing/">pricing</a>.` },
+  { q: 'Is ClassTrack free?', a: `Yes. The study planner, timetable, exam countdowns, homework list, grades and reminders are free. The free plan also includes ${SITE.free.aiMessages} AI messages a month, ${SITE.free.timetableScans} AI timetable scans and ${SITE.free.learningPlans} AI learning plans. ClassTrack Pro removes those limits and adds extras like notes, flashcards and a daily Google Calendar import. See <a href="/pricing/">pricing</a>.` },
   { q: 'Can AI make my timetable from a photo?', a: `Yes. In ${SITE.app} you can take a photo of your printed timetable, upload a PDF or paste the text. The AI reads subjects, days, times and rooms and builds a weekly class schedule you can review and edit before saving.` },
   { q: 'Does it work on iPhone?', a: `${SITE.app} is available now on Android through Google Play. The iPhone version is coming soon: <button type="button" class="text-btn" data-ios style="padding:0">join the iPhone waitlist</button> and we will email you on launch day. All the free tools on studyplanner.tech already work in Safari on iPhone.` },
   { q: 'Do the free tools save my data?', a: 'The tools run entirely in your browser. Nothing you type is sent to our servers. Some tools remember your last inputs on your own device (local storage) so you can come back to them; you can clear this any time from your browser.' },
@@ -28,11 +28,11 @@ const chips = [
   { id: 'focus', icon: 'timer', label: 'Focus & procrastination', text: 'Use 25-minute Pomodoro blocks to start, keep going, and stop feeling guilty about breaks.', href: '/tools/pomodoro-timer/', cta: 'Start a focus timer' },
   { id: 'gpa', icon: 'cap', label: 'Grades & GPA', text: 'Work out your GPA, SGPA or CGPA and see which subjects need more study time.', href: '/tools/gpa-calculator/', cta: 'Calculate GPA' },
   { id: 'learn', icon: 'brain', label: 'Learn a new skill', text: 'Tell the AI what you want to learn and by when. It splits the topic into steps and builds a plan.', href: '/ai-study-planner/', cta: 'See the AI planner' },
-  { id: 'board', icon: 'book', label: 'Board exams', text: 'A full-syllabus plan from today to exam day, with spaced revision rounds built in.', href: '/guides/study-plan-for-exams/', cta: 'Read the guide' },
+  { id: 'board', icon: 'book', label: 'Finals & board exams', text: 'A full-syllabus plan from today to exam day, with spaced revision rounds built in.', href: '/guides/study-plan-for-exams/', cta: 'Read the guide' },
 ];
 
 const templates = [
-  { tint: 'lavender', title: '30-day board exam plan', meta: '5 subjects · 3 revision rounds', icon: 'book' },
+  { tint: 'lavender', title: '30-day final exam plan', meta: '5 subjects · 3 revision rounds', icon: 'book' },
   { tint: 'cream', title: 'Semester week, college', meta: 'Classes + 10 study hours', icon: 'calendar' },
   { tint: 'pink', title: 'Two-week finals sprint', meta: 'Mocks every 3rd day', icon: 'hourglass' },
   { tint: 'mint', title: 'Learn Python in 6 weeks', meta: 'AI learning plan · 18 topics', icon: 'code' },
@@ -157,7 +157,7 @@ const schema = [appSchema(), faqSchema(faqs)];
     <div class="wrap grid g3 center stats">
       <div class="stat"><Icon name="grid" class="line-ico" /><div class="stat-num">8</div><p>free planning tools that run in your browser</p></div>
       <div class="stat"><Icon name="camera" class="line-ico" /><div class="stat-num">{SITE.free.timetableScans}</div><p>free AI timetable scans in the app</p></div>
-      <div class="stat"><Icon name="sparkle" class="line-ico" /><div class="stat-num">₹0</div><p>to plan classes, homework and exams</p></div>
+      <div class="stat"><Icon name="sparkle" class="line-ico" /><div class="stat-num">Free</div><p>to plan classes, homework and exams</p></div>
     </div>
   </section>
 
@@ -208,7 +208,7 @@ const schema = [appSchema(), faqSchema(faqs)];
         <button type="button" class="arrow" data-next aria-label="Next plan"><Icon name="right" /></button>
       </div>
     </div>
-    <div class="cta-under"><a class="btn" href="/tools/study-plan-generator/">Generate my plan</a></div>
+    <div class="cta-under pair"><a class="btn" href="/tools/study-plan-generator/">Generate my plan</a><a class="btn ghost" href="/templates/">Print a free template</a></div>
   </section>
 
   <!-- 8. Feature carousel -->
