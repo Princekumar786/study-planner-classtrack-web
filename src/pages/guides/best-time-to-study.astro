@@ -1,0 +1,53 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/best-time-to-study/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'There is <strong>no single best time</strong> for everyone. The best time is when your focus is naturally highest and you will actually show up.',
+    'Your <strong>chronotype</strong> (morning lark or night owl) shifts your peak hours by a few hours in each direction.',
+    'Protect your <strong>peak hours for hard work</strong> and give easy tasks to your low-energy times.',
+    'Consistency beats the clock: the same time each day builds a habit that needs less willpower.',
+  ]}
+  toc={[
+    { id: 'myth', label: 'The morning-vs-night myth' },
+    { id: 'chronotype', label: 'Find your peak hours' },
+    { id: 'match', label: 'Match tasks to energy' },
+    { id: 'habit', label: 'Make the time a habit' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/study-plan-generator/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'Is it better to study in the morning or at night?', a: 'It depends on your body clock. Morning types focus best early; evening types peak later. What matters more is picking a time you can protect every day and keeping it consistent.' },
+    { q: 'Is studying early morning really more effective?', a: 'For many people mornings are quiet and distraction-free, which helps. But forcing a 5am start against a night-owl body clock often means poor focus. Work with your natural rhythm, not against it.' },
+    { q: 'How do I find my most productive time?', a: 'Track your focus for a week: note when you feel sharp and when you fade. A clear pattern usually appears within days. Then schedule your hardest study in those peak windows.' },
+  ]}
+  sources={[
+    { text: 'Roenneberg, T. et al. (2007). Epidemiology of the human circadian clock. Sleep Medicine Reviews, 11(6), 429–438.', url: 'https://doi.org/10.1016/j.smrv.2007.07.005' },
+    { text: 'Goldstein, D., Hahn, C. S. et al. (2007). Time of day, intellectual performance, and behavioral problems. Personality and Individual Differences, 42(3), 431–440.', url: 'https://doi.org/10.1016/j.paid.2006.07.008' },
+    { text: 'Lally, P. et al. (2010). How are habits formed: modelling habit formation in the real world. EJSP, 40(6), 998–1009.', url: 'https://doi.org/10.1002/ejsp.674' },
+  ]}
+>
+  <p>"When is the best time to study?" has a frustrating but honest answer: it depends on you. The productivity gurus who swear by 5am mornings are describing what works for their body, not a law of nature. Here is how to find yours.</p>
+
+  <h2 id="myth">The morning-vs-night myth</h2>
+  <p>Mornings genuinely suit many students: the house is quiet, the phone is calmer, and willpower tends to be higher before the day wears on it. But that is a convenience argument, not proof that brains learn better at dawn. Research on time-of-day effects shows performance tracks your personal rhythm more than the clock on the wall.</p>
+
+  <h2 id="chronotype">Find your peak hours</h2>
+  <p>Your chronotype is your natural tendency toward earlier or later timing, studied at scale by Roenneberg and colleagues. Larks peak in the morning, owls in the late afternoon or evening, and most people sit somewhere between. Track your focus for a week, rating it each hour. A pattern of one or two peak windows usually shows up quickly.</p>
+
+  <h2 id="match">Match tasks to energy</h2>
+  <table>
+    <thead><tr><th scope="col">Energy</th><th scope="col">Best for</th></tr></thead>
+    <tbody>
+      <tr><td>Peak focus hours</td><td>Hardest subject, new material, problem-solving, past papers</td></tr>
+      <tr><td>Medium energy</td><td>Reviewing notes, making flashcards, planning</td></tr>
+      <tr><td>Low energy</td><td>Admin, organising files, light reading, easy recall</td></tr>
+    </tbody>
+  </table>
+  <p>Guard your peak hours for the work that needs real thought, and stop wasting them on tasks a tired brain could handle. Block these windows in the <a href="/tools/timetable-maker/">timetable maker</a> and run them as <a href="/tools/pomodoro-timer/">focused sessions</a>.</p>
+
+  <h2 id="habit">Make the time a habit</h2>
+  <p>Lally's habit research found that repeating a behaviour at the same time and place is what turns it automatic. A fixed study window needs less willpower each week because your brain stops negotiating. Set the window with the <a href="/tools/study-plan-generator/">study plan generator</a> and protect it like a class. For building the surrounding habits, see <a href="/guides/how-to-build-a-daily-study-routine/">how to build a daily study routine</a>.</p>
+</Guide>

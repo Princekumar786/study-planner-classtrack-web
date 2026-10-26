@@ -1,0 +1,50 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/feynman-technique/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'The Feynman technique is four steps: <strong>explain it simply, find the gaps, go back to the source, then simplify again</strong>.',
+    'If you cannot explain a topic in plain words, you do not understand it yet. The technique turns that gap into a to-do list.',
+    'It works because explaining is a form of <strong>active recall</strong>, which builds stronger memory than re-reading.',
+    'Teaching an imaginary beginner forces you to drop jargon and expose the parts you were only pretending to know.',
+  ]}
+  toc={[
+    { id: 'what', label: 'What it is' },
+    { id: 'steps', label: 'The four steps' },
+    { id: 'why', label: 'Why it works' },
+    { id: 'example', label: 'A worked example' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'Who was the Feynman technique named after?', a: 'Richard Feynman, a Nobel-winning physicist famous for explaining hard ideas in plain language. He did not publish it as a method; it was named after his teaching style by later writers.' },
+    { q: 'Is the Feynman technique good for exams?', a: 'Yes, especially for topics you can state but not really explain. It finds the shaky parts of your understanding before the exam does, and the act of explaining is strong practice for written answers.' },
+    { q: 'How is it different from just re-reading notes?', a: 'Re-reading feels productive but mostly builds familiarity, not recall. Explaining from memory forces you to retrieve and reconstruct the idea, which is what actually strengthens learning.' },
+  ]}
+  sources={[
+    { text: 'Karpicke, J. D., & Blunt, J. R. (2011). Retrieval practice produces more learning than elaborative studying. Science, 331(6018), 772–775.', url: 'https://doi.org/10.1126/science.1199327' },
+    { text: 'Dunlosky, J. et al. (2013). Improving students\u2019 learning with effective learning techniques. PSPI, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Fiorella, L., & Mayer, R. E. (2013). The relative benefits of learning by teaching and teaching expectancy. Contemporary Educational Psychology, 38(4), 281–288.', url: 'https://doi.org/10.1016/j.cedpsych.2013.06.001' },
+  ]}
+>
+  <p>Most studying stops at the point of "I have read this and it makes sense". The Feynman technique pushes one step further, to "I can explain this to someone who has never seen it". That gap is where exam marks are lost, and closing it is the whole method.</p>
+
+  <h2 id="what">What it is</h2>
+  <p>The technique is named after physicist Richard Feynman, who was known for explaining difficult physics in everyday language. The idea: understanding and the ability to explain simply are the same thing. If your explanation needs jargon and hand-waving, you have found a part you do not actually understand.</p>
+
+  <h2 id="steps">The four steps</h2>
+  <ol>
+    <li><strong>Pick a concept</strong> and write its name at the top of a blank page.</li>
+    <li><strong>Explain it in plain language</strong>, as if to a younger student. No notes, no textbook. Use examples and simple words.</li>
+    <li><strong>Find the gaps.</strong> Where you stall, hand-wave, or reach for jargon, mark it. That is what you do not know. Go back to the source and learn only those parts.</li>
+    <li><strong>Simplify and use an analogy.</strong> Rewrite the rough bits in the simplest words you can, tying new ideas to things the beginner already knows.</li>
+  </ol>
+
+  <h2 id="why">Why it works</h2>
+  <p>Explaining from memory is retrieval practice, which Karpicke and Blunt showed beats re-reading and even concept mapping for long-term learning. There is also a "teaching expectancy" effect: preparing to explain something to others makes you organise it more deeply. The technique bakes both into one simple loop.</p>
+
+  <h2 id="example">A worked example</h2>
+  <p>Suppose you are revising supply and demand. You explain it out loud, then stall at "equilibrium price". That stall is the signal. You read only that section again, then rewrite it: "the price where the number of things people want to buy exactly matches the number sellers want to sell". Build these explain-and-check sessions into your <a href="/tools/study-plan-generator/">study plan</a>, and run them in <a href="/tools/pomodoro-timer/">short focus blocks</a>. To combine it with testing yourself, see <a href="/guides/evidence-based-study-techniques/">active recall and spaced repetition</a>.</p>
+</Guide>

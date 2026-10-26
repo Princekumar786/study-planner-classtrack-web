@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-make-a-revision-timetable/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'A revision timetable works backwards from your <strong>exam dates</strong>, not forwards from today.',
+    'Give <strong>more slots to weak and heavy subjects</strong>. Equal time for every subject is a common, costly mistake.',
+    'Schedule <strong>topics, not subjects</strong>. "Revise chemistry" is vague; "test myself on bonding" is a task you can finish.',
+    'Build in catch-up slots and short breaks, or the first bad day collapses the whole plan.',
+  ]}
+  toc={[
+    { id: 'gather', label: 'Gather dates and topics' },
+    { id: 'weight', label: 'Weight your time' },
+    { id: 'build', label: 'Build the timetable' },
+    { id: 'keep', label: 'Make it survive contact' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/exam-countdown/', '/tools/timetable-maker/']}
+  faqs={[
+    { q: 'How many hours a day should a revision timetable have?', a: 'Enough focused hours to cover the syllabus before the exam, not as many as will fit. For most students that is three to six focused hours on free days, broken into blocks. Quality of focus matters more than the total.' },
+    { q: 'How far in advance should I make a revision timetable?', a: 'As soon as you have your exam dates. Working back from them tells you how many days each subject gets, which is the whole point. Leaving it late forces cramming and drops topics.' },
+    { q: 'Should every subject get equal time?', a: 'No. Weight time by how hard the subject is for you and how much it is worth. Equal time feels fair but wastes hours on things you already know and starves the ones you do not.' },
+  ]}
+  sources={[
+    { text: 'Cepeda, N. J. et al. (2006). Distributed practice in verbal recall tasks. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+    { text: 'Rohrer, D., & Taylor, K. (2007). The shuffling of mathematics problems improves learning. Instructional Science, 35, 481–498.', url: 'https://doi.org/10.1007/s11251-007-9015-8' },
+    { text: 'Locke, E. A., & Latham, G. P. (2002). Building a practically useful theory of goal setting and task motivation. American Psychologist, 57(9), 705–717.', url: 'https://doi.org/10.1037/0003-066X.57.9.705' },
+  ]}
+>
+  <p>A revision timetable that looks beautiful and never survives week one is worse than no timetable, because it costs you an afternoon and then a week of guilt. The goal here is a plain, flexible plan that bends instead of breaking.</p>
+
+  <h2 id="gather">Gather dates and topics</h2>
+  <p>List every exam with its date, then break each subject into topics, roughly one per revision block. A topic list turns a scary subject into a checklist you can tick off. Enter the dates into the <a href="/tools/exam-countdown/">exam countdown</a> so you know exactly how many days and free days you have to work with.</p>
+
+  <h2 id="weight">Weight your time</h2>
+  <p>Score each subject on difficulty and importance, then hand out blocks in proportion. A hard, high-weight subject might get three blocks a week; an easy, low-weight one might get one. This is where most timetables go wrong: equal columns feel fair but ignore where your marks actually live.</p>
+
+  <h2 id="build">Build the timetable</h2>
+  <p>Drop topic-sized blocks into your free time around classes. Two rules from the research: space each topic across several days rather than massing it (Cepeda), and interleave two or three subjects a day rather than one long block (Rohrer and Taylor). The <a href="/tools/study-plan-generator/">study plan generator</a> does the backward maths for you, and the <a href="/tools/timetable-maker/">timetable maker</a> gives you a colour-coded grid to print or add to your calendar.</p>
+
+  <h2 id="keep">Make it survive contact</h2>
+  <ul>
+    <li><strong>Set targets, not durations.</strong> "Finish past paper 2" beats "revise for two hours" (Locke and Latham).</li>
+    <li><strong>Leave catch-up slots</strong> you plan to need. Something always overruns.</li>
+    <li><strong>Review weekly.</strong> Move what slipped, do not just abandon it.</li>
+    <li><strong>End with testing.</strong> The last pass over each topic should be a self-test, not a re-read.</li>
+  </ul>
+  <p>For the full exam-season version, see <a href="/guides/study-plan-for-exams/">how to make a study plan for exams</a>.</p>
+</Guide>

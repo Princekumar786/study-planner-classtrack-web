@@ -1,0 +1,58 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-take-better-notes/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Good notes are <strong>selective, not complete</strong>. Writing everything down turns you into a transcriber, not a learner.',
+    'Notes in <strong>your own words</strong> beat word-for-word copies, because rephrasing forces you to understand as you write.',
+    'The <strong>Cornell method</strong> builds in a recall step: a question column you cover and test yourself with later.',
+    'Notes you never revisit are wasted. Review within a day, then turn the key points into questions.',
+  ]}
+  toc={[
+    { id: 'principles', label: 'What makes notes useful' },
+    { id: 'methods', label: 'Four note-taking methods' },
+    { id: 'cornell', label: 'The Cornell method' },
+    { id: 'after', label: 'What to do after class' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'Should I take notes by hand or on a laptop?', a: 'Handwriting is usually better for understanding because you cannot write fast enough to copy verbatim, so you summarise. Laptops suit long lectures and easy editing, but resist typing everything word for word.' },
+    { q: 'What is the best note-taking method for students?', a: 'There is no single best one. Cornell suits lectures with clear points, mapping suits connected ideas, and the outline method suits structured material. Match the method to the subject.' },
+    { q: 'How do I take notes from a textbook?', a: 'Read a section first, then close the book and write the main idea in your own words. This stops you from copying and makes you check whether you actually understood it.' },
+  ]}
+  sources={[
+    { text: 'Mueller, P. A., & Oppenheimer, D. M. (2014). The pen is mightier than the keyboard. Psychological Science, 25(6), 1159–1168.', url: 'https://doi.org/10.1177/0956797614524581' },
+    { text: 'Pauk, W., & Owens, R. J. Q. (2013). How to Study in College (Cornell note-taking system).', url: 'https://lsc.cornell.edu/how-to-study/taking-notes/cornell-note-taking-system/' },
+    { text: 'Kobayashi, K. (2006). Combined effects of note-taking and review. Educational Psychology, 26(3), 459–477.', url: 'https://doi.org/10.1080/01443410500342070' },
+  ]}
+>
+  <p>Notes feel productive, which is exactly why they are often a trap. A full page copied from a slide looks like work and teaches you almost nothing. Useful notes are built to be reused, not just written once and filed away.</p>
+
+  <h2 id="principles">What makes notes useful</h2>
+  <ul>
+    <li><strong>Selective.</strong> Capture main ideas, relationships and examples, not every word.</li>
+    <li><strong>In your own words.</strong> Rephrasing is where the learning happens. Mueller and Oppenheimer found students who could not copy verbatim understood more, because they were forced to summarise.</li>
+    <li><strong>Structured.</strong> Headings, indentation and spacing show how ideas relate.</li>
+    <li><strong>Reviewable.</strong> Leave room to add questions and summaries later.</li>
+  </ul>
+
+  <h2 id="methods">Four note-taking methods</h2>
+  <table>
+    <thead><tr><th scope="col">Method</th><th scope="col">Best for</th><th scope="col">How it works</th></tr></thead>
+    <tbody>
+      <tr><td>Cornell</td><td>Lectures, revision</td><td>Split the page into cues, notes and a summary</td></tr>
+      <tr><td>Outline</td><td>Structured topics</td><td>Headings and indented sub-points</td></tr>
+      <tr><td>Mapping</td><td>Connected ideas</td><td>A central idea with branches</td></tr>
+      <tr><td>Charting</td><td>Comparisons, dates</td><td>Columns for categories you fill in</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="cornell">The Cornell method</h2>
+  <p>Divide the page into three areas: a narrow left column for cues, a wide right column for notes, and a strip at the bottom for a summary. Take notes on the right during class. Afterwards, write questions in the left column and a two-line summary at the bottom. To revise, cover the right side and answer the cue questions from memory. The layout turns a passive page into a self-test.</p>
+
+  <h2 id="after">What to do after class</h2>
+  <p>Review your notes within a day while the lecture is fresh, filling gaps and adding questions. Then turn the key points into recall questions or flashcards and revisit them on a spaced schedule. Build a short daily review into your <a href="/tools/study-plan-generator/">study plan</a> and do it in a focused <a href="/tools/pomodoro-timer/">Pomodoro</a>. For the science behind testing yourself, see <a href="/guides/evidence-based-study-techniques/">active recall and spaced repetition</a>.</p>
+</Guide>

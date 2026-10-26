@@ -1,0 +1,45 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-manage-college-assignments/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Capture every brief the <strong>moment it is set</strong>, with its deadline and weight, in one place you trust.',
+    'Break each assignment into <strong>dated steps</strong> and work backwards from the due date.',
+    'Start early with a <strong>rough first version</strong>. A bad draft is progress; a blank page is not.',
+    'A weekly review stops two or three deadlines from quietly converging on the same week.',
+  ]}
+  toc={[
+    { id: 'capture', label: 'Capture every brief' },
+    { id: 'backward', label: 'Work backwards from the deadline' },
+    { id: 'start', label: 'Start early and rough' },
+    { id: 'juggle', label: 'Juggle several at once' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/assignment-planner/', '/tools/study-plan-generator/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'How do I manage multiple college assignments?', a: 'Keep every brief and deadline in one place, break each into dated steps using backward planning, and review weekly so you can see where deadlines cluster. Start the work for busy weeks during the quiet ones before them.' },
+    { q: 'How do I stop leaving assignments until the last minute?', a: 'Break the assignment into small steps with their own earlier due dates, and schedule the first step within a day of getting the brief. Small, dated steps remove the big scary blank page that triggers delay.' },
+    { q: 'How early should I start a college assignment?', a: 'Start within a day or two of receiving it, even if only to read the brief and plan the steps. Early starts turn a panic into a series of small, manageable tasks spread across weeks.' },
+  ]}
+  sources={[
+    { text: 'Gollwitzer, P. M. (1999). Implementation intentions: strong effects of simple plans. American Psychologist, 54(7), 493–503.', url: 'https://doi.org/10.1037/0003-066X.54.7.493' },
+    { text: 'Steel, P. (2007). The nature of procrastination. Psychological Bulletin, 133(1), 65–94.', url: 'https://doi.org/10.1037/0033-2909.133.1.65' },
+    { text: 'Locke, E. A., & Latham, G. P. (2002). Building a practically useful theory of goal setting. American Psychologist, 57(9), 705–717.', url: 'https://doi.org/10.1037/0003-066X.57.9.705' },
+  ]}
+>
+  <p>College assignments rarely fail for lack of ability. They fail because the brief sat untouched until the week it was due, and then everything else was due that week too. Managing assignments is mostly a capture-and-schedule problem, solved long before you write a word.</p>
+
+  <h2 id="capture">Capture every brief</h2>
+  <p>The moment an assignment is set, record it: the task, the deadline, the weight, and any sub-requirements. If it only lives in your memory or a lecture slide you will see once, it will ambush you later. One trusted place for every brief is the foundation everything else sits on. Enter exam-style deadlines into the <a href="/tools/exam-countdown/">exam countdown</a> so they stay visible.</p>
+
+  <h2 id="backward">Work backwards from the deadline</h2>
+  <p>Take the due date and plan in reverse: final check, writing, drafting, research, reading the brief. Give each step its own earlier deadline. The <a href="/tools/assignment-planner/">assignment planner</a> does this backward maths and produces a dated plan for every step. Specific, dated sub-goals drive more action than a single distant deadline (Locke and Latham), and if-then timing lifts follow-through (Gollwitzer).</p>
+
+  <h2 id="start">Start early and rough</h2>
+  <p>Steel's research shows we delay most when a task feels aversive and the reward is far off. Both shrink when you start small and allow a rough first attempt. Open the document, write the title and a messy outline within a day of getting the brief. You can fix rough; you cannot fix nothing. Schedule the steps across the weeks with the <a href="/tools/study-plan-generator/">study plan generator</a>.</p>
+
+  <h2 id="juggle">Juggle several at once</h2>
+  <p>With several assignments live, a weekly review is what keeps them from colliding: look two weeks ahead, spot clustered deadlines, and pull their early steps into the quieter weeks before. For the wider semester view, see <a href="/guides/planner-for-college-students/">how to use a planner as a college student</a>, and for the school version, <a href="/guides/how-to-manage-homework/">how to manage homework and assignments</a>.</p>
+</Guide>

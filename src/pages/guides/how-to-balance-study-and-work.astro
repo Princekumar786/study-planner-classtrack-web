@@ -1,0 +1,45 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-balance-study-and-work/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'You cannot add hours, so you must <strong>protect and place</strong> the ones you have. Fixed study anchors beat "whenever I am free".',
+    'Put your <strong>shifts and classes in first</strong>, then slot study into the gaps, then guard that study time like a shift.',
+    'A weekly review stops deadlines from <strong>ambushing you</strong> after a run of busy days.',
+    'Short, frequent study sessions fit a working student better than rare long ones.',
+  ]}
+  toc={[
+    { id: 'reality', label: 'The honest maths' },
+    { id: 'anchors', label: 'Fixed study anchors' },
+    { id: 'small', label: 'Use small gaps well' },
+    { id: 'review', label: 'The weekly review' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/study-plan-generator/', '/tools/assignment-planner/']}
+  faqs={[
+    { q: 'How many hours can I work while studying full-time?', a: 'Many students manage around 10 to 15 hours a week without grades slipping, but it depends on your course load and commute. Watch your sleep and your grades, not just your bank balance; if either drops, cut hours.' },
+    { q: 'How do I stop work from eating my study time?', a: 'Treat study blocks as fixed appointments and put them in your timetable before anything optional. Tell your manager your study-critical weeks in advance, especially around exams.' },
+    { q: 'Is it better to study a little each day or in big weekend blocks?', a: 'For a working student, frequent short sessions usually win. They fit real gaps, benefit from spacing, and do not depend on one free day that a shift can swallow.' },
+  ]}
+  sources={[
+    { text: 'Gollwitzer, P. M. (1999). Implementation intentions: strong effects of simple plans. American Psychologist, 54(7), 493–503.', url: 'https://doi.org/10.1037/0003-066X.54.7.493' },
+    { text: 'Cepeda, N. J. et al. (2006). Distributed practice in verbal recall tasks. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+    { text: 'Richardson, M., Abraham, C., & Bond, R. (2012). Psychological correlates of university students\u2019 academic performance. Psychological Bulletin, 138(2), 353–387.', url: 'https://doi.org/10.1037/a0026838' },
+  ]}
+>
+  <p>Working while you study is normal, and it is survivable, but only if you stop treating study as the thing you do with leftover time. There is no leftover time. You have to carve it out and defend it.</p>
+
+  <h2 id="reality">The honest maths</h2>
+  <p>Add up your fixed commitments for a typical week: classes, shifts, commute, sleep, meals. Whatever remains is your real study budget, and it is smaller than you think. Seeing the true number stops you from planning for a fantasy week and then feeling like a failure when it does not appear.</p>
+
+  <h2 id="anchors">Fixed study anchors</h2>
+  <p>Choose a few study blocks that happen at the same time every week and treat them as unmovable as a shift. "Tuesday and Thursday, 6 to 8pm, library" is an anchor. Gollwitzer's research on if-then plans shows that deciding when and where in advance sharply raises follow-through. Build these into the <a href="/tools/timetable-maker/">timetable maker</a> alongside your shifts so the whole week is visible in one place.</p>
+
+  <h2 id="small">Use small gaps well</h2>
+  <p>A working student lives in small gaps: a free period, a bus ride, 20 minutes before a shift. These are perfect for flashcards, re-reading a summary, or testing yourself on one topic. Spacing study across many small sessions is not a compromise; Cepeda's review shows it often beats massing it into one long block. Keep a running list of "gap-sized" tasks so you always have something ready.</p>
+
+  <h2 id="review">The weekly review</h2>
+  <p>Once a week, spend ten minutes looking at the next two weeks: deadlines, exams, and shifts that clash with them. Break any big assignment into dated steps with the <a href="/tools/assignment-planner/">assignment planner</a>, and let the <a href="/tools/study-plan-generator/">study plan generator</a> fit revision around your known busy days. This single habit is what stops a deadline from appearing out of nowhere after a heavy work week. For the wider picture, read <a href="/guides/study-life-balance/">study-life balance</a> and <a href="/guides/time-management-for-students/">time management for students</a>.</p>
+</Guide>

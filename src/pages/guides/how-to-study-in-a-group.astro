@@ -1,0 +1,50 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-study-in-a-group/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Study groups help most when members <strong>teach each other</strong>, not when they just sit together and revise silently.',
+    'Keep it <strong>small (3 to 5)</strong> and give every session a clear goal and an end time.',
+    'The big risk is <strong>social drift</strong>: the group becoming a hangout. Structure prevents it.',
+    'Do solo testing first, then use the group to fill gaps and explain hard parts.',
+  ]}
+  toc={[
+    { id: 'why', label: 'When groups actually help' },
+    { id: 'setup', label: 'Set the group up right' },
+    { id: 'run', label: 'Run a useful session' },
+    { id: 'avoid', label: 'Avoid the traps' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/pomodoro-timer/', '/tools/assignment-planner/']}
+  faqs={[
+    { q: 'Are study groups actually effective?', a: 'They can be, when members explain material to each other and test one another rather than revising in parallel. Teaching a concept forces you to understand it, which is where the benefit comes from.' },
+    { q: 'How big should a study group be?', a: 'Three to five people. Smaller struggles to cover material and bounce ideas; larger drifts into chat and lets people hide. Everyone should have to contribute.' },
+    { q: 'Should I study alone or in a group?', a: 'Both, in the right order. Learn and test yourself alone first, then use the group to explain hard parts and catch gaps. A group is a poor place to meet material for the first time.' },
+  ]}
+  sources={[
+    { text: 'Fiorella, L., & Mayer, R. E. (2013). The relative benefits of learning by teaching and teaching expectancy. Contemporary Educational Psychology, 38(4), 281–288.', url: 'https://doi.org/10.1016/j.cedpsych.2013.06.001' },
+    { text: 'Johnson, D. W., & Johnson, R. T. (2009). An educational psychology success story: cooperative learning. Educational Researcher, 38(5), 365–379.', url: 'https://doi.org/10.3102/0013189X09339057' },
+    { text: 'Springer, L., Stanne, M. E., & Donovan, S. S. (1999). Effects of small-group learning. Review of Educational Research, 69(1), 21–51.', url: 'https://doi.org/10.3102/00346543069001021' },
+  ]}
+>
+  <p>A good study group is one of the most efficient ways to learn. A bad one is a two-hour conversation about everything except the exam, with a textbook open as an alibi. The difference is entirely in how you run it.</p>
+
+  <h2 id="why">When groups actually help</h2>
+  <p>The research on cooperative learning, reviewed by Johnson and Johnson and by Springer and colleagues, consistently favours well-structured group work over solo study for many outcomes. The active ingredient is explaining: Fiorella and Mayer show that teaching material, and even just expecting to teach it, deepens your own understanding. A group gives you people to teach.</p>
+
+  <h2 id="setup">Set the group up right</h2>
+  <ul>
+    <li><strong>Three to five committed people</strong> at a similar level and pace.</li>
+    <li><strong>A clear goal per session:</strong> "work through chapter 6 problems", not "revise maths".</li>
+    <li><strong>A fixed length</strong> with a start and stop time.</li>
+    <li><strong>Prep required.</strong> Everyone arrives having done the reading, so the time is spent on the hard parts.</li>
+  </ul>
+
+  <h2 id="run">Run a useful session</h2>
+  <p>Rotate who teaches each topic, so everyone has to explain something from memory. Quiz each other with questions prepared in advance. Work problems on a shared board where mistakes are visible and can be discussed. Keep it moving with a <a href="/tools/pomodoro-timer/">timer</a>, and agree the agenda beforehand using the <a href="/tools/study-plan-generator/">study plan generator</a> so no one spends the first twenty minutes deciding what to do.</p>
+
+  <h2 id="avoid">Avoid the traps</h2>
+  <p>Watch for social drift, one person doing all the work while others coast, and groups that meet to feel productive rather than to produce. A clear agenda, prep, and a hard finish time fix most of it. For shared assignments, split the project into dated, owned steps with the <a href="/tools/assignment-planner/">assignment planner</a>. And remember to do your own solo testing too; see <a href="/guides/evidence-based-study-techniques/">active recall and spaced repetition</a>.</p>
+</Guide>

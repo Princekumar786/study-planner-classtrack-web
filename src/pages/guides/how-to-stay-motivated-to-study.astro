@@ -1,0 +1,50 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-stay-motivated-to-study/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Motivation is <strong>unreliable</strong>, so build systems that work without it: routines, small starts and visible progress.',
+    'Connect study to <strong>your own reasons</strong>, not just grades. Self-chosen goals sustain effort far longer.',
+    '<strong>Shrink the start</strong> and action usually creates the motivation, not the other way round.',
+    'Make progress visible and reward it, so the far-off payoff is felt a little today.',
+  ]}
+  toc={[
+    { id: 'truth', label: 'The truth about motivation' },
+    { id: 'systems', label: 'Systems over willpower' },
+    { id: 'why', label: 'Find your real why' },
+    { id: 'progress', label: 'Make progress visible' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/pomodoro-timer/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'How do I stay motivated to study when I do not feel like it?', a: 'Do not wait to feel like it. Shrink the first step until it is almost trivial, start a short timed block, and let momentum build. Rely on routines and visible progress rather than waiting for motivation to appear.' },
+    { q: 'Why do I lose motivation to study?', a: 'Often because the goal is distant, the task is vague, or progress is invisible. Breaking work into clear steps, connecting it to reasons you care about, and seeing progress all help motivation last.' },
+    { q: 'Do rewards help you study?', a: 'Small, immediate rewards can help, especially for tasks whose payoff is far away. Keep them proportionate and make sure they do not derail the session, like a scroll that becomes an hour.' },
+  ]}
+  sources={[
+    { text: 'Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation. American Psychologist, 55(1), 68–78.', url: 'https://doi.org/10.1037/0003-066X.55.1.68' },
+    { text: 'Duckworth, A. L. et al. (2007). Grit: perseverance and passion for long-term goals. Journal of Personality and Social Psychology, 92(6), 1087–1101.', url: 'https://doi.org/10.1037/0022-3514.92.6.1087' },
+    { text: 'Amabile, T. M., & Kramer, S. J. (2011). The power of small wins. Harvard Business Review, 89(5).', url: 'https://hbr.org/2011/05/the-power-of-small-wins' },
+  ]}
+>
+  <p>Waiting to feel motivated before you study is like waiting to feel warm before you light the fire. Motivation is pleasant when it shows up, but it is a terrible thing to depend on. The students who keep going are not more motivated; they rely on it less.</p>
+
+  <h2 id="truth">The truth about motivation</h2>
+  <p>Feelings follow action at least as often as they precede it. You rarely feel like starting, but a few minutes in, the resistance fades and interest often appears. That is why "get motivated, then start" is backwards. Start small, and the motivation tends to arrive once you are already moving.</p>
+
+  <h2 id="systems">Systems over willpower</h2>
+  <ul>
+    <li><strong>A routine</strong> so studying is a time, not a decision. See <a href="/guides/how-to-build-a-daily-study-routine/">daily study routine</a>.</li>
+    <li><strong>Tiny starts.</strong> Commit to one <a href="/tools/pomodoro-timer/">25-minute block</a>, not the whole evening.</li>
+    <li><strong>A plan made in advance</strong> with the <a href="/tools/study-plan-generator/">study plan generator</a>, so low-motivation moments just follow instructions.</li>
+    <li><strong>Fewer distractions</strong>, so the path of least resistance is the work.</li>
+  </ul>
+
+  <h2 id="why">Find your real why</h2>
+  <p>Deci and Ryan's self-determination theory finds that motivation lasts longer when it comes from within: studying because it serves goals you actually care about, not only to avoid a bad grade. Connect the subject to where you want to go, give yourself real choice in how you study, and build competence through progress. Duckworth's work on grit points the same way: sustained effort grows from goals that matter to you.</p>
+
+  <h2 id="progress">Make progress visible</h2>
+  <p>Amabile and Kramer found that visible progress is one of the strongest daily motivators. So make yours visible: tick off completed blocks, watch the syllabus shrink, and let an <a href="/tools/exam-countdown/">exam countdown</a> turn a vague future into a concrete one. Small, seen wins today carry you toward the payoff that is still months away. When you slip, forgive it and restart rather than quitting; see <a href="/guides/how-to-stop-procrastinating/">how to stop procrastinating</a>.</p>
+</Guide>

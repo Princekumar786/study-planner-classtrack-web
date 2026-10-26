@@ -1,0 +1,63 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/time-management-for-students/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Time management is really <strong>decision management</strong>: deciding in advance what each hour is for so you do not drift.',
+    'Separate the <strong>urgent from the important</strong>. Most students drown in urgent-but-small tasks and starve the important ones.',
+    '<strong>Time-blocking</strong> beats a to-do list, because a task without a time rarely happens.',
+    'A weekly review is the keystone habit that makes every other technique work.',
+  ]}
+  toc={[
+    { id: 'mindset', label: 'The right mindset' },
+    { id: 'skills', label: '10 skills that raise grades' },
+    { id: 'matrix', label: 'Urgent vs important' },
+    { id: 'review', label: 'The weekly review' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/assignment-planner/', '/tools/study-plan-generator/']}
+  faqs={[
+    { q: 'What is the best time management technique for students?', a: 'Time-blocking: give every task a slot in your week rather than leaving it on an open list. A task with a time is a plan; a task without one is a wish. Pair it with a weekly review to keep it current.' },
+    { q: 'How do I manage time when I have too much to do?', a: 'Sort tasks by importance, not loudness. Do the few high-value things first, schedule the rest, and accept that some low-value tasks will be dropped on purpose rather than by accident.' },
+    { q: 'Why do I run out of time even when I plan?', a: 'Usually because plans ignore how long things really take and leave no slack. Track your actual times for a week, then add buffer. An over-packed plan fails on the first delay.' },
+  ]}
+  sources={[
+    { text: 'Claessens, B. J. C. et al. (2007). A review of the time management literature. Personnel Review, 36(2), 255–276.', url: 'https://doi.org/10.1108/00483480710726136' },
+    { text: 'Richardson, M., Abraham, C., & Bond, R. (2012). Psychological correlates of university students\u2019 academic performance. Psychological Bulletin, 138(2), 353–387.', url: 'https://doi.org/10.1037/a0026838' },
+    { text: 'Locke, E. A., & Latham, G. P. (2002). Building a practically useful theory of goal setting. American Psychologist, 57(9), 705–717.', url: 'https://doi.org/10.1037/0003-066X.57.9.705' },
+  ]}
+>
+  <p>Students rarely lack time. They lack a decision about what to do with it, made before the moment arrives. Good time management is mostly making those decisions in advance, when you are calm, so your tired evening self just follows orders.</p>
+
+  <h2 id="mindset">The right mindset</h2>
+  <p>You cannot manage time; it passes at the same rate regardless. What you manage is attention and choices. The reviews by Claessens and colleagues link time-management behaviours to lower stress and better perceived control, which is the real prize: not squeezing in more, but feeling on top of what matters.</p>
+
+  <h2 id="skills">10 skills that raise grades</h2>
+  <ol>
+    <li><strong>Capture everything</strong> in one place so nothing lives only in your head.</li>
+    <li><strong>Time-block</strong> tasks into your week, not just onto a list.</li>
+    <li><strong>Prioritise by importance</strong>, not by what shouts loudest.</li>
+    <li><strong>Batch similar tasks</strong> to cut the cost of switching.</li>
+    <li><strong>Set targets, not durations</strong> (Locke and Latham).</li>
+    <li><strong>Work in focused blocks</strong> with real breaks.</li>
+    <li><strong>Start big tasks early</strong> by breaking them into dated steps.</li>
+    <li><strong>Build in buffer</strong> for the things that overrun.</li>
+    <li><strong>Protect sleep and rest</strong> as fixed appointments.</li>
+    <li><strong>Review weekly</strong> to reset the plan.</li>
+  </ol>
+
+  <h2 id="matrix">Urgent vs important</h2>
+  <table>
+    <thead><tr><th scope="col"></th><th scope="col">Urgent</th><th scope="col">Not urgent</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Important</strong></td><td>Do now: today\u2019s deadline</td><td>Schedule: revision, big projects</td></tr>
+      <tr><td><strong>Not important</strong></td><td>Minimise: most notifications</td><td>Drop: busywork, idle scrolling</td></tr>
+    </tbody>
+  </table>
+  <p>The quadrant that decides grades is important-but-not-urgent: revision and long projects. Schedule it before it becomes a crisis, using the <a href="/tools/assignment-planner/">assignment planner</a> for projects and the <a href="/tools/study-plan-generator/">study plan generator</a> for revision.</p>
+
+  <h2 id="review">The weekly review</h2>
+  <p>Once a week, look at the next two weeks, move what slipped, and block the important work into the <a href="/tools/timetable-maker/">timetable maker</a>. This ten-minute habit is what keeps the whole system honest. For the working-student angle, read <a href="/guides/how-to-balance-study-and-work/">how to balance study and a part-time job</a>.</p>
+</Guide>

@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-stop-procrastinating/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Procrastination is an <strong>emotion problem</strong>, not a time problem: you avoid the task because it feels unpleasant, not because you lack hours.',
+    'The fastest fix is to <strong>shrink the first step</strong> until starting feels trivial, then let momentum do the rest.',
+    'Decide <strong>when and where</strong> you will study in advance. A plan beats willpower on a tired evening.',
+    'Remove the easier option: put the phone in another room so the task is the path of least resistance.',
+  ]}
+  toc={[
+    { id: 'why', label: 'Why you procrastinate' },
+    { id: 'methods', label: '9 methods that work' },
+    { id: 'plan', label: 'Build it into a plan' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/pomodoro-timer/', '/tools/study-plan-generator/', '/tools/assignment-planner/']}
+  faqs={[
+    { q: 'Why do I procrastinate even when I care about my grades?', a: 'Because caring raises the stakes, which raises the dread. The more a task matters, the more your brain wants to avoid the discomfort of starting. That is why high-value work is often the most delayed.' },
+    { q: 'What is the two-minute rule?', a: 'Commit to doing only the first two minutes of a task: open the book, write one line, solve one question. Starting is the hard part, and most people keep going once they have begun.' },
+    { q: 'Is procrastination a sign of laziness?', a: 'No. Research treats it as a self-regulation and mood-repair issue, not a character flaw. Lazy people avoid effort; procrastinators want to work but cannot get past the discomfort of starting.' },
+  ]}
+  sources={[
+    { text: 'Steel, P. (2007). The nature of procrastination. Psychological Bulletin, 133(1), 65–94.', url: 'https://doi.org/10.1037/0033-2909.133.1.65' },
+    { text: 'Gollwitzer, P. M. (1999). Implementation intentions: strong effects of simple plans. American Psychologist, 54(7), 493–503.', url: 'https://doi.org/10.1037/0003-066X.54.7.493' },
+    { text: 'Sirois, F., & Pychyl, T. (2013). Procrastination and the priority of short-term mood regulation. Social and Personality Psychology Compass, 7(2), 115–127.', url: 'https://doi.org/10.1111/spc3.12011' },
+  ]}
+>
+  <p>Everyone tells you to "just start", which is true and useless. The reason you cannot just start is that the task feels bad before you begin: boring, hard, or likely to show you are not as good at it as you hoped. Procrastination is how you escape that feeling. Fix the feeling and the behaviour follows.</p>
+
+  <h2 id="why">Why you procrastinate</h2>
+  <p>Piers Steel's review of hundreds of studies found procrastination is strongest when a task feels unpleasant, when the reward is far away, and when you doubt you can do it well. None of that is about time management. It is about mood in the moment. Once you see that, the useful question changes from "how do I force myself?" to "how do I make starting feel smaller and the payoff feel closer?"</p>
+
+  <h2 id="methods">9 methods that work</h2>
+  <ol>
+    <li><strong>Shrink the first step.</strong> Not "write the essay" but "open the document and write the title". A step you cannot refuse is the whole point.</li>
+    <li><strong>Use the two-minute rule.</strong> Promise yourself two minutes. You can stop after. You rarely will.</li>
+    <li><strong>Plan the when and where.</strong> "After dinner, at my desk, I revise biology for 25 minutes." These if-then plans roughly double follow-through in Gollwitzer's research.</li>
+    <li><strong>Make the easy option harder.</strong> Phone in another room, browser tabs closed, notifications off. You will not resist what is within arm's reach for three hours straight.</li>
+    <li><strong>Time-box with a timer.</strong> A 25-minute <a href="/tools/pomodoro-timer/">Pomodoro</a> turns "study all night" into one short, finishable round.</li>
+    <li><strong>Temptation bundling.</strong> Pair the task with something you like: a favourite playlist, your good coffee, a specific cafe.</li>
+    <li><strong>Lower the standard for the first draft.</strong> Give yourself permission to do it badly first. You can fix bad; you cannot fix blank.</li>
+    <li><strong>Forgive the last slip.</strong> Students who forgave themselves for procrastinating on one exam procrastinated less on the next. Guilt keeps the cycle going.</li>
+    <li><strong>Work where others work.</strong> A library or a quiet study group raises the social cost of scrolling.</li>
+  </ol>
+
+  <h2 id="plan">Build it into a plan</h2>
+  <p>Methods fade without a structure to hang them on. Decide your study blocks for the week in advance so you are not negotiating with yourself every evening. Our <a href="/tools/study-plan-generator/">study plan generator</a> turns your subjects and exam date into dated blocks, and the <a href="/tools/assignment-planner/">assignment planner</a> breaks a big task into small steps with their own due dates, so the first step is always obvious. For deeper habits, see <a href="/guides/how-to-stay-motivated-to-study/">how to stay motivated to study</a> and <a href="/guides/how-to-build-a-daily-study-routine/">how to build a daily study routine</a>.</p>
+</Guide>

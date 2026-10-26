@@ -1,0 +1,55 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/digital-vs-paper-planner/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Paper wins on <strong>focus and memory</strong>; digital wins on <strong>reminders, search and flexibility</strong>.',
+    'Writing by hand helps you <strong>process and remember</strong>, which is why many students plan on paper.',
+    'Digital planners <strong>chase you</strong> with notifications and rearrange when dates change, which paper cannot.',
+    'The best setup for many students is <strong>both</strong>: digital as the source of truth, paper for daily focus.',
+  ]}
+  toc={[
+    { id: 'paper', label: 'The case for paper' },
+    { id: 'digital', label: 'The case for digital' },
+    { id: 'compare', label: 'Side by side' },
+    { id: 'hybrid', label: 'The hybrid that works' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/assignment-planner/', '/tools/study-plan-generator/']}
+  faqs={[
+    { q: 'Is a paper or digital planner better for students?', a: 'Neither is best for everyone. Paper suits focus, daily to-dos and memory; digital suits reminders, recurring events and plans that change. Many students use digital to hold everything and paper for the day in front of them.' },
+    { q: 'Do digital planners help you remember more?', a: 'Typing can lead to shallower processing than handwriting, so pure digital note-taking may aid memory less. But digital reminders stop you forgetting deadlines, which is a different and valuable kind of help.' },
+    { q: 'Can I use both a paper and digital planner?', a: 'Yes, and it is a strong combination. Keep every deadline and class in a digital planner as the single source of truth, then write today\u2019s handful of tasks on paper each morning to focus.' },
+  ]}
+  sources={[
+    { text: 'Mueller, P. A., & Oppenheimer, D. M. (2014). The pen is mightier than the keyboard. Psychological Science, 25(6), 1159–1168.', url: 'https://doi.org/10.1177/0956797614524581' },
+    { text: 'Gollwitzer, P. M. (1999). Implementation intentions: strong effects of simple plans. American Psychologist, 54(7), 493–503.', url: 'https://doi.org/10.1037/0003-066X.54.7.493' },
+    { text: 'Mangen, A., & Velay, J. L. (2010). Digitizing literacy: reflections on the haptics of writing. In Advances in Haptics.', url: 'https://doi.org/10.5772/8710' },
+  ]}
+>
+  <p>The paper-versus-digital debate is usually argued as if one must win. For a student planner, they are good at different jobs, and picking the right tool for each job beats loyalty to either camp.</p>
+
+  <h2 id="paper">The case for paper</h2>
+  <p>Writing by hand is slower, and that is the point. Mueller and Oppenheimer found that because you cannot write as fast as you type, handwriting forces you to summarise and process, which aids memory. A paper to-do list is also tactile, distraction-free, and satisfying to tick. For the single day in front of you, paper keeps your attention on the page and off a device full of other apps.</p>
+
+  <h2 id="digital">The case for digital</h2>
+  <p>Paper cannot remind you. A digital planner sends notifications, repeats recurring classes automatically, searches instantly, syncs across your phone and laptop, and rearranges a plan when a date moves. Gollwitzer's if-then research shows timely prompts drive follow-through, and a digital planner is a machine for timely prompts. It also never gets left at home.</p>
+
+  <h2 id="compare">Side by side</h2>
+  <table>
+    <thead><tr><th scope="col">Need</th><th scope="col">Paper</th><th scope="col">Digital</th></tr></thead>
+    <tbody>
+      <tr><td>Reminders</td><td>No</td><td>Yes</td></tr>
+      <tr><td>Focus, few distractions</td><td>Yes</td><td>Depends</td></tr>
+      <tr><td>Memory while planning</td><td>Stronger</td><td>Weaker</td></tr>
+      <tr><td>Recurring classes</td><td>Rewrite each time</td><td>Automatic</td></tr>
+      <tr><td>Changing dates</td><td>Cross out</td><td>Drag and reschedule</td></tr>
+      <tr><td>Search and backup</td><td>No</td><td>Yes</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="hybrid">The hybrid that works</h2>
+  <p>Keep one digital source of truth with every class, deadline and exam, so nothing is forgotten and reminders fire on time. Build it with the <a href="/tools/timetable-maker/">timetable maker</a>, the <a href="/tools/assignment-planner/">assignment planner</a> and the <a href="/tools/study-plan-generator/">study plan generator</a>. Then each morning, write the few things that matter today on paper and work from that. Digital remembers; paper focuses. For printable pages, see the <a href="/templates/">study planner templates</a>.</p>
+</Guide>

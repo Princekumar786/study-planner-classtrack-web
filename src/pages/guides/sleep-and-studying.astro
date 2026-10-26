@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/sleep-and-studying/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Sleep is <strong>part of studying</strong>, not a break from it. Memories are moved into long-term storage while you sleep.',
+    'An all-nighter before an exam usually <strong>costs more marks than it gains</strong> through worse recall and focus.',
+    'Most teenagers and young adults need <strong>around 8 to 9 hours</strong>. Running on less has a measurable cost.',
+    'A short, steady wind-down routine protects sleep better than any single trick.',
+  ]}
+  toc={[
+    { id: 'why', label: 'How sleep builds memory' },
+    { id: 'allnighter', label: 'Why all-nighters backfire' },
+    { id: 'howmuch', label: 'How much you need' },
+    { id: 'routine', label: 'A simple sleep routine' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/exam-countdown/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'Is it better to sleep or study the night before an exam?', a: 'Sleep, in almost every case. A rested brain recalls more and thinks more clearly than one kept up late cramming. Do a light review earlier in the evening, then protect a full night.' },
+    { q: 'Does studying right before sleep help memory?', a: 'A light review of key material before bed can help, because sleep then consolidates it. The key word is light; a stressful late session hurts both your sleep and your recall.' },
+    { q: 'How many hours should a student sleep?', a: 'Teenagers generally need 8 to 10 hours and young adults around 7 to 9. Chronic short sleep harms attention, mood and memory, which are the exact tools you study with.' },
+  ]}
+  sources={[
+    { text: 'Walker, M. P., & Stickgold, R. (2006). Sleep, memory, and plasticity. Annual Review of Psychology, 57, 139–166.', url: 'https://doi.org/10.1146/annurev.psych.56.091103.070307' },
+    { text: 'Diekelmann, S., & Born, J. (2010). The memory function of sleep. Nature Reviews Neuroscience, 11, 114–126.', url: 'https://doi.org/10.1038/nrn2762' },
+    { text: 'Hirshkowitz, M. et al. (2015). National Sleep Foundation\u2019s sleep time duration recommendations. Sleep Health, 1(1), 40–43.', url: 'https://doi.org/10.1016/j.sleh.2014.12.010' },
+  ]}
+>
+  <p>If you only change one thing about how you study, make it sleep. It is the cheapest, most powerful study technique there is, and the one students sacrifice first. Pulling the all-nighter feels heroic and quietly undoes much of the work you did awake.</p>
+
+  <h2 id="why">How sleep builds memory</h2>
+  <p>During sleep, especially deep and REM stages, the brain replays and files what you learned that day, moving it from fragile short-term storage into durable memory. Diekelmann and Born describe this consolidation as a core function of sleep. So a study session followed by a full night genuinely teaches you more than the same session followed by a short one. The learning finishes while you are asleep.</p>
+
+  <h2 id="allnighter">Why all-nighters backfire</h2>
+  <p>Walker and Stickgold's research shows that losing a night of sleep sharply reduces the brain's ability to form new memories and to retrieve old ones. You walk into the exam having "covered" more and able to recall less, with slower thinking and a shorter fuse. Any cramming gain is usually wiped out by the deficit. The night before is for a full sleep, not a last stand.</p>
+
+  <h2 id="howmuch">How much you need</h2>
+  <p>The National Sleep Foundation's recommendations put teenagers at 8 to 10 hours and young adults at 7 to 9. If you are consistently below that, no study hack will make up the difference. Treat sleep as a fixed block in your plan, not the thing you trim when the day runs out.</p>
+
+  <h2 id="routine">A simple sleep routine</h2>
+  <ul>
+    <li><strong>Same wake time daily</strong>, even at weekends, to steady your body clock.</li>
+    <li><strong>A wind-down hour</strong> with dim light and no study screens.</li>
+    <li><strong>Finish focused work earlier</strong> so your mind is not racing at bedtime. End your <a href="/tools/pomodoro-timer/">last block</a> well before sleep.</li>
+    <li><strong>Plan backwards from your exam</strong> with the <a href="/tools/exam-countdown/">exam countdown</a> so you are never forced to choose sleep or syllabus at midnight.</li>
+  </ul>
+  <p>Schedule revision across several days with the <a href="/tools/study-plan-generator/">study plan generator</a> so each night's sleep can do its job. For the full picture of managing exam season, see <a href="/guides/how-to-deal-with-exam-stress/">how to deal with exam stress</a>.</p>
+</Guide>

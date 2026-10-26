@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-avoid-distractions-while-studying/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'The phone is the main distraction for most students. <strong>Distance beats discipline</strong>: put it in another room, not just on silent.',
+    'Design your environment so the <strong>easy thing is the right thing</strong>. You should have to work to get distracted, not to study.',
+    'Batch your messages and social media into <strong>set times</strong> instead of all day. Being reachable every minute is the real cost.',
+    'Internal distractions (worries, random ideas) go on a "later" list so you can deal with them after the block.',
+  ]}
+  toc={[
+    { id: 'phone', label: 'Deal with the phone first' },
+    { id: 'environment', label: 'Design your space' },
+    { id: 'internal', label: 'Internal distractions' },
+    { id: 'online', label: 'Studying on a laptop' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/pomodoro-timer/', '/tools/assignment-planner/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'How do I stop checking my phone while studying?', a: 'Make it inconvenient. Leave it in another room or give it to someone until your block ends. App blockers help, but physical distance is the most reliable because it adds a delay between the urge and the reward.' },
+    { q: 'Should I study with the internet off?', a: 'If the task does not need it, yes. Download what you need first, then switch off wifi for the block. Most "quick searches" become ten-minute detours.' },
+    { q: 'How do I study in a noisy house?', a: 'Use earplugs or instrumental sound to mask voices, pick the quietest room and time, and tell the people around you when your block ends so they know when you are free.' },
+  ]}
+  sources={[
+    { text: 'Ward, A. F. et al. (2017). Brain drain: the mere presence of one\u2019s own smartphone reduces available cognitive capacity. JACR, 2(2), 140–154.', url: 'https://doi.org/10.1086/691462' },
+    { text: 'Rosen, L. D., Carrier, L. M., & Cheever, N. A. (2013). Facebook and texting made me do it. Computers in Human Behavior, 29(3), 948–958.', url: 'https://doi.org/10.1016/j.chb.2012.12.001' },
+    { text: 'Mark, G., Gudith, D., & Klocke, U. (2008). The cost of interrupted work. Proceedings of CHI 2008.', url: 'https://doi.org/10.1145/1357054.1357072' },
+  ]}
+>
+  <p>You can have motivation, a plan and a clear desk, and still lose an evening to a phone that buzzed once. Avoiding distraction is less about trying harder in the moment and more about removing the moment entirely.</p>
+
+  <h2 id="phone">Deal with the phone first</h2>
+  <p>Studies by Adrian Ward and colleagues show your phone drains attention just by being present, even face down. Silent mode is not enough, because you still glance at it. The reliable move is distance: put it in another room, in a drawer, or hand it to a family member until your block ends. If you need it for a timer, use a separate device or the <a href="/tools/pomodoro-timer/">Pomodoro timer</a> on your laptop instead.</p>
+
+  <h2 id="environment">Design your space</h2>
+  <p>Gloria Mark's research found that after an interruption it takes serious time to get back to deep work. So remove interruptions before they happen:</p>
+  <ul>
+    <li>A fixed study spot your brain learns to associate with work, not your bed.</li>
+    <li>Only the materials for the current task on the desk.</li>
+    <li>A closed door and a "back at [time]" message to the people around you.</li>
+    <li>Notifications off on every device, not just the phone.</li>
+  </ul>
+
+  <h2 id="internal">Internal distractions</h2>
+  <p>Not every distraction is external. Worries and random ideas pull just as hard. Keep a notebook beside you and park each thought in one line, then return to the task. You are not ignoring it, you are scheduling it. If exam worry is the thing pulling at you, an <a href="/tools/exam-countdown/">exam countdown</a> and a written plan often calm it more than reassurance does, because they replace a vague fear with a concrete next step.</p>
+
+  <h2 id="online">Studying on a laptop</h2>
+  <p>When the work itself is on a screen, the distraction and the task share a window. Fight back by downloading readings in advance and turning off wifi, using one browser window with one tab, and using a site blocker during blocks. Break online research into a dated plan with the <a href="/tools/assignment-planner/">assignment planner</a> so you know exactly what you are looking for before you open a browser. For the deeper focus habit, read <a href="/guides/how-to-focus-on-studies/">how to focus on studies</a>.</p>
+</Guide>

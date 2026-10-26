@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/morning-routine-for-students/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'A good morning routine protects your <strong>focus before the day can steal it</strong>, mostly by delaying the phone.',
+    'The three highest-value moves are <strong>light, movement and water</strong> early, which wake up body and brain.',
+    'Decide your <strong>first task the night before</strong>, so you start on purpose instead of drifting.',
+    'Keep it short and repeatable. A five-step routine you do daily beats an elaborate one you quit.',
+  ]}
+  toc={[
+    { id: 'why', label: 'Why mornings matter' },
+    { id: 'routine', label: 'A simple routine' },
+    { id: 'phone', label: 'The phone rule' },
+    { id: 'firsttask', label: 'Choose the first task' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/timetable-maker/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'What is a good morning routine for students?', a: 'Get daylight and move a little early, drink water, avoid the phone for the first hour, and start with one planned task. Keep it short and the same each day so it becomes automatic rather than a decision.' },
+    { q: 'Should students study in the morning?', a: 'If mornings are your sharp, quiet time, they are excellent for hard study. If you are a night owl, use the morning routine to wake up and tackle lighter tasks, saving deep work for your real peak.' },
+    { q: 'Why should I avoid my phone in the morning?', a: 'Opening the phone first hands your attention to other people\u2019s demands before you have set your own. Delaying it by an hour protects your focus and mood for the start of the day.' },
+  ]}
+  sources={[
+    { text: 'Blume, C., Garbazza, C., & Spitschan, M. (2019). Effects of light on human circadian rhythms, sleep and mood. Somnologie, 23, 147–156.', url: 'https://doi.org/10.1007/s11818-019-00215-x' },
+    { text: 'Hillman, C. H., Erickson, K. I., & Kramer, A. F. (2008). Be smart, exercise your heart. Nature Reviews Neuroscience, 9, 58–65.', url: 'https://doi.org/10.1038/nrn2298' },
+    { text: 'Lally, P. et al. (2010). How are habits formed: modelling habit formation in the real world. EJSP, 40(6), 998–1009.', url: 'https://doi.org/10.1002/ejsp.674' },
+  ]}
+>
+  <p>How your morning goes sets the tone for your whole study day. Grab the phone in bed and you have handed your attention away before your feet touch the floor. A short, deliberate routine does the opposite: it hands the day back to you.</p>
+
+  <h2 id="why">Why mornings matter</h2>
+  <p>Early daylight helps set your body clock, which research links to better sleep and mood (Blume and colleagues), and light movement sharpens attention for the hours that follow (Hillman). You do not need an elaborate wellness ritual. A few small, reliable actions in the first half-hour change how the rest of the day feels.</p>
+
+  <h2 id="routine">A simple routine</h2>
+  <ol>
+    <li><strong>Get up at a consistent time</strong>, close to your schooldays even at weekends.</li>
+    <li><strong>Daylight and a little movement:</strong> open the curtains, step outside, or stretch for a few minutes.</li>
+    <li><strong>Water first</strong>, before caffeine.</li>
+    <li><strong>Glance at your plan</strong> for the day in the <a href="/tools/timetable-maker/">timetable maker</a>.</li>
+    <li><strong>Start your first planned task</strong> before the day fills up.</li>
+  </ol>
+
+  <h2 id="phone">The phone rule</h2>
+  <p>The single highest-value change is delaying the phone. Give yourself the first hour phone-free so messages, feeds and notifications do not set your mood and hijack your attention before you have chosen your own first move. Charge it outside the bedroom so reaching it takes effort. More on this in <a href="/guides/how-to-avoid-distractions-while-studying/">how to avoid distractions while studying</a>.</p>
+
+  <h2 id="firsttask">Choose the first task</h2>
+  <p>Decide the night before what you will do first, and make it concrete and small. Starting with a clear, planned task means momentum instead of drift. Set that task with the <a href="/tools/study-plan-generator/">study plan generator</a> and run it as one focused <a href="/tools/pomodoro-timer/">Pomodoro</a> to get moving. Lally's habit research is clear that repetition at a consistent time is what makes the whole routine stick. To build the rest of the day around it, see <a href="/guides/how-to-build-a-daily-study-routine/">how to build a daily study routine</a>.</p>
+</Guide>

@@ -1,0 +1,52 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-set-study-goals/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Vague goals like "do better" fail because you cannot act on them. <strong>Specific, measurable</strong> goals turn into tasks.',
+    'Set <strong>process goals</strong> (what you will do) as well as outcome goals (the grade). You control the first, not the second.',
+    'Hard-but-realistic goals drive more effort than easy ones, as long as you are <strong>committed</strong> to them.',
+    'Review goals weekly and adjust. A goal you never check is a wish.',
+  ]}
+  toc={[
+    { id: 'why', label: 'Why goals change behaviour' },
+    { id: 'smart', label: 'The SMART formula' },
+    { id: 'process', label: 'Process vs outcome goals' },
+    { id: 'track', label: 'Track and adjust' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/gpa-calculator/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'What are SMART study goals?', a: 'Goals that are Specific, Measurable, Achievable, Relevant and Time-bound. For example, "score 80% on the next chemistry test by finishing all past papers two weeks before" instead of "get better at chemistry".' },
+    { q: 'Should I set grade goals or effort goals?', a: 'Both, but lead with effort. You control how many past papers you do, not the exact mark. Process goals keep you moving even when an outcome feels far away or uncertain.' },
+    { q: 'How many study goals should I have at once?', a: 'A few at most. Too many goals split your focus and none get done. Pick one or two outcome goals per term and a handful of weekly process goals to feed them.' },
+  ]}
+  sources={[
+    { text: 'Locke, E. A., & Latham, G. P. (2002). Building a practically useful theory of goal setting and task motivation. American Psychologist, 57(9), 705–717.', url: 'https://doi.org/10.1037/0003-066X.57.9.705' },
+    { text: 'Zimmerman, B. J. (2002). Becoming a self-regulated learner: an overview. Theory Into Practice, 41(2), 64–70.', url: 'https://doi.org/10.1207/s15430421tip4102_2' },
+    { text: 'Gollwitzer, P. M. (1999). Implementation intentions: strong effects of simple plans. American Psychologist, 54(7), 493–503.', url: 'https://doi.org/10.1037/0003-066X.54.7.493' },
+  ]}
+>
+  <p>"I want to do well this year" is not a goal, it is a mood. It gives you nothing to do on a Tuesday afternoon. The point of a goal is to decide the behaviour, and the research on goal-setting is one of the most solid findings in psychology.</p>
+
+  <h2 id="why">Why goals change behaviour</h2>
+  <p>Across hundreds of studies, Locke and Latham found that specific, challenging goals produce higher performance than vague or easy ones, provided the person is committed and gets feedback. Goals work by directing attention, raising effort, and helping you persist. "Try your best" loses to "finish these ten questions" almost every time.</p>
+
+  <h2 id="smart">The SMART formula</h2>
+  <ul>
+    <li><strong>Specific:</strong> name the subject, task and target.</li>
+    <li><strong>Measurable:</strong> a number you can check, such as a score or a count of papers.</li>
+    <li><strong>Achievable:</strong> a stretch, not a fantasy.</li>
+    <li><strong>Relevant:</strong> tied to something that actually matters to you.</li>
+    <li><strong>Time-bound:</strong> a deadline, usually your exam date.</li>
+  </ul>
+  <p>Anchor the deadline with the <a href="/tools/exam-countdown/">exam countdown</a>, and use the <a href="/tools/gpa-calculator/">GPA calculator</a> to see which grades move your average, so your goals aim where it counts.</p>
+
+  <h2 id="process">Process vs outcome goals</h2>
+  <p>An outcome goal is the result ("80% in the final"). A process goal is the behaviour that gets you there ("three past papers a week"). You control the process, not the outcome, so lead with process goals and let them drive the result. Zimmerman's self-regulated learning work shows strong students cycle between setting a goal, acting, and judging progress, over and over.</p>
+
+  <h2 id="track">Track and adjust</h2>
+  <p>Turn each weekly process goal into dated blocks with the <a href="/tools/study-plan-generator/">study plan generator</a>, and phrase them as if-then plans ("after dinner on Monday, one past paper") to lift follow-through, per Gollwitzer. Review every week: did you hit it, and if not, was the goal wrong or the plan? Adjust and continue. For turning goals into a term-long plan, see <a href="/guides/how-to-make-a-semester-study-plan/">how to make a semester study plan</a>.</p>
+</Guide>

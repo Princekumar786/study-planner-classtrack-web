@@ -1,0 +1,50 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-improve-concentration/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Concentration is <strong>trainable</strong>. Longer blocks and fewer switches build it; constant task-switching erodes it.',
+    'Your attention span is partly set by <strong>sleep, movement and the environment</strong>, not just willpower.',
+    'Remove the biggest leak first: the phone. Its mere presence lowers your mental capacity.',
+    'Grow focus gradually, adding a few minutes to your blocks each week rather than forcing marathons.',
+  ]}
+  toc={[
+    { id: 'what', label: 'What drives concentration' },
+    { id: 'build', label: 'Train a longer attention span' },
+    { id: 'body', label: 'The body basics' },
+    { id: 'plan', label: 'Plan for deep focus' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/pomodoro-timer/', '/tools/study-plan-generator/', '/tools/timetable-maker/']}
+  faqs={[
+    { q: 'How can I improve my concentration while studying?', a: 'Study one task at a time in timed blocks, remove the phone from the room, and sleep and move enough to keep your brain supplied. Then extend your blocks gradually so your attention span grows week by week.' },
+    { q: 'Why is my attention span so short?', a: 'Often because it is constantly interrupted. Each notification trains your brain to expect a switch. Sleep debt, hunger and a cluttered environment also shorten focus. Fix the inputs and attention usually lengthens.' },
+    { q: 'Does exercise improve concentration?', a: 'Yes. Research links regular aerobic activity to better attention and executive function. Even a short walk before studying can sharpen focus for the session that follows.' },
+  ]}
+  sources={[
+    { text: 'Hillman, C. H., Erickson, K. I., & Kramer, A. F. (2008). Be smart, exercise your heart. Nature Reviews Neuroscience, 9, 58–65.', url: 'https://doi.org/10.1038/nrn2298' },
+    { text: 'Ward, A. F. et al. (2017). Brain drain: the mere presence of one\u2019s own smartphone reduces available cognitive capacity. JACR, 2(2), 140–154.', url: 'https://doi.org/10.1086/691462' },
+    { text: 'Ophir, E., Nass, C., & Wagner, A. D. (2009). Cognitive control in media multitaskers. PNAS, 106(37), 15583–15587.', url: 'https://doi.org/10.1073/pnas.0903620106' },
+  ]}
+>
+  <p>Concentration feels like a fixed amount you either have or lack. It is closer to a muscle: weakened by constant interruption, strengthened by regular use, and dependent on sleep, food and movement to work at all.</p>
+
+  <h2 id="what">What drives concentration</h2>
+  <p>Nass and colleagues found that heavy media multitaskers were worse at ignoring irrelevant information, suggesting the habit of switching degrades the very control that focus needs. The flip side is encouraging: deliberately practising single-tasking in longer blocks rebuilds that control over time. Attention responds to how you use it.</p>
+
+  <h2 id="build">Train a longer attention span</h2>
+  <ul>
+    <li><strong>One task, one window.</strong> No second tab, no second screen.</li>
+    <li><strong>Timed blocks.</strong> Start with <a href="/tools/pomodoro-timer/">25 minutes</a> and add five minutes every week or two.</li>
+    <li><strong>Park distractions.</strong> Write stray thoughts on a list and return to the task.</li>
+    <li><strong>Phone out of the room.</strong> Ward's work shows it drains capacity even when silent.</li>
+  </ul>
+
+  <h2 id="body">The body basics</h2>
+  <p>No focus technique survives a tired, hungry brain. Hillman's research links aerobic exercise to better attention and executive function, so a short walk before study genuinely helps. Pair that with enough sleep (see <a href="/guides/sleep-and-studying/">sleep and studying</a>), water and a snack with some protein, and you remove the most common hidden causes of a wandering mind.</p>
+
+  <h2 id="plan">Plan for deep focus</h2>
+  <p>Protect your sharpest hours for the work that needs the most concentration, and schedule them into the <a href="/tools/timetable-maker/">timetable maker</a> before easier tasks can crowd them out. Decide each block's job in advance with the <a href="/tools/study-plan-generator/">study plan generator</a>, because an undefined task is the fastest route to a wandering mind. For the distraction side, see <a href="/guides/how-to-avoid-distractions-while-studying/">how to avoid distractions while studying</a>.</p>
+</Guide>

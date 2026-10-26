@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-study-for-multiple-exams/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Make <strong>one combined timetable</strong> for all your exams, not a separate plan per subject that quietly collides.',
+    'Order your effort by <strong>date and difficulty together</strong>, so the hard, soon exam gets attention first.',
+    '<strong>Interleave</strong> two or three subjects a day. It feels harder than blocking one, and it works better.',
+    'Keep a short daily touch on every subject near the end so none goes cold.',
+  ]}
+  toc={[
+    { id: 'problem', label: 'Why multiple exams are hard' },
+    { id: 'combine', label: 'One combined timetable' },
+    { id: 'interleave', label: 'Interleave your subjects' },
+    { id: 'endgame', label: 'The final stretch' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/exam-countdown/', '/tools/study-plan-generator/', '/tools/timetable-maker/']}
+  faqs={[
+    { q: 'How do you study for multiple exams at once?', a: 'Build one timetable covering all of them, weight time by each exam\u2019s date and difficulty, and rotate two or three subjects a day. The aim is steady progress on every subject, not finishing one before you touch the next.' },
+    { q: 'Should I focus on one exam at a time?', a: 'Finishing one subject completely before starting another risks forgetting the first and running out of time for the last. Interleaving keeps every subject warm and, in the research, improves long-term recall.' },
+    { q: 'Which exam should I study for first?', a: 'The one with the worst combination of soon, hard and heavily weighted. A tough exam in a week usually beats an easy one tomorrow that you already know.' },
+  ]}
+  sources={[
+    { text: 'Rohrer, D., & Taylor, K. (2007). The shuffling of mathematics problems improves learning. Instructional Science, 35, 481–498.', url: 'https://doi.org/10.1007/s11251-007-9015-8' },
+    { text: 'Taylor, K., & Rohrer, D. (2010). The effects of interleaved practice. Applied Cognitive Psychology, 24(6), 837–848.', url: 'https://doi.org/10.1002/acp.1598' },
+    { text: 'Cepeda, N. J. et al. (2006). Distributed practice in verbal recall tasks. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+  ]}
+>
+  <p>One exam is a project. Five in a fortnight is a logistics problem. The students who struggle are usually not the ones who know less, but the ones who let one subject eat all their time and ran out of runway for the rest.</p>
+
+  <h2 id="problem">Why multiple exams are hard</h2>
+  <p>With several exams close together, two things fight you: limited time, and forgetting. Finish chemistry today and by the time the exam arrives in two weeks, some of it has faded. The solution is to stop thinking in terms of "done" subjects and start thinking in terms of keeping every subject warm while steadily deepening each one.</p>
+
+  <h2 id="combine">One combined timetable</h2>
+  <p>Put every exam date into the <a href="/tools/exam-countdown/">exam countdown</a> and see all the deadlines on one screen. Then give each subject a share of your blocks weighted by how soon and how hard it is. The <a href="/tools/study-plan-generator/">study plan generator</a> handles subjects with different dates in one plan, and the <a href="/tools/timetable-maker/">timetable maker</a> lays it out so clashes are obvious before they happen, not after.</p>
+
+  <h2 id="interleave">Interleave your subjects</h2>
+  <p>Rohrer and Taylor's experiments show that mixing problem types, rather than drilling one kind at a time, improves later performance, even though it feels harder and slower while you do it. For multiple exams this is doubly useful: two or three subjects a day keeps each fresh and trains you to switch, which is exactly what sitting different papers in a week demands.</p>
+
+  <h2 id="endgame">The final stretch</h2>
+  <ul>
+    <li><strong>Daily touch.</strong> In the last week, give every upcoming subject at least a short session so none goes cold.</li>
+    <li><strong>Front-load the hardest.</strong> Do the demanding thinking earlier in the day.</li>
+    <li><strong>Test, do not re-read.</strong> Past papers under time for each subject in turn.</li>
+    <li><strong>Protect sleep</strong>, which Cepeda-style spacing relies on to consolidate.</li>
+  </ul>
+  <p>For the single-exam deep dive, see <a href="/guides/how-to-study-for-finals/">how to study for finals</a> and <a href="/guides/study-plan-for-exams/">how to make a study plan for exams</a>.</p>
+</Guide>

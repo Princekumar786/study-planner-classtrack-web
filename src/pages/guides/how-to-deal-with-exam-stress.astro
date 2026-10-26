@@ -1,0 +1,50 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-deal-with-exam-stress/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Some exam stress is <strong>useful</strong>; it sharpens focus. The goal is to manage it, not erase it.',
+    'The strongest antidote is <strong>preparation you can see</strong>: a clear plan and past papers lower uncertainty, which lowers fear.',
+    'In the moment, <strong>slow breathing</strong> and reframing "I am anxious" as "I am ready" calm the body fast.',
+    'Protect sleep, food and movement. Stress gets worse when the basics slip.',
+  ]}
+  toc={[
+    { id: 'normal', label: 'Stress is not the enemy' },
+    { id: 'before', label: 'Lower stress before the exam' },
+    { id: 'during', label: 'Calm down in the exam' },
+    { id: 'help', label: 'When to ask for help' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/exam-countdown/', '/tools/study-plan-generator/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'How do I calm exam nerves quickly?', a: 'Slow your breathing: in for four counts, out for six, for about a minute. A longer out-breath signals safety to your nervous system. Then name your next concrete action, such as reading the first question, so your mind has somewhere to go.' },
+    { q: 'Why do I blank out in exams even when I studied?', a: 'High anxiety crowds out working memory, so retrieval stalls. Practising under timed, exam-like conditions beforehand makes recall more automatic and far less fragile when nerves hit.' },
+    { q: 'Is some exam stress actually good?', a: 'Yes. Moderate arousal improves focus and performance. The problem is only when it tips into panic. The aim is to dial it down to useful, not switch it off.' },
+  ]}
+  sources={[
+    { text: 'Yerkes, R. M., & Dodson, J. D. (1908). The relation of strength of stimulus to rapidity of habit-formation. J. Comp. Neurol. Psychol., 18, 459–482.', url: 'https://doi.org/10.1002/cne.920180503' },
+    { text: 'Ramirez, G., & Beilock, S. L. (2011). Writing about testing worries boosts exam performance. Science, 331(6014), 211–213.', url: 'https://doi.org/10.1126/science.1199427' },
+    { text: 'American Psychological Association. Stress and how to manage it.', url: 'https://www.apa.org/topics/stress' },
+  ]}
+>
+  <p>A racing heart before an exam is not a malfunction. It is your body getting ready for something that matters. The Yerkes-Dodson curve describes it well: a bit of arousal helps performance, too much hurts it. The work is keeping yourself on the helpful side.</p>
+
+  <h2 id="normal">Stress is not the enemy</h2>
+  <p>Trying to feel nothing before an exam is both impossible and counterproductive. A calmer, more useful target is "prepared and alert". Much exam panic is really uncertainty, the fear of not knowing what will be on the paper or whether you can do it. That means a lot of stress management is actually just good preparation.</p>
+
+  <h2 id="before">Lower stress before the exam</h2>
+  <ul>
+    <li><strong>Make the unknown known.</strong> Sit past papers so the format holds no surprises.</li>
+    <li><strong>Make a visible plan.</strong> An <a href="/tools/exam-countdown/">exam countdown</a> and a <a href="/tools/study-plan-generator/">study plan</a> replace "I will never be ready" with a list you are working through.</li>
+    <li><strong>Study in blocks, rest in between.</strong> Steady <a href="/tools/pomodoro-timer/">Pomodoro</a> sessions prevent the frantic all-day cramming that feeds anxiety.</li>
+    <li><strong>Keep the basics.</strong> Sleep, meals and a daily walk are not optional extras during exam season.</li>
+  </ul>
+
+  <h2 id="during">Calm down in the exam</h2>
+  <p>If nerves spike, breathe slowly with a longer out-breath for a minute. Ramirez and Beilock found that spending a few minutes writing down your worries before a test can actually raise scores, by clearing them out of working memory. In the exam, start with a question you can do to build momentum, and reframe the feeling: the physical signs of "anxious" and "ready" are almost identical, so tell yourself it is the second.</p>
+
+  <h2 id="help">When to ask for help</h2>
+  <p>Stress that stops you sleeping, eating or functioning for weeks is more than exam nerves. Talk to a tutor, your student wellbeing service, or a doctor. The APA's guidance is clear that persistent, overwhelming stress deserves real support, and asking for it early is a strength, not a weakness. For the sleep side, see <a href="/guides/sleep-and-studying/">sleep and studying</a>.</p>
+</Guide>

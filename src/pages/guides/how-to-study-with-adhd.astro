@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-study-with-adhd/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Work <strong>with</strong> an ADHD brain, not against it: shorter blocks, strong external structure, and interest built into tasks.',
+    'Put the memory <strong>outside your head</strong>. Written reminders and a planner beat "I will remember".',
+    '<strong>Body doubling</strong> (studying alongside someone) and timers make starting and staying far easier.',
+    'Reduce friction to start, and reward progress quickly, since distant rewards motivate less.',
+  ]}
+  toc={[
+    { id: 'different', label: 'Why standard advice fails' },
+    { id: 'strategies', label: 'Strategies that fit' },
+    { id: 'external', label: 'Put memory outside your head' },
+    { id: 'kind', label: 'Be practical, not hard on yourself' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/pomodoro-timer/', '/tools/assignment-planner/', '/tools/study-plan-generator/']}
+  faqs={[
+    { q: 'How do you study with ADHD?', a: 'Use short focused blocks, strong external reminders, and an environment with fewer distractions. Break tasks into very small first steps, study alongside someone when you can, and let a planner hold the details so your working memory does not have to.' },
+    { q: 'Why is studying so hard with ADHD?', a: 'ADHD affects attention regulation, working memory and motivation for tasks without immediate reward, so long, unstructured study is especially tough. The fix is structure and interest from outside, not simply trying harder.' },
+    { q: 'What is body doubling?', a: 'Working on your task while another person is present and working on theirs. Their presence provides gentle accountability and structure that makes it easier to start and keep going. It can be in person or online.' },
+  ]}
+  sources={[
+    { text: 'Barkley, R. A. (1997). Behavioral inhibition, sustained attention, and executive functions. Psychological Bulletin, 121(1), 65–94.', url: 'https://doi.org/10.1037/0033-2909.121.1.65' },
+    { text: 'DuPaul, G. J. et al. (2021). College students with ADHD: a review of challenges and interventions.', url: 'https://doi.org/10.1007/s10802-021-00806-z' },
+    { text: 'CHADD (Children and Adults with ADHD): educational resources and study strategies.', url: 'https://chadd.org/' },
+  ]}
+>
+  <p>Most study advice is written for brains that find it easy to start boring tasks and hold plans in their head. If that is not your brain, the usual tips can feel like being told to "just focus". These strategies are built around how ADHD actually works.</p>
+
+  <h2 id="different">Why standard advice fails</h2>
+  <p>Russell Barkley's model frames ADHD largely as a difficulty with executive function: regulating attention, holding things in working memory, and getting motivated by rewards that are far off. That is exactly what a long, self-directed study session demands. So the goal is not more willpower; it is building external structure that does the regulating for you.</p>
+
+  <h2 id="strategies">Strategies that fit</h2>
+  <ul>
+    <li><strong>Shrink the first step</strong> until it is almost too easy: "open the file and write one line".</li>
+    <li><strong>Short blocks.</strong> <a href="/tools/pomodoro-timer/">Timed rounds</a> with movement breaks suit a restless brain better than long sittings.</li>
+    <li><strong>Body doubling.</strong> Study with someone present, in person or on a call, for gentle accountability.</li>
+    <li><strong>Build in interest and reward.</strong> Make dull tasks more stimulating and reward progress quickly, not only at the end.</li>
+    <li><strong>Remove distractions physically.</strong> Phone in another room; a single tab on screen.</li>
+  </ul>
+
+  <h2 id="external">Put memory outside your head</h2>
+  <p>Working memory is a known weak spot, so stop relying on it. Capture every task and deadline the moment you hear it, break big tasks into dated steps with the <a href="/tools/assignment-planner/">assignment planner</a>, and let a planner and reminders carry the details. A plan you can see is worth far more than a plan you are trying to hold in your mind. Schedule the blocks with the <a href="/tools/study-plan-generator/">study plan generator</a> so the day is decided before you sit down.</p>
+
+  <h2 id="kind">Be practical, not hard on yourself</h2>
+  <p>Missed sessions and lost focus are part of the terrain, not proof of failure. Use the "never miss twice" rule, forgive the last slip (which reduces future procrastination), and keep adjusting the system until it fits you. If study is a constant struggle, your college disability or wellbeing service, and resources like CHADD, can help. For related habits, see <a href="/guides/how-to-stop-procrastinating/">how to stop procrastinating</a> and <a href="/guides/how-to-avoid-distractions-while-studying/">how to avoid distractions</a>.</p>
+</Guide>

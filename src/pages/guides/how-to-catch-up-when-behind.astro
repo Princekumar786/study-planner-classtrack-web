@@ -1,0 +1,45 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-catch-up-when-behind/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Start by <strong>facing the full list</strong>. Avoidance is what let it build up; a clear audit is what shrinks the fear.',
+    '<strong>Triage ruthlessly</strong>: some work is worth catching up on, some is better cut or submitted late on purpose.',
+    'Rebuild momentum with <strong>one small win</strong> today, not a heroic all-nighter that burns you out by day two.',
+    'Talk to teachers early. Extensions and advice are far easier to get before a deadline than after.',
+  ]}
+  toc={[
+    { id: 'audit', label: 'Audit what is due' },
+    { id: 'triage', label: 'Triage the list' },
+    { id: 'momentum', label: 'Rebuild momentum' },
+    { id: 'prevent', label: 'Stop it recurring' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/assignment-planner/', '/tools/study-plan-generator/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'How do I catch up when I am really far behind?', a: 'List everything outstanding, rank it by deadline and importance, and cut or defer the low-value items on purpose. Then pick one task to finish today. Catching up is a series of small wins, not one giant push.' },
+    { q: 'Should I tell my teacher I am behind?', a: 'Yes, and sooner rather than later. Teachers can offer extensions, point you to what matters most, or adjust expectations, but almost always only before the deadline, not after you have missed it silently.' },
+    { q: 'Is it better to skip some work to catch up?', a: 'Often, yes. Trying to do everything perfectly is what keeps you stuck. Deliberately dropping or minimising low-value tasks frees time for the ones that actually affect your grade.' },
+  ]}
+  sources={[
+    { text: 'Sirois, F., & Pychyl, T. (2013). Procrastination and the priority of short-term mood regulation. Social and Personality Psychology Compass, 7(2), 115–127.', url: 'https://doi.org/10.1111/spc3.12011' },
+    { text: 'Locke, E. A., & Latham, G. P. (2002). Building a practically useful theory of goal setting. American Psychologist, 57(9), 705–717.', url: 'https://doi.org/10.1037/0003-066X.57.9.705' },
+    { text: 'Baumeister, R. F. et al. (1994). Losing Control: How and Why People Fail at Self-Regulation. Academic Press.', url: 'https://doi.org/10.1016/C2009-0-02301-5' },
+  ]}
+>
+  <p>Falling behind feels like a cliff. The pile grows, you avoid it because facing it feels awful, and avoiding it makes the pile grow. Breaking that loop does not take a burst of willpower. It takes a plan calm enough to follow when you feel like hiding.</p>
+
+  <h2 id="audit">Audit what is due</h2>
+  <p>Write down everything outstanding in one place: assignments, readings, topics missed, upcoming exams. It will feel worse for about ten minutes and better after that, because a known list is smaller than a vague dread. Sirois and Pychyl's work shows avoidance is mostly about escaping bad feelings in the moment; naming the list removes much of the thing you were avoiding.</p>
+
+  <h2 id="triage">Triage the list</h2>
+  <p>You probably cannot do all of it well, and trying to is what keeps you frozen. Sort each item: high value and due soon (do first), high value and later (schedule), low value (minimise, submit late on purpose, or drop). Use the <a href="/tools/gpa-calculator/">GPA calculator</a> to see which pieces actually move your grade so you spend effort where it pays.</p>
+
+  <h2 id="momentum">Rebuild momentum</h2>
+  <p>Do not open with an all-nighter; you will crash. Pick one small, finishable task and complete it today to prove the situation is movable. Then break the bigger items into dated steps with the <a href="/tools/assignment-planner/">assignment planner</a>, and spread the catch-up across days with the <a href="/tools/study-plan-generator/">study plan generator</a> rather than one brutal session. Specific, achievable targets (Locke and Latham) beat "catch up on everything".</p>
+
+  <h2 id="prevent">Stop it recurring</h2>
+  <p>Once you are level, a weekly review is what keeps you there: ten minutes checking the next two weeks and booking the work in. Put exam dates in the <a href="/tools/exam-countdown/">exam countdown</a> so revision starts on time. For the habit side, read <a href="/guides/how-to-stop-procrastinating/">how to stop procrastinating</a> and <a href="/guides/time-management-for-students/">time management for students</a>.</p>
+</Guide>

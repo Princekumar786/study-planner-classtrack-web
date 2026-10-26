@@ -1,0 +1,49 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/study-life-balance/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Balance is not equal time; it is <strong>enough rest to keep studying well</strong>. Burnout costs more hours than it saves.',
+    'Protect sleep, movement and one or two things you do purely because you enjoy them.',
+    'Use <strong>boundaries</strong>: set a daily stop time, and make rest real rest, not guilty scrolling.',
+    'Plan the week so free time is <strong>scheduled</strong>, not whatever is left over at midnight.',
+  ]}
+  toc={[
+    { id: 'what', label: 'What balance really means' },
+    { id: 'rest', label: 'Rest that restores' },
+    { id: 'boundaries', label: 'Set boundaries' },
+    { id: 'plan', label: 'Plan room to live' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/study-plan-generator/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'Is it normal to feel guilty when not studying?', a: 'It is common, but it is a sign of poor boundaries, not of being a good student. Scheduled rest you have earned is part of the plan, not time stolen from it. Guilt-ridden rest does not restore you.' },
+    { q: 'How do I know if I am heading for burnout?', a: 'Warning signs include dreading work you used to manage, falling behind despite long hours, poor sleep, and losing interest in things you enjoyed. If several persist for weeks, cut load and talk to someone.' },
+    { q: 'How much free time should a student have?', a: 'Enough to sleep well, move daily, and do something non-academic you enjoy. If a plan leaves none of that, it is not sustainable and will break down within weeks.' },
+  ]}
+  sources={[
+    { text: 'Walker, M. P., & Stickgold, R. (2006). Sleep, memory, and plasticity. Annual Review of Psychology, 57, 139–166.', url: 'https://doi.org/10.1146/annurev.psych.56.091103.070307' },
+    { text: 'Hillman, C. H., Erickson, K. I., & Kramer, A. F. (2008). Be smart, exercise your heart. Nature Reviews Neuroscience, 9, 58–65.', url: 'https://doi.org/10.1038/nrn2298' },
+    { text: 'Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation. American Psychologist, 55(1), 68–78.', url: 'https://doi.org/10.1037/0003-066X.55.1.68' },
+  ]}
+>
+  <p>"Study-life balance" sounds like a luxury you earn after the exams. It is the opposite: the rest is what makes the study work. A tired, resentful brain learns slowly, so running yourself into the ground is not dedication, it is inefficiency.</p>
+
+  <h2 id="what">What balance really means</h2>
+  <p>Balance is not splitting your day evenly between work and fun. It is keeping enough rest, sleep and enjoyment in your week that you can study with real focus when you sit down. The test is simple: can you keep this pace for a whole term without dreading it? If not, the plan is too heavy, however virtuous it feels.</p>
+
+  <h2 id="rest">Rest that restores</h2>
+  <p>Not all rest is equal. Scrolling between tasks leaves you more drained, not less. Real rest for students usually means three things backed by research: enough sleep, which Walker and Stickgold link directly to memory; daily movement, which Hillman shows improves attention and mood; and time doing something you find genuinely absorbing. Protect those three before you optimise anything else.</p>
+
+  <h2 id="boundaries">Set boundaries</h2>
+  <ul>
+    <li><strong>A stop time.</strong> Pick an hour each night when study ends. Open-ended days expand to fill all your time and still feel unfinished.</li>
+    <li><strong>Single-tasking.</strong> Study in <a href="/tools/pomodoro-timer/">focused blocks</a>, then stop cleanly. Half-studying all evening is the worst of both worlds.</li>
+    <li><strong>Say no on purpose.</strong> You cannot do everything; choose what you drop rather than dropping sleep by default.</li>
+  </ul>
+
+  <h2 id="plan">Plan room to live</h2>
+  <p>If free time is "whatever is left", there will be none. Block your rest, exercise and social time into the <a href="/tools/timetable-maker/">timetable maker</a> first, then fit study around it with the <a href="/tools/study-plan-generator/">study plan generator</a>. Deci and Ryan's work shows motivation lasts longer when it comes from within, and nothing drains inner motivation faster than a life that is nothing but work. For the working-student version, see <a href="/guides/how-to-balance-study-and-work/">how to balance study and a part-time job</a>.</p>
+</Guide>

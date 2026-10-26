@@ -1,0 +1,54 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-memorize-faster/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'You remember faster by <strong>testing yourself</strong>, not by reading more. Retrieval is the engine of memory.',
+    'Break long lists into <strong>chunks</strong> of three to five items so working memory can hold them.',
+    'Tie new facts to things you already know with <strong>mnemonics, stories or a memory palace</strong>.',
+    'Sleep after studying. Memory is consolidated overnight, so a short night undoes part of the work.',
+  ]}
+  toc={[
+    { id: 'how', label: 'How memory actually forms' },
+    { id: 'techniques', label: '8 techniques that speed it up' },
+    { id: 'palace', label: 'The memory palace' },
+    { id: 'sleep', label: 'Sleep and spacing' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'What is the fastest way to memorise for an exam?', a: 'Turn the material into questions and test yourself repeatedly, spacing the sessions over several days. Self-testing feels harder than re-reading, which is exactly why it works faster.' },
+    { q: 'Does writing things down help you memorise?', a: 'Yes, if you write from memory rather than copying. Writing the answer without looking is a form of recall. Copying the text again is not.' },
+    { q: 'How do memory champions remember so much?', a: 'They convert dull information into vivid images and place them along a familiar route, the memory palace. The method is learnable and works for ordinary study material too.' },
+  ]}
+  sources={[
+    { text: 'Roediger, H. L., & Karpicke, J. D. (2006). The power of testing memory. Perspectives on Psychological Science, 1(3), 181–210.', url: 'https://doi.org/10.1111/j.1745-6916.2006.00012.x' },
+    { text: 'Miller, G. A. (1956). The magical number seven, plus or minus two. Psychological Review, 63(2), 81–97.', url: 'https://doi.org/10.1037/h0043158' },
+    { text: 'Diekelmann, S., & Born, J. (2010). The memory function of sleep. Nature Reviews Neuroscience, 11, 114–126.', url: 'https://doi.org/10.1038/nrn2762' },
+  ]}
+>
+  <p>"Memorise faster" usually means "stop wasting time on methods that feel good but do not work". Re-reading and highlighting are the main culprits. The techniques below move the same facts into long-term memory in far fewer hours.</p>
+
+  <h2 id="how">How memory actually forms</h2>
+  <p>A memory strengthens each time you retrieve it, not each time you review it. That is why self-testing beats re-reading in study after study. Working memory is also small, around four to seven items at once per George Miller's classic estimate, which is why long lists overwhelm you until you break them up.</p>
+
+  <h2 id="techniques">8 techniques that speed it up</h2>
+  <ol>
+    <li><strong>Test yourself</strong> instead of re-reading. Cover the answer and recall it.</li>
+    <li><strong>Chunk</strong> long information into groups of three to five.</li>
+    <li><strong>Space it out</strong> over days so each review reloads the memory.</li>
+    <li><strong>Mnemonics</strong> and acronyms for ordered lists.</li>
+    <li><strong>Stories</strong> that link items in sequence, the sillier the better.</li>
+    <li><strong>Explain it aloud</strong> in plain words, the <a href="/guides/feynman-technique/">Feynman technique</a>.</li>
+    <li><strong>Interleave</strong> topics rather than drilling one for hours.</li>
+    <li><strong>Draw it</strong> as a diagram so you encode it visually and verbally.</li>
+  </ol>
+
+  <h2 id="palace">The memory palace</h2>
+  <p>For lists you must recall in order, use a journey you know well, such as the route through your home. Place a vivid image for each item at a spot along the route: the first fact at the front door, the next on the stairs. To recall, walk the route in your mind. It feels like a party trick, but it reliably outperforms rote repetition for ordered material.</p>
+
+  <h2 id="sleep">Sleep and spacing</h2>
+  <p>Diekelmann and Born show that sleep is when the brain files the day's learning into long-term memory. A study session followed by a full night does more than a longer session followed by a short one. Plan recall sessions across several days with the <a href="/tools/study-plan-generator/">study plan generator</a>, keep each one to a focused <a href="/tools/pomodoro-timer/">25-minute block</a>, and protect your sleep, especially near exams. More on that in <a href="/guides/sleep-and-studying/">sleep and studying</a>.</p>
+</Guide>

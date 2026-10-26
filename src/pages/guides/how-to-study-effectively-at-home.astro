@@ -1,0 +1,50 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-study-effectively-at-home/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Home has no bell and no teacher, so you must <strong>supply the structure yourself</strong>: a start time, a plan and a finish line.',
+    'Have a <strong>dedicated study spot</strong> that is not your bed. Your brain links places with states, and bed means sleep.',
+    'Tell the people you live with <strong>when you are studying</strong>, so interruptions become the exception.',
+    'Use timed blocks and a clear daily target so "study at home" does not blur into all-day half-working.',
+  ]}
+  toc={[
+    { id: 'space', label: 'Set up a study space' },
+    { id: 'structure', label: 'Give the day structure' },
+    { id: 'people', label: 'Handle people at home' },
+    { id: 'traps', label: 'Avoid the home traps' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/pomodoro-timer/', '/tools/timetable-maker/']}
+  faqs={[
+    { q: 'Why is it so hard to study at home?', a: 'Home is full of comfort, distractions and no external structure. School and libraries supply timetables, quiet and social pressure to work. At home you have to build those yourself, which is the whole challenge.' },
+    { q: 'Should I study in my bedroom?', a: 'Use a desk or table rather than your bed. Studying in bed weakens the link between bed and sleep and makes focus harder. If your room is the only option, keep a specific work corner just for study.' },
+    { q: 'How do I study at home without getting bored?', a: 'Use short timed blocks with clear targets, switch between subjects, and build in real breaks. Boredom usually means the task is vague or the session is too long; shrink both.' },
+  ]}
+  sources={[
+    { text: 'Gollwitzer, P. M. (1999). Implementation intentions: strong effects of simple plans. American Psychologist, 54(7), 493–503.', url: 'https://doi.org/10.1037/0003-066X.54.7.493' },
+    { text: 'Mark, G., Gudith, D., & Klocke, U. (2008). The cost of interrupted work. Proceedings of CHI 2008.', url: 'https://doi.org/10.1145/1357054.1357072' },
+    { text: 'Bjork, R. A., Dunlosky, J., & Kornell, N. (2013). Self-regulated learning. Annual Review of Psychology, 64, 417–444.', url: 'https://doi.org/10.1146/annurev-psych-113011-143823' },
+  ]}
+>
+  <p>Studying at home sounds easy and is often the hardest place of all. There is no bell to start you, no teacher watching, and a fridge, a bed and a phone all within reach. Effective home study is really about rebuilding the structure that school hands you for free.</p>
+
+  <h2 id="space">Set up a study space</h2>
+  <p>Pick one spot you use only for study: a desk, a kitchen table, a corner. Keep it tidy and stocked with what you need so starting takes no setup. Avoid your bed, where your brain expects to switch off. A consistent space becomes a cue that tells your mind it is time to work, which is self-regulation made physical.</p>
+
+  <h2 id="structure">Give the day structure</h2>
+  <p>Decide the night before exactly when you will start and what the first task is. Gollwitzer's if-then plans ("after breakfast, at my desk, I start maths") roughly double follow-through. Lay the day out in the <a href="/tools/timetable-maker/">timetable maker</a>, break it into <a href="/tools/pomodoro-timer/">timed blocks</a>, and set a daily target with the <a href="/tools/study-plan-generator/">study plan generator</a> so you know when you are done.</p>
+
+  <h2 id="people">Handle people at home</h2>
+  <ul>
+    <li><strong>Announce your blocks.</strong> "I am studying until 4, free after" turns constant interruptions into planned ones.</li>
+    <li><strong>Use a visible signal</strong> such as a closed door or headphones.</li>
+    <li><strong>Batch family time</strong> into your breaks so you are not torn between the two.</li>
+  </ul>
+  <p>Gloria Mark's interruption research shows how expensive each break in concentration is, so preventing them is worth the awkward conversation.</p>
+
+  <h2 id="traps">Avoid the home traps</h2>
+  <p>The classic home traps are the phone, the bed, the "quick" snack that becomes an hour, and open-ended days that never properly start or end. Put the phone in another room, keep a finish time, and if you catch yourself "studying" all day while absorbing nothing, stop and reset with a short, defined block. For the distraction side specifically, see <a href="/guides/how-to-avoid-distractions-while-studying/">how to avoid distractions while studying</a>.</p>
+</Guide>

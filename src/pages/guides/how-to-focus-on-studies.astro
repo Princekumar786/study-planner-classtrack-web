@@ -1,0 +1,50 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-focus-on-studies/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Focus is a <strong>skill you can train</strong>, not a trait you are born with. It grows when you practise longer, uninterrupted blocks.',
+    'The biggest focus killer is <strong>task switching</strong>. Every glance at your phone costs minutes of re-focusing, not seconds.',
+    'Protect attention with a <strong>pre-study routine</strong>, a single task, and a timer that defines a clear finish line.',
+    'Rest is part of focus. Short breaks between blocks are what let you concentrate again.',
+  ]}
+  toc={[
+    { id: 'what', label: 'What focus really is' },
+    { id: 'before', label: 'Set up before you start' },
+    { id: 'during', label: 'Hold focus during a session' },
+    { id: 'long', label: 'Focus for long days' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/pomodoro-timer/', '/tools/study-plan-generator/', '/tools/timetable-maker/']}
+  faqs={[
+    { q: 'How long can a student realistically focus?', a: 'Most people do 25 to 50 minutes of genuine focus before attention dips. That is normal. The goal is not one long unbroken stretch but several good blocks with real breaks between them.' },
+    { q: 'Does music help you focus while studying?', a: 'Lyrics compete with reading and tend to hurt comprehension. Instrumental or ambient sound can help mask a noisy room. If a task is hard, silence usually wins.' },
+    { q: 'Why do I lose focus the moment I sit down?', a: 'Usually because the task is undefined. "Study history" has no edges, so your mind wanders. Name the exact next action first: "summarise chapter 4 in ten bullet points".' },
+  ]}
+  sources={[
+    { text: 'Ophir, E., Nass, C., & Wagner, A. D. (2009). Cognitive control in media multitaskers. PNAS, 106(37), 15583–15587.', url: 'https://doi.org/10.1073/pnas.0903620106' },
+    { text: 'Ward, A. F. et al. (2017). Brain drain: the mere presence of one\u2019s own smartphone reduces available cognitive capacity. JACR, 2(2), 140–154.', url: 'https://doi.org/10.1086/691462' },
+    { text: 'Ericsson, K. A., Krampe, R. T., & Tesch-R\u00f6mer, C. (1993). The role of deliberate practice. Psychological Review, 100(3), 363–406.', url: 'https://doi.org/10.1037/0033-295X.100.3.363' },
+  ]}
+>
+  <p>You do not have a focus problem so much as a distraction problem. The brain is built to notice anything new, and a phone is a machine for producing new things. Good focus is mostly about removing the competition and giving your attention one clear job at a time.</p>
+
+  <h2 id="what">What focus really is</h2>
+  <p>Deep focus is sustained attention on one task without switching. Clifford Nass and colleagues found that heavy media multitaskers were actually worse at filtering out distractions, even when they were not multitasking. The habit of switching trains your brain to keep switching. The good news is the reverse also holds: practise longer blocks and your capacity for them grows, the same way deliberate practice builds any skill.</p>
+
+  <h2 id="before">Set up before you start</h2>
+  <ul>
+    <li><strong>Name one task.</strong> Write the exact next action, not the subject. Edges make it startable.</li>
+    <li><strong>Remove the phone.</strong> Ward's study found that just having your phone on the desk lowers working memory, even when it is face down and silent. Put it in another room.</li>
+    <li><strong>Clear the surface.</strong> One book, one notebook, water. Everything else away.</li>
+    <li><strong>Set a finish line.</strong> A timer turns "until I feel done" into a defined block you can actually reach.</li>
+  </ul>
+
+  <h2 id="during">Hold focus during a session</h2>
+  <p>When a distracting thought arrives, write it on a "later" list and return to the task. Do not act on it. Use <a href="/tools/pomodoro-timer/">25-minute focus blocks</a> with short breaks; the break is a promise that lets you ignore everything else until it arrives. If your mind keeps drifting to other subjects, you probably planned the session poorly. A clear <a href="/tools/study-plan-generator/">study plan</a> removes the "what should I even do" wobble that eats the first ten minutes.</p>
+
+  <h2 id="long">Focus for long days</h2>
+  <p>On revision days, rotate subjects every few blocks so fatigue in one area does not become fatigue everywhere. Take a real break after every four blocks: move, eat, step outside. Screens do not count as rest. Build these blocks into your week with the <a href="/tools/timetable-maker/">timetable maker</a>, and see <a href="/guides/how-many-hours-to-study-a-day/">how many hours to study a day</a> for a realistic daily total.</p>
+</Guide>

@@ -1,0 +1,52 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-prepare-for-competitive-exams/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Competitive exams are a <strong>months-long project</strong>. Win them with a steady weekly cycle, not a final-month sprint.',
+    'Know the <strong>syllabus and pattern cold</strong> first. You cannot plan for a target you have not measured.',
+    'Build a weekly rhythm of <strong>learn, practise, test, review</strong>, and let mock scores steer your time.',
+    'Track your weak areas and attack them. Marks come from fixing gaps, not re-doing what you already know.',
+  ]}
+  toc={[
+    { id: 'map', label: 'Map the exam' },
+    { id: 'cycle', label: 'The weekly cycle' },
+    { id: 'mocks', label: 'Mocks and analysis' },
+    { id: 'stamina', label: 'Stamina over months' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/exam-countdown/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'How do I start preparing for a competitive exam?', a: 'Begin with the official syllabus and recent papers. Understand the pattern, marking and weightings before you study anything, then build a weekly plan that covers the whole syllabus with time to revise and test.' },
+    { q: 'How many hours a day for competitive exam prep?', a: 'Consistency beats marathon days. Many successful candidates do a sustainable block of focused hours daily for months rather than cramming. The number matters less than keeping it up without burning out.' },
+    { q: 'How important are mock tests?', a: 'Very. Mocks build exam stamina, reveal weak areas, and train time management under pressure. Analysing why you lost marks is more valuable than the score itself.' },
+  ]}
+  sources={[
+    { text: 'Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning. Psychological Science, 17(3), 249–255.', url: 'https://doi.org/10.1111/j.1467-9280.2006.01693.x' },
+    { text: 'Cepeda, N. J. et al. (2006). Distributed practice in verbal recall tasks. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+    { text: 'Ericsson, K. A., Krampe, R. T., & Tesch-R\u00f6mer, C. (1993). The role of deliberate practice. Psychological Review, 100(3), 363–406.', url: 'https://doi.org/10.1037/0033-295X.100.3.363' },
+  ]}
+>
+  <p>Competitive exams reward endurance and system as much as intelligence. A candidate with an organised nine-month plan usually beats a brilliant one who starts in the final month. This guide is about the system; the subject knowledge is on you.</p>
+
+  <h2 id="map">Map the exam</h2>
+  <p>Before any studying, get the official syllabus and several recent papers. Note the sections, their weightings, the marking scheme, and any negative marking. This map tells you where the marks live, so you spend time in proportion to reward rather than to how much you enjoy a topic. Put your exam date into the <a href="/tools/exam-countdown/">exam countdown</a> to see how many weeks you really have.</p>
+
+  <h2 id="cycle">The weekly cycle</h2>
+  <p>Run a repeating weekly rhythm rather than studying by mood:</p>
+  <ol>
+    <li><strong>Learn</strong> new topics early in the week.</li>
+    <li><strong>Practise</strong> questions on them midweek.</li>
+    <li><strong>Test</strong> yourself from memory, spacing topics across weeks (Cepeda, Roediger and Karpicke).</li>
+    <li><strong>Review</strong> errors and revisit older topics so they do not fade.</li>
+  </ol>
+  <p>Lay the cycle into the <a href="/tools/study-plan-generator/">study plan generator</a> and run focused <a href="/tools/pomodoro-timer/">blocks</a> so long days stay productive.</p>
+
+  <h2 id="mocks">Mocks and analysis</h2>
+  <p>Take full-length mocks under real timing from early on, not just at the end. The score matters less than the analysis: for every wrong or slow question, note why, and feed that into next week's plan. This is deliberate practice in Ericsson's sense, working specifically on what you cannot yet do, which is what actually moves a score.</p>
+
+  <h2 id="stamina">Stamina over months</h2>
+  <p>A months-long campaign is won by not burning out. Keep sleep, exercise and one rest day; see <a href="/guides/study-life-balance/">study-life balance</a>. Protect your motivation with visible progress and small milestones, covered in <a href="/guides/how-to-stay-motivated-to-study/">how to stay motivated to study</a>. Steady beats spectacular.</p>
+</Guide>

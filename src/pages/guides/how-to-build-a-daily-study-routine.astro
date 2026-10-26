@@ -1,0 +1,59 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-build-a-daily-study-routine/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'A routine works because it <strong>removes decisions</strong>. You stop debating whether to study and just follow the plan.',
+    'Attach study to an <strong>existing anchor</strong> (after dinner, after your last class) so the habit has a trigger.',
+    'Start <strong>smaller than feels necessary</strong>. A routine you keep beats an ambitious one you abandon in a week.',
+    'Build in review and rest daily, not just new work, so the routine is sustainable.',
+  ]}
+  toc={[
+    { id: 'why', label: 'Why routines beat willpower' },
+    { id: 'build', label: 'Build yours in four steps' },
+    { id: 'sample', label: 'A sample daily routine' },
+    { id: 'stick', label: 'Make it stick' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/study-plan-generator/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'How long does it take to build a study habit?', a: 'In Lally\u2019s research, habits took a median of about 66 days to feel automatic, ranging widely by person and habit. Expect weeks, not days, and judge yourself on consistency rather than perfection.' },
+    { q: 'What should a daily study routine include?', a: 'A fixed start time, one or two focused blocks with breaks, a short review of earlier material, and a clear finish. Reviewing old work daily is what most routines forget.' },
+    { q: 'What if I miss a day?', a: 'Miss once, never twice. One missed day is noise; two in a row is how routines die. Get back to it the next day without trying to make up all the lost time at once.' },
+  ]}
+  sources={[
+    { text: 'Lally, P. et al. (2010). How are habits formed: modelling habit formation in the real world. EJSP, 40(6), 998–1009.', url: 'https://doi.org/10.1002/ejsp.674' },
+    { text: 'Wood, W., & Neal, D. T. (2007). A new look at habits and the habit-goal interface. Psychological Review, 114(4), 843–863.', url: 'https://doi.org/10.1037/0033-295X.114.4.843' },
+    { text: 'Zimmerman, B. J. (2002). Becoming a self-regulated learner: an overview. Theory Into Practice, 41(2), 64–70.', url: 'https://doi.org/10.1207/s15430421tip4102_2' },
+  ]}
+>
+  <p>Motivation is a bad manager. It shows up when things are easy and vanishes when they are hard. A routine is what keeps you working on the days motivation calls in sick, because the decision has already been made.</p>
+
+  <h2 id="why">Why routines beat willpower</h2>
+  <p>Every time you decide whether to study, you spend energy and risk saying no. Wood and Neal's research on habits shows that behaviours tied to a stable context run almost on autopilot, bypassing that daily negotiation. A routine converts "should I study now?" into "it is 6pm, so I study", which is far cheaper to obey.</p>
+
+  <h2 id="build">Build yours in four steps</h2>
+  <ol>
+    <li><strong>Anchor it.</strong> Attach study to something you already do daily: after your last class, after dinner. The anchor is the trigger.</li>
+    <li><strong>Start tiny.</strong> One 25-minute block is enough to begin. You can grow it once it is automatic.</li>
+    <li><strong>Name the task.</strong> Decide in advance what each block is for, using the <a href="/tools/study-plan-generator/">study plan generator</a>.</li>
+    <li><strong>Close the loop.</strong> End with a tick, a note of what you did, and tomorrow's first task ready.</li>
+  </ol>
+
+  <h2 id="sample">A sample daily routine</h2>
+  <table>
+    <thead><tr><th scope="col">When</th><th scope="col">Block</th></tr></thead>
+    <tbody>
+      <tr><td>After last class</td><td>10 min: review today\u2019s notes, log homework</td></tr>
+      <tr><td>Early evening</td><td>Block 1 (25/5): hardest subject or nearest deadline</td></tr>
+      <tr><td>Evening</td><td>Block 2 (25/5): second subject or flashcards</td></tr>
+      <tr><td>Before bed</td><td>5 min: tick off, set tomorrow\u2019s first task</td></tr>
+    </tbody>
+  </table>
+  <p>Lay your version into the <a href="/tools/timetable-maker/">timetable maker</a> and run each block with the <a href="/tools/pomodoro-timer/">Pomodoro timer</a>.</p>
+
+  <h2 id="stick">Make it stick</h2>
+  <p>Expect weeks before it feels automatic; Lally found a median of about two months. Track a simple streak, keep the "never miss twice" rule, and resist piling on more the moment it feels easy. For the right amount of daily work, see <a href="/guides/how-many-hours-to-study-a-day/">how many hours to study a day</a>, and for timing it to your energy, <a href="/guides/best-time-to-study/">the best time to study</a>.</p>
+</Guide>

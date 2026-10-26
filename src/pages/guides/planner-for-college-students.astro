@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/planner-for-college-students/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'College gives you <strong>freedom and no one chasing you</strong>. A planner is how you replace the structure school used to supply.',
+    'Set the whole semester up at the start: <strong>lectures, labs, deadlines, midterms and finals</strong> in one place.',
+    'The deadly gap is the <strong>quiet middle weeks</strong>, where nothing is due and work silently piles up.',
+    'A ten-minute weekly review is what keeps a college planner alive past week three.',
+  ]}
+  toc={[
+    { id: 'different', label: 'Why college is different' },
+    { id: 'setup', label: 'Set up your semester' },
+    { id: 'weekly', label: 'The weekly habit' },
+    { id: 'tools', label: 'What to track' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/assignment-planner/', '/tools/gpa-calculator/']}
+  faqs={[
+    { q: 'How do college students use a planner?', a: 'They load the whole semester at the start: class timetable, every assignment deadline from the syllabus, and exam dates. Then a short weekly review keeps it current and turns big deadlines into dated steps before they become a crisis.' },
+    { q: 'What should a college planner include?', a: 'Lectures and labs, assignment and project deadlines, midterms and finals, readings, and your grades. Tracking grades lets you see which results actually move your GPA.' },
+    { q: 'Why do college students fall behind?', a: 'Because the structure of school disappears and no one checks on daily progress. Long gaps between deadlines hide how much work is building up until it is suddenly all due at once.' },
+  ]}
+  sources={[
+    { text: 'Richardson, M., Abraham, C., & Bond, R. (2012). Psychological correlates of university students\u2019 academic performance. Psychological Bulletin, 138(2), 353–387.', url: 'https://doi.org/10.1037/a0026838' },
+    { text: 'Credé, M., & Kuncel, N. R. (2008). Study habits, skills, and attitudes. Perspectives on Psychological Science, 3(6), 425–453.', url: 'https://doi.org/10.1111/j.1745-6924.2008.00089.x' },
+    { text: 'Zimmerman, B. J. (2002). Becoming a self-regulated learner: an overview. Theory Into Practice, 41(2), 64–70.', url: 'https://doi.org/10.1207/s15430421tip4102_2' },
+  ]}
+>
+  <p>School keeps you on track with bells, daily classes and teachers who notice when homework is missing. College removes all of that and hands you the freedom to fail quietly for six weeks. A planner is how you rebuild the scaffolding, on your own terms.</p>
+
+  <h2 id="different">Why college is different</h2>
+  <p>The meta-analyses by Richardson and by Credé and Kuncel find that study habits and self-regulation, not just ability, predict college performance. The challenge is that college spreads work thin: a reading here, a project due in a month, an exam that feels far away. Without a planner, the quiet weeks feel free, and then everything lands in the same fortnight.</p>
+
+  <h2 id="setup">Set up your semester</h2>
+  <p>In the first week, do one serious planning session:</p>
+  <ul>
+    <li>Put every lecture and lab into the <a href="/tools/timetable-maker/">timetable maker</a>.</li>
+    <li>Read each syllabus and enter every deadline, midterm and final date.</li>
+    <li>Break big projects into dated steps now, not the week before, with the <a href="/tools/assignment-planner/">assignment planner</a>.</li>
+  </ul>
+  <p>For the full version, follow <a href="/guides/how-to-make-a-semester-study-plan/">how to make a semester study plan</a>.</p>
+
+  <h2 id="weekly">The weekly habit</h2>
+  <p>Every week, spend ten minutes reviewing the next two: what is due, what exams are coming, and which quiet work needs starting now. This is the self-regulation loop Zimmerman describes, applied to a term. It is the single habit that separates students who coast to finals calmly from those who panic.</p>
+
+  <h2 id="tools">What to track</h2>
+  <p>Track your grades as they come in with the <a href="/tools/gpa-calculator/">GPA calculator</a>, so you know which assignments and exams actually move your average and can aim effort accordingly. For managing the bigger assignments specifically, see <a href="/guides/how-to-manage-college-assignments/">how to manage college assignments and deadlines</a>.</p>
+</Guide>

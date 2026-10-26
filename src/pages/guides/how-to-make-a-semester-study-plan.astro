@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-make-a-semester-study-plan/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'A semester plan is made <strong>once, in week one</strong>, from every syllabus you are given.',
+    'Put all <strong>deadlines and exams on one calendar</strong> so collision weeks are visible months early.',
+    'Set <strong>weekly targets</strong>, not just end-of-term ones, and leave slack for the weeks that go wrong.',
+    'A short weekly review keeps the plan alive; a plan you never revisit is just decoration.',
+  ]}
+  toc={[
+    { id: 'why', label: 'Why plan a whole semester' },
+    { id: 'build', label: 'Build it in one session' },
+    { id: 'weekly', label: 'From semester to week' },
+    { id: 'adjust', label: 'Review and adjust' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/assignment-planner/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'How do I make a study plan for the whole semester?', a: 'In week one, gather every syllabus, put all deadlines and exam dates on one calendar, mark the busy collision weeks, and set weekly targets that start big projects early. Then review it for ten minutes each week to keep it current.' },
+    { q: 'When should I make my semester plan?', a: 'In the first week, as soon as you have every syllabus. Planning early is what lets you spot the weeks where several deadlines collide and start the work before they arrive.' },
+    { q: 'How detailed should a semester plan be?', a: 'Detailed on dates and milestones, loose on daily specifics. Fix the deadlines and weekly targets now; decide exact daily tasks during each weekly review, when you know how the previous week went.' },
+  ]}
+  sources={[
+    { text: 'Locke, E. A., & Latham, G. P. (2002). Building a practically useful theory of goal setting. American Psychologist, 57(9), 705–717.', url: 'https://doi.org/10.1037/0003-066X.57.9.705' },
+    { text: 'Zimmerman, B. J. (2002). Becoming a self-regulated learner: an overview. Theory Into Practice, 41(2), 64–70.', url: 'https://doi.org/10.1207/s15430421tip4102_2' },
+    { text: 'Cepeda, N. J. et al. (2006). Distributed practice in verbal recall tasks. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+  ]}
+>
+  <p>A semester feels long until week eight, when three deadlines and a midterm all land in the same week and you wonder how you missed it. You did not miss it; it was always there. A semester plan simply makes it visible in week one, while you still have time to act.</p>
+
+  <h2 id="why">Why plan a whole semester</h2>
+  <p>Zimmerman's self-regulated learning cycle starts with forethought: setting goals and planning before you act. At the scale of a term, that means seeing the whole shape before it unfolds. Spacing your work across the weeks, rather than massing it near deadlines, also matches Cepeda's finding that distributed study beats cramming for lasting learning.</p>
+
+  <h2 id="build">Build it in one session</h2>
+  <ol>
+    <li><strong>Gather every syllabus</strong> and course outline.</li>
+    <li><strong>Put all dates on one calendar:</strong> assignment deadlines, midterms, finals. Enter exams into the <a href="/tools/exam-countdown/">exam countdown</a>.</li>
+    <li><strong>Mark collision weeks</strong> where several things land together.</li>
+    <li><strong>Back-plan big projects</strong> into dated steps with the <a href="/tools/assignment-planner/">assignment planner</a>, starting before the crunch.</li>
+    <li><strong>Lay fixed classes</strong> into the <a href="/tools/timetable-maker/">timetable maker</a> so study slots are obvious.</li>
+  </ol>
+
+  <h2 id="weekly">From semester to week</h2>
+  <p>A semester plan is only useful if it drives your weeks. Give each week a small number of specific targets ("draft essay intro", "finish problem set 3") rather than vague ones; Locke and Latham show specific targets drive more effort. Early, light weeks are when you start the work due in the heavy ones.</p>
+
+  <h2 id="adjust">Review and adjust</h2>
+  <p>Weeks never go to plan, so plan to adjust. Each week, spend ten minutes moving what slipped, checking the next collision week, and setting the coming targets. This keeps the plan a living tool rather than a document you made once and ignored. For the college-specific version, see <a href="/guides/planner-for-college-students/">how to use a planner as a college student</a>, and set targets well with <a href="/guides/how-to-set-study-goals/">how to set study goals</a>.</p>
+</Guide>

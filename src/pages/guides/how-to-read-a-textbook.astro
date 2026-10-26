@@ -1,0 +1,51 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-read-a-textbook/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Reading a textbook front to back and highlighting is slow and <strong>barely works</strong>. Read actively instead.',
+    'Use <strong>SQ3R</strong>: Survey, Question, Read, Recite, Review. It builds recall into the reading itself.',
+    'Turn headings into <strong>questions</strong> before you read, then read to answer them.',
+    'After each section, close the book and say the main idea from memory. If you cannot, read it again.',
+  ]}
+  toc={[
+    { id: 'why', label: 'Why passive reading fails' },
+    { id: 'sq3r', label: 'The SQ3R method' },
+    { id: 'notes', label: 'What to write down' },
+    { id: 'apply', label: 'Fit it into study' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/pomodoro-timer/', '/tools/study-plan-generator/']}
+  faqs={[
+    { q: 'What is the SQ3R reading method?', a: 'A five-step active reading method: Survey the section, turn headings into Questions, Read to answer them, Recite the answers from memory, and Review later. It was developed by Francis Robinson to make textbook reading stick.' },
+    { q: 'Should I highlight while reading a textbook?', a: 'Highlighting is one of the least effective techniques in the research. If you highlight at all, do it sparingly and only after you understand a section, then convert the key points into questions you test yourself on.' },
+    { q: 'How do I remember what I read in a textbook?', a: 'Stop after each section and recall the main points from memory before moving on. Retrieval, not re-reading, is what moves information into lasting memory.' },
+  ]}
+  sources={[
+    { text: 'Robinson, F. P. (1970). Effective Study (4th ed.). Harper & Row. (origin of SQ3R)', url: 'https://learningcenter.unc.edu/tips-and-tools/' },
+    { text: 'Dunlosky, J. et al. (2013). Improving students\u2019 learning with effective learning techniques. PSPI, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'McDaniel, M. A. et al. (2009). The read-recite-review study strategy. Psychological Science, 20(4), 516–522.', url: 'https://doi.org/10.1111/j.1467-9280.2009.02325.x' },
+  ]}
+>
+  <p>Most students read a textbook the way they read a novel: start at the top, move steadily to the bottom, highlight the bits that look important. An hour later the page is yellow and the memory is empty. Textbooks are reference tools, and they reward a very different kind of reading.</p>
+
+  <h2 id="why">Why passive reading fails</h2>
+  <p>Dunlosky's review rated highlighting and re-reading as low-utility techniques. They create a comforting sense of familiarity without building the ability to recall. The fix is to make reading active, forcing your brain to retrieve and answer rather than simply recognise the words again.</p>
+
+  <h2 id="sq3r">The SQ3R method</h2>
+  <ol>
+    <li><strong>Survey.</strong> Skim the headings, summary and any questions to get the shape of the section first.</li>
+    <li><strong>Question.</strong> Turn each heading into a question. "Photosynthesis" becomes "how does photosynthesis work?".</li>
+    <li><strong>Read.</strong> Read one section at a time, hunting for the answer to your question.</li>
+    <li><strong>Recite.</strong> Look away and answer from memory, in your own words. McDaniel's read-recite-review studies show this step is what makes it stick.</li>
+    <li><strong>Review.</strong> Later, go back over your questions and answers to consolidate.</li>
+  </ol>
+
+  <h2 id="notes">What to write down</h2>
+  <p>Write answers to your heading-questions in your own words, not sentences copied from the book. Keep it brief: a key idea, how it connects, one example. These notes double as recall questions for later revision. For the different note layouts, see <a href="/guides/how-to-take-better-notes/">how to take better notes</a>.</p>
+
+  <h2 id="apply">Fit it into study</h2>
+  <p>SQ3R is slower per page and far faster per unit of learning, so budget realistic time for it: plan reading blocks with the <a href="/tools/study-plan-generator/">study plan generator</a> and run each section in a focused <a href="/tools/pomodoro-timer/">Pomodoro</a>. Because the recite step is retrieval practice, this pairs naturally with <a href="/guides/evidence-based-study-techniques/">active recall and spaced repetition</a>.</p>
+</Guide>

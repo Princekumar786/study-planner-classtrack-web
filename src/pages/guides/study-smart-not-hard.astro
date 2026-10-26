@@ -1,0 +1,53 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/study-smart-not-hard/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Studying smart means getting <strong>more learning per hour</strong>, mostly by swapping passive review for active testing.',
+    'Re-reading and highlighting feel productive but are among the <strong>weakest</strong> techniques in the research.',
+    'The two strongest techniques are <strong>self-testing and spacing</strong>. Build everything else around them.',
+    'Smart studying is not less work; it is the same effort aimed where it actually pays.',
+  ]}
+  toc={[
+    { id: 'myth', label: 'The effort illusion' },
+    { id: 'habits', label: '7 high-leverage habits' },
+    { id: 'drop', label: 'What to stop doing' },
+    { id: 'apply', label: 'Put it together' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/pomodoro-timer/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'What does "study smart not hard" actually mean?', a: 'It means choosing methods that produce more learning per hour, chiefly testing yourself and spacing study over time, instead of low-value habits like re-reading. It is about where effort goes, not avoiding effort.' },
+    { q: 'Why is re-reading a waste of time?', a: 'Re-reading builds a feeling of familiarity that fools you into thinking you know the material. Recall in an exam needs retrieval, which only testing yourself practises. Familiar is not the same as learned.' },
+    { q: 'What is the single most effective study technique?', a: 'Practice testing, or active recall: answering from memory before checking. In Dunlosky\u2019s review it was one of only two techniques rated highly useful across subjects and ages.' },
+  ]}
+  sources={[
+    { text: 'Dunlosky, J. et al. (2013). Improving students\u2019 learning with effective learning techniques. PSPI, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning. Psychological Science, 17(3), 249–255.', url: 'https://doi.org/10.1111/j.1467-9280.2006.01693.x' },
+    { text: 'Bjork, R. A., Dunlosky, J., & Kornell, N. (2013). Self-regulated learning: beliefs, techniques, and illusions. Annual Review of Psychology, 64, 417–444.', url: 'https://doi.org/10.1146/annurev-psych-113011-143823' },
+  ]}
+>
+  <p>"Study smart, not hard" is often sold as a shortcut. It is not. It is the same hours spent on methods that work instead of methods that merely feel like work. The hard truth inside the slogan is that the comfortable techniques are usually the useless ones.</p>
+
+  <h2 id="myth">The effort illusion</h2>
+  <p>Bjork and colleagues describe how our judgements of learning mislead us. Re-reading makes text feel fluent and familiar, which we mistake for knowing it. Then the exam asks us to produce the answer from a blank page and the familiarity is no help. Smart studying means trusting the evidence over the feeling, even when the better method feels harder and slower.</p>
+
+  <h2 id="habits">7 high-leverage habits</h2>
+  <ol>
+    <li><strong>Test yourself</strong> from memory before checking. This is the big one.</li>
+    <li><strong>Space</strong> your sessions across days instead of cramming.</li>
+    <li><strong>Interleave</strong> related topics rather than blocking one.</li>
+    <li><strong>Use past papers</strong> under timed conditions.</li>
+    <li><strong>Explain it simply</strong> to find gaps (the <a href="/guides/feynman-technique/">Feynman technique</a>).</li>
+    <li><strong>Review mistakes</strong>, since errors mark your real syllabus.</li>
+    <li><strong>Sleep on it</strong>, letting memory consolidate overnight.</li>
+  </ol>
+
+  <h2 id="drop">What to stop doing</h2>
+  <p>Dunlosky's review rated re-reading, highlighting and summarising as low utility for most students. They are not forbidden, but they should support testing, not replace it. If your revision is mostly colouring a textbook, you are working hard and learning little.</p>
+
+  <h2 id="apply">Put it together</h2>
+  <p>Plan sessions across several days with the <a href="/tools/study-plan-generator/">study plan generator</a>, run each as a focused <a href="/tools/pomodoro-timer/">Pomodoro</a> that ends in a self-test, and line the last reviews up with your <a href="/tools/exam-countdown/">exam countdown</a>. For the full research treatment, read <a href="/guides/evidence-based-study-techniques/">active recall and spaced repetition</a>.</p>
+</Guide>

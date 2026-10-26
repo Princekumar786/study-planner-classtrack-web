@@ -1,0 +1,50 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/spaced-repetition-and-flashcards/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Flashcards work because they force <strong>recall</strong>: you answer before you check, instead of just re-reading.',
+    'Spacing the reviews out over days beats cramming them together. <strong>Difficulty is the point</strong>, not a problem.',
+    'Review a card <strong>just as you are about to forget it</strong>, then stretch the gap each time you get it right.',
+    'Write one idea per card, phrase the front as a real question, and keep the answer short.',
+  ]}
+  toc={[
+    { id: 'why', label: 'Why flashcards work' },
+    { id: 'spacing', label: 'What spaced repetition is' },
+    { id: 'make', label: 'How to make good cards' },
+    { id: 'schedule', label: 'A simple review schedule' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'How many flashcards should I review a day?', a: 'Start small, around 20 to 40 new cards a day, plus reviews that come due. A spaced system keeps the daily load manageable because most cards return less and less often as you learn them.' },
+    { q: 'Are paper flashcards as good as apps?', a: 'The learning comes from recall and spacing, not the format. Paper works if you sort cards into boxes by how well you know them. Apps just automate the scheduling for you.' },
+    { q: 'Why do I forget cards I knew yesterday?', a: 'That is normal and expected. Forgetting a little and then retrieving it is what strengthens the memory. If a card is too easy, the gap before its next review was too short.' },
+  ]}
+  sources={[
+    { text: 'Cepeda, N. J. et al. (2006). Distributed practice in verbal recall tasks: a review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380.', url: 'https://doi.org/10.1037/0033-2909.132.3.354' },
+    { text: 'Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning. Psychological Science, 17(3), 249–255.', url: 'https://doi.org/10.1111/j.1467-9280.2006.01693.x' },
+    { text: 'Kornell, N. (2009). Optimising learning using flashcards: spacing is more effective than cramming. Applied Cognitive Psychology, 23(9), 1297–1317.', url: 'https://doi.org/10.1002/acp.1537' },
+  ]}
+>
+  <p>Flashcards are the most misused good tool in studying. Flip through them, nod at each answer, feel productive, remember little. Used properly, they are one of the most efficient ways to get facts to stick, because they combine the two techniques research rates highest: testing yourself and spacing it out.</p>
+
+  <h2 id="why">Why flashcards work</h2>
+  <p>A good card makes you answer from memory before you check. That act of retrieval, studied by Roediger and Karpicke, strengthens the memory far more than reading the answer again. The effort of pulling it out is what does the work. If looking at a card feels effortless, it is building familiarity, not memory.</p>
+
+  <h2 id="spacing">What spaced repetition is</h2>
+  <p>Spaced repetition means spreading reviews across days rather than massing them in one sitting. Cepeda's review of many studies found spacing reliably improves long-term recall. The trick is timing: review a card just before you would forget it. Get it right, and you can wait longer next time. Get it wrong, and it comes back sooner. The gaps grow as the memory strengthens.</p>
+
+  <h2 id="make">How to make good cards</h2>
+  <ul>
+    <li><strong>One idea per card.</strong> If the answer is a list, split it.</li>
+    <li><strong>Ask a real question</strong> on the front, not a topic. "What triggers the Krebs cycle?" not "Krebs cycle".</li>
+    <li><strong>Keep answers short.</strong> A card you cannot answer in a sentence is two cards.</li>
+    <li><strong>Add a cue or image</strong> for hard items, but never put the answer on the front by accident.</li>
+  </ul>
+
+  <h2 id="schedule">A simple review schedule</h2>
+  <p>If you are doing it by hand, use the Leitner box system: cards you get right move to a box you review less often; cards you miss go back to the daily box. A workable rhythm is day 1, day 3, day 7, day 16, then monthly. Line the final reviews up with your exam using the <a href="/tools/exam-countdown/">exam countdown</a>, and put daily card sessions into your <a href="/tools/study-plan-generator/">study plan</a> so they do not pile up. For where flashcards fit among other methods, read <a href="/guides/evidence-based-study-techniques/">active recall and spaced repetition</a>.</p>
+</Guide>

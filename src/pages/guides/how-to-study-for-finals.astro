@@ -1,0 +1,50 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-study-for-finals/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Start two weeks out by <strong>ranking exams by risk</strong>: weight, difficulty and how far behind you are, not just the date.',
+    'Build <strong>one combined timetable</strong> for all your finals so no subject quietly gets dropped.',
+    'Spend most of your time on <strong>past papers and self-testing</strong>, not re-reading lecture notes.',
+    'Protect sleep in the final 48 hours. A rested brain recalls more than a crammed, tired one.',
+  ]}
+  toc={[
+    { id: 'triage', label: 'Rank your exams first' },
+    { id: 'plan', label: 'A two-week plan' },
+    { id: 'method', label: 'What to actually do' },
+    { id: 'final', label: 'The last 48 hours' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/exam-countdown/', '/tools/gpa-calculator/']}
+  faqs={[
+    { q: 'How many days before finals should I start studying?', a: 'For a full exam period, begin serious revision about two weeks out. That leaves time to cover each subject twice: once to learn, once to test and patch gaps. Hard or heavily weighted subjects should start first.' },
+    { q: 'Should I study one subject per day during finals?', a: 'Mixing two or three subjects a day usually beats one long block on a single subject. Interleaving keeps you fresher and strengthens your ability to switch between topics, which is what the exam demands.' },
+    { q: 'Is it worth pulling an all-nighter before a final?', a: 'Almost never. Lost sleep hurts recall, attention and mood, which are exactly what you need in the exam. A shorter, earlier study session plus a full night beats a long night of cramming.' },
+  ]}
+  sources={[
+    { text: 'Dunlosky, J. et al. (2013). Improving students\u2019 learning with effective learning techniques. PSPI, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Rohrer, D., & Taylor, K. (2007). The shuffling of mathematics problems improves learning. Instructional Science, 35, 481–498.', url: 'https://doi.org/10.1007/s11251-007-9015-8' },
+    { text: 'Diekelmann, S., & Born, J. (2010). The memory function of sleep. Nature Reviews Neuroscience, 11, 114–126.', url: 'https://doi.org/10.1038/nrn2762' },
+  ]}
+>
+  <p>Finals are less about how many hours you put in and more about where you put them. Most students spread effort evenly or chase whatever feels urgent, and run out of time on the exam that mattered most. A short planning session fixes that.</p>
+
+  <h2 id="triage">Rank your exams first</h2>
+  <p>Before you open a book, list every exam with three numbers: how much it is worth, how hard it is for you, and how far behind you are. Multiply gut-feel scores together and you get a priority order. A heavily weighted subject you are weak in beats an easy one you have already half-mastered, even if the easy one is sooner. Use the <a href="/tools/gpa-calculator/">GPA calculator</a> to see which results actually move your grade.</p>
+
+  <h2 id="plan">A two-week plan</h2>
+  <p>Put every exam date into the <a href="/tools/exam-countdown/">exam countdown</a> so you can see the days and study days left. Then split the two weeks into two passes: the first week to relearn and make recall questions, the second to test yourself and sit past papers under time. The <a href="/tools/study-plan-generator/">study plan generator</a> turns your subjects and dates into dated blocks with revision built in. Leave two or three empty catch-up slots a week, because something always runs over.</p>
+
+  <h2 id="method">What to actually do</h2>
+  <ul>
+    <li><strong>Past papers under exam conditions.</strong> Nothing predicts exam performance like practising the exam.</li>
+    <li><strong>Self-test</strong> from memory, then check. Do not re-read notes and call it revision.</li>
+    <li><strong>Interleave</strong> two or three subjects a day rather than one marathon.</li>
+    <li><strong>Review mistakes</strong>, not just scores. Your errors are your real syllabus.</li>
+  </ul>
+
+  <h2 id="final">The last 48 hours</h2>
+  <p>Switch from learning new material to light review and confidence: skim your summary sheets, run through flagged questions, and stop early enough to sleep. Diekelmann and Born's work on sleep and memory is clear that the night before matters. Walk into the exam rested, not wrung out. For the tighter version of this plan, see <a href="/guides/how-to-study-for-an-exam-in-one-week/">how to study for an exam in one week</a> and <a href="/guides/how-to-study-for-multiple-exams/">how to study for multiple exams</a>.</p>
+</Guide>

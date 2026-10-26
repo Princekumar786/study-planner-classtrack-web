@@ -1,0 +1,45 @@
+---
+import Guide from '../../layouts/Guide.astro';
+const href = '/guides/how-to-improve-your-grades/';
+---
+<Guide
+  href={href}
+  tldr={[
+    'Grades improve fastest when you find <strong>where marks are actually lost</strong> and fix that, not when you just study more.',
+    'Swap passive review for <strong>active testing and past papers</strong>, the methods the research rates highest.',
+    'Use <strong>feedback and marked work</strong> as a map of your weak spots. Your mistakes are the syllabus for your next jump.',
+    'Track grades over time so you can tell what is working instead of guessing.',
+  ]}
+  toc={[
+    { id: 'diagnose', label: 'Diagnose where marks go' },
+    { id: 'method', label: 'Fix your study method' },
+    { id: 'feedback', label: 'Mine your feedback' },
+    { id: 'track', label: 'Track what works' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/gpa-calculator/', '/tools/study-plan-generator/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'What is the fastest way to improve my grades?', a: 'Find where you lose marks, by exam section and question type, then target those gaps with active testing and past papers. Working on specific weaknesses lifts a grade faster than simply adding study hours across the board.' },
+    { q: 'Why are my grades not improving even though I study a lot?', a: 'Usually because the studying is passive, re-reading and highlighting, which feel productive but build little recall. Switching to self-testing and timed past papers typically moves the needle where extra reading did not.' },
+    { q: 'Do study habits really affect grades?', a: 'Yes. Reviews of many studies find study habits and self-regulation are strong predictors of academic performance, alongside ability. How you study matters, not just how much.' },
+  ]}
+  sources={[
+    { text: 'Credé, M., & Kuncel, N. R. (2008). Study habits, skills, and attitudes. Perspectives on Psychological Science, 3(6), 425–453.', url: 'https://doi.org/10.1111/j.1745-6924.2008.00089.x' },
+    { text: 'Dunlosky, J. et al. (2013). Improving students\u2019 learning with effective learning techniques. PSPI, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+    { text: 'Hattie, J., & Timperley, H. (2007). The power of feedback. Review of Educational Research, 77(1), 81–112.', url: 'https://doi.org/10.3102/003465430298487' },
+  ]}
+>
+  <p>"Study harder" is the advice everyone gives and almost no one can act on. Grades do not rise because you suffer more; they rise when you aim the same effort at the specific places you are losing marks. That starts with a diagnosis, not a resolution.</p>
+
+  <h2 id="diagnose">Diagnose where marks go</h2>
+  <p>Pull out your recent marked work and look for the pattern. Are you losing marks on a particular topic, a question type, running out of time, or misreading what is asked? The problem is rarely "everything". Credé and Kuncel's review shows study skills strongly predict performance, which means there is usually a fixable habit behind a stuck grade. Use the <a href="/tools/gpa-calculator/">GPA calculator</a> to see which subjects move your average most, so you target the ones that count.</p>
+
+  <h2 id="method">Fix your study method</h2>
+  <p>If your revision is mostly re-reading and highlighting, that is likely your ceiling. Dunlosky rates those low and testing yourself high. Replace them with recall questions, past papers under timed conditions, and the <a href="/guides/feynman-technique/">Feynman technique</a> for topics you can state but not explain. Plan these sessions across several days with the <a href="/tools/study-plan-generator/">study plan generator</a>.</p>
+
+  <h2 id="feedback">Mine your feedback</h2>
+  <p>Hattie and Timperley show feedback is one of the strongest influences on achievement, but only when you act on it. For every comment or lost mark, write down what it tells you to do differently, and fold that into next week's plan. Your corrections, not your scores, are where the next grade lives.</p>
+
+  <h2 id="track">Track what works</h2>
+  <p>Record each result and what you changed before it, so you can tell which habits actually helped. Line up your revision with upcoming assessments using the <a href="/tools/exam-countdown/">exam countdown</a>. For the underlying methods, read <a href="/guides/study-smart-not-hard/">how to study smart, not hard</a>.</p>
+</Guide>
