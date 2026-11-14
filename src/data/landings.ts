@@ -1,5 +1,5 @@
 // Content for the keyword landing pages (one per search intent).
-// Every claim here was checked against the ClassTrack app code on 2026-10-20.
+// Every claim here was checked against the ClassTrack app code on 2026-10-20 (platforms re-checked 2026-11-14).
 import type { QA } from '../lib/schema';
 
 export type Landing = {
@@ -20,7 +20,7 @@ export type Landing = {
   guides: string[]; // hrefs
 };
 
-const free = 'Free on Android';
+const free = 'Free on Android and the web';
 
 export const LANDINGS: Landing[] = [
   {
@@ -55,7 +55,7 @@ export const LANDINGS: Landing[] = [
     ],
     tips: { title: 'Planner habit that sticks', text: 'Spend five minutes on Sunday evening looking at next week: exams, due dates and busy days. Then put study blocks on the lighter days. Students who plan weekly, not daily, are less likely to abandon their planner after a busy week.' },
     faqs: [
-      { q: 'What is the best student planner app?', a: 'Look for a planner that holds your timetable, homework and exams together and reminds you on your phone. ClassTrack does all three, adds grades and an AI assistant, and is free on Android.' },
+      { q: 'What is the best student planner app?', a: 'Look for a planner that holds your timetable, homework and exams together and reminds you on your phone. ClassTrack does all three, adds grades and an AI assistant, and is free on Android and the web.' },
       { q: 'Is ClassTrack a good planner for college students?', a: 'Yes. It handles lectures, labs and tutorials with rooms and links, semester exams, assignments, GPA and a semester wrap-up when the term ends (Pro).' },
       { q: 'Can I use it for school homework?', a: 'Yes. Homework and assignments have due dates, priorities and reminders, and the Home screen shows how many tasks are due today and this week.' },
       { q: 'Does the student planner work offline?', a: 'You can open the app and see your plan without a connection. Changes sync to your account when you are back online. AI features need the internet.' },
@@ -97,7 +97,7 @@ export const LANDINGS: Landing[] = [
     tips: { title: 'The 80% rule', text: 'Plan only about 80% of your free time. The rest absorbs the things that always come up: a longer assignment, a late bus, a tired evening. A schedule with slack is one you can keep.' },
     faqs: [
       { q: 'How do I make a weekly schedule as a student?', a: 'Put fixed commitments in first, then mark free gaps of 45+ minutes as study blocks, assign subjects by difficulty and deadline, and keep one rest block a day. See our <a href="/guides/weekly-schedule-for-students/">sample weekly schedules</a>.' },
-      { q: 'Is there a free schedule planner?', a: 'Yes. ClassTrack’s schedule and reminders are free on Android. For a printable week, use the free <a href="/tools/timetable-maker/">timetable maker</a> in your browser.' },
+      { q: 'Is there a free schedule planner?', a: 'Yes. ClassTrack’s schedule is free on Android and the web, with reminders in the Android app. For a printable week, use the free <a href="/tools/timetable-maker/">timetable maker</a> in your browser.' },
       { q: 'Can I sync my schedule with Google Calendar?', a: 'With ClassTrack Pro, your Google Calendar events and Tasks are imported into ClassTrack automatically every day, with no duplicates. Sending ClassTrack classes and exams back to Google Calendar is coming soon. Today you can export your schedule as a calendar file (Pro), or use our free <a href="/tools/timetable-maker/">timetable maker</a> to download a .ics file.' },
       { q: 'How many hours should a student study per day?', a: 'It depends on your course and exams. Many students do well with 2–4 focused hours outside class on weekdays, more in exam season. Consistency across the week matters more than one long day.' },
     ],
@@ -108,7 +108,7 @@ export const LANDINGS: Landing[] = [
     slug: 'timetable-app',
     keyword: 'timetable app',
     title: 'Timetable App for Students: Snap a Photo, Get Your Week | ClassTrack',
-    description: 'Class timetable app with AI import. Take a photo of your timetable, upload a PDF or paste text, and get a weekly class schedule with reminders. Free on Android.',
+    description: 'Class timetable app with AI import. Snap a photo, upload a PDF or paste text, and get a weekly class schedule with reminders. Free on Android and the web.',
     h1: ['The timetable app that reads', 'your', 'timetable for you.'],
     lead: 'Take a photo of the noticeboard, upload the PDF from your college portal or paste the text. AI finds every class, day, time and room. You review, then save.',
     screens: { back: '/img/screen-home.webp', front: '/img/screen-schedule.webp', backAlt: 'ClassTrack home screen', frontAlt: 'ClassTrack class timetable for Friday', tint: 'var(--mint)' },

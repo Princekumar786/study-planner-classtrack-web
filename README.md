@@ -19,7 +19,7 @@ Content and links live in `src/data/site.ts` (tools, guides, nav), `src/data/lan
 
 App facts (free limits etc.) are in `SITE.free` in `site.ts`. If the app limits change, update that file. Competitor facts in `compare.ts` must come from the competitor's official pages; re-check them every quarter.
 
-The ClassTrack web app link (`SITE.webUrl` = https://app.classtracks.app) drives the "Log in" button in the header, the "Web app" badge, the footer links and the web app section on the home page. Change it in `site.ts` only.
+The ClassTrack web app link (`SITE.webUrl` = https://app.classtracks.app) drives the announcement bar and "Log in" link in the header, the "Web app" badge, the footer links and the web app section on the home page. Change it in `site.ts` only. Header links are `MAIN_NAV` and the Product menu is `PLANNERS` + `PRODUCT_LINKS`, all in `site.ts`.
 
 ## Commands
 

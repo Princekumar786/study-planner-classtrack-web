@@ -4,7 +4,7 @@ import Icon from '../components/Icon.astro';
 import AppBand from '../components/AppBand.astro';
 import Faq from '../components/Faq.astro';
 import { SITE, PLANNERS } from '../data/site';
-import { appSchema, faqSchema, type QA } from '../lib/schema';
+import { appSchema, webAppSchema, faqSchema, type QA } from '../lib/schema';
 
 const groups = [
   { tint: 'lavender', img: '/img/screen-schedule.webp', alt: 'ClassTrack schedule with classes for the day', title: 'Timetable & schedule', href: '/timetable-app/', items: [
@@ -39,13 +39,14 @@ const faqs: QA[] = [
   { q: 'Does ClassTrack track attendance too?', a: 'Yes. You can mark classes present, absent or cancelled and see your attendance percentage by subject. Try the free <a href="/tools/attendance-calculator/">attendance calculator</a> for a quick check.' },
 ];
 ---
-<Base title="ClassTrack Features: Study Planner, Timetable, Exams & AI" description="Every ClassTrack feature in one page: class timetable with AI import, homework planner, exam countdowns, AI study plans, grades, notes, flashcards and more." crumbs={[{ name: 'Features', href: '/features/' }]} schema={[appSchema(), faqSchema(faqs)]}>
+<Base title="ClassTrack Features: Study Planner, Timetable, Exams & AI" description="Every ClassTrack feature in one page: class timetable with AI import, homework planner, exam countdowns, AI study plans, grades, notes, flashcards and more." crumbs={[{ name: 'Features', href: '/features/' }]} schema={[appSchema(), webAppSchema(), faqSchema(faqs)]}>
   <section class="section center" style="padding-top:48px;padding-bottom:40px">
     <div class="wrap">
       <span class="eyebrow">Features</span>
       <h1>Everything a student <em style="color:var(--cta)">planner</em> needs</h1>
       <p class="lead">One app for your timetable, homework, exams, study plans and grades. Here is what each part does, and what is free.</p>
-      <div class="btn-row" style="margin-top:24px"><a class="btn" href={SITE.playUrl} rel="noopener">Get {SITE.app} free</a></div>
+      <div class="btn-row" style="margin-top:24px;justify-content:center"><a class="btn" href={SITE.playUrl} rel="noopener">Get {SITE.app} free</a><a class="btn ghost" href={SITE.webUrl} rel="noopener">Log in on the web</a></div>
+      <p class="small muted" style="margin-top:12px">Android app on Google Play &middot; Web app at {SITE.webHost} &middot; Same account, synced</p>
     </div>
   </section>
 

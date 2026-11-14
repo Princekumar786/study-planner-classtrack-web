@@ -1,8 +1,17 @@
 ---
-import { MAIN_NAV, PLANNERS, TOOLS, SITE } from '../data/site';
+import { MAIN_NAV, PLANNERS, PRODUCT_LINKS, TOOLS, SITE } from '../data/site';
 import Icon from './Icon.astro';
 const path = Astro.url.pathname;
+const inProduct = [...PLANNERS, ...PRODUCT_LINKS].some((p) => path.startsWith(p.href));
 ---
+<!-- Site-wide notice: the ClassTrack web app. Scrolls away; the header below stays sticky. -->
+<div class="announce no-print">
+  <div class="wrap">
+    <span class="announce-tag">New</span>
+    <span class="announce-text">ClassTrack is now on the web.<span class="announce-more"> Use your study planner on any laptop, Mac, Chromebook or iPhone.</span></span>
+    <a href={SITE.webUrl} rel="noopener"><span class="announce-long">Log in at {SITE.webHost}</span><span class="announce-short">ClassTrack is on the web. Log in</span> <Icon name="arrow" class="i16" /></a>
+  </div>
+</div>
 <header class="nav">
   <div class="wrap nav-in">
     <a class="logo" href="/" aria-label="Study Planner home">
@@ -11,32 +20,38 @@ const path = Astro.url.pathname;
     </a>
     <nav class="nav-links" aria-label="Main">
       <details class="drop" data-close>
-        <summary>Planners <Icon name="chevron" /></summary>
+        <summary aria-current={inProduct ? 'page' : undefined}>Product <Icon name="chevron" /></summary>
         <div class="drop-panel">
           {PLANNERS.map((p) => (
             <a href={p.href}><strong>{p.label}</strong><small>{p.desc}</small></a>
           ))}
+          <div class="drop-foot">
+            {PRODUCT_LINKS.map((p) => <a href={p.href} rel={p.href.startsWith('http') ? 'noopener' : undefined}>{p.label}</a>)}
+          </div>
         </div>
       </details>
       {MAIN_NAV.map((l) => <a href={l.href} aria-current={path.startsWith(l.href) ? 'page' : undefined}>{l.label}</a>)}
     </nav>
     <div class="nav-right">
-      <a class="util util-wide" href="/tools/timetable-maker/">Timetable maker</a>
-      <a class="util" href="/about/">About</a>
-      <a class="btn sm ghost login" href={SITE.webUrl} rel="noopener" aria-label="Log in to the ClassTrack web app">Log in</a>
+      <a class="login" href={SITE.webUrl} rel="noopener" aria-label="Log in to the ClassTrack web app">Log in</a>
       <a class="btn sm" href={SITE.playUrl} rel="noopener"><span>Get<span class="hide-xs"> the</span> app</span></a>
       <details class="menu-btn" data-close>
         <summary aria-label="Open menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
         </summary>
         <div class="mobile-panel">
-          <a href={SITE.webUrl} rel="noopener"><strong>Log in to the web app</strong> <small class="muted">({SITE.webHost})</small></a>
-          <p>Planners</p>
+          <div class="mp-cta">
+            <a class="btn sm" href={SITE.webUrl} rel="noopener">Log in on the web</a>
+            <a class="btn sm ghost" href={SITE.playUrl} rel="noopener">Get the Android app</a>
+          </div>
+          <p>Product</p>
           {PLANNERS.map((p) => <a href={p.href}>{p.label}</a>)}
+          {PRODUCT_LINKS.map((p) => <a href={p.href} rel={p.href.startsWith('http') ? 'noopener' : undefined}>{p.label}</a>)}
           <p>Free tools</p>
           {TOOLS.slice(0, 5).map((t) => <a href={t.href}>{t.label}</a>)}
-          <p>More</p>
-          {MAIN_NAV.map((l) => <a href={l.href}>{l.label}</a>)}
+          <a href="/tools/">All free tools</a>
+          <p>Learn</p>
+          {MAIN_NAV.filter((l) => l.href !== '/tools/').map((l) => <a href={l.href}>{l.label}</a>)}
           <a href="/about/">About</a>
           <a href="/faq/">FAQ</a>
         </div>

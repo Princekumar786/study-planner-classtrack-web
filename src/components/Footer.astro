@@ -2,6 +2,14 @@
 import { PLANNERS, TOOLS, GUIDES, SITE } from '../data/site';
 import StoreBadges from './StoreBadges.astro';
 const year = 2026;
+// Keep the footer short: 5 key guides, then a link to the full list.
+const FOOTER_GUIDES = [
+  '/guides/free-study-planner/',
+  '/guides/best-study-planner-apps/',
+  '/guides/how-to-make-a-study-timetable/',
+  '/guides/study-plan-for-exams/',
+  '/guides/classtrack-web-app/',
+].map((h) => GUIDES.find((g) => g.href === h)!).filter(Boolean);
 ---
 <footer class="footer">
   <div class="wrap">
@@ -16,7 +24,10 @@ const year = 2026;
       </div>
       <div>
         <h3>Study guides</h3>
-        <ul>{GUIDES.map((g) => <li><a href={g.href}>{g.label}</a></li>)}</ul>
+        <ul>
+          {FOOTER_GUIDES.map((g) => <li><a href={g.href}>{g.label}</a></li>)}
+          <li><a href="/guides/"><strong>All study guides →</strong></a></li>
+        </ul>
       </div>
       <div>
         <h3>Popular searches</h3>
@@ -35,7 +46,7 @@ const year = 2026;
     <div class="f-bot">
       <div class="f-brand">
         <a class="logo" href="/"><img src="/img/app-icon.webp" alt="" width="32" height="32" loading="lazy" /><b>Study <span>Planner</span></b></a>
-        <p>Free planning tools and guides for students, from the team behind the {SITE.app} study planner app.</p>
+        <p>Free planning tools and guides for students, from the team behind the {SITE.app} study planner, on Android and the web.</p>
         <StoreBadges dark />
       </div>
       <div>

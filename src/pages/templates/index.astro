@@ -26,7 +26,7 @@ const faqs: QA[] = [
   { q: 'Will they fit A4 and US Letter paper?', a: 'Yes. The templates are sized to fit both A4 and US Letter. If your browser adds headers or footers, turn them off in the print window under “More settings”.' },
   { q: 'What is the best way to use a weekly study planner?', a: 'Fill in fixed things first (classes, work, travel), then add 2–4 focused study blocks per day in the gaps, each with one subject and one task. Do it once a week, for example on Sunday evening. See <a href="/guides/weekly-schedule-for-students/">sample weekly schedules</a>.' },
   { q: 'Why does the exam tracker have three revision rounds?', a: 'Revisiting a topic several times, spaced out over days or weeks, is remembered much better than studying it once for the same total time. Spaced practice and self-testing were the two techniques rated “high utility” in a major review of learning research (Dunlosky et al., 2013).' },
-  { q: 'Is there a digital version?', a: `Yes. The free <a href="/tools/timetable-maker/">timetable maker</a> and <a href="/tools/study-plan-generator/">study plan generator</a> work in your browser. The ${SITE.app} app keeps the same planner on your phone, with reminders, and can read your class timetable from a photo.` },
+  { q: 'Is there a digital version?', a: `Yes. The free <a href="/tools/timetable-maker/">timetable maker</a> and <a href="/tools/study-plan-generator/">study plan generator</a> work in your browser. The ${SITE.app} app keeps the same planner on your phone, with reminders, and in your browser at <a href="${SITE.webUrl}" rel="noopener">${SITE.webHost}</a>, and can read your class timetable from a photo.` },
 ];
 
 const schema = [
@@ -157,7 +157,7 @@ const schema = [
   </section>
 
   <section class="section tight band-lavender no-print"><div class="wrap center"><h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Template questions</h2></div><Faq items={faqs} /></section>
-  <AppBand title="Prefer it on your phone?" text={`${SITE.app} keeps your timetable, homework and exams in one free app, with reminders. Snap a photo of your timetable and AI builds your week.`} />
+  <AppBand title="Prefer it on your phone or laptop?" text={`${SITE.app} keeps your timetable, homework and exams in one free app, with reminders. Snap a photo of your timetable and AI builds your week.`} />
 </Base>
 
 <style>

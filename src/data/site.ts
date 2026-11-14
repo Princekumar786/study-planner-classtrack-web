@@ -69,6 +69,7 @@ export const TOOLS: Tool[] = [
 export type Guide = NavLink & { title: string; minutes: number; date: string; updated?: string; tint: string; tag: string };
 
 export const GUIDES: Guide[] = [
+  { href: '/guides/free-study-planner/', label: 'Free study planner options', title: 'Free Study Planner: The Best $0 Options for Students in 2026', desc: 'Every kind of free study planner compared: apps, web apps, printables and calendars. What each free plan includes, its real limits, and how to set one up.', minutes: 12, date: '2026-11-14', tint: 'cream', tag: 'Reviews' },
   { href: '/guides/classtrack-web-app/', label: 'ClassTrack web app', title: 'ClassTrack Web App: Use Your Study Planner in Any Browser', desc: 'ClassTrack now runs in your browser at app.classtracks.app. Log in with the same account as your phone and plan classes, homework and exams on a laptop.', minutes: 8, date: '2026-11-14', tint: 'blue', tag: 'Product' },
   { href: '/guides/online-study-planner-laptop-and-phone/', label: 'Online study planner routine', title: 'Online Study Planner: How to Plan on Your Laptop and Phone', desc: 'Plan your week on a laptop and follow it on your phone. An online study planner routine with a 20-minute weekly review, daily check-ins and the research behind it.', minutes: 10, date: '2026-11-14', tint: 'mint', tag: 'Planning' },
   { href: '/guides/how-to-use-a-study-planner-app/', label: 'How to use a study planner app', title: 'How to Use a Study Planner App: A Setup Guide for Students', desc: 'Set up a study planner app in 20 minutes: timetable, exams, homework and a study plan. For high school, college and university students anywhere.', minutes: 10, date: '2026-10-22', updated: '2026-11-14', tint: 'mint', tag: 'Planning' },
@@ -118,10 +119,15 @@ export const GUIDES: Guide[] = [
 ];
 
 export const MAIN_NAV: NavLink[] = [
-  { href: '/features/', label: 'Features' },
   { href: '/tools/', label: 'Free tools' },
   { href: '/guides/', label: 'Guides' },
   { href: '/templates/', label: 'Templates' },
-  { href: '/compare/', label: 'Compare' },
   { href: '/pricing/', label: 'Pricing' },
+];
+
+// Shown at the bottom of the header's Product menu.
+export const PRODUCT_LINKS: NavLink[] = [
+  { href: '/features/', label: 'All features' },
+  { href: '/guides/classtrack-web-app/', label: 'Web app' },
+  { href: '/compare/', label: 'Compare planners' },
 ];

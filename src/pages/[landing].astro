@@ -10,7 +10,7 @@ import AiImport from '../components/AiImport.astro';
 import ChatDemo from '../components/ChatDemo.astro';
 import { LANDINGS, type Landing } from '../data/landings';
 import { SITE, TOOLS, GUIDES, PLANNERS } from '../data/site';
-import { faqSchema, appSchema } from '../lib/schema';
+import { faqSchema, appSchema, webAppSchema } from '../lib/schema';
 
 export function getStaticPaths() {
   return LANDINGS.map((l) => ({ params: { landing: l.slug }, props: { l } }));
@@ -23,7 +23,7 @@ const guides = GUIDES.filter((g) => l.guides.includes(g.href));
 const others = PLANNERS.filter((p) => p.href !== `/${l.slug}/`);
 const tints = ['lavender', 'mint', 'cream', 'pink', 'blue', 'lavender'];
 ---
-<Base title={l.title} description={l.description} crumbs={crumbs} schema={[appSchema(), faqSchema(faqs)]}>
+<Base title={l.title} description={l.description} crumbs={crumbs} schema={[appSchema(), webAppSchema(), faqSchema(faqs)]}>
   <section class="section" style="padding-top:40px">
     <div class="wrap split">
       <div>
@@ -35,7 +35,7 @@ const tints = ['lavender', 'mint', 'cream', 'pink', 'blue', 'lavender'];
           <a class="btn ghost" href={tools[0].href}>Try the free {tools[0].label.toLowerCase()}</a>
         </div>
         <div style="margin-top:20px"><StoreBadges /></div>
-        <span class="cta-note">{`Free on Android · iPhone coming soon · Updated ${new Date(SITE.updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`}</span>
+        <span class="cta-note">{`Free on Android and the web · iPhone app coming soon · Updated ${new Date(SITE.updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`}</span>
       </div>
       <Phones {...l.screens} tint={l.screens.tint} eager />
     </div>

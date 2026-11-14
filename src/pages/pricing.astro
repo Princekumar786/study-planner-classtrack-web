@@ -4,7 +4,7 @@ import Faq from '../components/Faq.astro';
 import AppBand from '../components/AppBand.astro';
 import Icon from '../components/Icon.astro';
 import { SITE } from '../data/site';
-import { faqSchema, appSchema, type QA } from '../lib/schema';
+import { faqSchema, appSchema, webAppSchema, type QA } from '../lib/schema';
 
 // Mirrors planComparison in the app (lib/features/subscription/domain/upgrade_reason.dart).
 const rows: [string, string, string][] = [
@@ -29,11 +29,12 @@ const faqs: QA[] = [
   { q: 'How much does ClassTrack Pro cost?', a: 'Pro is sold as a subscription through Google Play. Prices are shown in your local currency inside the app before you buy, and can differ by country and include introductory offers. Monthly, multi-month and yearly plans are available.' },
   { q: 'Is there a free trial?', a: 'Some plans include a free trial or introductory price. If one is available in your country, it is shown on the plan card in the app before you subscribe.' },
   { q: 'How do I cancel?', a: 'Open Google Play → Profile → Payments & subscriptions → Subscriptions, choose ClassTrack and tap Cancel. You keep Pro until the end of the period you paid for.' },
+  { q: 'Does Pro work on the web app too?', a: 'Yes. Pro is linked to your ClassTrack account, not to one device, so it is active in the Android app and in the web app at <a href="https://app.classtracks.app" rel="noopener">app.classtracks.app</a> when you sign in with the same account.' },
   { q: 'Are the website tools free?', a: 'Yes. Every tool on studyplanner.tech is free, with no account and no limits.' },
   { q: 'Do I lose my data if I stop paying?', a: 'No. Your timetable, tasks, exams and grades stay in your account on the free plan. Pro-only features stop until you subscribe again.' },
 ];
 ---
-<Base title="ClassTrack Pricing: Free Study Planner, Optional Pro" description="ClassTrack is free: timetable, homework, exams, grades and reminders. Pro adds unlimited AI, timetable scans, flashcards and Google Calendar import." crumbs={[{ name: 'Pricing', href: '/pricing/' }]} schema={[appSchema(), faqSchema(faqs)]}>
+<Base title="ClassTrack Pricing: Free Study Planner, Optional Pro" description="ClassTrack is free: timetable, homework, exams, grades and reminders. Pro adds unlimited AI, timetable scans, flashcards and Google Calendar import." crumbs={[{ name: 'Pricing', href: '/pricing/' }]} schema={[appSchema(), webAppSchema(), faqSchema(faqs)]}>
   <section class="section center" style="padding-top:40px">
     <div class="wrap">
       <span class="eyebrow">Pricing</span>
@@ -49,6 +50,7 @@ const faqs: QA[] = [
           <li><Icon name="check" />{SITE.free.aiMessages} AI messages a month</li>
           <li><Icon name="check" />{SITE.free.timetableScans} AI timetable scans</li>
           <li><Icon name="check" />{SITE.free.learningPlans} AI learning plans</li>
+          <li><Icon name="check" />Android app and web app, synced</li>
           <li><Icon name="check" />All 8 web tools</li>
         </ul>
         <a class="btn" href={SITE.playUrl} rel="noopener" style="width:100%">Get ClassTrack free</a>

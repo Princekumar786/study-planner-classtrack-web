@@ -61,7 +61,7 @@ export const toolSchema = (name: string, path: string, description: string) => (
   publisher: { '@id': `${SITE.url}/#org` },
 });
 
-export const articleSchema = (o: { title: string; path: string; description: string; date: string; modified?: string; image?: string }) => ({
+export const articleSchema = (o: { title: string; path: string; description: string; date: string; modified?: string; image?: string; citations?: { text: string; url: string }[] }) => ({
   '@type': 'Article',
   headline: o.title,
   description: o.description,
@@ -71,6 +71,9 @@ export const articleSchema = (o: { title: string; path: string; description: str
   dateModified: o.modified ?? o.date,
   image: new URL(o.image ?? '/og-default.png', SITE.url).href,
   inLanguage: 'en',
+  isAccessibleForFree: true,
   author: { '@type': 'Person', '@id': `${SITE.url}/about/#prince-kumar`, name: SITE.author.name, url: SITE.author.url, jobTitle: SITE.author.role, sameAs: [SITE.author.site] },
   publisher: { '@id': `${SITE.url}/#org` },
+  // Sources listed at the end of the guide, so search engines and AI tools can see what each claim rests on.
+  ...(o.citations?.length ? { citation: o.citations.map((c) => ({ '@type': 'CreativeWork', name: c.text, url: c.url })) } : {}),
 });
