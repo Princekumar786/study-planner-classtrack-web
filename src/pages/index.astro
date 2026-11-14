@@ -9,14 +9,15 @@ import StoreBadges from '../components/StoreBadges.astro';
 import AiImport from '../components/AiImport.astro';
 import ChatDemo from '../components/ChatDemo.astro';
 import { SITE, TOOLS, GUIDES } from '../data/site';
-import { faqSchema, appSchema, type QA } from '../lib/schema';
+import { faqSchema, appSchema, webAppSchema, type QA } from '../lib/schema';
 
 const faqs: QA[] = [
-  { q: 'What is the best free study planner for students?', a: `The best study planner is the one you open every day. ${SITE.app} is a free study planner app for Android that keeps your class timetable, homework, exam countdowns and study plan in one place, with reminders. If you only need a quick plan, the free <a href="/tools/study-plan-generator/">study plan generator</a> on this site works in your browser with no sign-up.` },
+  { q: 'What is the best free study planner for students?', a: `The best study planner is the one you open every day. ${SITE.app} is a free study planner for Android and the web that keeps your class timetable, homework, exam countdowns and study plan in one place, with reminders. If you only need a quick plan, the free <a href="/tools/study-plan-generator/">study plan generator</a> on this site works in your browser with no sign-up.` },
   { q: 'How do I make a study timetable?', a: 'List your subjects and exam dates, block out fixed commitments (classes, travel, sleep), pick 2–4 realistic study blocks per day, give harder subjects more blocks, and leave the last 20% of the time for revision and practice tests. Our <a href="/guides/how-to-make-a-study-timetable/">7-step guide</a> walks through it, and the <a href="/tools/study-plan-generator/">generator</a> does the maths for you.' },
   { q: 'Is ClassTrack free?', a: `Yes. The study planner, timetable, exam countdowns, homework list, grades and reminders are free. The free plan also includes ${SITE.free.aiMessages} AI messages a month, ${SITE.free.timetableScans} AI timetable scans and ${SITE.free.learningPlans} AI learning plans. ClassTrack Pro removes those limits and adds extras like notes, flashcards and a daily Google Calendar import. See <a href="/pricing/">pricing</a>.` },
   { q: 'Can AI make my timetable from a photo?', a: `Yes. In ${SITE.app} you can take a photo of your printed timetable, upload a PDF or paste the text. The AI reads subjects, days, times and rooms and builds a weekly class schedule you can review and edit before saving.` },
-  { q: 'Does it work on iPhone?', a: `${SITE.app} is available now on Android through Google Play. The iPhone version is coming soon: <button type="button" class="text-btn" data-ios style="padding:0">join the iPhone waitlist</button> and we will email you on launch day. All the free tools on studyplanner.tech already work in Safari on iPhone.` },
+  { q: 'Is there a web version of ClassTrack?', a: `Yes. The ClassTrack web app runs in any modern browser at <a href="${SITE.webUrl}" rel="noopener">${SITE.webHost}</a>. Log in with the same Google or email account you use on your phone, and your timetable, homework, exams and grades are already there. On a laptop it uses a desktop layout with a sidebar and a week calendar. Reminders still come from the Android app. <a href="/guides/classtrack-web-app/">How the web app works</a>.` },
+  { q: 'Does it work on iPhone?', a: `Yes, in the browser. Open <a href="${SITE.webUrl}" rel="noopener">${SITE.webHost}</a> in Safari and log in to use ${SITE.app} on iPhone or iPad today. The native iPhone app, with reminders, is coming soon: <button type="button" class="text-btn" data-ios style="padding:0">join the iPhone waitlist</button> and we will email you on launch day. ${SITE.app} for Android is on Google Play now.` },
   { q: 'Do the free tools save my data?', a: 'The tools run entirely in your browser. Nothing you type is sent to our servers. Some tools remember your last inputs on your own device (local storage) so you can come back to them; you can clear this any time from your browser.' },
 ];
 
@@ -62,7 +63,7 @@ const uses = [
   { label: 'Self-learners', img: '/img/screen-planner.webp', tint: 'mint', text: 'Courses, certifications and new skills.', href: '/ai-study-planner/' },
 ];
 
-const schema = [appSchema(), faqSchema(faqs)];
+const schema = [appSchema(), webAppSchema(), faqSchema(faqs)];
 ---
 <Base
   title="Study Planner for Students: Free Timetable Maker & Tools"
@@ -81,7 +82,7 @@ const schema = [appSchema(), faqSchema(faqs)];
           <a class="btn ghost" href="#ai-import">See AI import</a>
         </div>
         <div style="margin-top:20px"><StoreBadges /></div>
-        <span class="cta-note">No sign-up for the web tools. Android app is free on Google Play; iPhone is coming soon.</span>
+        <span class="cta-note">No sign-up for the free tools. Already have an account? <a href={SITE.webUrl} rel="noopener">Log in at {SITE.webHost}</a>. iPhone app coming soon.</span>
       </div>
       <Phones back="/img/screen-schedule.webp" backAlt="ClassTrack class timetable for the day" front="/img/screen-home.webp" frontAlt="ClassTrack home screen with today's classes, next exam and quick tools" eager />
     </div>
@@ -111,6 +112,51 @@ const schema = [appSchema(), faqSchema(faqs)];
     <div class="cta-under"><a class="btn" href="/features/">Explore every feature</a></div>
   </section>
 
+  <!-- Web app -->
+  <section class="section" id="web-app" style="padding-top:0">
+    <div class="wrap split web-split">
+      <div>
+        <span class="eyebrow">New · ClassTrack on the web</span>
+        <h2>Plan on your laptop. <em style="color:var(--cta)">Same account</em> as your phone.</h2>
+        <p class="lead">{SITE.app} now runs in your browser at <a href={SITE.webUrl} rel="noopener">{SITE.webHost}</a>. Log in with the Google or email account you use in the app, and your timetable, homework, exams and grades are already there.</p>
+        <ul class="ticks-plain">
+          <li>A <strong>week calendar</strong> with your classes, exams and due tasks on one screen</li>
+          <li>Sidebar, <strong>Ctrl K</strong> search and keyboard shortcuts for fast planning</li>
+          <li>Works on Windows, Mac, Chromebook, and in Safari on iPhone and iPad</li>
+          <li>Free, with the same AI limits as the app; reminders stay on your phone</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn" href={SITE.webUrl} rel="noopener">Log in on the web</a>
+          <a class="btn ghost" href="/guides/classtrack-web-app/">How the web app works</a>
+        </div>
+        <span class="cta-note">New here? Open the web app and tap Sign up. It takes about a minute.</span>
+      </div>
+      <a class="browser" href={SITE.webUrl} rel="noopener" aria-label={`Open the ClassTrack web app at ${SITE.webHost}`}>
+        <span class="b-bar" aria-hidden="true"><i></i><i></i><i></i><span class="b-url">{SITE.webHost}</span></span>
+        <span class="b-body" aria-hidden="true">
+          <span class="b-side">
+            <b>ClassTrack</b>
+            <span class="on">Home</span><span>Schedule</span><span>Planner</span><span>Tasks</span><span>Exams</span><span>Grades</span>
+          </span>
+          <span class="b-week">
+            <span class="b-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></span>
+            <span class="b-grid">
+              <span class="ev t-lavender" style="grid-column:1;grid-row:1 / span 2">Data Structures<small>9:00 · LH-204</small></span>
+              <span class="ev t-mint" style="grid-column:2;grid-row:2">Statistics<small>10:00</small></span>
+              <span class="ev t-pink" style="grid-column:3;grid-row:1">Mid-term<small>6 days left</small></span>
+              <span class="ev t-blue" style="grid-column:3;grid-row:3 / span 2">Lab<small>11:00 · L-2</small></span>
+              <span class="ev t-cream" style="grid-column:4;grid-row:2">Lab report due<small>11:59 pm</small></span>
+              <span class="ev t-lavender" style="grid-column:5;grid-row:1 / span 2">Linear Algebra<small>9:00</small></span>
+              <span class="ev t-mint" style="grid-column:1;grid-row:4">Study block<small>Topic 3</small></span>
+              <span class="ev t-mint" style="grid-column:4;grid-row:4">Study block<small>Past paper</small></span>
+              <span class="now" style="grid-row:3"></span>
+            </span>
+          </span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <!-- AI timetable import -->
   <section class="section band-lavender" id="ai-import">
     <div class="wrap center">
@@ -118,7 +164,7 @@ const schema = [appSchema(), faqSchema(faqs)];
       <h2>Snap your timetable. <em style="color:var(--cta)">AI</em> builds your week.</h2>
       <p class="lead">No more typing every lecture. Take a photo, upload the PDF or paste the text, and ClassTrack’s AI finds every class, day, time and room. {SITE.free.timetableScans} scans are free.</p>
       <AiImport />
-      <div class="cta-under"><a class="btn" href={SITE.playUrl} rel="noopener">Try AI import free</a><span class="cta-note">Android now · iPhone <button type="button" class="text-btn" data-ios style="padding:0;font-size:inherit">join the waitlist</button></span></div>
+      <div class="cta-under"><a class="btn" href={SITE.playUrl} rel="noopener">Try AI import free</a><span class="cta-note">Android and <a href={SITE.webUrl} rel="noopener">web</a> now · iPhone <button type="button" class="text-btn" data-ios style="padding:0;font-size:inherit">join the waitlist</button></span></div>
     </div>
   </section>
 
@@ -277,6 +323,7 @@ const schema = [appSchema(), faqSchema(faqs)];
       <ul class="logo-row">
         <li><Icon name="calendar" />Google Calendar</li>
         <li><Icon name="phone" />Android</li>
+        <li><Icon name="globe" />Any web browser</li>
         <li><Icon name="sparkle" />Gemini AI</li>
         <li><Icon name="camera" />Photos &amp; PDFs</li>
         <li><Icon name="mail" />Google sign-in</li>
@@ -295,7 +342,7 @@ const schema = [appSchema(), faqSchema(faqs)];
           <span class="use-label">{u.label}</span>
           <div class={`use-img t-${u.tint}`}><img src={u.img} alt="" width="480" height="1040" loading="lazy" /></div>
           <p>{u.text}</p>
-          {i === 1 && <span class="small muted">Android now · iPhone coming soon</span>}
+          {i === 1 && <span class="small muted">Android and web now · iPhone app coming soon</span>}
         </a>
       ))}
     </div>
@@ -353,6 +400,26 @@ const schema = [appSchema(), faqSchema(faqs)];
   .ticks-plain li { padding-left: 30px; position: relative; }
   .ticks-plain li::before { content: '✓'; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; font-size: .75rem; font-weight: 700; }
   .founder-links { margin-top: 6px; }
+  .web-split { align-items: center; }
+  .browser { display: block; border-radius: 18px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 30px 60px -30px rgba(27,28,52,.35); overflow: hidden; color: var(--ink); text-decoration: none; transition: transform .2s; }
+  .browser:hover { transform: translateY(-3px); color: var(--ink); }
+  .b-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--blue); }
+  .b-bar i { width: 10px; height: 10px; border-radius: 50%; background: #fff; opacity: .9; }
+  .b-url { margin-left: 10px; flex: 1; background: #fff; border-radius: 999px; padding: 4px 12px; font-size: .78rem; color: var(--ink-2); }
+  .b-body { display: grid; grid-template-columns: 116px 1fr; min-height: 320px; }
+  .b-side { display: flex; flex-direction: column; gap: 4px; padding: 14px 10px; border-right: 1px solid var(--line); font-size: .78rem; }
+  .b-side b { font-weight: 700; margin: 0 6px 8px; }
+  .b-side span { padding: 6px 8px; border-radius: 8px; color: var(--ink-2); }
+  .b-side .on { background: var(--lavender); color: var(--ink); font-weight: 600; }
+  .b-week { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .b-head, .b-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .b-head span { font-size: .72rem; font-weight: 600; color: var(--muted); text-align: center; }
+  .b-grid { grid-template-rows: repeat(4, 58px); position: relative; flex: 1; }
+  .ev { border-radius: 8px; padding: 6px; font-size: .66rem; font-weight: 600; line-height: 1.25; overflow: hidden; }
+  .ev small { display: block; font-weight: 400; color: var(--ink-2); }
+  .now { grid-column: 1 / -1; align-self: start; height: 2px; background: #E5484D; margin-top: 18px; position: relative; }
+  .now::before { content: ''; position: absolute; left: -3px; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #E5484D; }
+  @media (max-width: 560px) { .b-body { grid-template-columns: 1fr; } .b-side { display: none; } }
   .hero { padding-top: clamp(40px, 6vw, 72px); }
   .hero h1 em { color: var(--cta); }
   .explainer { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 48px; align-items: stretch; }

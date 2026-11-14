@@ -29,6 +29,25 @@ export const appSchema = () => ({
   publisher: { '@id': `${SITE.url}/#org` },
 });
 
+// The ClassTrack web app (app.classtracks.app): same account and data as the Android app.
+export const webAppSchema = () => ({
+  '@type': 'WebApplication',
+  '@id': `${SITE.url}/#webapp`,
+  name: 'ClassTrack Web App',
+  alternateName: 'ClassTrack for web',
+  url: `${SITE.webUrl}/`,
+  applicationCategory: 'EducationalApplication',
+  applicationSubCategory: 'Study planner',
+  operatingSystem: 'Any (runs in a web browser: Chrome, Edge, Safari, Firefox)',
+  browserRequirements: 'Requires JavaScript',
+  description: 'The ClassTrack study planner in a web browser. Log in with the same Google or email account as the Android app to see your class timetable, homework, exams, grades, attendance and AI study plans on a laptop, Chromebook, Mac, Windows PC, iPhone or iPad.',
+  featureList: ['Desktop layout with a sidebar and search (Ctrl K)', 'Week calendar for classes, exams and tasks', 'Homework and assignment planner', 'Exam countdowns', 'AI timetable import from a photo, PDF or text', 'AI study plans', 'AI study assistant', 'Grades and GPA', 'Attendance by subject', 'Syncs with the Android app'],
+  isAccessibleForFree: true,
+  audience: { '@type': 'EducationalAudience', educationalRole: 'student', audienceType: 'High school, college and university students worldwide' },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', category: 'Free with optional Pro subscription' },
+  publisher: { '@id': `${SITE.url}/#org` },
+});
+
 export const toolSchema = (name: string, path: string, description: string) => ({
   '@type': 'WebApplication',
   name,

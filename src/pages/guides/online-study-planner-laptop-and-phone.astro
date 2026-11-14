@@ -1,0 +1,174 @@
+---
+import Guide from '../../layouts/Guide.astro';
+import { SITE } from '../../data/site';
+const href = '/guides/online-study-planner-laptop-and-phone/';
+
+// The routine. Used for the on-page list and the HowTo schema, so both always match.
+const steps = [
+  { id: 'step-1', name: 'Pick one synced planner and put everything in it', text: 'Choose one online study planner that works in a browser and on your phone, and add your class timetable, every exam date and all open homework. One list you trust beats three you half use.' },
+  { id: 'step-2', name: 'Do a 20-minute weekly review on your laptop', text: 'Once a week at a fixed time, open the planner on a laptop. Clear the inbox, check exam countdowns, move unfinished tasks and book study blocks with a day, time, place and task.' },
+  { id: 'step-3', name: 'Leave 20% of the week empty', text: 'Students underestimate how long work takes. Keep about a fifth of your study time unbooked so the plan survives a late class or a hard topic.' },
+  { id: 'step-4', name: 'Check the day on your phone each morning', text: 'Spend two minutes on your phone: see today’s classes, what is due and which study block comes next.' },
+  { id: 'step-5', name: 'Capture homework on your phone the moment it is set', text: 'Add every assignment with a subject and due date before you leave the room. It takes ten seconds and stops tasks living in your head.' },
+  { id: 'step-6', name: 'Study with the phone in another room', text: 'Work from the laptop and keep the phone out of sight. Even a silent phone on the desk takes up attention.' },
+  { id: 'step-7', name: 'Close the day in five minutes', text: 'Tick off what you finished, move what you did not, and write tomorrow’s first task so you know exactly how to start.' },
+];
+
+const howTo = {
+  '@type': 'HowTo',
+  name: 'How to use an online study planner on a laptop and a phone',
+  description: 'A weekly and daily routine for students: plan on a laptop, follow the plan and capture homework on a phone.',
+  totalTime: 'PT20M',
+  tool: [{ '@type': 'HowToTool', name: 'An online study planner that syncs between a browser and a phone, such as ClassTrack' }],
+  step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.name, text: s.text, url: `${SITE.url}${href}#${s.id}` })),
+};
+---
+<Guide
+  href={href}
+  extraSchema={[howTo]}
+  tldr={[
+    'An <strong>online study planner</strong> keeps your timetable, homework, exams and study blocks in an account that syncs between a browser and your phone.',
+    'Use each screen for what it does best: <strong>plan on the laptop</strong> (big week view, fast typing) and <strong>follow the plan on the phone</strong> (reminders, quick capture, ticking things off).',
+    'The core is a <strong>20-minute weekly review</strong> plus two short daily check-ins. Book each study block with a day, time, place and task: that kind of “if–then” plan had a medium-to-large effect on goal success across 94 studies (Gollwitzer &amp; Sheeran, 2006).',
+    'Leave about <strong>20% of the week empty</strong>. Students in one study expected to finish their thesis in 34 days; it took them 56 on average (Buehler et al., 1994).',
+    'Study with your <strong>phone in another room</strong>. Its mere presence on the desk lowered scores on memory and reasoning tests (Ward et al., 2017).',
+  ]}
+  toc={[
+    { id: 'what', label: 'What is an online study planner?' },
+    { id: 'why', label: 'Why plan on a laptop and follow on a phone' },
+    { id: 'research', label: 'What the research says' },
+    { id: 'routine', label: 'The laptop + phone routine in 7 steps' },
+    { id: 'review', label: 'The 20-minute weekly review checklist' },
+    { id: 'week', label: 'What the routine looks like in a real week' },
+    { id: 'classtrack', label: 'How to set it up in ClassTrack' },
+    { id: 'other', label: 'Doing it with other tools' },
+    { id: 'mistakes', label: 'Mistakes that break the routine' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/study-plan-generator/', '/tools/exam-countdown/', '/tools/pomodoro-timer/']}
+  faqs={[
+    { q: 'What is the best online study planner?', a: `The best online study planner is one that works in a browser and on your phone with the same account, and that understands classes, homework and exams. ${SITE.app} does this for free, with a web app at <a href="${SITE.webUrl}" rel="noopener">${SITE.webHost}</a> and an Android app with reminders. For a wider comparison, see the <a href="/guides/best-study-planner-apps/">best study planner apps</a>. Disclosure: we make ${SITE.app}.` },
+    { q: 'Is it better to plan studies on a laptop or a phone?', a: 'Plan on a laptop and follow the plan on a phone. A laptop shows the whole week and makes typing fast, which suits a weekly review. A phone is always with you, so it is better for reminders, adding homework the moment it is set, and ticking tasks off.' },
+    { q: 'Is there a free online study planner?', a: `Yes. ${SITE.app} is free in the browser and on Android. For a one-off plan with no account, use our free <a href="/tools/study-plan-generator/">study plan generator</a>, which runs in your browser and saves nothing to a server.` },
+    { q: 'How long should a weekly study plan review take?', a: 'About 15–20 minutes once you are used to it. The first one can take 40 minutes because you are adding everything for the first time.' },
+    { q: 'What day should I do my weekly review?', a: 'Any fixed day before your week starts. Sunday evening is popular because the coming week is fresh. Friday afternoon also works if you want a free weekend. What matters is that it is the same time every week.' },
+    { q: 'Can I use an online study planner on iPhone?', a: `Yes. Web-based planners work in Safari. ${SITE.app}’s web app runs on iPhone at ${SITE.webHost}; tap Share, then Add to Home Screen for an icon. It cannot send reminders, so set alarms for exams in your phone’s calendar until the iPhone app launches.` },
+    { q: 'How many study blocks should I plan per day?', a: 'Two to four focused blocks of 25–50 minutes on a normal school or college day, more on holidays before exams. See <a href="/guides/how-many-hours-to-study-a-day/">how many hours to study a day</a>.' },
+  ]}
+  sources={[
+    { text: 'Gollwitzer, P. M. & Sheeran, P. (2006). Implementation intentions and goal achievement: A meta-analysis of effects and processes. Advances in Experimental Social Psychology, 38, 69–119.', url: 'https://doi.org/10.1016/S0065-2601(06)38002-1' },
+    { text: 'Buehler, R., Griffin, D. & Ross, M. (1994). Exploring the “planning fallacy”: Why people underestimate their task completion times. Journal of Personality and Social Psychology, 67(3), 366–381.', url: 'https://doi.org/10.1037/0022-3514.67.3.366' },
+    { text: 'Ward, A. F., Duke, K., Gneezy, A. & Bos, M. W. (2017). Brain drain: The mere presence of one’s own smartphone reduces available cognitive capacity. Journal of the Association for Consumer Research, 2(2), 140–154.', url: 'https://doi.org/10.1086/691462' },
+    { text: 'Britton, B. K. & Tesser, A. (1991). Effects of time-management practices on college grades. Journal of Educational Psychology, 83(3), 405–410.', url: 'https://doi.org/10.1037/0022-0663.83.3.405' },
+    { text: 'Rubinstein, J. S., Meyer, D. E. & Evans, J. E. (2001). Executive control of cognitive processes in task switching. Journal of Experimental Psychology: Human Perception and Performance, 27(4), 763–797.', url: 'https://doi.org/10.1037/0096-1523.27.4.763' },
+    { text: 'Scullin, M. K., Krueger, M. L., Ballard, H. K., Pruett, N. & Bliwise, D. L. (2018). The effects of bedtime writing on difficulty falling asleep: A polysomnographic study comparing to-do lists and completed activity lists. Journal of Experimental Psychology: General, 147(1), 139–146.', url: 'https://doi.org/10.1037/xge0000374' },
+    { text: 'Dunlosky, J. et al. (2013). Improving students’ learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.', url: 'https://doi.org/10.1177/1529100612453266' },
+  ]}
+>
+  <p><strong>Short answer:</strong> use an online study planner that syncs between your browser and your phone. <strong>Plan the week on your laptop</strong> in one 20-minute review, then <strong>follow the plan on your phone</strong>: check it each morning, add homework the moment it is set, and tick things off. Book every study block with a day, time and task, leave about 20% of the week empty, and keep the phone in another room while you study.</p>
+  <p>This guide explains why the split works, what the research says, a 7-step routine you can copy, a weekly review checklist and a sample week. It works with any synced planner; we show how to set it up in <a href={SITE.webUrl} rel="noopener">ClassTrack</a>, which we make, and in other common tools.</p>
+
+  <h2 id="what">What is an online study planner?</h2>
+  <p>An <strong>online study planner</strong> is a student planner that stores your plan in an account instead of on one device. You can open it in a web browser on a laptop or computer and in an app on your phone, and changes on one show up on the other.</p>
+  <p>A good one does more than a calendar or to-do list. It knows that classes repeat every week, that homework belongs to a subject, and that an exam is a deadline you prepare for over many days. That is what lets it turn “Chemistry exam on the 28th” into study sessions spread across the weeks before.</p>
+
+  <h2 id="why">Why plan on a laptop and follow on a phone</h2>
+  <p>Planning and doing are different jobs, and each screen is better at one of them.</p>
+  <table>
+    <thead><tr><th scope="col">Job</th><th scope="col">Best screen</th><th scope="col">Why</th></tr></thead>
+    <tbody>
+      <tr><td>Weekly review and planning</td><td>Laptop</td><td>You can see the whole week, every exam and every open task at once, and typing is fast.</td></tr>
+      <tr><td>Building a study plan for an exam</td><td>Laptop</td><td>Splitting a syllabus into topics and dates is easier with a keyboard and a big view.</td></tr>
+      <tr><td>Adding homework when it is set</td><td>Phone</td><td>It is in your pocket in class. Ten seconds now saves a missed deadline later.</td></tr>
+      <tr><td>Reminders</td><td>Phone</td><td>Phones can notify you before a class or deadline; a browser tab usually cannot.</td></tr>
+      <tr><td>Checking what is next</td><td>Phone</td><td>A two-minute look each morning and between classes keeps you on track.</td></tr>
+      <tr><td>Deep study sessions</td><td>Laptop (phone away)</td><td>The planner and your materials are on one screen, and the phone is not on the desk pulling at your attention.</td></tr>
+    </tbody>
+  </table>
+  <p>Planning only on a phone often means planning in small scraps, between notifications. Planning only on a laptop means you are not reminded and you cannot capture homework when it is set. Using both, with one synced account, removes both problems.</p>
+
+  <h2 id="research">What the research says</h2>
+  <table>
+    <thead><tr><th scope="col">Finding</th><th scope="col">What to do with it</th></tr></thead>
+    <tbody>
+      <tr><td>Across 94 studies with over 8,000 people, deciding <strong>when, where and how</strong> you will act (“if it is Tuesday 4 pm, I will do 20 chemistry questions in the library”) had a medium-to-large effect on reaching goals, d = 0.65 (Gollwitzer &amp; Sheeran, 2006).</td><td>In the weekly review, give every study block a day, time, place and specific task.</td></tr>
+      <tr><td>Students predicted they would finish their honours thesis in about <strong>34 days</strong>. On average it took <strong>56 days</strong>, and only about 30% finished by their own estimate (Buehler, Griffin &amp; Ross, 1994).</td><td>Leave about 20% of the week unbooked and start big assignments earlier than feels necessary.</td></tr>
+      <tr><td>Students whose phone was in another room scored better on working-memory and reasoning tests than students whose phone was face down on the desk, even when it was silent or switched off (Ward et al., 2017).</td><td>Plan on the laptop and study with the phone out of the room.</td></tr>
+      <tr><td>Switching between tasks has a time cost each time you switch, and the cost grows with how complex the tasks are (Rubinstein, Meyer &amp; Evans, 2001).</td><td>Do your planning in one weekly session instead of re-planning in bits through the day.</td></tr>
+      <tr><td>Among college students, short-range planning predicted cumulative GPA better than SAT scores (Britton &amp; Tesser, 1991).</td><td>Planning the week is a skill worth practising, not busywork.</td></tr>
+      <tr><td>People who spent five minutes writing a specific to-do list for the next days fell asleep faster than people who wrote about tasks they had already done (Scullin et al., 2018).</td><td>End the day by writing tomorrow’s first task. Do it early in your wind-down, then put the phone away.</td></tr>
+    </tbody>
+  </table>
+  <p>A planner also makes the two study techniques with the strongest evidence, spacing study over days and practice testing, much easier to stick to (Dunlosky et al., 2013). More on those in <a href="/guides/evidence-based-study-techniques/">what the research says about study techniques</a>.</p>
+
+  <h2 id="routine">The laptop + phone study planning routine in 7 steps</h2>
+  {steps.map((s, i) => (
+    <>
+      <h3 id={s.id}>Step {i + 1}: {s.name}</h3>
+      <p>{s.text}</p>
+    </>
+  ))}
+
+  <h2 id="review">The 20-minute weekly review checklist</h2>
+  <p>Do this on your laptop, at the same time every week. Set a 20-minute timer so it stays short.</p>
+  <ol>
+    <li><strong>Empty your head (3 min).</strong> Add any homework, forms or reminders you have on paper, in chats or in your memory.</li>
+    <li><strong>Look back (3 min).</strong> Tick off last week’s finished tasks. Move unfinished ones to a real day, or delete them if they no longer matter.</li>
+    <li><strong>Check deadlines (3 min).</strong> Look at every exam countdown and every assignment due in the next 14 days.</li>
+    <li><strong>Book study blocks (8 min).</strong> Open the week view and place 2–4 blocks a day around your classes. Give each one a subject and a specific task: “Physics: 10 circuit questions”, not “study physics”.</li>
+    <li><strong>Add slack (1 min).</strong> Leave at least one evening and about 20% of your study time free for catch-up.</li>
+    <li><strong>Check the numbers (2 min).</strong> Glance at grades and attendance. If a subject is slipping, give it one extra block this week.</li>
+  </ol>
+  <p>The first review can take 40 minutes because you are adding everything. After two or three weeks it settles at 15–20 minutes.</p>
+
+  <h2 id="week">What the routine looks like in a real week</h2>
+  <table>
+    <thead><tr><th scope="col">When</th><th scope="col">Screen</th><th scope="col">What you do</th><th scope="col">Time</th></tr></thead>
+    <tbody>
+      <tr><td>Sunday 18:00</td><td>Laptop</td><td>Weekly review: book blocks, check exams and deadlines</td><td>20 min</td></tr>
+      <tr><td>Every morning</td><td>Phone</td><td>See today’s classes, what is due and the next study block</td><td>2 min</td></tr>
+      <tr><td>In class, when work is set</td><td>Phone</td><td>Add the assignment with subject and due date</td><td>10 sec</td></tr>
+      <tr><td>Study blocks (e.g. Mon/Wed 16:00)</td><td>Laptop, phone in another room</td><td>Work on the booked task; tick it off when done</td><td>25–50 min each</td></tr>
+      <tr><td>Every evening</td><td>Phone or paper</td><td>Tick off, move anything missed, write tomorrow’s first task</td><td>5 min</td></tr>
+      <tr><td>Wednesday</td><td>Phone</td><td>Mid-week check: is the plan still realistic? Move one block if not</td><td>3 min</td></tr>
+    </tbody>
+  </table>
+  <p>That is about 45 minutes of planning a week in total, for a week where you always know what to do next. For complete sample timetables, see <a href="/guides/weekly-schedule-for-students/">weekly schedules for students</a>.</p>
+
+  <h2 id="classtrack">How to set it up in ClassTrack</h2>
+  <p><a href={SITE.webUrl} rel="noopener">ClassTrack</a> is a free study planner with a web app and an Android app on the same account, so it fits this routine directly. Disclosure: we make it.</p>
+  <table>
+    <thead><tr><th scope="col">Routine step</th><th scope="col">Where in ClassTrack</th></tr></thead>
+    <tbody>
+      <tr><td>Put everything in one place</td><td>On the laptop, import your timetable with AI from a photo, PDF or pasted text, then add exams and open tasks.</td></tr>
+      <tr><td>Weekly review</td><td>Web app at <a href={SITE.webUrl} rel="noopener">{SITE.webHost}</a>: Schedule shows a week calendar with exams and due tasks at the top of each day; Tasks shows the list and the editor side by side.</td></tr>
+      <tr><td>Exam study plans</td><td>Planner: tell the AI what to learn and by when. It splits the subject into topics with time estimates and spreads them up to your date.</td></tr>
+      <tr><td>Reminders and morning check</td><td>Android app: reminders before classes, tasks and exams, and today’s plan on the Home screen.</td></tr>
+      <tr><td>Quick capture</td><td>Android app, or the web app in your phone’s browser.</td></tr>
+      <tr><td>Check the numbers</td><td>Grades (4.0 or 10-point scale) and Attendance; on a laptop, Attendance is a sortable table.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Shortcuts that speed up the weekly review on the web:</strong> <kbd>N</kbd> adds something new, <kbd>Ctrl</kbd> + <kbd>K</kbd> jumps to any page, and <kbd>A</kbd> opens the AI assistant beside your week so you can ask “what is due before Friday?” while looking at it. More in <a href="/guides/classtrack-web-app/">how the ClassTrack web app works</a>.</p>
+  <p><strong>On iPhone:</strong> use the web app in Safari until the iPhone app launches, and put exam dates in your phone’s calendar for alerts. Our free <a href="/tools/timetable-maker/">timetable maker</a> can export your classes as a calendar file.</p>
+  <div class="btn-row" style="margin:20px 0"><a class="btn" href={SITE.webUrl} rel="noopener">Log in on the web</a><a class="btn ghost" href={SITE.playUrl} rel="noopener">Get the Android app</a></div>
+
+  <h2 id="other">Doing it with other tools</h2>
+  <p>The routine does not depend on one app. What you need is a planner that <strong>syncs between a browser and a phone</strong> and can show a week at a glance.</p>
+  <ul>
+    <li><strong>Google Calendar + a to-do app:</strong> classes and study blocks as calendar events, homework in a to-do list. Free and reliable, but nothing links homework to subjects or counts down to exams.</li>
+    <li><strong>A student planner app with a web version</strong> (for example MyStudyLife or Power Planner): similar to ClassTrack, with different strengths. Compare them in <a href="/compare/">our planner comparisons</a>.</li>
+    <li><strong>Notion:</strong> build your own dashboard. Great for the laptop side; the phone side is slower for quick capture.</li>
+    <li><strong>Paper + phone:</strong> a printed weekly grid from the <a href="/templates/">free templates</a> for planning, and your phone’s reminders for deadlines.</li>
+  </ul>
+
+  <h2 id="mistakes">Mistakes that break the routine</h2>
+  <ol>
+    <li><strong>Two systems.</strong> Homework in a chat, exams in your head, classes in a photo. Pick one planner and move everything into it.</li>
+    <li><strong>Planning every minute.</strong> A week with no gaps fails on Tuesday. Keep the 20% slack.</li>
+    <li><strong>Vague blocks.</strong> “Study maths” is easy to skip. “Maths: past paper Q1–5” is easy to start.</li>
+    <li><strong>Skipping the weekly review.</strong> Without it, the plan drifts from real life within two weeks and you stop trusting it.</li>
+    <li><strong>Studying next to your phone.</strong> Even face down and silent, it costs attention. Put it in another room or a bag.</li>
+    <li><strong>Re-planning all day.</strong> Moving blocks every hour is procrastination that looks productive. Plan weekly, adjust once mid-week.</li>
+  </ol>
+  <p>The aim is a plan you look at every day and fix every week, not a perfect one.</p>
+</Guide>

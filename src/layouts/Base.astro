@@ -46,7 +46,7 @@ const graph: Record<string, unknown>[] = [
     logo: { '@type': 'ImageObject', url: `${SITE.url}/icon-512.png`, width: 512, height: 512 },
     email: SITE.email,
     founder: { '@type': 'Person', '@id': `${SITE.url}/about/#prince-kumar`, name: SITE.author.name, url: SITE.author.url, sameAs: [SITE.author.site] },
-    sameAs: [SITE.appSite, SITE.playUrl],
+    sameAs: [SITE.appSite, SITE.playUrl, SITE.webUrl],
     contactPoint: { '@type': 'ContactPoint', email: SITE.email, contactType: 'customer support', availableLanguage: ['English', 'Hindi'] },
   },
   {

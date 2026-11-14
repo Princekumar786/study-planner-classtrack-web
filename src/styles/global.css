@@ -110,6 +110,9 @@ table { border-collapse: collapse; width: 100%; }
 .nav-right .util { padding: 8px 12px; color: var(--ink); text-decoration: none; font-weight: 500; font-size: .95rem; border-radius: var(--r-sm); }
 .nav-right .util:hover { background: var(--lavender); }
 .menu-btn { display: none; }
+.nav-links > a, .drop > summary, .nav-right .util, .nav-right .btn { white-space: nowrap; }
+@media (max-width: 1440px) { .nav-right .util-wide { display: none; } }
+@media (max-width: 1180px) { .nav-right .util { display: none; } }
 @media (max-width: 1020px) {
   .nav-links, .nav-right .util { display: none; }
   .menu-btn { display: block; position: static; }
@@ -121,6 +124,7 @@ table { border-collapse: collapse; width: 100%; }
   .mobile-panel p { margin: 18px 0 4px; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
 }
 @media (max-width: 420px) { .nav-right .btn { padding: 0 12px; font-size: .85rem; } .nav-in { gap: 8px; } .logo { font-size: .98rem; gap: 7px; } .logo img { width: 28px; height: 28px; } .hide-xs { display: none; } }
+@media (max-width: 359px) { .nav-right .login { display: none; } }
 
 /* Grids & cards */
 .grid { display: grid; gap: 24px; }

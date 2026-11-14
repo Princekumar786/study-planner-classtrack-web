@@ -11,12 +11,15 @@ export const SITE = {
   playUrl: 'https://play.google.com/store/apps/details?id=com.classtracks.app',
   playId: 'com.classtracks.app',
   appSite: 'https://classtracks.app',
+  // ClassTrack web app: same account and data as the Android app. Log in here from any browser.
+  webUrl: 'https://app.classtracks.app',
+  webHost: 'app.classtracks.app',
   email: 'support@classtracks.app',
   // Global English audience (not one country). og:locale needs a territory, en_US is the standard default.
   locale: 'en_US',
   lang: 'en',
   // Last time the content facts were checked against the app code.
-  updated: '2026-10-20',
+  updated: '2026-11-14',
   author: {
     name: 'Prince Kumar',
     role: 'Founder of ClassTrack',
@@ -66,8 +69,10 @@ export const TOOLS: Tool[] = [
 export type Guide = NavLink & { title: string; minutes: number; date: string; updated?: string; tint: string; tag: string };
 
 export const GUIDES: Guide[] = [
-  { href: '/guides/how-to-use-a-study-planner-app/', label: 'How to use a study planner app', title: 'How to Use a Study Planner App: A Setup Guide for Students', desc: 'Set up a study planner app in 20 minutes: timetable, exams, homework and a study plan. For high school, college and university students anywhere.', minutes: 10, date: '2026-10-22', tint: 'mint', tag: 'Planning' },
-  { href: '/guides/best-study-planner-apps/', label: 'Best study planner apps', title: 'Best Study Planner Apps in 2026: 9 Picks Compared (Free & Paid)', desc: 'The best study planner apps of 2026 compared on timetable, exams, AI, platforms and price, with the best pick for school, college and exam prep.', minutes: 13, date: '2026-10-20', updated: '2026-10-22', tint: 'lavender', tag: 'Reviews' },
+  { href: '/guides/classtrack-web-app/', label: 'ClassTrack web app', title: 'ClassTrack Web App: Use Your Study Planner in Any Browser', desc: 'ClassTrack now runs in your browser at app.classtracks.app. Log in with the same account as your phone and plan classes, homework and exams on a laptop.', minutes: 8, date: '2026-11-14', tint: 'blue', tag: 'Product' },
+  { href: '/guides/online-study-planner-laptop-and-phone/', label: 'Online study planner routine', title: 'Online Study Planner: How to Plan on Your Laptop and Phone', desc: 'Plan your week on a laptop and follow it on your phone. An online study planner routine with a 20-minute weekly review, daily check-ins and the research behind it.', minutes: 10, date: '2026-11-14', tint: 'mint', tag: 'Planning' },
+  { href: '/guides/how-to-use-a-study-planner-app/', label: 'How to use a study planner app', title: 'How to Use a Study Planner App: A Setup Guide for Students', desc: 'Set up a study planner app in 20 minutes: timetable, exams, homework and a study plan. For high school, college and university students anywhere.', minutes: 10, date: '2026-10-22', updated: '2026-11-14', tint: 'mint', tag: 'Planning' },
+  { href: '/guides/best-study-planner-apps/', label: 'Best study planner apps', title: 'Best Study Planner Apps in 2026: 9 Picks Compared (Free & Paid)', desc: 'The best study planner apps of 2026 compared on timetable, exams, AI, platforms and price, with the best pick for school, college and exam prep.', minutes: 13, date: '2026-10-20', updated: '2026-11-14', tint: 'lavender', tag: 'Reviews' },
   { href: '/guides/how-to-make-a-study-timetable/', label: 'How to make a study timetable', title: 'How to Make a Study Timetable That You Actually Follow', desc: 'A 7-step method for building a realistic weekly study timetable, with a free template.', minutes: 9, date: '2026-10-20', tint: 'lavender', tag: 'Planning' },
   { href: '/guides/study-plan-for-exams/', label: 'Study plan for exams', title: 'How to Make a Study Plan for Exams (Backward Planning Method)', desc: 'Work back from your exam date, split the syllabus, and leave room for revision and mocks.', minutes: 10, date: '2026-10-20', tint: 'pink', tag: 'Exams' },
   { href: '/guides/evidence-based-study-techniques/', label: 'Evidence-based study techniques', title: 'Active Recall and Spaced Repetition: What the Research Says', desc: 'Which study techniques work, which waste time, and how to build them into your planner.', minutes: 11, date: '2026-10-20', tint: 'mint', tag: 'Research' },

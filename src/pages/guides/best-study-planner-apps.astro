@@ -6,7 +6,7 @@ const href = '/guides/best-study-planner-apps/';
 // The ranked list. Used for the quick-picks table and the ItemList schema,
 // so the order on the page and in structured data always match.
 const picks = [
-  { id: 'classtrack', name: 'ClassTrack', best: 'Best overall for school and college students (Android)', url: SITE.playUrl },
+  { id: 'classtrack', name: 'ClassTrack', best: 'Best overall for school and college students (Android and web)', url: SITE.playUrl },
   { id: 'mystudylife', name: 'MyStudyLife', best: 'Best free cross-platform student planner', url: 'https://mystudylife.com/' },
   { id: 'power-planner', name: 'Power Planner', best: 'Best for grades and GPA, one-time purchase', url: 'https://powerplanner.net/' },
   { id: 'notion', name: 'Notion', best: 'Best for building your own study system', url: 'https://www.notion.com/product/notion-for-education' },
@@ -34,7 +34,7 @@ const itemList = {
   href={href}
   extraSchema={[itemList]}
   tldr={[
-    '<strong>Best overall: ClassTrack</strong> (Android) for students who want their class timetable, homework, exam countdowns and an AI study plan in one free app. Disclosure: we make it.',
+    '<strong>Best overall: ClassTrack</strong> (Android and web) for students who want their class timetable, homework, exam countdowns and an AI study plan in one free app. Disclosure: we make it.',
     '<strong>Best on iPhone and across devices: MyStudyLife.</strong> Free, mature, and works on iOS, Android and the web.',
     '<strong>Best one-time purchase: Power Planner.</strong> Free to use; Premium is a lifetime unlock for under $5.',
     '<strong>Best for custom systems: Notion</strong>, free Plus plan for university students with a school email.',
@@ -59,7 +59,7 @@ const itemList = {
   ]}
   tools={['/tools/study-plan-generator/', '/tools/timetable-maker/', '/tools/exam-countdown/']}
   faqs={[
-    { q: 'What is the best study planner app in 2026?', a: 'For most school and college students on Android, ClassTrack is the best all-in-one study planner because it combines a class timetable (with AI import from a photo or PDF), homework, exam countdowns, AI study plans and grades for free. On iPhone, or if you need web access, MyStudyLife is the strongest free choice. Disclosure: ClassTrack is made by the team behind this site.' },
+    { q: 'What is the best study planner app in 2026?', a: 'For most school and college students on Android, ClassTrack is the best all-in-one study planner because it combines a class timetable (with AI import from a photo or PDF), homework, exam countdowns, AI study plans and grades for free. ClassTrack also has a web app at app.classtracks.app for laptops and iPhone browsers. If you want a native iPhone app, MyStudyLife is the strongest free choice. Disclosure: ClassTrack is made by the team behind this site.' },
     { q: 'What is the best free study planner app?', a: 'MyStudyLife, Power Planner and ClassTrack all have free plans that cover a timetable, homework and exams. Google Calendar is free too, but it is a calendar, not a student planner, so it has no homework list, grades or exam countdowns.' },
     { q: 'Is there a study planner app with AI?', a: `Yes. ClassTrack builds AI learning plans and can read your timetable from a photo or PDF (${SITE.free.learningPlans} free plans and ${SITE.free.timetableScans} free scans; unlimited with Pro). MyStudyLife has an AI assistant called Scout, and Structured Pro can draft your day from a sentence. You can also try our free <a href="/tools/study-plan-generator/">study plan generator</a> without an app.` },
     { q: 'Is Notion good as a study planner?', a: 'Notion is excellent if you enjoy building your own system with databases and templates, and students with a school email can get the Plus plan free. It is weaker as a ready-made planner: there is no built-in class timetable, exam countdown or grade calculator, so you set those up yourself.' },
@@ -81,7 +81,7 @@ const itemList = {
     { text: 'Google Classroom Help: View due dates and events in a calendar.', url: 'https://support.google.com/edu/classroom/answer/6272985' },
   ]}
 >
-  <p><strong>Short answer:</strong> the best study planner in 2026 is the one that holds your <strong>class timetable, homework deadlines and exam dates in one place</strong> and turns them into a daily plan. For Android users that is <a href="#classtrack">ClassTrack</a>; on iPhone or the web, <a href="#mystudylife">MyStudyLife</a>. If you mainly track grades, choose <a href="#power-planner">Power Planner</a>; if you like to build your own system, <a href="#notion">Notion</a>.</p>
+  <p><strong>Short answer:</strong> the best study planner in 2026 is the one that holds your <strong>class timetable, homework deadlines and exam dates in one place</strong> and turns them into a daily plan. For Android and laptop users that is <a href="#classtrack">ClassTrack</a>; if you want a native iPhone app, <a href="#mystudylife">MyStudyLife</a>. If you mainly track grades, choose <a href="#power-planner">Power Planner</a>; if you like to build your own system, <a href="#notion">Notion</a>.</p>
   <p>Below are nine planners compared on the features students actually use, with who each one suits and where it falls short. Prices and features were checked against each app’s official store listing or help pages in October 2026.</p>
   <p class="small muted"><strong>Disclosure:</strong> studyplanner.tech is run by the makers of ClassTrack, which appears in this list. We have tried to be fair: every app’s limits are listed, including ours, and we tell you when another app is the better choice. Read our <a href="/about/">editorial policy</a>.</p>
 
@@ -106,7 +106,7 @@ const itemList = {
   <p>We also asked one question the research cares about: <strong>does the app make it easy to spread study over days?</strong> Spaced practice and practice testing are the only two study techniques rated “high utility” in a major review of learning research (Dunlosky et al., 2013). A planner that schedules revision sessions across the weeks before an exam helps you do the first one without thinking about it.</p>
 
   <h2 id="classtrack">1. ClassTrack: best overall for school and college students</h2>
-  <p><strong>Platforms:</strong> Android (iPhone coming soon) · <strong>Price:</strong> free; optional Pro subscription through Google Play</p>
+  <p><strong>Platforms:</strong> Android and web (<a href={SITE.webUrl} rel="noopener">{SITE.webHost}</a>), synced; iPhone app coming soon · <strong>Price:</strong> free; optional Pro subscription</p>
   <p>ClassTrack is an all-in-one student planner: your <a href="/timetable-app/">class timetable</a>, homework and assignments, exam countdowns, grades and an <a href="/ai-study-planner/">AI study planner</a> live in one app. Its standout feature is <strong>AI timetable import</strong>: take a photo of your timetable, or upload the PDF your college shares, and it becomes a weekly schedule in seconds instead of typing every class by hand.</p>
   <ul>
     <li><strong>Timetable:</strong> day, week and month views, rooms, teachers and class links, plus one-off extra or cancelled classes.</li>
@@ -115,8 +115,8 @@ const itemList = {
     <li><strong>Works with any school system:</strong> GPA on a 4.0 or 10-point scale (including SGPA/CGPA), and attendance tracking by subject for colleges with a minimum-attendance rule.</li>
   </ul>
   <p><strong>Free plan:</strong> timetable, tasks, exams, grades, habits and reminders, plus {SITE.free.aiMessages} AI messages a month, {SITE.free.timetableScans} AI timetable scans and {SITE.free.learningPlans} AI learning plans. Pro removes the AI limits and adds notes and flashcards, daily Google Calendar import and a daily AI agenda (<a href="/pricing/">see pricing</a>).</p>
-  <p><strong>Limits:</strong> Android only for now, and no web app. It does not support rotating timetables (Week A/B or Day 1–6 cycles) yet. It is a newer app, so it has fewer store reviews than MyStudyLife. If you are on iPhone or have a rotating timetable, start with MyStudyLife.</p>
-  <p><strong>Choose it if</strong> you are on Android and want the fastest set-up and a study plan built around your exam dates.</p>
+  <p><strong>Limits:</strong> no native iPhone app yet (iPhone users can use the <a href="/guides/classtrack-web-app/">web app</a> in Safari, without reminders). It does not support rotating timetables (Week A/B or Day 1–6 cycles) yet. It is a newer app, so it has fewer store reviews than MyStudyLife. If you want a native iPhone app or have a rotating timetable, start with MyStudyLife.</p>
+  <p><strong>Choose it if</strong> you are on Android or plan from a laptop, and want the fastest set-up and a study plan built around your exam dates.</p>
 
   <h2 id="mystudylife">2. MyStudyLife: best free cross-platform student planner</h2>
   <p><strong>Platforms:</strong> iPhone, iPad, Android, web · <strong>Price:</strong> free; optional in-app purchases</p>
@@ -169,7 +169,7 @@ const itemList = {
   <table>
     <thead><tr><th scope="col">App</th><th scope="col">Class timetable</th><th scope="col">Homework</th><th scope="col">Exams</th><th scope="col">Grades</th><th scope="col">AI help</th><th scope="col">Platforms</th><th scope="col">Pricing model</th></tr></thead>
     <tbody>
-      <tr><td><strong>ClassTrack</strong></td><td>Yes, AI import</td><td>Yes</td><td>Countdowns</td><td>GPA, SGPA, CGPA</td><td>Study plans, assistant</td><td>Android</td><td>Free + Pro</td></tr>
+      <tr><td><strong>ClassTrack</strong></td><td>Yes, AI import</td><td>Yes</td><td>Countdowns</td><td>GPA, SGPA, CGPA</td><td>Study plans, assistant</td><td>Android, web</td><td>Free + Pro</td></tr>
       <tr><td><strong>MyStudyLife</strong></td><td>Yes, rotating, photo</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Scout</td><td>iOS, Android, web</td><td>Free + in-app purchases</td></tr>
       <tr><td><strong>Power Planner</strong></td><td>Yes, Week A/B</td><td>Yes</td><td>Yes</td><td>Strong GPA, custom scales</td><td>No</td><td>iOS, Android, Windows, Mac, web</td><td>Free + one-time $4.99</td></tr>
       <tr><td><strong>Notion</strong></td><td>Build it</td><td>Build it</td><td>Build it</td><td>Build it</td><td>Paid plans</td><td>All</td><td>Free (Plus free for students)</td></tr>

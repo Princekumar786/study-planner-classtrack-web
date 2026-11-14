@@ -19,7 +19,7 @@ const howTo = {
   name: 'How to set up a study planner app',
   description: 'Six steps to turn your classes, homework and exam dates into a weekly study plan in a study planner app.',
   totalTime: 'PT20M',
-  tool: [{ '@type': 'HowToTool', name: 'ClassTrack study planner app (Android) or any student planner' }],
+  tool: [{ '@type': 'HowToTool', name: 'ClassTrack study planner (Android app or web app) or any student planner' }],
   step: steps.map((s, i) => ({
     '@type': 'HowToStep',
     position: i + 1,
@@ -37,7 +37,7 @@ const howTo = {
     'Set-up takes about <strong>20 minutes</strong>: timetable → exams → homework → study plan → study blocks → weekly review.',
     'Planning pays off: in a study of college students, <strong>time-management habits predicted grades better than SAT scores</strong> (Britton &amp; Tesser, 1991).',
     'Use the planner to <strong>spread revision over days and test yourself</strong>. These are the two techniques rated most effective in a major review of learning research.',
-    `<strong>ClassTrack</strong> is a free study planner app for students on Android, with AI timetable import from a photo or PDF, exam countdowns and AI study plans. Disclosure: we make it.`,
+    `<strong>ClassTrack</strong> is a free study planner for students on Android and the web, with AI timetable import from a photo or PDF, exam countdowns and AI study plans. Disclosure: we make it.`,
   ]}
   toc={[
     { id: 'what', label: 'What is a study planner app?' },
@@ -51,13 +51,13 @@ const howTo = {
   ]}
   tools={['/tools/study-plan-generator/', '/tools/timetable-maker/', '/tools/exam-countdown/']}
   faqs={[
-    { q: 'What is the best study planner app for students?', a: `The best study planner app is one that holds your class timetable, homework and exam dates together and that you open every day. On Android, ${SITE.app} does this for free and adds AI timetable import and AI study plans. On iPhone or the web, MyStudyLife is a strong free option. See our <a href="/guides/best-study-planner-apps/">comparison of 9 study planner apps</a>. Disclosure: ${SITE.app} is made by the team behind this site.` },
+    { q: 'What is the best study planner app for students?', a: `The best study planner app is one that holds your class timetable, homework and exam dates together and that you open every day. On Android and the web, ${SITE.app} does this for free and adds AI timetable import and AI study plans. If you want a native iPhone app, MyStudyLife is a strong free option. See our <a href="/guides/best-study-planner-apps/">comparison of 9 study planner apps</a>. Disclosure: ${SITE.app} is made by the team behind this site.` },
     { q: 'Is ClassTrack only for students in one country?', a: `No. ${SITE.app} is a study planner for students everywhere: high school, college, university and self-learners. Your timetable, homework and exams work the same in any school system, and grades can be shown on a 4.0 GPA scale or a 10-point scale. The app is in English.` },
     { q: 'Is a study planner app free?', a: `Many are. ${SITE.app}'s timetable, homework, exam countdowns, grades, habits and reminders are free, plus ${SITE.free.aiMessages} AI messages a month, ${SITE.free.timetableScans} AI timetable scans and ${SITE.free.learningPlans} AI learning plans. ClassTrack Pro removes the AI limits. See <a href="/pricing/">pricing</a>.` },
     { q: 'Can an AI study planner make a study plan for me?', a: `Yes. In ${SITE.app}, you tell the AI what you need to learn and by when. It splits the subject into topics, estimates the time each needs and spreads them across the days before your deadline. You can also try our free <a href="/tools/study-plan-generator/">study plan generator</a> in your browser, with no sign-up.` },
     { q: 'Is a study planner app better than a paper planner?', a: 'An app is better for repeating classes, reminders and changing plans. Paper has no notifications to distract you. Many students use an app for the timetable and deadlines, and a sticky note or notebook for today’s three tasks.' },
     { q: 'How many hours a day should I plan to study?', a: 'Most students do well with 2–4 focused hours a day outside class, rising on holidays before big exams. Focused hours matter more than total hours. Read <a href="/guides/how-many-hours-to-study-a-day/">how many hours to study a day</a>.' },
-    { q: 'Does ClassTrack work on iPhone?', a: `${SITE.app} is on Android now through Google Play. The iPhone version is coming soon; you can join the waitlist on our home page. All the free tools on studyplanner.tech work in any browser, including Safari on iPhone.` },
+    { q: 'Does ClassTrack work on iPhone?', a: `Yes, in Safari. Log in at <a href="${SITE.webUrl}" rel="noopener">${SITE.webHost}</a> to use the ${SITE.app} web app on iPhone or iPad with the same account. The native iPhone app, with reminders, is coming soon; you can join the waitlist on our home page.` },
   ]}
   sources={[
     { text: 'Britton, B. K. & Tesser, A. (1991). Effects of time-management practices on college grades. Journal of Educational Psychology, 83(3), 405–410.', url: 'https://doi.org/10.1037/0022-0663.83.3.405' },
@@ -140,7 +140,7 @@ const howTo = {
   <p>Notice the pattern: new topics early in the week, a self-test in most sessions, the same subject coming back every few days (spacing), and a full rest evening. More examples are in our <a href="/guides/weekly-schedule-for-students/">sample weekly schedules for students</a>.</p>
 
   <h2 id="classtrack">How ClassTrack works as a study planner</h2>
-  <p><a href={SITE.playUrl} rel="noopener">ClassTrack</a> is a free <strong>study planner app for students</strong> on Android, built to do the six steps above with as little typing as possible. It is used for school, college and university, and is not tied to any one country’s school system.</p>
+  <p><a href={SITE.playUrl} rel="noopener">ClassTrack</a> is a free <strong>study planner app for students</strong> on Android and the web, built to do the six steps above with as little typing as possible. It is used for school, college and university, and is not tied to any one country’s school system.</p>
   <figure style="margin:24px auto;max-width:260px;text-align:center">
     <img src="/img/screen-schedule.webp" alt="ClassTrack study planner app showing a colour-coded class timetable for the day" width="480" height="1040" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:24px" />
     <figcaption class="small muted">The ClassTrack schedule, built from a photo of a timetable.</figcaption>
@@ -157,7 +157,8 @@ const howTo = {
     </tbody>
   </table>
   <p><strong>What is free:</strong> the timetable, homework, exam countdowns, grades, habits and reminders, plus {SITE.free.aiMessages} AI messages a month, {SITE.free.timetableScans} AI timetable scans and {SITE.free.learningPlans} AI learning plans. <strong>ClassTrack Pro</strong> makes the AI unlimited and adds notes and flashcards, daily Google Calendar import, PDF/CSV export and a daily AI agenda. Pro is billed through Google Play in your local currency (<a href="/pricing/">see pricing</a>).</p>
-  <p><strong>Honest limits:</strong> ClassTrack is Android-only for now (an iPhone version is coming soon) and has no web app, and the app is in English. If you need iPhone or web access today, read our <a href="/guides/best-study-planner-apps/">comparison of study planner apps</a> for alternatives.</p>
+  <p><strong>On a laptop:</strong> the same account works in the <a href={SITE.webUrl} rel="noopener">ClassTrack web app</a>, with a week calendar and a sidebar. It is the easiest place to do steps 1, 4 and 6. See <a href="/guides/classtrack-web-app/">how the web app works</a>.</p>
+  <p><strong>Honest limits:</strong> there is no native iPhone app yet (an iPhone version is coming soon; the web app works in Safari but cannot send reminders), and the app is in English. If you need a native iPhone app today, read our <a href="/guides/best-study-planner-apps/">comparison of study planner apps</a> for alternatives.</p>
   <p><a class="btn" href={SITE.playUrl} rel="noopener">Get ClassTrack free on Google Play</a></p>
 
   <h2 id="mistakes">5 mistakes that make students quit their planner</h2>

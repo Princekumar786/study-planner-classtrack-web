@@ -30,6 +30,7 @@ const f = SITE.free;
 
 const ctSources = [
   { text: 'ClassTrack: Study & Attendance, Google Play listing.', url: SITE.playUrl },
+  { text: 'ClassTrack web app (same account as the Android app).', url: SITE.webUrl },
   { text: 'ClassTrack Free vs Pro plan comparison (mirrors the in-app pricing table).', url: `${SITE.url}/pricing/` },
 ];
 
@@ -42,17 +43,18 @@ export const COMPARISONS: Comparison[] = [
     label: 'ClassTrack vs MyStudyLife',
     description: 'ClassTrack vs MyStudyLife compared on timetables, AI, homework, exams, grades, platforms and price, with an honest verdict on which student planner to choose.',
     date: '2026-10-22',
-    updated: '2026-10-22',
-    verdict: `<strong>Choose MyStudyLife</strong> if you use an iPhone or a laptop browser, or your school has a rotating timetable (Week A/B, Day 1–6). <strong>Choose ClassTrack</strong> if you are on Android and want AI to build a topic-by-topic study plan for your exams, plus attendance tracking and GPA on a 4.0 or 10-point scale. Both are free to start.`,
+    updated: '2026-11-14',
+    verdict: `<strong>Choose MyStudyLife</strong> if you want a native iPhone or iPad app with reminders, or your school has a rotating timetable (Week A/B, Day 1–6). <strong>Choose ClassTrack</strong> if you are on Android or plan from a laptop browser and want AI to build a topic-by-topic study plan for your exams, plus attendance tracking and GPA on a 4.0 or 10-point scale. Both are free to start.`,
     summary: [
-      { who: 'iPhone, iPad or web user', ct: 'Not yet (Android only)', other: 'Better fit' },
+      { who: 'iPhone or iPad user', ct: 'Web app in Safari only; native app coming soon', other: 'Better fit (native app)' },
+      { who: 'Plans from a laptop browser', ct: 'Web app with a desktop layout', other: 'Web app' },
       { who: 'Rotating or block timetable', ct: 'Not supported yet', other: 'Better fit' },
       { who: 'Android user who wants AI learning plans with time estimates', ct: 'Better fit', other: 'Scout plans your week and revision' },
       { who: 'College with an attendance rule', ct: 'Better fit', other: 'Not in its feature list' },
       { who: 'Parent who wants to follow along', ct: 'No parent app', other: 'Family Connect' },
     ],
     rows: [
-      { feature: 'Platforms', ct: 'Android (iPhone coming soon)', other: 'iPhone, iPad, Android and web, synced' },
+      { feature: 'Platforms', ct: 'Android and web (app.classtracks.app), synced; iPhone app coming soon', other: 'iPhone, iPad, Android and web, synced' },
       { feature: 'Price', ct: 'Free; optional Pro subscription through Google Play', other: 'Free; optional in-app purchases' },
       { feature: 'Class timetable', ct: 'Day, week and month views; rooms, teachers, class links; one-off extra or cancelled classes', other: 'Weekly, rotating and block timetables' },
       { feature: 'Rotating timetables (Week A/B, Day 1–6)', ct: 'Not yet', other: 'Yes (Day A/B, Week 1/2, custom)' },
@@ -68,14 +70,14 @@ export const COMPARISONS: Comparison[] = [
       { feature: 'Parents and schools', ct: 'No', other: 'Family Connect app for parents; a version for schools' },
     ],
     chooseCt: [
-      'You use an Android phone.',
+      'You use an Android phone, a laptop browser, or both.',
       'You want AI to split a subject into topics and spread them up to your exam date.',
       'Your college has a minimum-attendance rule and you want attendance by subject.',
       'Your grades use a 10-point scale (SGPA/CGPA) as well as, or instead of, a 4.0 GPA.',
       'You want notes and flashcards in the same app as your timetable (Pro).',
     ],
     chooseOther: [
-      'You use an iPhone or iPad, or want to plan from a laptop browser.',
+      'You use an iPhone or iPad and want a native app with reminders.',
       'Your school runs a rotating timetable (Week A/B or Day 1–6).',
       'You want a focus timer built into the planner.',
       'A parent wants to see upcoming homework and exams (Family Connect).',
@@ -83,12 +85,12 @@ export const COMPARISONS: Comparison[] = [
     ],
     otherAbout: 'MyStudyLife is one of the longest-running student planners. It is free on iPhone, Android and the web, says it never sells data or shows ads, and covers classes, homework, exams, grades and reminders. It recently added Scout, an AI study coach that can plan your week or a revision schedule from one sentence.',
     faqs: [
-      { q: 'Is ClassTrack better than MyStudyLife?', a: 'It depends on your phone and timetable. ClassTrack is the better fit for Android users who want AI study plans, attendance tracking and 10-point GPA support. MyStudyLife is the better fit on iPhone or the web, and for rotating timetables. Disclosure: ClassTrack is made by the team behind this site.' },
+      { q: 'Is ClassTrack better than MyStudyLife?', a: 'It depends on your phone and timetable. ClassTrack is the better fit for Android users who want AI study plans, attendance tracking and 10-point GPA support. MyStudyLife is the better fit if you want a native iPhone app, and for rotating timetables. Both have a web app. Disclosure: ClassTrack is made by the team behind this site.' },
       { q: 'Is MyStudyLife free?', a: 'Yes. MyStudyLife is free to download and use on iPhone, Android and the web, with optional in-app purchases.' },
       { q: 'Is ClassTrack free?', a: `Yes. The timetable, homework, exams, grades, habits and reminders are free, plus ${f.aiMessages} AI messages a month, ${f.timetableScans} AI timetable scans and ${f.learningPlans} AI learning plans. Pro removes the AI limits. See <a href="/pricing/">pricing</a>.` },
       { q: 'Does ClassTrack support rotating timetables like MyStudyLife?', a: 'Not yet. ClassTrack repeats classes weekly and lets you add one-off extra or cancelled classes, but it has no Week A/B or Day 1–6 cycle. If your school uses one, MyStudyLife or Power Planner will suit you better today.' },
       { q: 'Can both apps read my timetable from a photo?', a: 'Yes. MyStudyLife lets you snap a photo of your timetable. ClassTrack can read a photo, a PDF or pasted text, and shows the classes it found for you to check before saving.' },
-      { q: 'Is ClassTrack on iPhone?', a: 'Not yet. ClassTrack is on Android now, and an iPhone version is coming soon. You can join the waitlist on our home page.' },
+      { q: 'Is ClassTrack on iPhone?', a: 'In the browser, yes: open app.classtracks.app in Safari and log in. The native iPhone app, with reminders, is coming soon, and you can join the waitlist on our home page. ClassTrack is on Android through Google Play.' },
     ],
     sources: [
       ...ctSources,
@@ -105,17 +107,17 @@ export const COMPARISONS: Comparison[] = [
     label: 'ClassTrack vs Power Planner',
     description: 'ClassTrack vs Power Planner compared on timetables, AI, grades and GPA, platforms and price (subscription vs one-time $4.99), with an honest verdict.',
     date: '2026-10-22',
-    updated: '2026-10-22',
-    verdict: `<strong>Choose Power Planner</strong> if you want detailed grade tracking (weighted grades, credits, pass/fail, extra credit), a Week A/B schedule, Windows or Mac apps, and a one-time $4.99 upgrade instead of a subscription. <strong>Choose ClassTrack</strong> if you are on Android and want AI help: timetable import from a photo or PDF, topic-by-topic study plans and a study assistant, plus attendance tracking.`,
+    updated: '2026-11-14',
+    verdict: `<strong>Choose Power Planner</strong> if you want detailed grade tracking (weighted grades, credits, pass/fail, extra credit), a Week A/B schedule, Windows or Mac apps, and a one-time $4.99 upgrade instead of a subscription. <strong>Choose ClassTrack</strong> if you are on Android or the web and want AI help: timetable import from a photo or PDF, topic-by-topic study plans and a study assistant, plus attendance tracking.`,
     summary: [
       { who: 'Hates subscriptions', ct: 'Pro is a subscription', other: 'Better fit ($4.99 once)' },
       { who: 'Tracks weighted grades closely', ct: 'GPA, credits, target score', other: 'Better fit' },
-      { who: 'Windows, Mac or iPhone user', ct: 'Android only for now', other: 'Better fit' },
+      { who: 'Windows, Mac or iPhone user', ct: 'Web app in the browser; no desktop or iPhone app yet', other: 'Better fit (native apps)' },
       { who: 'Wants AI study plans and timetable import', ct: 'Better fit', other: 'No AI features listed' },
       { who: 'College with an attendance rule', ct: 'Better fit', other: 'Not in its help docs' },
     ],
     rows: [
-      { feature: 'Platforms', ct: 'Android (iPhone coming soon)', other: 'iPhone, iPad, Android, Chromebook, Windows, Mac and web (beta), synced' },
+      { feature: 'Platforms', ct: 'Android and web (app.classtracks.app), synced; iPhone app coming soon', other: 'iPhone, iPad, Android, Chromebook, Windows, Mac and web (beta), synced' },
       { feature: 'Price', ct: 'Free; optional Pro subscription through Google Play', other: 'Free; Premium is a one-time $4.99 purchase that unlocks every platform' },
       { feature: 'Free plan limits', ct: `${f.aiMessages} AI messages/month, ${f.timetableScans} timetable scans, ${f.learningPlans} AI learning plans; core planner unlimited`, other: '1 semester, 5 grades per class, 1 repeating bulk entry, 1 photo per item' },
       { feature: 'Class timetable', ct: 'Day, week and month views; rooms, teachers, class links; one-off extra or cancelled classes', other: 'Classes on several days and times, labs, rooms, holidays' },
@@ -130,7 +132,7 @@ export const COMPARISONS: Comparison[] = [
       { feature: 'Notes and flashcards', ct: 'Yes (Pro)', other: 'Photo attachments on items' },
     ],
     chooseCt: [
-      'You use an Android phone.',
+      'You use an Android phone, a laptop browser, or both.',
       'You want to import your timetable from a photo or PDF instead of typing it.',
       'You want AI to build a study plan with time estimates up to your exam date.',
       'Your college tracks attendance and you need to stay above a minimum.',
@@ -140,12 +142,12 @@ export const COMPARISONS: Comparison[] = [
       'You want a one-time purchase, not a subscription.',
       'You track weighted grades in detail, including pass/fail and extra credit.',
       'Your school runs a Week A/B schedule.',
-      'You want the same planner on Windows, Mac, iPhone and Android.',
+      'You want native apps on Windows, Mac, iPhone and Android.',
       'You do not need AI features.',
     ],
     otherAbout: 'Power Planner is a homework and grade planner that runs on iPhone, iPad, Android, Chromebook, Windows, Mac and the web (beta), synced through one account. It is mostly free; a one-time $4.99 Premium purchase removes the free limits on every platform. Its strength is grades: weighted categories, credits, pass/fail classes, extra credit and custom GPA scales.',
     faqs: [
-      { q: 'Is ClassTrack better than Power Planner?', a: 'For Android users who want AI timetable import, AI study plans and attendance tracking, yes. For detailed grade tracking, Week A/B schedules, computer apps or a one-time price, Power Planner is the better pick. Disclosure: ClassTrack is made by the team behind this site.' },
+      { q: 'Is ClassTrack better than Power Planner?', a: 'For Android users who want AI timetable import, AI study plans and attendance tracking, yes. For detailed grade tracking, Week A/B schedules, native computer apps or a one-time price, Power Planner is the better pick. Disclosure: ClassTrack is made by the team behind this site.' },
       { q: 'How much does Power Planner cost?', a: 'Power Planner is mostly free. Premium is a one-time, lifetime purchase of $4.99 USD that also unlocks Premium on your other devices. The free version is limited to 1 semester, 5 grades per class, 1 repeating bulk entry and 1 photo per item.' },
       { q: 'How much does ClassTrack Pro cost?', a: 'ClassTrack Pro is a subscription through Google Play. The price is shown in your local currency in the app before you buy, and monthly, multi-month and yearly plans are available. See <a href="/pricing/">pricing</a>.' },
       { q: 'Does Power Planner have AI?', a: 'Its help centre lists no AI features. Power Planner focuses on schedules, tasks, reminders and grades.' },

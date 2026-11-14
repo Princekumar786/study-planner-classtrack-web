@@ -1,0 +1,175 @@
+---
+import Guide from '../../layouts/Guide.astro';
+import { SITE } from '../../data/site';
+import { webAppSchema } from '../../lib/schema';
+const href = '/guides/classtrack-web-app/';
+
+// Log-in steps. Used for the on-page list and the HowTo schema, so both always match.
+const steps = [
+  { id: 'step-1', name: `Open ${SITE.webHost}`, text: `Go to ${SITE.webUrl} in Chrome, Edge, Safari or Firefox. It works on Windows, Mac, Chromebook, Linux, iPhone, iPad and Android browsers.` },
+  { id: 'step-2', name: 'Sign in the same way as on your phone', text: 'Choose Continue with Google or sign in with your email and password. Use the same method you used in the Android app, or you will create a second, empty account.' },
+  { id: 'step-3', name: 'Allow the Google pop-up if asked', text: 'Google sign-in opens in a small pop-up window. If nothing happens, allow pop-ups for app.classtracks.app in your browser and try again.' },
+  { id: 'step-4', name: 'Check that your data is there', text: 'Your timetable, tasks, exams, grades and study plans load from your account. New to ClassTrack? Tap Sign up instead and add your timetable from a photo, PDF or pasted text.' },
+  { id: 'step-5', name: 'Bookmark it', text: 'Bookmark the page or pin the tab so your planner is one click away. On a shared or college computer, sign out from Settings when you finish.' },
+];
+
+const howTo = {
+  '@type': 'HowTo',
+  name: 'How to log in to the ClassTrack web app',
+  description: 'Five steps to open the ClassTrack study planner in a web browser with the same account as the Android app.',
+  totalTime: 'PT2M',
+  tool: [{ '@type': 'HowToTool', name: 'Any modern web browser (Chrome, Edge, Safari or Firefox)' }],
+  step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.name, text: s.text, url: `${SITE.url}${href}#${s.id}` })),
+};
+---
+<Guide
+  href={href}
+  extraSchema={[howTo, webAppSchema()]}
+  tldr={[
+    `<strong>ClassTrack has a web app.</strong> Open <a href="${SITE.webUrl}" rel="noopener">${SITE.webHost}</a> in any modern browser and log in to use your study planner on a laptop, Chromebook, Mac, Windows PC, iPhone or iPad.`,
+    '<strong>Same account, same data.</strong> Sign in with the Google or email account you use in the Android app. Your timetable, homework, exams, grades and study plans sync both ways.',
+    'On a laptop it has a <strong>desktop layout</strong>: a sidebar, a week calendar with a red “now” line, a task list with the editor beside it, Ctrl K search and the AI assistant in a side panel.',
+    '<strong>It is free</strong>, with the same free AI limits as the app. Pro is tied to your account, so Pro from Google Play also works on the web.',
+    '<strong>One limit:</strong> a browser tab cannot send reminders, so keep the Android app for notifications. iPhone users can use the web app in Safari until the iPhone app launches.',
+  ]}
+  toc={[
+    { id: 'what', label: 'What is the ClassTrack web app?' },
+    { id: 'login', label: 'How to log in to ClassTrack on the web' },
+    { id: 'desktop', label: 'What it looks like on a laptop' },
+    { id: 'shortcuts', label: 'Keyboard shortcuts' },
+    { id: 'compare', label: 'Web app vs Android app' },
+    { id: 'devices', label: 'Using it on iPhone, Mac, Windows and Chromebook' },
+    { id: 'routine', label: 'A simple way to use web and phone together' },
+    { id: 'privacy', label: 'Privacy and shared computers' },
+    { id: 'trouble', label: 'Fixing sign-in problems' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+  tools={['/tools/timetable-maker/', '/tools/study-plan-generator/', '/tools/exam-countdown/']}
+  faqs={[
+    { q: 'Is there a web version of ClassTrack?', a: `Yes. The ClassTrack web app is at <a href="${SITE.webUrl}" rel="noopener">${SITE.webHost}</a>. It is the same study planner as the Android app, running in your browser, with a desktop layout on wide screens.` },
+    { q: 'How do I log in to ClassTrack on my laptop?', a: `Open ${SITE.webHost}, then choose Continue with Google or sign in with your email and password. Use the same method you used on your phone so you land in the same account.` },
+    { q: 'Is the ClassTrack web app free?', a: `Yes. The timetable, homework, exams, grades and attendance are free on the web, as in the app. The free plan includes ${SITE.free.aiMessages} AI messages a month, ${SITE.free.timetableScans} AI timetable scans and ${SITE.free.learningPlans} AI learning plans per account, shared between web and phone. See <a href="/pricing/">pricing</a>.` },
+    { q: 'Does my data sync between the web app and the Android app?', a: 'Yes. Both read and write the same account, so a task you add on your laptop shows up on your phone, and the other way round. You need an internet connection for changes to sync.' },
+    { q: 'Do I need a new account for the web app?', a: 'No. Use your existing ClassTrack account. If you sign in with a different method or email than on your phone, you will get a second, empty account, so sign out and use the original one.' },
+    { q: 'Can I use ClassTrack on iPhone?', a: `Yes, through the web app. Open ${SITE.webHost} in Safari and log in. The native iPhone app, with reminders, is coming soon; you can join the waitlist on our <a href="/">home page</a>.` },
+    { q: 'Does the web app send reminders?', a: 'No. Browsers cannot schedule the reminders the phone app uses, so the reminder settings are hidden on the web. Install the Android app on the same account to get class, task and exam reminders.' },
+    { q: 'Can I import my timetable from a photo on the web?', a: `Yes. Upload a photo or screenshot of your timetable, upload the PDF, or paste the text, then check the classes the AI found before saving. Each scan counts towards the ${SITE.free.timetableScans} free scans on your account.` },
+    { q: 'If I have ClassTrack Pro on Android, do I have it on the web?', a: 'Yes. Pro is stored on your account, not on your phone, so it is active wherever you sign in with that account.' },
+    { q: 'Which browsers does ClassTrack support?', a: 'Recent versions of Chrome, Edge, Safari and Firefox. If the page stays on the loading screen, update your browser or try another one.' },
+  ]}
+  sources={[
+    { text: 'ClassTrack web app (log in or sign up).', url: SITE.webUrl },
+    { text: 'ClassTrack: Study & Attendance, Google Play listing.', url: SITE.playUrl },
+    { text: 'Gollwitzer, P. M. & Sheeran, P. (2006). Implementation intentions and goal achievement: A meta-analysis of effects and processes. Advances in Experimental Social Psychology, 38, 69–119.', url: 'https://doi.org/10.1016/S0065-2601(06)38002-1' },
+    { text: 'Ward, A. F., Duke, K., Gneezy, A. & Bos, M. W. (2017). Brain drain: The mere presence of one’s own smartphone reduces available cognitive capacity. Journal of the Association for Consumer Research, 2(2), 140–154.', url: 'https://doi.org/10.1086/691462' },
+    { text: 'Britton, B. K. & Tesser, A. (1991). Effects of time-management practices on college grades. Journal of Educational Psychology, 83(3), 405–410.', url: 'https://doi.org/10.1037/0022-0663.83.3.405' },
+  ]}
+>
+  <p><strong>Short answer:</strong> yes, ClassTrack now works in a web browser. Go to <a href={SITE.webUrl} rel="noopener"><strong>{SITE.webHost}</strong></a>, sign in with the same Google or email account you use on your phone, and your class timetable, homework, exams, grades and study plans are already there. It is free and works on any laptop, Chromebook, Mac, Windows PC, iPhone or iPad.</p>
+  <p>This guide covers how to log in, what the desktop layout looks like, the keyboard shortcuts, what is different from the Android app, and a simple routine for using both. Disclosure: we make ClassTrack. Facts in this guide were checked against the live web app on {new Date(SITE.updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}.</p>
+  <p><a class="btn" href={SITE.webUrl} rel="noopener">Log in to the web app</a></p>
+
+  <h2 id="what">What is the ClassTrack web app?</h2>
+  <p>The <strong>ClassTrack web app</strong> is the ClassTrack study planner running in a browser instead of on a phone. It is the same app with the same account, not a cut-down version. You can:</p>
+  <ul>
+    <li>see and edit your <strong>class timetable</strong> by day or week, with rooms, teachers and class links;</li>
+    <li>add <strong>homework, assignments and to-dos</strong> with due dates, grouped into Overdue, Today and Next 7 days;</li>
+    <li>track <strong>exam countdowns</strong>, <strong>grades and GPA</strong> (4.0 or 10-point scale) and <strong>attendance by subject</strong>;</li>
+    <li>build <strong>AI study plans</strong> that split a subject into topics and spread them up to your deadline;</li>
+    <li>ask the <strong>AI study assistant</strong> (called Ask Kiro in the app) what is due, or for a revision plan that fits your week;</li>
+    <li>import a timetable with <strong>AI</strong> from a photo, a PDF or pasted text.</li>
+  </ul>
+  <p>Notes, flashcards, habits and expenses are in the sidebar too, as they are in the app.</p>
+
+  <h2 id="login">How to log in to ClassTrack on the web</h2>
+  <p>It takes about two minutes the first time.</p>
+  {steps.map((s, i) => (
+    <>
+      <h3 id={s.id}>Step {i + 1}: {s.name}</h3>
+      <p>{s.text}</p>
+    </>
+  ))}
+  <p><strong>Tip:</strong> the most common problem is landing in an empty account. That happens when you used Google on your phone but type an email and password on the web, or the other way round. Sign out and use the same method.</p>
+
+  <h2 id="desktop">What the web app looks like on a laptop</h2>
+  <p>When the browser window is about 720 pixels wide or more, ClassTrack switches to a <strong>desktop layout</strong>. On a narrow window or a phone browser it looks like the phone app.</p>
+  <table>
+    <thead><tr><th scope="col">Page</th><th scope="col">On a wide screen</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Sidebar</strong></td><td>Every page one click away: Home, Schedule, Explore, Planner, Attendance, Tasks, Exams, Grades, Notes, Habits, Expenses, Perks, Ask Kiro and Settings.</td></tr>
+      <tr><td><strong>Home</strong></td><td>Today’s classes, the next exam and what is due, in two columns.</td></tr>
+      <tr><td><strong>Schedule</strong></td><td>A <strong>week calendar</strong>: classes placed by time, a red line for “now”, exams and due tasks at the top of each day, and arrows to move between weeks.</td></tr>
+      <tr><td><strong>Tasks</strong></td><td>The task list on the left and the selected task’s editor on the right, so you can work through homework without opening and closing windows.</td></tr>
+      <tr><td><strong>Attendance</strong></td><td>A sortable table of every subject with classes attended, percentage, target, and how many you can skip or must attend.</td></tr>
+      <tr><td><strong>Ask Kiro</strong></td><td>The AI assistant opens as a panel on the right, next to the page you are on, so you can ask about your week while looking at it.</td></tr>
+    </tbody>
+  </table>
+  <p>The big screen is the main reason to use the web app. Seeing the whole week, every exam and every open task at once makes weekly planning faster than scrolling on a phone.</p>
+
+  <h2 id="shortcuts">ClassTrack web keyboard shortcuts</h2>
+  <table>
+    <thead><tr><th scope="col">Key</th><th scope="col">What it does</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>Ctrl</kbd> + <kbd>K</kbd> (<kbd>⌘</kbd> + <kbd>K</kbd> on Mac) or <kbd>/</kbd></td><td>Search and jump to any page</td></tr>
+      <tr><td><kbd>N</kbd></td><td>Add something new (task, class, exam…)</td></tr>
+      <tr><td><kbd>A</kbd></td><td>Open the AI assistant panel</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Close the assistant panel</td></tr>
+      <tr><td><kbd>1</kbd> to <kbd>4</kbd></td><td>Go to Home, Schedule, Explore or Planner</td></tr>
+      <tr><td><kbd>?</kbd></td><td>Show all shortcuts</td></tr>
+    </tbody>
+  </table>
+  <p>Shortcuts work on the desktop layout and are ignored while you are typing in a text box.</p>
+
+  <h2 id="compare">ClassTrack web app vs Android app</h2>
+  <table>
+    <thead><tr><th scope="col">Feature</th><th scope="col">Web app</th><th scope="col">Android app</th></tr></thead>
+    <tbody>
+      <tr><td>Timetable, tasks, exams, grades, attendance</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>AI study plans and AI assistant</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>AI timetable import</td><td>Upload a photo or PDF, or paste text</td><td>Take a photo, upload a photo or PDF, or paste text</td></tr>
+      <tr><td>Week calendar and side-by-side task editor</td><td>Yes (wide screens)</td><td>Day, week and month views</td></tr>
+      <tr><td>Reminders and notifications</td><td>No</td><td>Yes</td></tr>
+      <tr><td>Exports (PDF, CSV; Pro)</td><td>Download as files</td><td>Share to other apps</td></tr>
+      <tr><td>Account and data</td><td colspan="2">Same account, synced both ways</td></tr>
+      <tr><td>Price</td><td colspan="2">Free; Pro is linked to your account and works on both</td></tr>
+    </tbody>
+  </table>
+  <p>In short: use the web app to <strong>plan</strong> and the phone app to be <strong>reminded</strong>.</p>
+
+  <h2 id="devices">Using ClassTrack on iPhone, Mac, Windows and Chromebook</h2>
+  <ul>
+    <li><strong>iPhone and iPad:</strong> open {SITE.webHost} in Safari and log in. To get an icon on your home screen, tap Share, then Add to Home Screen. The native iPhone app, with reminders, is coming soon: <button type="button" class="text-btn" data-ios style="padding:0">join the waitlist</button>.</li>
+    <li><strong>Mac and Windows:</strong> use Chrome, Edge, Safari or Firefox. Pin the tab so your planner is always open while you study.</li>
+    <li><strong>Chromebook:</strong> open it in Chrome. Many school Chromebooks block app installs, but a website still works.</li>
+    <li><strong>Android:</strong> the <a href={SITE.playUrl} rel="noopener">Google Play app</a> is the better choice on the phone itself, because it sends reminders. Use the web app on your laptop alongside it.</li>
+  </ul>
+
+  <h2 id="routine">A simple way to use the web app and phone together</h2>
+  <p>Students who plan their week ahead tend to get better grades. In one study of 90 college students, short-range planning predicted cumulative GPA better than SAT scores did (Britton &amp; Tesser, 1991). Across 94 studies, deciding exactly <strong>when and where</strong> you will do a task had a medium-to-large effect on actually doing it (Gollwitzer &amp; Sheeran, 2006). A big screen makes that kind of planning quicker.</p>
+  <ol>
+    <li><strong>Once a week, on your laptop (about 20 minutes):</strong> open Schedule, look at the coming week, check every exam countdown, and book study blocks with a day, time and subject.</li>
+    <li><strong>Every day, on your phone:</strong> follow the plan, tick off tasks and add new homework the moment it is set.</li>
+    <li><strong>While you study:</strong> keep the planner open in one laptop tab and put your phone in another room. In one experiment, students with their phone in another room scored better on working-memory and problem-solving tests than students with the phone face down on the desk, even when it was silent or switched off (Ward et al., 2017).</li>
+  </ol>
+  <p>The full routine, with a checklist for the weekly review, is in our guide to <a href="/guides/online-study-planner-laptop-and-phone/">using an online study planner on your laptop and phone</a>.</p>
+
+  <h2 id="privacy">Privacy and shared computers</h2>
+  <ul>
+    <li><strong>Same protection as the app.</strong> The web app uses the same sign-in and the same secure account as the Android app. The AI runs through ClassTrack’s own server, so no AI key is ever sent to your browser.</li>
+    <li><strong>Sign out on shared computers.</strong> On a library or lab computer, sign out from Settings when you finish, or use a private (incognito) window.</li>
+    <li><strong>Your data stays yours.</strong> Read the <a href="/privacy/">privacy policy</a> for what is stored and how to delete your account.</li>
+  </ul>
+
+  <h2 id="trouble">Fixing sign-in problems</h2>
+  <table>
+    <thead><tr><th scope="col">Problem</th><th scope="col">Fix</th></tr></thead>
+    <tbody>
+      <tr><td>Nothing happens when I click Continue with Google</td><td>Your browser blocked the pop-up. Allow pop-ups for {SITE.webHost}, then try again.</td></tr>
+      <tr><td>I logged in but my planner is empty</td><td>You are in a different account. Sign out and use the same method (Google or email) and the same email address as on your phone.</td></tr>
+      <tr><td>The page stays on the loading screen</td><td>Update your browser, turn off strict content blockers for this site, or try another browser.</td></tr>
+      <tr><td>I do not get reminders</td><td>That is expected on the web. Install the Android app on the same account for reminders.</td></tr>
+    </tbody>
+  </table>
+  <p>Still stuck? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with your browser name and what you see.</p>
+  <p><a class="btn" href={SITE.webUrl} rel="noopener">Open {SITE.webHost}</a></p>
+</Guide>
